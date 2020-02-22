@@ -1,1 +1,8 @@
 src/apps/VC++/.vs/
+src/core/projects/VS DLL/Debug/
+src/core/projects/VS DLL/Release/
+src/core/projects/VS DLL/x64/
+src/core/projects/VS StaticLib/Debug/
+src/core/projects/VS StaticLib/Release/
+src/core/projects/VS StaticLib/x64/
+out/
