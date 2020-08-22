@@ -37,12 +37,22 @@
 #endif
 
 
-
-
 #include "I_Calculator.h"
 
 
-//TYPEDEFS
+//-----------------------------------------------------------------------------------------------------
+//	Export functions
+//
+EXPORT I_Calculator* CC CreateCalculator();
+EXPORT void CC DeleteCalculator(I_Calculator* calculator);
+//
+//-----------------------------------------------------------------------------------------------------
 
-//FUNCTIONS
 
+//-----------------------------------------------------------------------------------------------------
+//	Typedefs
+//
+typedef I_Calculator* (CC* create_calculator)();
+typedef void (CC* delete_calculator)(I_Calculator*);
+//
+//-----------------------------------------------------------------------------------------------------
