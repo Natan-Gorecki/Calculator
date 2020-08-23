@@ -88,7 +88,9 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
         <ProjectType>CppStaticLibrary</ProjectType>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
-        <SanitizedProjectName>StaticLib_BCC</SanitizedProjectName>
+        <SanitizedProjectName>StaticLibrary_BCC</SanitizedProjectName>
+        <IncludePath>..\..\sources\;..\..\api\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\..\sources\;..\..\api\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <PackageImports>bindcomp;bindcompdbx;bindcompfmx;bindengine;CloudService;CustomIPTransport;DataSnapClient;DataSnapCommon;DataSnapFireDAC;DataSnapNativeClient;DataSnapProviderClient;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXSqliteDriver;dsnap;dsnapxml;emsclient;emsclientfiredac;FireDAC;FireDACCommon;FireDACCommonDriver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACSqliteDriver;fmx;fmxFireDAC;FMXTee;FmxTeeUI;ibmonitor;ibxbindings;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;tethering;xmlrtl;$(PackageImports)</PackageImports>
@@ -160,6 +162,21 @@
         <Manifest_File>(None)</Manifest_File>
     </PropertyGroup>
     <ItemGroup>
+        <None Include="..\..\api\api.h">
+            <BuildOrder>0</BuildOrder>
+        </None>
+        <None Include="..\..\api\I_Calculator.h">
+            <BuildOrder>1</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\sources\api.cpp">
+            <BuildOrder>2</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\..\sources\C_Calculator.cpp">
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\sources\C_Calculator.h">
+            <BuildOrder>4</BuildOrder>
+        </None>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -245,9 +262,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\StaticLib_BCC.lib" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\..\out\lib\x86\Debug\StaticLibrary_BCC.lib" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
-                        <RemoteName>StaticLib_BCC.lib</RemoteName>
+                        <RemoteName>StaticLibrary_BCC.lib</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -256,9 +273,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\StaticLib_BCC.tds" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="..\..\..\..\out\lib\x86\Debug\StaticLibrary_BCC.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
-                        <RemoteName>StaticLib_BCC.tds</RemoteName>
+                        <RemoteName>StaticLibrary_BCC.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
