@@ -63,7 +63,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;cxLibraryRS26.lib;dxGDIPlusRS26.lib;dxCoreRS26.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;vcldb.lib;vclie.lib;vclx.lib;dxSkinsCoreRS26.lib;dxSkinOffice2010BlueRS26.lib;dxSkinOffice2013DarkGrayRS26.lib;dxSkinOffice2013LightGrayRS26.lib;dxSkinOffice2016ColorfulRS26.lib;dxSkinOffice2016DarkRS26.lib;dxSkinVisualStudio2013DarkRS26.lib;dxSkinVisualStudio2013LightRS26.lib;dxSkinsRS26.lib;dxSkinProject1RS26.lib;dxBarRS26.lib;dxComnRS26.lib;vclimg.lib;dxBarExtItemsRS26.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -115,7 +115,7 @@
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
-        <LinkPackageImports>rtl.bpi;vcl.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;vcl.bpi;cxLibraryRS26.bpi;dxGDIPlusRS26.bpi;dxCoreRS26.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;vcldb.bpi;vclie.bpi;vclx.bpi;dxSkinsCoreRS26.bpi;dxSkinOffice2010BlueRS26.bpi;dxSkinOffice2013DarkGrayRS26.bpi;dxSkinOffice2013LightGrayRS26.bpi;dxSkinOffice2016ColorfulRS26.bpi;dxSkinOffice2016DarkRS26.bpi;dxSkinVisualStudio2013DarkRS26.bpi;dxSkinVisualStudio2013LightRS26.bpi;dxSkinsRS26.bpi;dxSkinProject1RS26.bpi;dxBarRS26.bpi;dxComnRS26.bpi;vclimg.bpi;dxBarExtItemsRS26.bpi</LinkPackageImports>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>

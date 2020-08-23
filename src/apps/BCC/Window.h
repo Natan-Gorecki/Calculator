@@ -28,6 +28,8 @@
 #include "dxSkinVisualStudio2013Dark.hpp"
 #include "dxSkinVisualStudio2013Light.hpp"
 #include <Vcl.Menus.hpp>
+#include "dxBar.hpp"
+#include "dxBarExtItems.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -92,6 +94,22 @@ __published:	// IDE-managed Components
 	TdxLayoutGroup *dxLayoutGroup6;
 	TdxLayoutGroup *dxLayoutGroup3;
 	TdxLayoutGroup *dxLayoutGroup1;
+	TdxBarManager *dxBarManager1;
+	TdxBar *BarManager_MainMenu;
+	TdxBar *BarManager_Memory;
+	TdxBarSubItem *BarSubItem_Skins;
+	TdxBarButton *BarButton_Exit;
+	TdxBarButton *BarButton_DefaultSkin;
+	TdxBarSeparator *BarSeparator_Skins;
+	TdxBarButton *BarButton_Blueprint;
+	TdxBarButton *BarButton_DevExpressDarkStyle;
+	TdxBarButton *BarButton_DevExpressStyle;
+	TdxBarButton *BarButton_HighContrast;
+	TdxBarButton *BarButton_Office2016Dark;
+	TdxBarButton *BarButton_Pumpkin;
+	TdxBarButton *BarButton_Xmas2008Blue;
+	TdxBarStatic *BarStatic_MemoryLabel;
+	TdxBarStatic *BarStatic_Memory;
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

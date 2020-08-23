@@ -26,6 +26,8 @@
 #pragma link "dxSkinsDefaultPainters"
 #pragma link "dxSkinVisualStudio2013Dark"
 #pragma link "dxSkinVisualStudio2013Light"
+#pragma link "dxBar"
+#pragma link "dxBarExtItems"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
