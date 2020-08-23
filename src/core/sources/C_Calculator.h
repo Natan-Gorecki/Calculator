@@ -52,13 +52,11 @@ private:
 
 
 	//-----------------------------------------------------------------
-	//	First function check if there are outside parentheses
+	//	Method check if there are outside parentheses
+	//	and give their location in the left and right variable
 	//	e.g (2+2)	v	(4*2)
-	//
-	//	Second function find them and give their location left and rigth variable
 	//-----------------------------------------------------------------
-	bool are_parentheses(const char* text, int start, int end);
-	void finding_parentheses(const char* text, int start, int end, int& left, int& rigth);
+	bool are_parentheses(const char* text, int start, int end, int& left, int& right);
 
 
 

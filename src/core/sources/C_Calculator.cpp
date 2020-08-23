@@ -137,12 +137,9 @@ double C_Calculator::calculate(const char* text, int start, int end)
 	//	(part_of_equation) => return part_of_eqation
 	//
 	//-----------------------------------------------------------
-	if (are_parentheses(text, start, end) == true) 
-	{
-		int left, rigth;
-		finding_parentheses(text, start, end, left, rigth);
+	int left, rigth;
+	if (are_parentheses(text, start, end, left, rigth) == true) 
 		return calculate(text, left + 1, rigth - 1);
-	}
 
 
 
@@ -407,24 +404,30 @@ bool C_Calculator::is_number(char c)
 //	e.g (2+2)	v	(4*2)
 //	
 //-----------------------------------------------------------------
-bool C_Calculator::are_parentheses(const char* text, int start, int end)
+bool C_Calculator::are_parentheses(const char* text, int start, int end, int& left, int& right)
 {
-	for (int i = start; i <= end; i++) {
-		if (text[i] == ' ')
-			continue;
+	left = -1; right = -1;
+	for (int i = start; i <= end; i++) 
+	{
+		if (text[i] == ' ') continue;
 
 
 		//We find '(' - now we're looking ')' from the other side
 		if (text[i] == '(') 
 		{
+			left = i;
 			for (int j = end; j > i; j--)
 			{
-				if (text[j] == ' ')
-					continue;
+				if (text[j] == ' ') continue;
+
 
 				//We find ')' - return true
 				if (text[j] == ')')
+				{
+					right = j;
 					return true;
+				}
+
 
 				// Last non-whitespace character isn't rigth bracket - return false
 				return false;
@@ -439,36 +442,6 @@ bool C_Calculator::are_parentheses(const char* text, int start, int end)
 
 	//	There are no parentheses - return false;
 	return false;
-}
-
-
-
-//-----------------------------------------------------------------
-//
-//	Function find oustide parentheses and give their location left and rigth variable
-//
-//-----------------------------------------------------------------
-void C_Calculator::finding_parentheses(const char* text, int start, int end, int& left, int& rigth)
-{
-	// The place of left bracket
-	for (int i = start; i <= end; i++)
-		if (text[i] == '(')
-		{
-			left = i;
-			break;
-		}
-
-
-	// The place of rigth bracket
-	for (int i = end; i > left; i--)
-		if (text[i] == ')')
-		{
-			rigth = i;
-			break;
-		}
-
-
-	return;
 }
 
 
