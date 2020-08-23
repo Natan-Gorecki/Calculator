@@ -2,7 +2,7 @@
 
 //Calling Convenion
 //__cdecl v __stdcall
-#define CC __stdcall
+#define CC __cdecl
 
 
 // pragma comment and dllimport/dllexport
