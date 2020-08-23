@@ -1,5 +1,6 @@
 #include "C_Calculator.h"
 #include <string.h>
+#include <string>
 
 
 //------------------------------------------------------------------------------
@@ -22,8 +23,173 @@ double CC C_Calculator::Calculate(const char* expression)
 //------------------------------------------------------------------------------
 double C_Calculator::calculate(const char* text, int start, int end)
 {
-	// TODO
-	return -1;
+	int char_place;
+
+	// If there is operation oustide patentheses => char_place = the place of LAST operation to do
+	if (operation_outside_parentheses(text, start, end) == true) 
+	{
+		char_place = finding_last_operation(text, start, end);
+
+		//	e.g. +2 v *4
+		if (char_place == start)
+			goto first_in_equation;
+
+
+
+		//-----------------------------------------------------------
+		//	Conditon functions:
+		//		* throw exception for expression like "**" or "+/" 
+		//		* throw exception for expression like "*2" or "/4"
+		//		* +(part_of_equation) => return  1 * part_of_equation
+		//		* -(part_of_equation) => return -1 * part_of_equation
+		//-----------------------------------------------------------
+		if (char_place > start) 
+		{
+
+			// We're checking multiplied operation char
+			// e.g ++, *+
+			if (previous_char(text, start, char_place - 1) != -1)
+			{
+				char temp_ch = text[previous_char(text, start, char_place - 1)];
+				if (temp_ch == '+' || temp_ch == '-' || temp_ch == '*' || temp_ch == '/')
+					throw "Too many operation chars ('+', '-', '*', '/')";
+			}
+
+
+			// First char in equation is operation char
+			// previous_char(text, start, char_place - 1) == -1
+			// e.g. "  + 2"
+			else 
+			{
+
+				//	char_place == start
+				//	e.g. "+ 2"
+			first_in_equation:
+
+				switch (text[char_place]) 
+				{
+
+				case '+':	return 1 * calculate(text, char_place + 1, end);
+
+				case '-':	return -1 * calculate(text, char_place + 1, end);
+
+					//	Invalid equation
+					//	e.g. *2 v /4
+				case '*':
+				case '/':
+					throw "Character '*'  or '/' at the beginning";
+				}
+			}
+		}
+
+
+
+		//-----------------------------------------------------------
+		//	Conditions functions:
+		//		* throw exception for expression like "2*"
+		//		* throw exception for expression like "2 *   "
+		//-----------------------------------------------------------
+		if (char_place == end)
+			throw "Operation char at the end";
+		if (char_place < end)
+			if (next_char(text, char_place + 1, end) == -1)
+				throw "Operation char at the end";
+
+
+
+		//---------------------------------------------------------------------------------------
+		//	Switch statement function:
+		//		* we have place of LAST operation to do in variable char_place
+		//		* we do this operation on two parts of the eqation separated by char_place
+		//---------------------------------------------------------------------------------------
+		switch (text[char_place])
+		{
+
+		case '+':	return calculate(text, start, char_place - 1) + calculate(text, char_place + 1, end);
+
+		case '-':	return calculate(text, start, char_place - 1) - calculate(text, char_place + 1, end);
+
+		case '*':	return calculate(text, start, char_place - 1) * calculate(text, char_place + 1, end);
+
+		case '/':
+
+			//Throw exception - Division by 0!
+			if (calculate(text, char_place + 1, end) == 0)
+			{
+				throw "Division by 0!";
+			}
+
+			return calculate(text, start, char_place - 1) / calculate(text, char_place + 1, end);
+
+		case '(':	return calculate(text, start, char_place - 1) * calculate(text, char_place, end);
+
+		case ')':	return calculate(text, start, char_place) * calculate(text, char_place + 1, end);
+		}
+	}
+
+
+
+	//-----------------------------------------------------------
+	//
+	//	We have only number or part of the equation in parentheses
+	//
+	//	If there is outside parentheses
+	//	(part_of_equation) => return part_of_eqation
+	//
+	//-----------------------------------------------------------
+	if (are_parentheses(text, start, end) == true) 
+	{
+		int left, rigth;
+		finding_parentheses(text, start, end, left, rigth);
+		return calculate(text, left + 1, rigth - 1);
+	}
+
+
+
+	//-----------------------------------------------------------
+	//	We have only number
+	//-----------------------------------------------------------
+	std::string result;
+	int count_of_dot = 0;
+
+	//-----------------------------------------------------------
+	//	Convert part of equation from char[] to double 
+	//-----------------------------------------------------------
+	for (int i = start; i <= end; i++) {
+		if ('0' <= text[i] && text[i] <= '9')
+			result += text[i];
+		if (text[i] == '.' || text[i] == ',') {
+			result += '.';
+			count_of_dot++;
+		}
+	}
+
+
+
+	//-----------------------------------------------------------
+	// Check if the number was correct
+	// If not, throw exception 
+	// e.g. "2.." v ".2." v "." v ","
+	//-----------------------------------------------------------
+	if (count_of_dot > 1 || result == "." || result == ",") // in case of 2.. v .2. v . v ,
+		throw "Invalid number of dots or commas";
+
+
+
+	//-----------------------------------------------------------
+	// Check if the eqation isn't empty
+	//-----------------------------------------------------------
+	if (result == "")
+		throw "Empty equation";
+
+
+
+	//------------------------------------------------------------
+	// 
+	//	RETURN VALUE OF THIS PART OF THE EQUATION 
+	//
+	//------------------------------------------------------------
+	return stod(result);
 }
 
 
@@ -46,7 +212,8 @@ bool C_Calculator::operation_outside_parentheses(const char* tekst, int start, i
 	//	Loop that checks if there is addition or  subtraction
 	//	Return TRUE -	'+' v '-'
 	//------------------------------------------
-	for (int i = end; i >= start; i--) {
+	for (int i = end; i >= start; i--) 
+	{
 		if (tekst[i] == '+' || tekst[i] == '-')
 			if (level == 0)
 				return true;
@@ -66,13 +233,15 @@ bool C_Calculator::operation_outside_parentheses(const char* tekst, int start, i
 	//	Return TRUE -	'*' v '/'
 	//	Return TRUE -	")2" v ")(" v "2("
 	//------------------------------------------
-	for (int i = end; i >= start; i--) {
+	for (int i = end; i >= start; i--) 
+	{
 		if (tekst[i] == '*' || tekst[i] == '/')
 			if (level == 0)
 				return true;
 
 		//	Opening the bracket increases level
-		if (tekst[i] == ')') {
+		if (tekst[i] == ')')
+		{
 			level++;
 
 			//	Return TRUE, when next char is number <==> ") 2"
@@ -84,7 +253,8 @@ bool C_Calculator::operation_outside_parentheses(const char* tekst, int start, i
 
 
 		//	Closing the bracket decreases level
-		if (tekst[i] == '(') {
+		if (tekst[i] == '(') 
+		{
 			level--;
 
 			//	Return TRUE, when previous char is number or the opposite bracket
@@ -121,7 +291,8 @@ int C_Calculator::finding_last_operation(const char* tekst, int start, int end)
 	//	Loop that checks if there is addition or  subtraction
 	//	If there is return the place of last '+' v '-'
 	//------------------------------------------
-	for (int i = end; i >= start; i--) {
+	for (int i = end; i >= start; i--)
+	{
 		if (tekst[i] == '+' || tekst[i] == '-')
 			if (level == 0)
 				return i;
@@ -140,7 +311,8 @@ int C_Calculator::finding_last_operation(const char* tekst, int start, int end)
 	//	Loop that checks if there is multiplication or division
 	//	Return the place of LAST operation to do
 	//------------------------------------------
-	for (int i = end; i >= start; i--) {
+	for (int i = end; i >= start; i--)
+	{
 
 		// If there is '*' or '/' return the place of this char
 		if (tekst[i] == '*' || tekst[i] == '/')
@@ -149,7 +321,8 @@ int C_Calculator::finding_last_operation(const char* tekst, int start, int end)
 
 
 		//	Opening the bracket increases level
-		if (tekst[i] == ')') {
+		if (tekst[i] == ')')
+		{
 			level++;
 
 			//	Return the place of ')' when multiplication like ") 2" was found
@@ -161,7 +334,8 @@ int C_Calculator::finding_last_operation(const char* tekst, int start, int end)
 
 
 		//	Closing the bracket decreases level
-		if (tekst[i] == '(') {
+		if (tekst[i] == '(') 
+		{
 			level--;
 
 			//	Return the place of '(' when multiplication like "2 (" or ") (" was found
@@ -238,8 +412,10 @@ bool C_Calculator::are_parentheses(const char* text, int start, int end)
 
 
 		//We find '(' - now we're looking ')' from the other side
-		if (text[i] == '(') {
-			for (int j = end; j > i; j--) {
+		if (text[i] == '(') 
+		{
+			for (int j = end; j > i; j--)
+			{
 				if (text[j] == ' ')
 					continue;
 
@@ -273,7 +449,8 @@ void C_Calculator::finding_parentheses(const char* text, int start, int end, int
 {
 	// The place of left bracket
 	for (int i = start; i <= end; i++)
-		if (text[i] == '(') {
+		if (text[i] == '(')
+		{
 			left = i;
 			break;
 		}
@@ -281,7 +458,8 @@ void C_Calculator::finding_parentheses(const char* text, int start, int end, int
 
 	// The place of rigth bracket
 	for (int i = end; i > left; i--)
-		if (text[i] == ')') {
+		if (text[i] == ')')
+		{
 			rigth = i;
 			break;
 		}
@@ -323,7 +501,8 @@ bool C_Calculator::correct_parentheses(const char* text, int start, int end)
 {
 	int counter = 0;
 
-	for (int i = start; i <= end; i++) {
+	for (int i = start; i <= end; i++) 
+	{
 		if (text[i] == '(')
 			counter++;
 		if (text[i] == ')')
