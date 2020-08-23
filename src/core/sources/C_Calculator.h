@@ -14,6 +14,19 @@ private:
 	double calculate(const char* text, int start, int end);
 
 
+
+	//-----------------------------------------------------------------
+	//	Functions check next/previous non-whitespace character 
+	//
+	//	Return - the place of following char
+	//	Return -	-1	in case when there are only whitespace char in searched range
+	//
+	//-----------------------------------------------------------------
+	int next_char(const char* text, int start, int end);
+	int previous_char(const char* text, int start, int end);
+
+
+
 	//-----------------------------------------------------------------
 	//	Funtions checking if the equation is correct
 	//-----------------------------------------------------------------

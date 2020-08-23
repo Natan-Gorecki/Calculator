@@ -29,11 +29,43 @@ double calculate(const char* text, int start, int end)
 
 
 //-----------------------------------------------------------------
+//	Function check next non-whitespace character 
+//
+//	Return - the place of following char
+//	Return -	-1	in case when there are only whitespace char in searched range
+//-----------------------------------------------------------------
+int C_Calculator::next_char(const char* text, int start, int end) {
+	for (int i = start; i <= end; i++)
+		if (text[i] != ' ')
+			return i;
+
+	return -1;
+}
+
+
+
+//-----------------------------------------------------------------
+//	Functions check previous non-whitespace character 
+//
+//	Return - the place of previous char
+//	Return -	-1	in case when there are only whitespace char in searched range
+//-----------------------------------------------------------------
+int C_Calculator::previous_char(const char* text, int start, int end) {
+	for (int i = end; i >= start; i--)
+		if (text[i] != ' ')
+			return i;
+
+	return -1;
+}
+
+
+
+//-----------------------------------------------------------------
 //
 //	Funtion checking if the equation is correct
 //
 //-----------------------------------------------------------------
-void check_if_equation_is_correct(const char* text, int start, int end)
+void C_Calculator::check_if_equation_is_correct(const char* text, int start, int end)
 {
 	if (correct_parentheses(text, start, end) == false)
 		throw "Invalid parentheses";
@@ -55,7 +87,7 @@ void check_if_equation_is_correct(const char* text, int start, int end)
 //	Funtion checking if the number and position of parentheses is correct
 //
 //-----------------------------------------------------------------
-bool correct_parentheses(const char* text, int start, int end)
+bool C_Calculator::correct_parentheses(const char* text, int start, int end)
 {
 	int counter = 0;
 
@@ -92,7 +124,7 @@ bool correct_parentheses(const char* text, int start, int end)
 //	Correct characters are (, ), *, +, -, ., /, 0-9 and ','
 //
 //-----------------------------------------------------------------
-bool correct_characters(const char* text, int start, int end)
+bool C_Calculator::correct_characters(const char* text, int start, int end)
 {
 	for (int i = start; i <= end; i++)
 		if (!(('(' <= text[i] && text[i] <= '9') || text[i] == ' '))
@@ -109,7 +141,7 @@ bool correct_characters(const char* text, int start, int end)
 //	e.g. '( )'
 //
 //-----------------------------------------------------------------
-bool empty_parentheses(const char* text, int start, int end)
+bool C_Calculator::empty_parentheses(const char* text, int start, int end)
 {
 	for (int i = start; i <= end; i++)
 		if (text[i] == '(')
