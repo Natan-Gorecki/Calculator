@@ -30,6 +30,10 @@
 #include <Vcl.Menus.hpp>
 #include "dxBar.hpp"
 #include "dxBarExtItems.hpp"
+#include "cxContainer.hpp"
+#include "cxEdit.hpp"
+#include "cxLabel.hpp"
+#include "dxLayoutcxEditAdapters.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -110,6 +114,13 @@ __published:	// IDE-managed Components
 	TdxBarButton *BarButton_Xmas2008Blue;
 	TdxBarStatic *BarStatic_MemoryLabel;
 	TdxBarStatic *BarStatic_Memory;
+	TcxLabel *Label_Expression;
+	TdxLayoutItem *Item_Expression;
+	TcxLabel *Label_PreviousExpression;
+	TdxLayoutItem *Item_PreviousExpression;
+	TdxLayoutEmptySpaceItem *Item_EmptySpace1;
+	TdxLayoutEmptySpaceItem *Item_EmptySpace2;
+	TdxLayoutEmptySpaceItem *Item_EmptySpace3;
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

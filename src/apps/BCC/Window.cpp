@@ -28,6 +28,10 @@
 #pragma link "dxSkinVisualStudio2013Light"
 #pragma link "dxBar"
 #pragma link "dxBarExtItems"
+#pragma link "cxContainer"
+#pragma link "cxEdit"
+#pragma link "cxLabel"
+#pragma link "dxLayoutcxEditAdapters"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------

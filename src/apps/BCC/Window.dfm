@@ -26,217 +26,229 @@ object Form1: TForm1
     ExplicitHeight = 250
     object Button_RightBracket: TcxButton
       Left = 321
-      Top = 149
+      Top = 264
       Width = 143
-      Height = 86
+      Height = 62
       Caption = ')'
-      TabOrder = 8
+      TabOrder = 10
     end
     object Button_C: TcxButton
       Left = 22
-      Top = 149
+      Top = 264
       Width = 143
-      Height = 86
+      Height = 62
       Caption = 'C'
-      TabOrder = 6
+      TabOrder = 8
     end
     object Button_Divide: TcxButton
       Left = 470
-      Top = 149
+      Top = 264
       Width = 143
-      Height = 86
+      Height = 62
       Caption = #247
-      TabOrder = 9
+      TabOrder = 11
     end
     object Button_LeftBracket: TcxButton
       Left = 171
-      Top = 149
+      Top = 264
       Width = 144
-      Height = 86
+      Height = 62
       Caption = '('
-      TabOrder = 7
+      TabOrder = 9
     end
     object Button_Minus: TcxButton
       Left = 470
-      Top = 392
+      Top = 461
       Width = 143
-      Height = 85
+      Height = 62
       Caption = '-'
-      TabOrder = 17
+      TabOrder = 19
     end
     object Button_5: TcxButton
       Left = 171
-      Top = 392
+      Top = 461
       Width = 144
-      Height = 85
+      Height = 62
       Caption = '5'
-      TabOrder = 15
+      TabOrder = 17
     end
     object Button_6: TcxButton
       Left = 321
-      Top = 392
+      Top = 461
       Width = 143
-      Height = 85
+      Height = 62
       Caption = '6'
-      TabOrder = 16
+      TabOrder = 18
     end
     object Button_4: TcxButton
       Left = 22
-      Top = 392
+      Top = 461
       Width = 143
-      Height = 85
+      Height = 62
       Caption = '4'
-      TabOrder = 14
+      TabOrder = 16
     end
     object Button_2: TcxButton
       Left = 171
-      Top = 513
+      Top = 559
       Width = 144
-      Height = 86
+      Height = 63
       Caption = '2'
-      TabOrder = 19
+      TabOrder = 21
     end
     object Button_3: TcxButton
       Left = 321
-      Top = 513
+      Top = 559
       Width = 143
-      Height = 86
+      Height = 63
       Caption = '3'
-      TabOrder = 20
+      TabOrder = 22
     end
     object Button_1: TcxButton
       Left = 22
-      Top = 513
+      Top = 559
       Width = 143
-      Height = 86
+      Height = 63
       Caption = '1'
-      TabOrder = 18
+      TabOrder = 20
     end
     object Button_Plus: TcxButton
       Left = 470
-      Top = 513
+      Top = 559
       Width = 143
-      Height = 86
+      Height = 63
       Caption = '+'
-      TabOrder = 21
+      TabOrder = 23
     end
     object Button_Clear: TcxButton
       Left = 22
-      Top = 635
+      Top = 658
       Width = 143
-      Height = 85
-      TabOrder = 22
+      Height = 62
+      TabOrder = 24
     end
     object Button_0: TcxButton
       Left = 171
-      Top = 635
+      Top = 658
       Width = 144
-      Height = 85
+      Height = 62
       Caption = '0'
-      TabOrder = 23
+      TabOrder = 25
     end
     object Button_Comma: TcxButton
       Left = 321
-      Top = 635
+      Top = 658
       Width = 143
-      Height = 85
+      Height = 62
       Caption = ','
-      TabOrder = 24
+      TabOrder = 26
     end
     object Button_Equal: TcxButton
       Left = 470
-      Top = 635
+      Top = 658
       Width = 143
-      Height = 85
+      Height = 62
       Caption = '='
-      TabOrder = 25
+      TabOrder = 27
     end
     object Button_7: TcxButton
       Left = 22
-      Top = 271
+      Top = 362
       Width = 143
-      Height = 85
+      Height = 63
       Caption = '7'
-      TabOrder = 10
+      TabOrder = 12
     end
     object Button_8: TcxButton
       Left = 171
-      Top = 271
+      Top = 362
       Width = 144
-      Height = 85
+      Height = 63
       Caption = '8'
-      TabOrder = 11
+      TabOrder = 13
     end
     object Button_Multiply: TcxButton
       Left = 470
-      Top = 271
+      Top = 362
       Width = 143
-      Height = 85
+      Height = 63
       Caption = 'x'
-      TabOrder = 13
+      TabOrder = 15
     end
     object Button_9: TcxButton
       Left = 321
-      Top = 271
+      Top = 362
       Width = 143
-      Height = 85
+      Height = 63
       Caption = '9'
-      TabOrder = 12
+      TabOrder = 14
     end
     object Button_MC: TcxButton
       Left = 122
-      Top = 28
+      Top = 166
       Width = 93
-      Height = 85
+      Height = 62
       Caption = 'MC'
-      TabOrder = 1
+      TabOrder = 3
     end
     object Button_MPlus: TcxButton
       Left = 321
-      Top = 28
+      Top = 166
       Width = 93
-      Height = 85
+      Height = 62
       Caption = 'M+'
-      TabOrder = 3
+      TabOrder = 5
     end
     object Button_CE: TcxButton
       Left = 22
-      Top = 28
+      Top = 166
       Width = 94
-      Height = 85
+      Height = 62
       Caption = 'CE'
-      TabOrder = 0
+      TabOrder = 2
     end
     object Button_MS: TcxButton
       Left = 520
-      Top = 28
+      Top = 166
       Width = 93
-      Height = 85
+      Height = 62
       Caption = 'MS'
-      TabOrder = 5
+      TabOrder = 7
     end
     object Button_MMinus: TcxButton
       Left = 420
-      Top = 28
+      Top = 166
       Width = 94
-      Height = 85
+      Height = 62
       Caption = 'M-'
-      TabOrder = 4
+      TabOrder = 6
     end
     object Button_MR: TcxButton
       Left = 221
-      Top = 28
+      Top = 166
       Width = 94
-      Height = 85
+      Height = 62
       Caption = 'MR'
-      TabOrder = 2
+      TabOrder = 4
+    end
+    object Label_Expression: TcxLabel
+      Left = 289
+      Top = 67
+      Caption = 'Expression'
+      Style.HotTrack = False
+    end
+    object Label_PreviousExpression: TcxLabel
+      Left = 528
+      Top = 33
+      Caption = 'PreviousExpression'
+      Style.HotTrack = False
     end
     object dxRootGroup: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
       ButtonOptions.Buttons = <>
       Hidden = True
-      ItemIndex = 2
+      ItemIndex = 4
       ShowBorder = False
       Index = -1
     end
@@ -537,7 +549,7 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
-      Index = 1
+      Index = 6
     end
     object dxLayoutGroup4: TdxLayoutGroup
       Parent = dxRootGroup
@@ -546,7 +558,7 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
-      Index = 3
+      Index = 8
     end
     object dxLayoutGroup5: TdxLayoutGroup
       Parent = dxRootGroup
@@ -555,7 +567,7 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
-      Index = 4
+      Index = 9
     end
     object dxLayoutGroup6: TdxLayoutGroup
       Parent = dxRootGroup
@@ -564,7 +576,7 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
-      Index = 5
+      Index = 10
     end
     object dxLayoutGroup3: TdxLayoutGroup
       Parent = dxRootGroup
@@ -572,7 +584,7 @@ object Form1: TForm1
       AlignVert = avClient
       ButtonOptions.Buttons = <>
       LayoutDirection = ldHorizontal
-      Index = 2
+      Index = 7
     end
     object dxLayoutGroup1: TdxLayoutGroup
       Parent = dxRootGroup
@@ -580,7 +592,55 @@ object Form1: TForm1
       AlignVert = avClient
       ButtonOptions.Buttons = <>
       LayoutDirection = ldHorizontal
+      Index = 5
+    end
+    object Item_Expression: TdxLayoutItem
+      Parent = dxRootGroup
+      AlignHorz = ahCenter
+      AlignVert = avClient
+      CaptionOptions.Text = 'cxLabel1'
+      CaptionOptions.Visible = False
+      Control = Label_Expression
+      ControlOptions.OriginalHeight = 17
+      ControlOptions.OriginalWidth = 56
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object Item_PreviousExpression: TdxLayoutItem
+      Parent = dxRootGroup
+      AlignHorz = ahRight
+      AlignVert = avClient
+      CaptionOptions.Text = 'cxLabel2'
+      CaptionOptions.Visible = False
+      Control = Label_PreviousExpression
+      ControlOptions.OriginalHeight = 17
+      ControlOptions.OriginalWidth = 97
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object Item_EmptySpace1: TdxLayoutEmptySpaceItem
+      Parent = dxRootGroup
+      AlignVert = avClient
+      CaptionOptions.Text = 'Empty Space Item'
+      SizeOptions.Height = 10
+      SizeOptions.Width = 10
       Index = 0
+    end
+    object Item_EmptySpace2: TdxLayoutEmptySpaceItem
+      Parent = dxRootGroup
+      AlignVert = avClient
+      CaptionOptions.Text = 'Empty Space Item'
+      SizeOptions.Height = 10
+      SizeOptions.Width = 10
+      Index = 3
+    end
+    object Item_EmptySpace3: TdxLayoutEmptySpaceItem
+      Parent = dxRootGroup
+      AlignVert = avClient
+      CaptionOptions.Text = 'Empty Space Item'
+      SizeOptions.Height = 10
+      SizeOptions.Width = 10
+      Index = 4
     end
   end
   object dxBarManager1: TdxBarManager
