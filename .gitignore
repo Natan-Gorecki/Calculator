@@ -7,3 +7,4 @@ src/core/projects/VS StaticLib/Release/
 src/core/projects/VS StaticLib/x64/
 out/
 src/apps/VC++/Debug/
+src/core/projects/BCC StaticLib/Win32/
