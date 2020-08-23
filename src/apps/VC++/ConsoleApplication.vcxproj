@@ -73,18 +73,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\out\bin\x86\Debug\</OutDir>
+    <IncludePath>..\..\core\api;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\out\lib\x86\Debug;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\..\out\bin\x64\Debug\</OutDir>
+    <IncludePath>..\..\core\api;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\out\lib\x64\Debug;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\out\bin\x86\Release\</OutDir>
+    <IncludePath>..\..\core\api;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\out\lib\x86\Release;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\..\out\bin\x64\Release\</OutDir>
+    <IncludePath>..\..\core\api;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\..\out\lib\x64\Release;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
