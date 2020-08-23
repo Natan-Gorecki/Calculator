@@ -20,226 +20,222 @@ object Form1: TForm1
     Height = 742
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 336
-    ExplicitTop = 152
-    ExplicitWidth = 300
-    ExplicitHeight = 250
     object Button_RightBracket: TcxButton
-      Left = 321
-      Top = 264
-      Width = 143
-      Height = 62
+      Left = 318
+      Top = 310
+      Width = 153
+      Height = 85
       Caption = ')'
       TabOrder = 10
     end
     object Button_C: TcxButton
-      Left = 22
-      Top = 264
-      Width = 143
-      Height = 62
+      Left = 10
+      Top = 310
+      Width = 154
+      Height = 85
       Caption = 'C'
       TabOrder = 8
     end
     object Button_Divide: TcxButton
-      Left = 470
-      Top = 264
-      Width = 143
-      Height = 62
+      Left = 471
+      Top = 310
+      Width = 154
+      Height = 85
       Caption = #247
       TabOrder = 11
     end
     object Button_LeftBracket: TcxButton
-      Left = 171
-      Top = 264
-      Width = 144
-      Height = 62
+      Left = 164
+      Top = 310
+      Width = 154
+      Height = 85
       Caption = '('
       TabOrder = 9
     end
     object Button_Minus: TcxButton
-      Left = 470
-      Top = 461
-      Width = 143
-      Height = 62
+      Left = 471
+      Top = 479
+      Width = 154
+      Height = 84
       Caption = '-'
       TabOrder = 19
     end
     object Button_5: TcxButton
-      Left = 171
-      Top = 461
-      Width = 144
-      Height = 62
+      Left = 164
+      Top = 479
+      Width = 154
+      Height = 84
       Caption = '5'
       TabOrder = 17
     end
     object Button_6: TcxButton
-      Left = 321
-      Top = 461
-      Width = 143
-      Height = 62
+      Left = 318
+      Top = 479
+      Width = 153
+      Height = 84
       Caption = '6'
       TabOrder = 18
     end
     object Button_4: TcxButton
-      Left = 22
-      Top = 461
-      Width = 143
-      Height = 62
+      Left = 10
+      Top = 479
+      Width = 154
+      Height = 84
       Caption = '4'
       TabOrder = 16
     end
     object Button_2: TcxButton
-      Left = 171
-      Top = 559
-      Width = 144
-      Height = 63
+      Left = 164
+      Top = 563
+      Width = 154
+      Height = 85
       Caption = '2'
       TabOrder = 21
     end
     object Button_3: TcxButton
-      Left = 321
-      Top = 559
-      Width = 143
-      Height = 63
+      Left = 318
+      Top = 563
+      Width = 153
+      Height = 85
       Caption = '3'
       TabOrder = 22
     end
     object Button_1: TcxButton
-      Left = 22
-      Top = 559
-      Width = 143
-      Height = 63
+      Left = 10
+      Top = 563
+      Width = 154
+      Height = 85
       Caption = '1'
       TabOrder = 20
     end
     object Button_Plus: TcxButton
-      Left = 470
-      Top = 559
-      Width = 143
-      Height = 63
+      Left = 471
+      Top = 563
+      Width = 154
+      Height = 85
       Caption = '+'
       TabOrder = 23
     end
     object Button_Clear: TcxButton
-      Left = 22
-      Top = 658
-      Width = 143
-      Height = 62
+      Left = 10
+      Top = 648
+      Width = 154
+      Height = 84
       TabOrder = 24
     end
     object Button_0: TcxButton
-      Left = 171
-      Top = 658
-      Width = 144
-      Height = 62
+      Left = 164
+      Top = 648
+      Width = 154
+      Height = 84
       Caption = '0'
       TabOrder = 25
     end
     object Button_Comma: TcxButton
-      Left = 321
-      Top = 658
-      Width = 143
-      Height = 62
+      Left = 318
+      Top = 648
+      Width = 153
+      Height = 84
       Caption = ','
       TabOrder = 26
     end
     object Button_Equal: TcxButton
-      Left = 470
-      Top = 658
-      Width = 143
-      Height = 62
+      Left = 471
+      Top = 648
+      Width = 154
+      Height = 84
       Caption = '='
       TabOrder = 27
     end
     object Button_7: TcxButton
-      Left = 22
-      Top = 362
-      Width = 143
-      Height = 63
+      Left = 10
+      Top = 395
+      Width = 154
+      Height = 84
       Caption = '7'
       TabOrder = 12
     end
     object Button_8: TcxButton
-      Left = 171
-      Top = 362
-      Width = 144
-      Height = 63
+      Left = 164
+      Top = 395
+      Width = 154
+      Height = 84
       Caption = '8'
       TabOrder = 13
     end
     object Button_Multiply: TcxButton
-      Left = 470
-      Top = 362
-      Width = 143
-      Height = 63
+      Left = 471
+      Top = 395
+      Width = 154
+      Height = 84
       Caption = 'x'
       TabOrder = 15
     end
     object Button_9: TcxButton
-      Left = 321
-      Top = 362
-      Width = 143
-      Height = 63
+      Left = 318
+      Top = 395
+      Width = 153
+      Height = 84
       Caption = '9'
       TabOrder = 14
     end
     object Button_MC: TcxButton
-      Left = 122
-      Top = 166
-      Width = 93
-      Height = 62
+      Left = 113
+      Top = 226
+      Width = 102
+      Height = 84
       Caption = 'MC'
       TabOrder = 3
     end
     object Button_MPlus: TcxButton
-      Left = 321
-      Top = 166
-      Width = 93
-      Height = 62
+      Left = 318
+      Top = 226
+      Width = 102
+      Height = 84
       Caption = 'M+'
       TabOrder = 5
     end
     object Button_CE: TcxButton
-      Left = 22
-      Top = 166
-      Width = 94
-      Height = 62
+      Left = 10
+      Top = 226
+      Width = 103
+      Height = 84
       Caption = 'CE'
       TabOrder = 2
     end
     object Button_MS: TcxButton
-      Left = 520
-      Top = 166
-      Width = 93
-      Height = 62
+      Left = 523
+      Top = 226
+      Width = 102
+      Height = 84
       Caption = 'MS'
       TabOrder = 7
     end
     object Button_MMinus: TcxButton
       Left = 420
-      Top = 166
-      Width = 94
-      Height = 62
+      Top = 226
+      Width = 103
+      Height = 84
       Caption = 'M-'
       TabOrder = 6
     end
     object Button_MR: TcxButton
-      Left = 221
-      Top = 166
-      Width = 94
-      Height = 62
+      Left = 215
+      Top = 226
+      Width = 103
+      Height = 84
       Caption = 'MR'
       TabOrder = 4
     end
     object Label_Expression: TcxLabel
       Left = 289
-      Top = 67
+      Top = 101
       Caption = 'Expression'
       Style.HotTrack = False
     end
     object Label_PreviousExpression: TcxLabel
       Left = 528
-      Top = 33
+      Top = 44
       Caption = 'PreviousExpression'
       Style.HotTrack = False
     end
@@ -250,6 +246,7 @@ object Form1: TForm1
       Hidden = True
       ItemIndex = 4
       ShowBorder = False
+      UseIndent = False
       Index = -1
     end
     object Item_RightBracket: TdxLayoutItem
@@ -549,6 +546,8 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
+      ShowBorder = False
+      UseIndent = False
       Index = 6
     end
     object dxLayoutGroup4: TdxLayoutGroup
@@ -558,6 +557,8 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
+      ShowBorder = False
+      UseIndent = False
       Index = 8
     end
     object dxLayoutGroup5: TdxLayoutGroup
@@ -567,6 +568,8 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
+      ShowBorder = False
+      UseIndent = False
       Index = 9
     end
     object dxLayoutGroup6: TdxLayoutGroup
@@ -576,6 +579,8 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
+      ShowBorder = False
+      UseIndent = False
       Index = 10
     end
     object dxLayoutGroup3: TdxLayoutGroup
@@ -584,6 +589,8 @@ object Form1: TForm1
       AlignVert = avClient
       ButtonOptions.Buttons = <>
       LayoutDirection = ldHorizontal
+      ShowBorder = False
+      UseIndent = False
       Index = 7
     end
     object dxLayoutGroup1: TdxLayoutGroup
@@ -592,6 +599,8 @@ object Form1: TForm1
       AlignVert = avClient
       ButtonOptions.Buttons = <>
       LayoutDirection = ldHorizontal
+      ShowBorder = False
+      UseIndent = False
       Index = 5
     end
     object Item_Expression: TdxLayoutItem
