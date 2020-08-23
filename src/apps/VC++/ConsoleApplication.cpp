@@ -16,8 +16,10 @@
 
 
 #include "api.h"
+
 #include <iostream>
-#include <libloaderapi.h>
+#include <Windows.h>
+#include <string>
 
 
 
@@ -46,6 +48,40 @@ int main()
 	//******************************************************************************************************
 	I_Calculator* calculator = CreateCalculator();
 	//******************************************************************************************************
+
+
+
+	std::string from_getline, text = "";
+	while (true) 
+	{
+		std::cout << "Welcome in our simple caluclator :)\n";
+		std::cout << "Enter \"exit\" to close program.\n\n" << std::endl;
+		std::cout << "Give your equation to solve: \n";
+
+		getline(std::cin, from_getline);
+
+		text = (text == "\n") ? text = from_getline : text += from_getline;
+
+
+		// Word "Exit" closes the program
+		if (text == "exit")	break;
+
+
+		//-----------------------------------------------------------------
+		try 
+		{
+			std::cout << "Result:   " << calculator->Calculate(text.c_str()) << std::endl;
+		}
+		catch (const char* exception)
+		{
+			std::cout << "Exception - " << exception << std::endl;
+		}
+		//-----------------------------------------------------------------
+
+
+		text = getchar();
+		system("cls");
+	}
 
 
 
