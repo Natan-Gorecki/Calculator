@@ -10,8 +10,8 @@
 //------------------------------------------------------------------------------
 double CC C_Calculator::Calculate(const char* expression)
 {
-	check_if_equation_is_correct(expression, 0, strlen(expression) - 1);
-	return calculate(expression, 0, strlen(expression) - 1);
+	check_if_equation_is_correct(expression, 0, (int)strlen(expression) - 1);
+	return calculate(expression, 0, (int)strlen(expression) - 1);
 }
 
 
@@ -345,6 +345,9 @@ int C_Calculator::finding_last_operation(const char* tekst, int start, int end)
 						return i;
 		}
 	}
+
+
+	return -1;
 }
 
 
