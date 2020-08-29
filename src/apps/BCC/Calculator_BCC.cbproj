@@ -8,7 +8,7 @@
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
-        <TargetedPlatforms>1</TargetedPlatforms>
+        <TargetedPlatforms>3</TargetedPlatforms>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -30,6 +30,12 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
         <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
+        <Cfg_1_Win64>true</Cfg_1_Win64>
         <CfgParent>Cfg_1</CfgParent>
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
@@ -72,6 +78,8 @@
         <IncludePath>C:\Projects\Calculator\src\apps\BCC\;$(IncludePath)</IncludePath>
         <ILINK_LibraryPath>C:\Projects\Calculator\src\apps\BCC\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>Calculator_BCC</SanitizedProjectName>
+        <VerInfo_Locale>1045</VerInfo_Locale>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CloudService;CustomIPTransport;cxExportRS26;cxGridRS26;cxLibraryRS26;cxPivotGridChartRS26;cxPivotGridOLAPRS26;cxPivotGridRS26;cxSchedulerGridRS26;cxSchedulerRibbonStyleEventEditorRS26;cxSchedulerRS26;cxSchedulerTreeBrowserRS26;cxSchedulerWebServiceStorageRS26;cxTreeListdxBarPopupMenuRS26;cxTreeListRS26;cxVerticalGridRS26;DataSnapClient;DataSnapCommon;DataSnapConnectors;DatasnapConnectorsFreePascal;DataSnapFireDAC;DataSnapIndy10ServerTransport;DataSnapNativeClient;DataSnapProviderClient;DataSnapServer;DataSnapServerMidas;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXDb2Driver;DBXFirebirdDriver;DBXInformixDriver;DBXInterBaseDriver;DBXMSSQLDriver;DBXMySQLDriver;DBXOdbcDriver;DBXOracleDriver;DBXSqliteDriver;DBXSybaseASADriver;DBXSybaseASEDriver;dsnap;dsnapcon;dsnapxml;dxADOEMFRS26;dxADOServerModeRS26;dxBarDBNavRS26;dxBarExtDBItemsRS26;dxBarExtItemsRS26;dxBarRS26;dxCloudServiceLibraryRS26;dxComnRS26;dxCoreRS26;dxdborRS26;dxdbtrRS26;dxDBXServerModeRS26;dxDockingRS26;dxEMFRS26;dxFireDACEMFRS26;dxFireDACServerModeRS26;dxFlowChartAdvancedCustomizeFormRS26;dxFlowChartDesignerRS26;dxFlowChartRS26;dxGaugeControlRS26;dxGDIPlusRS26;dxHttpIndyRequestRS26;dxMapControlRS26;dxmdsRS26;dxNavBarRS26;dxorgcRS26;dxPDFViewerRS26;dxPSCoreRS26;dxPScxCommonRS26;dxPScxExtCommonRS26;dxPScxGridLnkRS26;dxPScxPCProdRS26;dxPScxPivotGridLnkRS26;dxPScxSchedulerLnkRS26;dxPScxTLLnkRS26;dxPScxVGridLnkRS26;dxPSDBTeeChartRS26;dxPSdxDBOCLnkRS26;dxPSdxDBTVLnkRS26;dxPSdxFCLnkRS26;dxPSdxGaugeControlLnkRS26;dxPSdxLCLnkRS26;dxPSdxMapControlLnkRS26;dxPSdxOCLnkRS26;dxPSdxPDFViewerLnkRS26;dxPSdxSpreadSheetLnkRS26;dxPSLnksRS26;dxPsPrVwAdvRS26;dxPSPrVwRibbonRS26;dxPSRichEditControlLnkRS26;dxPSTeeChartRS26;dxRibbonCustomizationFormRS26;dxRibbonRS26;dxRichEditControlCoreRS26;dxRichEditControlRS26;dxRichEditCoreRS26;dxRichEditDocumentModelRS26;dxRichEditInplaceRS26;dxServerModeRS26;dxSkinOffice2010BlueRS26;dxSkinOffice2013DarkGrayRS26;dxSkinOffice2013LightGrayRS26;dxSkinOffice2016ColorfulRS26;dxSkinOffice2016DarkRS26;dxSkinProject1RS26;dxSkinsCoreRS26;dxSkinsRS26;dxSkinVisualStudio2013DarkRS26;dxSkinVisualStudio2013LightRS26;dxSpellCheckerRS26;dxSpreadSheetConditionalFormattingDialogsRS26;dxSpreadSheetCoreConditionalFormattingDialogsRS26;dxSpreadSheetCoreDialogsRS26;dxSpreadSheetCoreRS26;dxSpreadSheetInplaceRichEditRS26;dxSpreadSheetReportDesignerRS26;dxSpreadSheetRS26;dxTabbedMDIRS26;dxTileControlRS26;dxtrmdRS26;dxWizardControlRS26;emsclient;emsclientfiredac;emsedge;emshosting;emsserverresource;FireDAC;FireDACADSDriver;FireDACASADriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACDb2Driver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACInfxDriver;FireDACMongoDBDriver;FireDACMSAccDriver;FireDACMSSQLDriver;FireDACMySQLDriver;FireDACODBCDriver;FireDACOracleDriver;FireDACPgDriver;FireDACSqliteDriver;FireDACTDataDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibmonitor;ibxbindings;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;svn;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
@@ -79,15 +87,21 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <BCC_PCHName_Clang>Calculator_BCCPCH1.h</BCC_PCHName_Clang>
+        <Icon_MainIcon>Icon_x86.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <PackageImports>adortl;appanalytics;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CloudService;CustomIPTransport;cxExportRS26;cxGridRS26;cxLibraryRS26;cxPivotGridChartRS26;cxPivotGridOLAPRS26;cxPivotGridRS26;cxSchedulerGridRS26;cxSchedulerRibbonStyleEventEditorRS26;cxSchedulerRS26;cxSchedulerTreeBrowserRS26;cxSchedulerWebServiceStorageRS26;cxTreeListdxBarPopupMenuRS26;cxTreeListRS26;cxVerticalGridRS26;DataSnapClient;DataSnapCommon;DataSnapConnectors;DatasnapConnectorsFreePascal;DataSnapFireDAC;DataSnapIndy10ServerTransport;DataSnapNativeClient;DataSnapProviderClient;DataSnapServer;DataSnapServerMidas;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXDb2Driver;DBXFirebirdDriver;DBXInformixDriver;DBXInterBaseDriver;DBXMSSQLDriver;DBXMySQLDriver;DBXOdbcDriver;DBXOracleDriver;DBXSqliteDriver;DBXSybaseASADriver;DBXSybaseASEDriver;dsnap;dsnapcon;dsnapxml;dxADOEMFRS26;dxADOServerModeRS26;dxBarDBNavRS26;dxBarExtDBItemsRS26;dxBarExtItemsRS26;dxBarRS26;dxCloudServiceLibraryRS26;dxComnRS26;dxCoreRS26;dxdborRS26;dxdbtrRS26;dxDBXServerModeRS26;dxDockingRS26;dxEMFRS26;dxFireDACEMFRS26;dxFireDACServerModeRS26;dxFlowChartAdvancedCustomizeFormRS26;dxFlowChartDesignerRS26;dxFlowChartRS26;dxGaugeControlRS26;dxGDIPlusRS26;dxHttpIndyRequestRS26;dxMapControlRS26;dxmdsRS26;dxNavBarRS26;dxorgcRS26;dxPDFViewerRS26;dxPSCoreRS26;dxPScxCommonRS26;dxPScxExtCommonRS26;dxPScxGridLnkRS26;dxPScxPCProdRS26;dxPScxPivotGridLnkRS26;dxPScxSchedulerLnkRS26;dxPScxTLLnkRS26;dxPScxVGridLnkRS26;dxPSDBTeeChartRS26;dxPSdxDBOCLnkRS26;dxPSdxDBTVLnkRS26;dxPSdxFCLnkRS26;dxPSdxGaugeControlLnkRS26;dxPSdxLCLnkRS26;dxPSdxMapControlLnkRS26;dxPSdxOCLnkRS26;dxPSdxPDFViewerLnkRS26;dxPSdxSpreadSheetLnkRS26;dxPSLnksRS26;dxPsPrVwAdvRS26;dxPSPrVwRibbonRS26;dxPSRichEditControlLnkRS26;dxPSTeeChartRS26;dxRibbonCustomizationFormRS26;dxRibbonRS26;dxRichEditControlCoreRS26;dxRichEditControlRS26;dxRichEditCoreRS26;dxRichEditDocumentModelRS26;dxRichEditInplaceRS26;dxServerModeRS26;dxSkinOffice2010BlueRS26;dxSkinOffice2013DarkGrayRS26;dxSkinOffice2013LightGrayRS26;dxSkinOffice2016ColorfulRS26;dxSkinOffice2016DarkRS26;dxSkinProject1RS26;dxSkinsCoreRS26;dxSkinsRS26;dxSkinVisualStudio2013DarkRS26;dxSkinVisualStudio2013LightRS26;dxSpellCheckerRS26;dxSpreadSheetConditionalFormattingDialogsRS26;dxSpreadSheetCoreConditionalFormattingDialogsRS26;dxSpreadSheetCoreDialogsRS26;dxSpreadSheetCoreRS26;dxSpreadSheetInplaceRichEditRS26;dxSpreadSheetReportDesignerRS26;dxSpreadSheetRS26;dxTabbedMDIRS26;dxTileControlRS26;dxtrmdRS26;dxWizardControlRS26;emsclient;emsclientfiredac;emsedge;emshosting;emsserverresource;FireDAC;FireDACADSDriver;FireDACASADriver;FireDACCommon;FireDACCommonDriver;FireDACCommonODBC;FireDACDb2Driver;FireDACDBXDriver;FireDACDSDriver;FireDACIBDriver;FireDACInfxDriver;FireDACMongoDBDriver;FireDACMSAccDriver;FireDACMSSQLDriver;FireDACMySQLDriver;FireDACODBCDriver;FireDACOracleDriver;FireDACPgDriver;FireDACSqliteDriver;FireDACTDataDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibmonitor;ibxbindings;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inet;inetdb;inetdbxpress;RESTBackendComponents;RESTComponents;rtl;soapmidas;soaprtl;soapserver;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
         <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
         <BCC_PCHName_Clang>Calculator_BCCPCH1.h</BCC_PCHName_Clang>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <Icon_MainIcon>Icon_x64.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
@@ -116,6 +130,12 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
         <LinkPackageImports>rtl.bpi;vcl.bpi;cxLibraryRS26.bpi;dxGDIPlusRS26.bpi;dxCoreRS26.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;vcldb.bpi;vclie.bpi;vclx.bpi;dxSkinsCoreRS26.bpi;dxSkinOffice2010BlueRS26.bpi;dxSkinOffice2013DarkGrayRS26.bpi;dxSkinOffice2013LightGrayRS26.bpi;dxSkinOffice2016ColorfulRS26.bpi;dxSkinOffice2016DarkRS26.bpi;dxSkinVisualStudio2013DarkRS26.bpi;dxSkinVisualStudio2013LightRS26.bpi;dxSkinsRS26.bpi;dxSkinProject1RS26.bpi;dxBarRS26.bpi;dxComnRS26.bpi;vclimg.bpi;dxBarExtItemsRS26.bpi</LinkPackageImports>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -129,6 +149,8 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <BCC_PCHName_Clang>Calculator_BCCPCH1.h</BCC_PCHName_Clang>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="Calculator_BCC.cpp">
@@ -218,15 +240,15 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\Calculator_BCC.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>Calculator_BCC.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\Win32\Debug\Calculator_BCC.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>Calculator_BCC.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName=".\Win32\Debug\Calculator_BCC.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Calculator_BCC.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -716,7 +738,7 @@
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
+                <Platform value="Win64">True</Platform>
             </Platforms>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>

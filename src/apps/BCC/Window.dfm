@@ -37,7 +37,6 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
     Transparent = True
-    ExplicitTop = 24
     object Button_RightBracket: TcxButton
       Left = 258
       Top = 185
@@ -847,11 +846,13 @@ object Form1: TForm1
     end
   end
   object dxBarManager1: TdxBarManager
+    AllowReset = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -12
     Font.Name = 'Segoe UI'
     Font.Style = []
+    CanCustomize = False
     Categories.Strings = (
       'Default')
     Categories.ItemsVisibles = (
@@ -869,6 +870,10 @@ object Form1: TForm1
       28
       0)
     object BarManager_MainMenu: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      AllowReset = False
       Caption = 'MainMenu'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
@@ -879,6 +884,7 @@ object Form1: TForm1
       FloatTop = 2
       FloatClientWidth = 0
       FloatClientHeight = 0
+      IsMainMenu = True
       ItemLinks = <
         item
           Visible = True
@@ -888,23 +894,34 @@ object Form1: TForm1
           Visible = True
           ItemName = 'BarButton_Exit'
         end>
+      MultiLine = True
       OneOnRow = False
       Row = 0
+      ShowMark = False
       UseOwnFont = False
       Visible = True
       WholeRow = False
     end
     object BarManager_Memory: TdxBar
-      Caption = 'Custom 1'
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      AllowReset = False
+      Caption = 'Memory'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 216
+      DockedLeft = 105
       DockedTop = 0
       DockingStyle = dsTop
       FloatLeft = 663
       FloatTop = 2
       FloatClientWidth = 0
       FloatClientHeight = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
       ItemLinks = <
         item
           Visible = True
@@ -916,7 +933,8 @@ object Form1: TForm1
         end>
       OneOnRow = False
       Row = 0
-      UseOwnFont = False
+      ShowMark = False
+      UseOwnFont = True
       Visible = True
       WholeRow = False
     end
