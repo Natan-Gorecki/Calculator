@@ -34,6 +34,9 @@
 #include "cxEdit.hpp"
 #include "cxLabel.hpp"
 #include "dxLayoutcxEditAdapters.hpp"
+#include "cxImageList.hpp"
+#include <System.ImageList.hpp>
+#include <Vcl.ImgList.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -121,6 +124,7 @@ __published:	// IDE-managed Components
 	TdxLayoutEmptySpaceItem *Item_EmptySpace1;
 	TdxLayoutEmptySpaceItem *Item_EmptySpace2;
 	TdxLayoutEmptySpaceItem *Item_EmptySpace3;
+	TcxImageList *cxImageList1;
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

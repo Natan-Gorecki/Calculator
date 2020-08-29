@@ -32,6 +32,7 @@
 #pragma link "cxEdit"
 #pragma link "cxLabel"
 #pragma link "dxLayoutcxEditAdapters"
+#pragma link "cxImageList"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
