@@ -69,14 +69,14 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib;cxLibraryRS26.lib;dxGDIPlusRS26.lib;dxCoreRS26.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;vcldb.lib;vclie.lib;vclx.lib;dxSkinsCoreRS26.lib;dxSkinOffice2010BlueRS26.lib;dxSkinOffice2013DarkGrayRS26.lib;dxSkinOffice2013LightGrayRS26.lib;dxSkinOffice2016ColorfulRS26.lib;dxSkinOffice2016DarkRS26.lib;dxSkinVisualStudio2013DarkRS26.lib;dxSkinVisualStudio2013LightRS26.lib;dxSkinsRS26.lib;dxSkinProject1RS26.lib;dxBarRS26.lib;dxComnRS26.lib;vclimg.lib;dxBarExtItemsRS26.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;cxLibraryRS26.lib;dxGDIPlusRS26.lib;dxCoreRS26.lib;dbexpress.lib;DbxCommonDriver.lib;dbrtl.lib;vcldb.lib;vclie.lib;vclx.lib;dxSkinsCoreRS26.lib;dxSkinOffice2010BlueRS26.lib;dxSkinOffice2013DarkGrayRS26.lib;dxSkinOffice2013LightGrayRS26.lib;dxSkinOffice2016ColorfulRS26.lib;dxSkinOffice2016DarkRS26.lib;dxSkinVisualStudio2013DarkRS26.lib;dxSkinVisualStudio2013LightRS26.lib;dxSkinsRS26.lib;dxSkinProject1RS26.lib;dxBarRS26.lib;dxComnRS26.lib;vclimg.lib;dxBarExtItemsRS26.lib;Custom_VCL_SkinsRS26.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>C:\Projects\Calculator\src\apps\BCC\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>C:\Projects\Calculator\src\apps\BCC\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>..\..\core\projects\BCC Custom_VCL_Skins\;C:\Projects\Calculator\src\apps\BCC\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\..\core\projects\BCC Custom_VCL_Skins\;C:\Projects\Calculator\src\apps\BCC\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <SanitizedProjectName>Calculator_BCC</SanitizedProjectName>
         <VerInfo_Locale>1045</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
@@ -132,6 +132,7 @@
         <LinkPackageImports>rtl.bpi;vcl.bpi;cxLibraryRS26.bpi;dxGDIPlusRS26.bpi;dxCoreRS26.bpi;dbexpress.bpi;DbxCommonDriver.bpi;dbrtl.bpi;vcldb.bpi;vclie.bpi;vclx.bpi;dxSkinsCoreRS26.bpi;dxSkinOffice2010BlueRS26.bpi;dxSkinOffice2013DarkGrayRS26.bpi;dxSkinOffice2013LightGrayRS26.bpi;dxSkinOffice2016ColorfulRS26.bpi;dxSkinOffice2016DarkRS26.bpi;dxSkinVisualStudio2013DarkRS26.bpi;dxSkinVisualStudio2013LightRS26.bpi;dxSkinsRS26.bpi;dxSkinProject1RS26.bpi;dxBarRS26.bpi;dxComnRS26.bpi;vclimg.bpi;dxBarExtItemsRS26.bpi</LinkPackageImports>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <LinkPackageStatics>Custom_VCL_SkinsRS26.lib</LinkPackageStatics>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>

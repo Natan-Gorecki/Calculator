@@ -24,9 +24,9 @@ object Form1: TForm1
   TextHeight = 13
   object dxLayoutControl_Main: TdxLayoutControl
     Left = 0
-    Top = 28
+    Top = 27
     Width = 515
-    Height = 515
+    Height = 516
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -37,6 +37,9 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 0
     Transparent = True
+    LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
+    ExplicitTop = 26
+    ExplicitHeight = 517
     object Button_RightBracket: TcxButton
       Left = 258
       Top = 185
@@ -97,7 +100,7 @@ object Form1: TForm1
       Left = 385
       Top = 316
       Width = 127
-      Height = 65
+      Height = 66
       Caption = '-'
       TabOrder = 19
       Font.Charset = DEFAULT_CHARSET
@@ -111,7 +114,7 @@ object Form1: TForm1
       Left = 130
       Top = 316
       Width = 128
-      Height = 65
+      Height = 66
       Caption = '5'
       TabOrder = 17
       Font.Charset = DEFAULT_CHARSET
@@ -125,7 +128,7 @@ object Form1: TForm1
       Left = 258
       Top = 316
       Width = 127
-      Height = 65
+      Height = 66
       Caption = '6'
       TabOrder = 18
       Font.Charset = DEFAULT_CHARSET
@@ -139,7 +142,7 @@ object Form1: TForm1
       Left = 3
       Top = 316
       Width = 127
-      Height = 65
+      Height = 66
       Caption = '4'
       TabOrder = 16
       Font.Charset = DEFAULT_CHARSET
@@ -151,9 +154,9 @@ object Form1: TForm1
     end
     object Button_2: TcxButton
       Left = 130
-      Top = 381
+      Top = 382
       Width = 128
-      Height = 66
+      Height = 65
       Caption = '2'
       TabOrder = 21
       Font.Charset = DEFAULT_CHARSET
@@ -165,9 +168,9 @@ object Form1: TForm1
     end
     object Button_3: TcxButton
       Left = 258
-      Top = 381
+      Top = 382
       Width = 127
-      Height = 66
+      Height = 65
       Caption = '3'
       TabOrder = 22
       Font.Charset = DEFAULT_CHARSET
@@ -179,9 +182,9 @@ object Form1: TForm1
     end
     object Button_1: TcxButton
       Left = 3
-      Top = 381
+      Top = 382
       Width = 127
-      Height = 66
+      Height = 65
       Caption = '1'
       TabOrder = 20
       Font.Charset = DEFAULT_CHARSET
@@ -193,9 +196,9 @@ object Form1: TForm1
     end
     object Button_Plus: TcxButton
       Left = 385
-      Top = 381
+      Top = 382
       Width = 127
-      Height = 66
+      Height = 65
       Caption = '+'
       TabOrder = 23
       Font.Charset = DEFAULT_CHARSET
@@ -209,7 +212,7 @@ object Form1: TForm1
       Left = 3
       Top = 447
       Width = 127
-      Height = 65
+      Height = 66
       OptionsImage.ImageIndex = 0
       OptionsImage.Images = cxImageList1
       TabOrder = 24
@@ -218,7 +221,7 @@ object Form1: TForm1
       Left = 130
       Top = 447
       Width = 128
-      Height = 65
+      Height = 66
       Caption = '0'
       TabOrder = 25
       Font.Charset = DEFAULT_CHARSET
@@ -232,7 +235,7 @@ object Form1: TForm1
       Left = 258
       Top = 447
       Width = 127
-      Height = 65
+      Height = 66
       Caption = ','
       TabOrder = 26
       Font.Charset = DEFAULT_CHARSET
@@ -246,7 +249,7 @@ object Form1: TForm1
       Left = 385
       Top = 447
       Width = 127
-      Height = 65
+      Height = 66
       Caption = '='
       TabOrder = 27
       Font.Charset = DEFAULT_CHARSET
@@ -867,7 +870,7 @@ object Form1: TForm1
     DockControlHeights = (
       0
       0
-      28
+      27
       0)
     object BarManager_MainMenu: TdxBar
       AllowClose = False
@@ -910,7 +913,7 @@ object Form1: TForm1
       Caption = 'Memory'
       CaptionButtons = <>
       DockedDockingStyle = dsTop
-      DockedLeft = 105
+      DockedLeft = 117
       DockedTop = 0
       DockingStyle = dsTop
       FloatLeft = 663
@@ -1055,7 +1058,7 @@ object Form1: TForm1
     Height = 110
     Width = 128
     FormatVersion = 1
-    DesignInfo = 6029320
+    DesignInfo = 32768008
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -1201,5 +1204,18 @@ object Form1: TForm1
           A7FB1509822008822008822008822008822008822008BEB168D19F471BF96A9B
           B940B00000000049454E44AE426082}
       end>
+  end
+  object dxSkinController1: TdxSkinController
+    NativeStyle = False
+    SkinName = 'DevExpressDarkStyle'
+    Left = 8
+    Top = 92
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    Left = 8
+    Top = 144
+    object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
+      PixelsPerInch = 96
+    end
   end
 end
