@@ -16,17 +16,6 @@
 #include "dxLayoutContainer.hpp"
 #include "dxLayoutControl.hpp"
 #include "dxLayoutControlAdapters.hpp"
-#include "dxSkinOffice2010Blue.hpp"
-#include "dxSkinOffice2013DarkGray.hpp"
-#include "dxSkinOffice2013LightGray.hpp"
-#include "dxSkinOffice2016Colorful.hpp"
-#include "dxSkinOffice2016Dark.hpp"
-#include "dxSkinProject1.hpp"
-#include "dxSkins.hpp"
-#include "dxSkinsCore.hpp"
-#include "dxSkinsDefaultPainters.hpp"
-#include "dxSkinVisualStudio2013Dark.hpp"
-#include "dxSkinVisualStudio2013Light.hpp"
 #include <Vcl.Menus.hpp>
 #include "dxBar.hpp"
 #include "dxBarExtItems.hpp"
@@ -37,6 +26,12 @@
 #include "cxImageList.hpp"
 #include <System.ImageList.hpp>
 #include <Vcl.ImgList.hpp>
+#include "dxSkinsForm.hpp"
+#include "dxSkinsCore.hpp"
+#include "dxSkinOffice2016Dark.hpp"
+#include "dxSkins.hpp"
+#include "dxLayoutLookAndFeels.hpp"
+#include "Custom_VCL_Skins.hpp"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -125,6 +120,9 @@ __published:	// IDE-managed Components
 	TdxLayoutEmptySpaceItem *Item_EmptySpace2;
 	TdxLayoutEmptySpaceItem *Item_EmptySpace3;
 	TcxImageList *cxImageList1;
+	TdxSkinController *dxSkinController1;
+	TdxLayoutLookAndFeelList *dxLayoutLookAndFeelList1;
+	TdxLayoutSkinLookAndFeel *dxLayoutSkinLookAndFeel1;
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);

@@ -1,0 +1,15 @@
+[ExpressSkins]
+Default=0
+ShowNotifications=1
+Enabled=1
+dxSkins=1
+dxSkinProject1=0
+dxSkinOffice2010Blue=0
+dxSkinOffice2013DarkGray=0
+dxSkinOffice2013LightGray=0
+dxSkinOffice2016Colorful=0
+dxSkinOffice2016Dark=1
+dxSkinsDefaultPainters=0
+dxSkinVisualStudio2013Dark=0
+dxSkinVisualStudio2013Light=0
+Custom_VCL_Skins=1

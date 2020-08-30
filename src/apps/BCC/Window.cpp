@@ -33,6 +33,12 @@
 #pragma link "cxLabel"
 #pragma link "dxLayoutcxEditAdapters"
 #pragma link "cxImageList"
+#pragma link "dxSkinsForm"
+#pragma link "dxSkinsCore"
+#pragma link "dxSkinOffice2016Dark"
+#pragma link "dxSkins"
+#pragma link "dxLayoutLookAndFeels"
+#pragma link "Custom_VCL_Skins"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 //---------------------------------------------------------------------------
