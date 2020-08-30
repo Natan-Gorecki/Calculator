@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dxSkin Version="1.25" Name="Blue_Button" Parent="Office2016Dark">
+	<Details>
+		<SkinGroupName Value="Office Skins"/>
+		<DisplayName Value="Blue_Button"/>
+		<SkinIcon Name="16x16" Value="SkinIcon16x16.png"/>
+		<SkinIcon Name="48x48" Value="SkinIcon48x48.png"/>
+	</Details>
+	<ColorPalettes Name="">
+		<ColorPalette Name="Default">
+			<Properties>
+				<Color Name="Paint" Value="536870912" ValueReference=""/>
+				<Color Name="Paint High" Value="536870912" ValueReference=""/>
+				<Color Name="Paint Shadow" Value="536870912" ValueReference=""/>
+				<Color Name="Brush" Value="536870912" ValueReference=""/>
+				<Color Name="Brush Light" Value="536870912" ValueReference=""/>
+				<Color Name="Brush High" Value="536870912" ValueReference=""/>
+				<Color Name="Brush Minor" Value="536870912" ValueReference=""/>
+				<Color Name="Brush Major" Value="536870912" ValueReference=""/>
+				<Color Name="Accent Paint" Value="536870912" ValueReference=""/>
+				<Color Name="Accent Paint Light" Value="536870912" ValueReference=""/>
+				<Color Name="Accent Brush" Value="536870912" ValueReference=""/>
+				<Color Name="Accent Brush Light" Value="536870912" ValueReference=""/>
+				<Color Name="Key Paint" Value="536870912" ValueReference=""/>
+				<Color Name="Key Brush" Value="536870912" ValueReference=""/>
+				<Color Name="Key Brush Light" Value="536870912" ValueReference=""/>
+				<Color Name="Black" Value="536870912" ValueReference=""/>
+				<Color Name="Blue" Value="536870912" ValueReference=""/>
+				<Color Name="Gray" Value="536870912" ValueReference=""/>
+				<Color Name="Green" Value="536870912" ValueReference=""/>
+				<Color Name="Red" Value="536870912" ValueReference=""/>
+				<Color Name="White" Value="536870912" ValueReference=""/>
+				<Color Name="Yellow" Value="536870912" ValueReference=""/>
+			</Properties>
+		</ColorPalette>
+	</ColorPalettes>
+	<AdditionalProperties>
+		<Properties>
+			<ColorPalettes Name="DefaultGlyphColorPalettes">
+				<ColorPalette Name="Disabled">
+					<Properties>
+						<Color Name="Black" Value="10592673" ValueReference=""/>
+						<Color Name="Blue" Value="10592673" ValueReference=""/>
+						<Color Name="Green" Value="10592673" ValueReference=""/>
+						<Color Name="Red" Value="10592673" ValueReference=""/>
+						<Color Name="Yellow" Value="10592673" ValueReference=""/>
+					</Properties>
+				</ColorPalette>
+				<ColorPalette Name="Normal">
+					<Properties>
+						<Color Name="Black" Value="14737632" ValueReference=""/>
+						<Color Name="Blue" Value="9395241" ValueReference=""/>
+						<Color Name="Green" Value="7703116" ValueReference=""/>
+						<Color Name="Red" Value="2902974" ValueReference=""/>
+						<Color Name="White" Value="6908265" ValueReference=""/>
+						<Color Name="Yellow" Value="10541042" ValueReference=""/>
+					</Properties>
+				</ColorPalette>
+			</ColorPalettes>
+		</Properties>
+		<Colors/>
+	</AdditionalProperties>
+	<ControlParts Name="Bars">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Common">
+		<Properties/>
+		<Part Name="Button" Alpha="255" TextColor="2631720">
+			<Properties>
+				<Color Name="TextColorHot" Value="16777215" ValueReference=""/>
+				<Color Name="TextColorPressed" Value="16777215" ValueReference=""/>
+			</Properties>
+			<MinSize Width="16" Height="20"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="1" Top="1" Right="1" Bottom="1"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="159" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="1" Top="1" Right="1" Bottom="1"/>
+				<ColorPalettes Name=""/>
+				<File Name="Button_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="159" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+	</ControlParts>
+	<ControlParts Name="Docking">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Editors">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Form">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Grid">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="MapControl">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="NavBar">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="NavPane">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="PageControl">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="PDFViewer">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="PrintingSystem">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Ribbon">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="RichEdit">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Scheduler">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="TileControl">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="VerticalGrid">
+		<Properties/>
+	</ControlParts>
+</dxSkin>

@@ -28,6 +28,8 @@ namespace Custom_vcl_skins
 {
 //-- forward type declarations -----------------------------------------------
 class DELPHICLASS TdxSkinDefaultPainter;
+class DELPHICLASS TdxSkinBlue_ButtonPainter;
+class DELPHICLASS TdxSkinNumber_ButtonPainter;
 //-- type declarations -------------------------------------------------------
 #pragma pack(push,4)
 class PASCALIMPLEMENTATION TdxSkinDefaultPainter : public Dxskinslookandfeelpainter::TdxSkinLookAndFeelPainter
@@ -39,6 +41,36 @@ public:
 public:
 	/* TdxSkinLookAndFeelPainter.Create */ inline __fastcall virtual TdxSkinDefaultPainter(const System::UnicodeString ASkinResName, NativeUInt ASkinResInstance) : Dxskinslookandfeelpainter::TdxSkinLookAndFeelPainter(ASkinResName, ASkinResInstance) { }
 	/* TdxSkinLookAndFeelPainter.Destroy */ inline __fastcall virtual ~TdxSkinDefaultPainter() { }
+	
+};
+
+#pragma pack(pop)
+
+#pragma pack(push,4)
+class PASCALIMPLEMENTATION TdxSkinBlue_ButtonPainter : public Dxskinslookandfeelpainter::TdxSkinLookAndFeelPainter
+{
+	typedef Dxskinslookandfeelpainter::TdxSkinLookAndFeelPainter inherited;
+	
+public:
+	virtual System::UnicodeString __fastcall LookAndFeelName();
+public:
+	/* TdxSkinLookAndFeelPainter.Create */ inline __fastcall virtual TdxSkinBlue_ButtonPainter(const System::UnicodeString ASkinResName, NativeUInt ASkinResInstance) : Dxskinslookandfeelpainter::TdxSkinLookAndFeelPainter(ASkinResName, ASkinResInstance) { }
+	/* TdxSkinLookAndFeelPainter.Destroy */ inline __fastcall virtual ~TdxSkinBlue_ButtonPainter() { }
+	
+};
+
+#pragma pack(pop)
+
+#pragma pack(push,4)
+class PASCALIMPLEMENTATION TdxSkinNumber_ButtonPainter : public Dxskinslookandfeelpainter::TdxSkinLookAndFeelPainter
+{
+	typedef Dxskinslookandfeelpainter::TdxSkinLookAndFeelPainter inherited;
+	
+public:
+	virtual System::UnicodeString __fastcall LookAndFeelName();
+public:
+	/* TdxSkinLookAndFeelPainter.Create */ inline __fastcall virtual TdxSkinNumber_ButtonPainter(const System::UnicodeString ASkinResName, NativeUInt ASkinResInstance) : Dxskinslookandfeelpainter::TdxSkinLookAndFeelPainter(ASkinResName, ASkinResInstance) { }
+	/* TdxSkinLookAndFeelPainter.Destroy */ inline __fastcall virtual ~TdxSkinNumber_ButtonPainter() { }
 	
 };
 

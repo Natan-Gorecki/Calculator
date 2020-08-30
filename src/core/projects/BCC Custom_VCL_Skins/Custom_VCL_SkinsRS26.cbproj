@@ -86,7 +86,7 @@
         <ILINK_GenerateImportLibrary>true</ILINK_GenerateImportLibrary>
         <UsePackages>true</UsePackages>
         <ProjectType>CppPackage</ProjectType>
-        <ILINK_Description>ExpressSkins - Default Skin </ILINK_Description>
+        <ILINK_Description>ExpressSkins - Custom_VCL_Skins </ILINK_Description>
         <BCC_wpar>false</BCC_wpar>
         <IncludePath>$(BDS)\include;$(BDS)\include\vcl;$(IncludePath)</IncludePath>
         <ILINK_LibraryPath>$(BDS)\lib;$(BDS)\lib\obj;$(BDS)\lib\psdk;$(ILINK_LibraryPath)</ILINK_LibraryPath>

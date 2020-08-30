@@ -30,7 +30,7 @@ package Custom_VCL_SkinsRS26;
 {$MINENUMSIZE 1}
 {$IMAGEBASE $00400000}
 {$IMPLICITBUILD OFF}
-{$DESCRIPTION 'ExpressSkins - Default Skin '}
+{$DESCRIPTION 'ExpressSkins - Custom_VCL_Skins '}
 
 requires
   rtl,
