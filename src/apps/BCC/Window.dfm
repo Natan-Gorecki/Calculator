@@ -6,7 +6,7 @@ object Form1: TForm1
   Margins.Right = 0
   Margins.Bottom = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'Form1'
+  Caption = 'Calculator'
   ClientHeight = 543
   ClientWidth = 515
   Color = 15132390
@@ -24,9 +24,9 @@ object Form1: TForm1
   TextHeight = 13
   object dxLayoutControl_Main: TdxLayoutControl
     Left = 0
-    Top = 27
+    Top = 24
     Width = 515
-    Height = 516
+    Height = 519
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -38,14 +38,13 @@ object Form1: TForm1
     TabOrder = 0
     Transparent = True
     LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-    ExplicitTop = 26
-    ExplicitHeight = 517
     object Button_RightBracket: TcxButton
       Left = 258
-      Top = 185
-      Width = 127
-      Height = 65
+      Top = 182
+      Width = 126
+      Height = 67
       Caption = ')'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 10
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -55,11 +54,12 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_C: TcxButton
-      Left = 3
-      Top = 185
+      Left = 2
+      Top = 182
       Width = 127
-      Height = 65
+      Height = 67
       Caption = 'C'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 8
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -70,10 +70,12 @@ object Form1: TForm1
     end
     object Button_Divide: TcxButton
       Left = 385
-      Top = 185
-      Width = 127
-      Height = 65
+      Top = 182
+      Width = 128
+      Height = 67
       Caption = #247
+      LookAndFeel.SkinName = 'Blue_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 11
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -84,10 +86,11 @@ object Form1: TForm1
     end
     object Button_LeftBracket: TcxButton
       Left = 130
-      Top = 185
-      Width = 128
-      Height = 65
+      Top = 182
+      Width = 127
+      Height = 67
       Caption = '('
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 9
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -98,10 +101,12 @@ object Form1: TForm1
     end
     object Button_Minus: TcxButton
       Left = 385
-      Top = 316
-      Width = 127
+      Top = 317
+      Width = 128
       Height = 66
       Caption = '-'
+      LookAndFeel.SkinName = 'Blue_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 19
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -112,10 +117,12 @@ object Form1: TForm1
     end
     object Button_5: TcxButton
       Left = 130
-      Top = 316
-      Width = 128
+      Top = 317
+      Width = 127
       Height = 66
       Caption = '5'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 17
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -126,10 +133,12 @@ object Form1: TForm1
     end
     object Button_6: TcxButton
       Left = 258
-      Top = 316
-      Width = 127
+      Top = 317
+      Width = 126
       Height = 66
       Caption = '6'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 18
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -139,11 +148,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_4: TcxButton
-      Left = 3
-      Top = 316
+      Left = 2
+      Top = 317
       Width = 127
       Height = 66
       Caption = '4'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 16
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -154,10 +165,12 @@ object Form1: TForm1
     end
     object Button_2: TcxButton
       Left = 130
-      Top = 382
-      Width = 128
-      Height = 65
+      Top = 384
+      Width = 127
+      Height = 66
       Caption = '2'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 21
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -168,10 +181,12 @@ object Form1: TForm1
     end
     object Button_3: TcxButton
       Left = 258
-      Top = 382
-      Width = 127
-      Height = 65
+      Top = 384
+      Width = 126
+      Height = 66
       Caption = '3'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 22
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -181,11 +196,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_1: TcxButton
-      Left = 3
-      Top = 382
+      Left = 2
+      Top = 384
       Width = 127
-      Height = 65
+      Height = 66
       Caption = '1'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 20
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -196,10 +213,12 @@ object Form1: TForm1
     end
     object Button_Plus: TcxButton
       Left = 385
-      Top = 382
-      Width = 127
-      Height = 65
+      Top = 384
+      Width = 128
+      Height = 66
       Caption = '+'
+      LookAndFeel.SkinName = 'Blue_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 23
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -209,20 +228,23 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_Clear: TcxButton
-      Left = 3
-      Top = 447
+      Left = 2
+      Top = 451
       Width = 127
       Height = 66
       OptionsImage.ImageIndex = 0
       OptionsImage.Images = cxImageList1
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 24
     end
     object Button_0: TcxButton
       Left = 130
-      Top = 447
-      Width = 128
+      Top = 451
+      Width = 127
       Height = 66
       Caption = '0'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 25
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -233,10 +255,11 @@ object Form1: TForm1
     end
     object Button_Comma: TcxButton
       Left = 258
-      Top = 447
-      Width = 127
+      Top = 451
+      Width = 126
       Height = 66
       Caption = ','
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 26
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -247,10 +270,12 @@ object Form1: TForm1
     end
     object Button_Equal: TcxButton
       Left = 385
-      Top = 447
-      Width = 127
+      Top = 451
+      Width = 128
       Height = 66
       Caption = '='
+      LookAndFeel.SkinName = 'Blue_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 27
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -260,11 +285,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_7: TcxButton
-      Left = 3
+      Left = 2
       Top = 250
       Width = 127
       Height = 66
       Caption = '7'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 12
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -276,9 +303,11 @@ object Form1: TForm1
     object Button_8: TcxButton
       Left = 130
       Top = 250
-      Width = 128
+      Width = 127
       Height = 66
       Caption = '8'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 13
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -290,9 +319,11 @@ object Form1: TForm1
     object Button_Multiply: TcxButton
       Left = 385
       Top = 250
-      Width = 127
+      Width = 128
       Height = 66
       Caption = 'x'
+      LookAndFeel.SkinName = 'Blue_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 15
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -304,9 +335,11 @@ object Form1: TForm1
     object Button_9: TcxButton
       Left = 258
       Top = 250
-      Width = 127
+      Width = 126
       Height = 66
       Caption = '9'
+      LookAndFeel.SkinName = 'Number_Button'
+      SpeedButtonOptions.CanBeFocused = False
       TabOrder = 14
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -316,11 +349,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_MC: TcxButton
-      Left = 78
-      Top = 160
+      Left = 76
+      Top = 156
       Width = 75
       Height = 25
       Caption = 'MC'
+      SpeedButtonOptions.CanBeFocused = False
+      SpeedButtonOptions.Transparent = True
       TabOrder = 3
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -330,11 +365,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_MPlus: TcxButton
-      Left = 228
-      Top = 160
+      Left = 226
+      Top = 156
       Width = 75
       Height = 25
       Caption = 'M+'
+      SpeedButtonOptions.CanBeFocused = False
+      SpeedButtonOptions.Transparent = True
       TabOrder = 5
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -344,11 +381,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_CE: TcxButton
-      Left = 3
-      Top = 160
+      Left = 1
+      Top = 156
       Width = 75
       Height = 25
       Caption = 'CE'
+      SpeedButtonOptions.CanBeFocused = False
+      SpeedButtonOptions.Transparent = True
       TabOrder = 2
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -358,11 +397,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_MS: TcxButton
-      Left = 378
-      Top = 160
+      Left = 376
+      Top = 156
       Width = 75
       Height = 25
       Caption = 'MS'
+      SpeedButtonOptions.CanBeFocused = False
+      SpeedButtonOptions.Transparent = True
       TabOrder = 7
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -372,11 +413,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_MMinus: TcxButton
-      Left = 303
-      Top = 160
+      Left = 301
+      Top = 156
       Width = 75
       Height = 25
       Caption = 'M-'
+      SpeedButtonOptions.CanBeFocused = False
+      SpeedButtonOptions.Transparent = True
       TabOrder = 6
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -386,11 +429,13 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_MR: TcxButton
-      Left = 153
-      Top = 160
+      Left = 151
+      Top = 156
       Width = 75
       Height = 25
       Caption = 'MR'
+      SpeedButtonOptions.CanBeFocused = False
+      SpeedButtonOptions.Transparent = True
       TabOrder = 4
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -401,7 +446,7 @@ object Form1: TForm1
     end
     object Label_Expression: TcxLabel
       Left = 168
-      Top = 58
+      Top = 56
       Caption = 'Expression'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -414,8 +459,8 @@ object Form1: TForm1
       Transparent = True
     end
     object Label_PreviousExpression: TcxLabel
-      Left = 331
-      Top = 29
+      Left = 333
+      Top = 27
       Caption = 'PreviousExpression'
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -433,10 +478,10 @@ object Form1: TForm1
       ButtonOptions.Buttons = <>
       Hidden = True
       ItemIndex = 4
-      Padding.Bottom = -7
-      Padding.Left = -7
-      Padding.Right = -7
-      Padding.Top = -7
+      Padding.Bottom = -9
+      Padding.Left = -9
+      Padding.Right = -9
+      Padding.Top = -9
       Padding.AssignedValues = [lpavBottom, lpavLeft, lpavRight, lpavTop]
       ShowBorder = False
       UseIndent = False
@@ -448,6 +493,7 @@ object Form1: TForm1
       AlignVert = avClient
       CaptionOptions.Text = 'cxButton1'
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_RightBracket
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -460,6 +506,7 @@ object Form1: TForm1
       AlignVert = avClient
       CaptionOptions.Text = 'cxButton2'
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_C
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -471,6 +518,8 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
+      Offsets.Right = 1
       Control = Button_Divide
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -482,6 +531,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_5
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -494,6 +544,8 @@ object Form1: TForm1
       AlignVert = avClient
       CaptionOptions.Text = 'cxButton5'
       CaptionOptions.Visible = False
+      Offsets.Left = 1
+      Offsets.Right = 1
       Control = Button_Minus
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -506,6 +558,7 @@ object Form1: TForm1
       AlignVert = avClient
       CaptionOptions.Text = 'cxButton4'
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_LeftBracket
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -517,6 +570,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_6
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -528,6 +582,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_4
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -539,6 +594,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_2
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -550,6 +606,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_3
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -561,6 +618,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -572,6 +630,8 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
+      Offsets.Right = 1
       Control = Button_Plus
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -583,6 +643,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_Clear
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -594,6 +655,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_0
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -605,6 +667,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_Comma
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -616,6 +679,8 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
+      Offsets.Right = 1
       Control = Button_Equal
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -627,6 +692,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_7
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -638,6 +704,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_8
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -649,6 +716,8 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
+      Offsets.Right = 1
       Control = Button_Multiply
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -660,6 +729,7 @@ object Form1: TForm1
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Visible = False
+      Offsets.Left = 1
       Control = Button_9
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
@@ -742,6 +812,7 @@ object Form1: TForm1
       Parent = dxRootGroup
       AlignHorz = ahClient
       AlignVert = avClient
+      Offsets.Bottom = 1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
@@ -753,6 +824,7 @@ object Form1: TForm1
       Parent = dxRootGroup
       AlignHorz = ahClient
       AlignVert = avClient
+      Offsets.Bottom = 1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
@@ -764,6 +836,7 @@ object Form1: TForm1
       Parent = dxRootGroup
       AlignHorz = ahClient
       AlignVert = avClient
+      Offsets.Bottom = 1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
@@ -775,6 +848,7 @@ object Form1: TForm1
       Parent = dxRootGroup
       AlignHorz = ahClient
       AlignVert = avClient
+      Offsets.Bottom = 1
       ButtonOptions.Buttons = <>
       ItemIndex = 3
       LayoutDirection = ldHorizontal
@@ -786,6 +860,7 @@ object Form1: TForm1
       Parent = dxRootGroup
       AlignHorz = ahClient
       AlignVert = avClient
+      Offsets.Bottom = 1
       ButtonOptions.Buttons = <>
       LayoutDirection = ldHorizontal
       ShowBorder = False
@@ -795,6 +870,7 @@ object Form1: TForm1
     object dxLayoutGroup1: TdxLayoutGroup
       Parent = dxRootGroup
       AlignHorz = ahClient
+      Offsets.Bottom = 1
       ButtonOptions.Buttons = <>
       LayoutDirection = ldHorizontal
       ShowBorder = False
@@ -870,7 +946,7 @@ object Form1: TForm1
     DockControlHeights = (
       0
       0
-      27
+      24
       0)
     object BarManager_MainMenu: TdxBar
       AllowClose = False
@@ -1207,7 +1283,7 @@ object Form1: TForm1
   end
   object dxSkinController1: TdxSkinController
     NativeStyle = False
-    SkinName = 'DevExpressDarkStyle'
+    SkinName = 'Default'
     Left = 8
     Top = 92
   end
