@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dxSkin Version="1.25" Name="Default" Parent="Office2016Dark">
+	<Details>
+		<SkinGroupName Value="Office Skins"/>
+		<DisplayName Value="MySkin_Office2016Dark"/>
+		<SkinIcon Name="16x16" Value="SkinIcon16x16.png"/>
+		<SkinIcon Name="48x48" Value="SkinIcon48x48.png"/>
+	</Details>
+	<ColorPalettes Name="">
+		<ColorPalette Name="Default">
+			<Properties>
+				<Color Name="Paint" Value="536870912" ValueReference=""/>
+				<Color Name="Paint High" Value="536870912" ValueReference=""/>
+				<Color Name="Paint Shadow" Value="536870912" ValueReference=""/>
+				<Color Name="Brush" Value="536870912" ValueReference=""/>
+				<Color Name="Brush Light" Value="536870912" ValueReference=""/>
+				<Color Name="Brush High" Value="536870912" ValueReference=""/>
+				<Color Name="Brush Minor" Value="536870912" ValueReference=""/>
+				<Color Name="Brush Major" Value="536870912" ValueReference=""/>
+				<Color Name="Accent Paint" Value="536870912" ValueReference=""/>
+				<Color Name="Accent Paint Light" Value="536870912" ValueReference=""/>
+				<Color Name="Accent Brush" Value="536870912" ValueReference=""/>
+				<Color Name="Accent Brush Light" Value="536870912" ValueReference=""/>
+				<Color Name="Key Paint" Value="536870912" ValueReference=""/>
+				<Color Name="Key Brush" Value="536870912" ValueReference=""/>
+				<Color Name="Key Brush Light" Value="536870912" ValueReference=""/>
+				<Color Name="Black" Value="536870912" ValueReference=""/>
+				<Color Name="Blue" Value="536870912" ValueReference=""/>
+				<Color Name="Gray" Value="536870912" ValueReference=""/>
+				<Color Name="Green" Value="536870912" ValueReference=""/>
+				<Color Name="Red" Value="536870912" ValueReference=""/>
+				<Color Name="White" Value="536870912" ValueReference=""/>
+				<Color Name="Yellow" Value="536870912" ValueReference=""/>
+			</Properties>
+		</ColorPalette>
+	</ColorPalettes>
+	<AdditionalProperties>
+		<Properties>
+			<ColorPalettes Name="DefaultGlyphColorPalettes">
+				<ColorPalette Name="Disabled">
+					<Properties>
+						<Color Name="Black" Value="10592673" ValueReference=""/>
+						<Color Name="Blue" Value="10592673" ValueReference=""/>
+						<Color Name="Green" Value="10592673" ValueReference=""/>
+						<Color Name="Red" Value="10592673" ValueReference=""/>
+						<Color Name="Yellow" Value="10592673" ValueReference=""/>
+					</Properties>
+				</ColorPalette>
+				<ColorPalette Name="Normal">
+					<Properties>
+						<Color Name="Black" Value="14737632" ValueReference=""/>
+						<Color Name="Blue" Value="9395241" ValueReference=""/>
+						<Color Name="Green" Value="7703116" ValueReference=""/>
+						<Color Name="Red" Value="2902974" ValueReference=""/>
+						<Color Name="White" Value="6908265" ValueReference=""/>
+						<Color Name="Yellow" Value="10541042" ValueReference=""/>
+					</Properties>
+				</ColorPalette>
+			</ColorPalettes>
+		</Properties>
+		<Colors>
+			<Color Name="InactiveTextColor" Value="12105912" ValueReference=""/>
+			<Color Name="LayoutControlColor" Value="15132390" ValueReference=""/>
+		</Colors>
+	</AdditionalProperties>
+	<ControlParts Name="Bars">
+		<Properties/>
+		<Part Name="Bar" Alpha="255" Color="15132390" TextColor="0">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="2" Top="2" Right="2" Bottom="2"/>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="BarCustomize" Alpha="255" Color="15132390">
+			<Properties/>
+			<MinSize Width="13" Height="13"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="3" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="1" Top="4" Right="1" Bottom="4"/>
+				<ColorPalettes Name=""/>
+				<File Name="BarCustomize_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="3" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="BarCustomize_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="BarCustomizeVertical" Alpha="255" Color="15132390">
+			<Properties/>
+			<MinSize Width="13" Height="13"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="3" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="4" Top="1" Right="4" Bottom="1"/>
+				<ColorPalettes Name=""/>
+				<File Name="BarCustomizeVertical_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="NoResize" States="3" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="BarCustomizeVertical_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="BarDragGrip" Alpha="255" Color="15132390">
+			<Properties/>
+			<MinSize Width="9" Height="10"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="BarDragGrip_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="BarDragGripVertical" Alpha="255" Color="15132390">
+			<Properties/>
+			<MinSize Width="10" Height="9"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="BarDragGripVertical_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="BarSeparator" Alpha="255">
+			<Properties/>
+			<MinSize Width="7" Height="10"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="7" Top="1" Right="0" Bottom="1"/>
+				<ColorPalettes Name=""/>
+				<File Name="BarSeparator_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="BarSeparatorVertical" Alpha="255">
+			<Properties/>
+			<MinSize Width="10" Height="7"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="1" Top="7" Right="1" Bottom="0"/>
+				<ColorPalettes Name=""/>
+				<File Name="BarSeparatorVertical_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="BarVertical" Alpha="255" Color="15132390" TextColor="0">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="2" Top="2" Right="2" Bottom="2"/>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="Dock" Alpha="255" Color="15132390" TextColor="16053492">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="FloatBar" Alpha="255" Color="15132390" TextColor="0">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Color="4473924" Thin="0"/>
+				<Top Color="4473924" Thin="0"/>
+				<Right Color="4473924" Thin="0"/>
+				<Bottom Color="4473924" Thin="0"/>
+			</Borders>
+			<Content Left="10" Top="10" Right="10" Bottom="10"/>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="ItemSeparator" Alpha="255" Color="255" TextColor="16053492">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Color="4473924" Thin="0"/>
+				<Top Color="4473924" Thin="0"/>
+				<Right Color="4473924" Thin="0"/>
+				<Bottom Color="4473924" Thin="0"/>
+			</Borders>
+			<Content Left="10" Top="10" Right="10" Bottom="10"/>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="LinkSelected" Alpha="255" Color="12303291" TextColor="2105376">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="4" Top="3" Right="4" Bottom="3"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="1414" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="3" Top="3" Right="3" Bottom="3"/>
+				<ColorPalettes Name=""/>
+				<File Name="LinkSelected_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1414" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="LinkStatic" Alpha="255">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="4" Top="0" Right="8" Bottom="0"/>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="2" Top="2" Right="5" Bottom="2"/>
+				<ColorPalettes Name=""/>
+				<File Name="LinkStatic_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="MainMenu" Alpha="255" Color="15132390" TextColor="0">
+			<Properties>
+				<Color Name="TextColorHot" Value="0" ValueReference=""/>
+				<Color Name="TextColorPressed" Value="0" ValueReference=""/>
+			</Properties>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="2" Top="1" Right="2" Bottom="1"/>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="MainMenuCustomize" Alpha="255" Color="15132390">
+			<Properties/>
+			<MinSize Width="13" Height="13"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="3" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="1" Top="4" Right="1" Bottom="4"/>
+				<ColorPalettes Name=""/>
+				<File Name="MainMenuCustomize_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="3" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MainMenuCustomize_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="MainMenuDrag" Alpha="255" Color="15132390">
+			<Properties/>
+			<MinSize Width="9" Height="10"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MainMenuDrag_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="MainMenuLinkSelected" Alpha="255" TextColor="2105376">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="6" Top="3" Right="6" Bottom="3"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="6" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MainMenuLinkSelected_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="6" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="MainMenuVertical" Alpha="255" Color="15132390" TextColor="0">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="MDIButtonClose" Alpha="255">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="3" Top="3" Right="3" Bottom="3"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MDIButtonClose_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MDIButtonClose_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="MDIButtonMinimize" Alpha="255">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="3" Top="3" Right="3" Bottom="3"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MDIButtonMinimize_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MDIButtonMinimize_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="MDIButtonRestore" Alpha="255">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="3" Top="3" Right="3" Bottom="3"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MDIButtonRestore_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="MDIButtonRestore_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="PopupMenu" Alpha="255" Color="15132390" TextColor="0">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Color="4473924" Thin="1"/>
+				<Top Color="4473924" Thin="1"/>
+				<Right Color="4473924" Thin="1"/>
+				<Bottom Color="4473924" Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="PopupMenuCheck" Alpha="255">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="2" Layout="Vertical" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="3" Top="3" Right="3" Bottom="3"/>
+				<ColorPalettes Name=""/>
+				<File Name="PopupMenuCheck_Image.png"/>
+			</Image>
+			<Glyph ImageCount="2" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="PopupMenuCheck_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="PopupMenuExpandButton" Alpha="255">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="PopupMenuExpandButton_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="PopupMenuSeparator" Alpha="255">
+			<Properties/>
+			<MinSize Width="10" Height="3"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="0" Top="0" Right="8" Bottom="0"/>
+				<ColorPalettes Name=""/>
+				<File Name="PopupMenuSeparator_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="ScreenTipSeparator" Alpha="255">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="0"/>
+				<Top Color="8421504" Thin="0"/>
+				<Right Thin="0"/>
+				<Bottom Color="16777215" Thin="0"/>
+			</Borders>
+			<Content Left="0" Top="5" Right="0" Bottom="4"/>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="ScreenTipSeparator_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="ScreenTipWindow" Alpha="255" Color="16119285">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Color="8421504" Thin="0"/>
+				<Top Color="8421504" Thin="0"/>
+				<Right Color="8421504" Thin="0"/>
+				<Bottom Color="8421504" Thin="0"/>
+			</Borders>
+			<Content Left="9" Top="6" Right="9" Bottom="6"/>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Vertical" InterpolationMode="0" GradientBeginColor="16777215" GradientEndColor="16777215">
+				<Margins Left="1" Top="1" Right="1" Bottom="1"/>
+				<ColorPalettes Name=""/>
+				<File Name="ScreenTipWindow_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="StatusBar" Alpha="255" Color="4473924" TextColor="16053492">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="0" Top="1" Right="0" Bottom="0"/>
+				<ColorPalettes Name=""/>
+				<File Name="StatusBar_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+	</ControlParts>
+	<ControlParts Name="Common">
+		<Properties>
+			<Color Name="DisabledText" Value="12105912" ValueReference=""/>
+		</Properties>
+		<Part Name="Button" Alpha="255" TextColor="2631720">
+			<Properties>
+				<Color Name="DisabledText" Value="12105912" ValueReference=""/>
+			</Properties>
+			<MinSize Width="16" Height="20"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="1" Top="1" Right="1" Bottom="1"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="159" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="1" Top="1" Right="1" Bottom="1"/>
+				<ColorPalettes Name=""/>
+				<File Name="Button_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="159" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+	</ControlParts>
+	<ControlParts Name="Docking">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Editors">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Form">
+		<Properties/>
+		<Part Name="FormButtonClose" Alpha="255">
+			<Properties/>
+			<MinSize Width="46" Height="29"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="16" Top="8" Right="16" Bottom="8"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonClose_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonClose_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="FormButtonHelp" Alpha="255">
+			<Properties/>
+			<MinSize Width="46" Height="29"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="16" Top="8" Right="16" Bottom="8"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonHelp_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonHelp_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="FormButtonMaximize" Alpha="255">
+			<Properties/>
+			<MinSize Width="46" Height="29"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="16" Top="8" Right="16" Bottom="8"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonMaximize_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonMaximize_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="FormButtonMinimize" Alpha="255">
+			<Properties/>
+			<MinSize Width="46" Height="29"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="16" Top="8" Right="16" Bottom="8"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonMinimize_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonMinimize_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="FormButtonRestore" Alpha="255">
+			<Properties/>
+			<MinSize Width="46" Height="29"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="16" Top="8" Right="16" Bottom="8"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonRestore_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="FormButtonRestore_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="FormCaption" Alpha="255" Color="15132390" TextColor="-16777208">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Color="6776679" Thin="1"/>
+				<Top Color="6776679" Thin="1"/>
+				<Right Color="6776679" Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="6" Top="1" Right="1" Bottom="1"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="7" Top="1" Right="7" Bottom="1"/>
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="FormContent" Alpha="255" Color="15132390" TextColor="16053492">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Horizontal" Stretch="Stretch" States="1" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="FormFrameBottom" Alpha="255">
+			<Properties/>
+			<MinSize Width="0" Height="1"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Color="6776679" Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="0" Top="0" Right="0" Bottom="1"/>
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="FormFrameLeft" Alpha="255">
+			<Properties/>
+			<MinSize Width="1" Height="0"/>
+			<Borders>
+				<Left Color="6776679" Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="1" Top="0" Right="0" Bottom="0"/>
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="FormFrameRight" Alpha="255">
+			<Properties/>
+			<MinSize Width="1" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Color="6776679" Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="0" Top="0" Right="1" Bottom="0"/>
+				<ColorPalettes Name=""/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+		<Part Name="SmallFormButtonClose" Alpha="255">
+			<Properties/>
+			<MinSize Width="26" Height="26"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="16" Top="8" Right="16" Bottom="8"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="SmallFormButtonClose_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="527" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+				<File Name="SmallFormButtonClose_Glyph.png"/>
+			</Glyph>
+		</Part>
+		<Part Name="SmallFormCaption" Alpha="255" TextColor="16053492">
+			<Properties/>
+			<MinSize Width="0" Height="0"/>
+			<Borders>
+				<Left Thin="1"/>
+				<Top Thin="1"/>
+				<Right Thin="1"/>
+				<Bottom Thin="1"/>
+			</Borders>
+			<Content Left="12" Top="1" Right="1" Bottom="1"/>
+			<Image ImageCount="1" Layout="Vertical" Stretch="Stretch" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<Margins Left="7" Top="1" Right="7" Bottom="1"/>
+				<ColorPalettes Name=""/>
+				<File Name="SmallFormCaption_Image.png"/>
+			</Image>
+			<Glyph ImageCount="1" Layout="Vertical" Stretch="NoResize" States="528" GradientMode="Horizontal" InterpolationMode="0">
+				<ColorPalettes Name=""/>
+			</Glyph>
+		</Part>
+	</ControlParts>
+	<ControlParts Name="Grid">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="MapControl">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="NavBar">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="NavPane">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="PageControl">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="PDFViewer">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="PrintingSystem">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Ribbon">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="RichEdit">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="Scheduler">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="TileControl">
+		<Properties/>
+	</ControlParts>
+	<ControlParts Name="VerticalGrid">
+		<Properties/>
+	</ControlParts>
+</dxSkin>
