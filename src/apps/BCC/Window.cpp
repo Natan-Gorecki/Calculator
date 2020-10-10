@@ -41,9 +41,68 @@
 #pragma link "Custom_VCL_Skins"
 #pragma resource "*.dfm"
 TForm1 *Form1;
-//---------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
+#if !(defined(USE_DLL) || defined(USE_STATIC_LIB))
+// Use LoadLibraryA function to load "Calculator.dll"
+
+	HMODULE h_dll = LoadLibraryA("Calculator");
+
+	if (h_dll == NULL)
+		Label_Expression->Caption = "Error loading Calculator.DLL !!!";
+	else
+	{
+		create_calculator CreateCalculator = (create_calculator)GetProcAddress(h_dll, "CreateCalculator");
+
+		if(CreateCalculator)
+		{
+#endif
+
+			//*********************************************
+			this->calculator = CreateCalculator();
+			//*********************************************
+
+#if !(defined(USE_DLL) || defined(USE_STATIC_LIB))
+		}
+		else
+		{
+			Label_Expression->Caption = "Address to CreateCalculator() function is not valid !!!";
+		}
+	}
+#endif
 }
-//---------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+
+void __fastcall TForm1::FormDestroy(TObject *Sender)
+{
+#if !(defined(USE_DLL) || defined(USE_STATIC_LIB))
+	HMODULE h_dll = LoadLibraryA("Calculator");
+
+	if (h_dll)
+	{
+		delete_calculator DeleteCalculator = (delete_calculator)GetProcAddress(h_dll, "DeleteCalculator");
+
+		if(DeleteCalculator)
+		{
+#endif
+
+			//*********************************************
+			DeleteCalculator(this->calculator);
+			this->calculator = NULL;
+			//*********************************************
+
+#if !(defined(USE_DLL) || defined(USE_STATIC_LIB))
+		}
+
+		FreeLibrary(h_dll);
+	}
+#endif
+}
+
+//------------------------------------------------------------------------------
+

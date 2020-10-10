@@ -1,12 +1,34 @@
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+//
+//	Use static library "StaticLibrary_BCC.lib"
+//	#define USE_STATIC_LIB
+//
+//------------------------------------------------------------------------------
+//
+//	Use dll "Calculator.dll" with linking library "Calculator_BCC.lib"
+//	#define USE_DLL
+//
+//------------------------------------------------------------------------------
+//
+//	ifndef USE_STATIC_LIB || USE_DLL  =>
+//			Use "Calculator.dll" through LoadLibraryA function
+//
+//------------------------------------------------------------------------------
 
 #ifndef WindowH
 #define WindowH
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+#include "api.h"
+#include "Custom_VCL_Skins.hpp"
+//------------------------------------------------------------------------------
 #include <System.Classes.hpp>
+#include <System.ImageList.hpp>
 #include <Vcl.Controls.hpp>
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
+#include <Vcl.Menus.hpp>
+#include <Vcl.ImgList.hpp>
+//------------------------------------------------------------------------------
 #include "cxButtons.hpp"
 #include "cxClasses.hpp"
 #include "cxControls.hpp"
@@ -16,7 +38,6 @@
 #include "dxLayoutContainer.hpp"
 #include "dxLayoutControl.hpp"
 #include "dxLayoutControlAdapters.hpp"
-#include <Vcl.Menus.hpp>
 #include "dxBar.hpp"
 #include "dxBarExtItems.hpp"
 #include "cxContainer.hpp"
@@ -24,15 +45,12 @@
 #include "cxLabel.hpp"
 #include "dxLayoutcxEditAdapters.hpp"
 #include "cxImageList.hpp"
-#include <System.ImageList.hpp>
-#include <Vcl.ImgList.hpp>
 #include "dxSkinsForm.hpp"
 #include "dxSkinsCore.hpp"
 #include "dxSkinOffice2016Dark.hpp"
 #include "dxSkins.hpp"
 #include "dxLayoutLookAndFeels.hpp"
-#include "Custom_VCL_Skins.hpp"
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
@@ -123,11 +141,16 @@ __published:	// IDE-managed Components
 	TdxSkinController *dxSkinController1;
 	TdxLayoutLookAndFeelList *dxLayoutLookAndFeelList1;
 	TdxLayoutSkinLookAndFeel *dxLayoutSkinLookAndFeel1;
+	void __fastcall FormDestroy(TObject *Sender);
+//------------------------------------------------------------------------------
 private:	// User declarations
+
+	I_Calculator* calculator = NULL;
+//------------------------------------------------------------------------------
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
 };
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 #endif
