@@ -1,5 +1,7 @@
 #pragma once
 
+#define NULL 0
+
 //Calling Convenion
 //__cdecl v __stdcall
 #define CC __cdecl
