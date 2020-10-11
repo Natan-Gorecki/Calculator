@@ -149,6 +149,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	void __fastcall Button_CEClick();
 
+	bool PreviousCharIsSign();
+
+
 	I_Calculator* calculator = NULL;
     double result = 0;
 //------------------------------------------------------------------------------

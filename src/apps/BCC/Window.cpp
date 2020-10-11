@@ -172,6 +172,8 @@ void __fastcall TForm1::Button_Click(TObject *Sender)
 
 	//  DEFAULT NUMBER 0-9
 	default:
+		if(PreviousCharIsSign() == true)
+			Label_Expression->Caption += " ";
 		Label_Expression->Caption += tag;
 	}
 }
@@ -255,3 +257,28 @@ void __fastcall TForm1::Button_CEClick()
 }
 
 //------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+//  TRUE - if previous character in Expression is '+' or '-' or 'x' or '�'
+//
+//  FALSE -  if previous character in Expression is number or bracket
+//
+bool TForm1::PreviousCharIsSign()
+{
+	if(Label_Expression->Caption.Length() > 1)
+	{
+		for (int i = Label_Expression->Caption.Length(); i >= 1; i--)
+		{
+			char c = Label_Expression->Caption[i];
+
+			if(c == '+' || c == '-' || c == 'x' || c == '�')
+				return true;
+
+			if(c != ' ')
+				return false;
+		}
+	}
+
+
+  return false;
+}
