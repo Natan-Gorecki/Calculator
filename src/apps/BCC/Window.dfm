@@ -1115,6 +1115,7 @@ object Form1: TForm1
       Category = 0
       Hint = 'Exit'
       Visible = ivAlways
+      OnClick = BarButton_ExitClick
     end
     object BarButton_DefaultSkin: TdxBarButton
       Caption = 'Default'

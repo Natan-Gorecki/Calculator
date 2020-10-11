@@ -146,6 +146,7 @@ __published:	// IDE-managed Components
 	void __fastcall Button_Click(TObject *Sender);
 	void __fastcall Button_EqualClick(TObject *Sender);
 	void __fastcall Memory_Click(TObject *Sender);
+	void __fastcall BarButton_ExitClick(TObject *Sender);
 
 //------------------------------------------------------------------------------
 private:	// User declarations

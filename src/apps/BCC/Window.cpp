@@ -348,6 +348,13 @@ void __fastcall TForm1::Button_MRClick()
 }
 
 //------------------------------------------------------------------------------
+
+void __fastcall TForm1::BarButton_ExitClick(TObject *Sender)
+{
+	Form1->Close();
+}
+
+//------------------------------------------------------------------------------
 //  TRUE - if previous character in Expression is '+' or '-' or 'x' or '÷'
 //
 //  FALSE -  if previous character in Expression is number or bracket
