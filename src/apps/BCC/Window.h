@@ -145,14 +145,19 @@ __published:	// IDE-managed Components
 	void __fastcall FormDestroy(TObject *Sender);
 	void __fastcall Button_Click(TObject *Sender);
 	void __fastcall Button_EqualClick(TObject *Sender);
+	void __fastcall Memory_Click(TObject *Sender);
+
 //------------------------------------------------------------------------------
 private:	// User declarations
 	void __fastcall Button_CEClick();
+	void __fastcall Button_MRClick();
+
 
 	bool PreviousCharIsSign();
 
 
 	I_Calculator* calculator = NULL;
+	double memory = 0;
     double result = 0;
 //------------------------------------------------------------------------------
 public:		// User declarations

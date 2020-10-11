@@ -146,7 +146,7 @@ void __fastcall TForm1::Button_Click(TObject *Sender)
 
 
 	case 15: // Divide Button
-		Label_Expression->Caption += " ï¿½";
+		Label_Expression->Caption += " ÷";
 		break;
 
 
@@ -188,12 +188,12 @@ void __fastcall TForm1::Button_EqualClick(TObject *Sender)
 		AnsiString ansi = Label_Expression->Caption;
 
 
-		// Changing characters 'x' to '*' and 'ï¿½' to '/'
+		// Changing characters 'x' to '*' and '÷' to '/'
 		// Function Calculate from Calculator library requires the second
 		for(int i=1; i<= ansi.Length(); i++)
 		{
 			if(ansi[i] == 'x') ansi[i] = '*';
-			if(ansi[i] == 'ï¿½') ansi[i] = '/';
+			if(ansi[i] == '÷') ansi[i] = '/';
 		}
 
 
@@ -231,7 +231,7 @@ void __fastcall TForm1::Button_CEClick()
 			char c = Label_Expression->Caption[i];
 			char_place = i;
 
-			if(c == '+' || c == '-' || c == 'x' || c == 'ï¿½')
+			if(c == '+' || c == '-' || c == 'x' || c == '÷')
 			{
 				//--------------------------------------------
 				// IF LAST IN EXPRESSION IS OPERATION CHAR - CLEAR THIS CHAR
@@ -258,8 +258,97 @@ void __fastcall TForm1::Button_CEClick()
 
 //------------------------------------------------------------------------------
 
+void __fastcall TForm1::Memory_Click(TObject *Sender)
+{
+	Button_MC->Enabled = true;
+	Button_MR->Enabled = true;
+
+	int tag = dynamic_cast<TcxButton*>(Sender)->Tag;
+
+	switch(tag)
+	{
+
+	case 1: // MC Button
+	{
+		memory = 0;
+
+		Button_MC->Enabled = false;
+		Button_MR->Enabled = false;
+
+		break;
+	}
+
+
+	case 2: // MR Button
+		this->Button_MRClick();
+		break;
+
+
+	case 3: // M+ Button
+		memory += result;
+		break;
+
+
+	case 4: // M- Button
+		memory -= result;
+		break;
+
+
+	case 5: // MS Button
+		memory = result;
+		break;
+	}
+
+
+	if(memory == 0)
+	{
+		BarStatic_Memory->Caption = "";
+		BarStatic_MemoryLabel->Enabled = false;
+	}
+	else
+	{
+		BarStatic_Memory->Caption = memory;
+		BarStatic_MemoryLabel->Enabled = true;
+	}
+}
+
 //------------------------------------------------------------------------------
-//  TRUE - if previous character in Expression is '+' or '-' or 'x' or 'ï¿½'
+
+void __fastcall TForm1::Button_MRClick()
+{
+	Label_PreviousExpression->Caption = "";
+
+
+	//--------------------------------------------------------
+	//  Insert number from memory to expression after last sign
+	//
+	if(PreviousCharIsSign() == true)
+	{
+		result = 0;
+		Label_Expression->Caption = Label_Expression->Caption + " " + memory;
+	}
+	//--------------------------------------------------------
+
+
+	//--------------------------------------------------------
+	//  If last in expression isn't sign character
+	//  	- clear expression and insert number from memory
+	//
+	else
+	{
+		result = memory;
+		Label_Expression->Caption = memory;
+
+
+		Button_MPlus->Enabled = true;
+		Button_MMinus->Enabled = true;
+		Button_MS->Enabled = true;
+	}
+	//--------------------------------------------------------
+}
+
+//------------------------------------------------------------------------------
+//  TRUE - if previous character in Expression is '+' or '-' or 'x' or '÷'
 //
 //  FALSE -  if previous character in Expression is number or bracket
 //
@@ -271,7 +360,7 @@ bool TForm1::PreviousCharIsSign()
 		{
 			char c = Label_Expression->Caption[i];
 
-			if(c == '+' || c == '-' || c == 'x' || c == 'ï¿½')
+			if(c == '+' || c == '-' || c == 'x' || c == '÷')
 				return true;
 
 			if(c != ' ')
