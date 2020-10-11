@@ -178,6 +178,41 @@ void __fastcall TForm1::Button_Click(TObject *Sender)
 
 //------------------------------------------------------------------------------
 
+void __fastcall TForm1::Button_EqualClick(TObject *Sender)
+{
+	// Only if calculator is correctly initalized
+	if(this->calculator)
+	{
+		AnsiString ansi = Label_Expression->Caption;
+
+
+		// Changing characters 'x' to '*' and '�' to '/'
+		// Function Calculate from Calculator library requires the second
+		for(int i=1; i<= ansi.Length(); i++)
+		{
+			if(ansi[i] == 'x') ansi[i] = '*';
+			if(ansi[i] == '�') ansi[i] = '/';
+		}
+
+
+		Label_PreviousExpression->Caption = Label_Expression->Caption + " =   ";
+
+
+		try
+		{
+			result = this->calculator->Calculate(ansi.c_str());
+			Label_Expression->Caption = result;
+		}
+		catch(...)
+		{
+			result = 0;
+			Label_Expression->Caption = "Invalid format!";
+		}
+	}
+}
+
+//------------------------------------------------------------------------------
+
 void __fastcall TForm1::Button_CEClick()
 {
 	if(Label_Expression->Caption.Length() <= 1)

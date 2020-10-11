@@ -313,6 +313,7 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_EqualClick
     end
     object Button_7: TcxButton
       Tag = 7

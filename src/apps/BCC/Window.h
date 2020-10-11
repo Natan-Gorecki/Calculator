@@ -144,11 +144,13 @@ __published:	// IDE-managed Components
 
 	void __fastcall FormDestroy(TObject *Sender);
 	void __fastcall Button_Click(TObject *Sender);
+	void __fastcall Button_EqualClick(TObject *Sender);
 //------------------------------------------------------------------------------
 private:	// User declarations
 	void __fastcall Button_CEClick();
 
 	I_Calculator* calculator = NULL;
+    double result = 0;
 //------------------------------------------------------------------------------
 public:		// User declarations
 	__fastcall TForm1(TComponent* Owner);
