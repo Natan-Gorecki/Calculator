@@ -1122,6 +1122,7 @@ object Form1: TForm1
       Category = 0
       Hint = 'Default'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarSeparator_Skins: TdxBarSeparator
       Category = 0
@@ -1129,46 +1130,60 @@ object Form1: TForm1
       ShowCaption = False
     end
     object BarButton_Blueprint: TdxBarButton
+      Tag = 1
       Caption = 'Blueprint'
       Category = 0
       Hint = 'Blueprint'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_DevExpressDarkStyle: TdxBarButton
+      Tag = 2
       Caption = 'DevExpressDarkStyle'
       Category = 0
       Hint = 'DevExpressDarkStyle'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_DevExpressStyle: TdxBarButton
+      Tag = 3
       Caption = 'DevExpressStyle'
       Category = 0
       Hint = 'DevExpressStyle'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_HighContrast: TdxBarButton
+      Tag = 4
       Caption = 'HighContrast'
       Category = 0
       Hint = 'HighContrast'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_Office2016Dark: TdxBarButton
+      Tag = 5
       Caption = 'Office2016Dark'
       Category = 0
       Hint = 'Office2016Dark'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_Pumpkin: TdxBarButton
+      Tag = 6
       Caption = 'Pumpkin'
       Category = 0
       Hint = 'Pumpkin'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_Xmas2008Blue: TdxBarButton
+      Tag = 7
       Caption = 'Xmas2008Blue'
       Category = 0
       Hint = 'Xmas2008Blue'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarStatic_MemoryLabel: TdxBarStatic
       Caption = 'Memory'

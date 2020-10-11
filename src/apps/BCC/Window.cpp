@@ -39,6 +39,7 @@
 #pragma link "dxSkins"
 #pragma link "dxLayoutLookAndFeels"
 #pragma link "Custom_VCL_Skins"
+#pragma link "dxSkinProject1"
 #pragma resource "*.dfm"
 TForm1 *Form1;
 
@@ -355,6 +356,45 @@ void __fastcall TForm1::BarButton_ExitClick(TObject *Sender)
 }
 
 //------------------------------------------------------------------------------
+
+void __fastcall TForm1::Skin_Click(TObject *Sender)
+{
+	TdxBarButton* button = dynamic_cast<TdxBarButton*>(Sender);
+
+	try
+	{
+		switch(button->Tag)
+		{
+		case 0:
+			this->SetDefaultSkin();
+			break;
+
+
+		default:
+			this->ResetDefaultSkin();
+			this->dxSkinController1->SkinName = button->Caption;
+			this->dxLayoutSkinLookAndFeel1->LookAndFeel->SkinName = button->Caption;
+
+
+			//------------------------------------------------------------------
+			//  Set white or black image for the Clear Button
+			if(button->Caption == "Blueprint" || button->Caption == "HighContrast" || button->Caption == "DevExpressDarkStyle")
+				Button_Clear->OptionsImage->ImageIndex = 1;
+			else
+				Button_Clear->OptionsImage->ImageIndex = 0;
+			//------------------------------------------------------------------
+
+
+			break;
+        }
+	}
+	catch(...)
+	{
+		Application->MessageBox(L"The skin could not be changed", L"Failure!", MB_OK);
+    }
+}
+
+//------------------------------------------------------------------------------
 //  TRUE - if previous character in Expression is '+' or '-' or 'x' or '÷'
 //
 //  FALSE -  if previous character in Expression is number or bracket
@@ -377,4 +417,67 @@ bool TForm1::PreviousCharIsSign()
 
 
   return false;
+}
+
+//------------------------------------------------------------------------------
+//  Set two additional custom skins to buttons when the user selects the default skin
+//
+void TForm1::SetDefaultSkin()
+{
+	// Set "Number_Button" skin
+	Button_0->LookAndFeel->SkinName = "Number_Button";
+	Button_1->LookAndFeel->SkinName = "Number_Button";
+	Button_2->LookAndFeel->SkinName = "Number_Button";
+	Button_3->LookAndFeel->SkinName = "Number_Button";
+	Button_4->LookAndFeel->SkinName = "Number_Button";
+	Button_5->LookAndFeel->SkinName = "Number_Button";
+	Button_6->LookAndFeel->SkinName = "Number_Button";
+	Button_7->LookAndFeel->SkinName = "Number_Button";
+	Button_8->LookAndFeel->SkinName = "Number_Button";
+	Button_9->LookAndFeel->SkinName = "Number_Button";
+
+	//-----------------------------------------------
+
+	// Set "Blue_Button" skin
+	Button_Plus->LookAndFeel->SkinName = "Blue_Button";
+	Button_Minus->LookAndFeel->SkinName = "Blue_Button";
+	Button_Multiply->LookAndFeel->SkinName = "Blue_Button";
+	Button_Divide->LookAndFeel->SkinName = "Blue_Button";
+	Button_Equal->LookAndFeel->SkinName = "Blue_Button";
+
+	//------------------------------------------------
+
+	dxSkinController1->SkinName = "Default";
+	dxLayoutSkinLookAndFeel1->LookAndFeel->SkinName = "Default";
+
+	Button_Clear->OptionsImage->ImageIndex = 0;
+}
+
+//------------------------------------------------------------------------------
+//  Reset Look And Feel properties for some buttons
+//
+//  Now all buttons have skin compatible with the user selected
+//
+void TForm1::ResetDefaultSkin()
+{
+	// Reset "Number_Button" skin
+	Button_0->LookAndFeel->Reset();
+	Button_1->LookAndFeel->Reset();
+	Button_2->LookAndFeel->Reset();
+	Button_3->LookAndFeel->Reset();
+	Button_4->LookAndFeel->Reset();
+	Button_5->LookAndFeel->Reset();
+	Button_6->LookAndFeel->Reset();
+	Button_7->LookAndFeel->Reset();
+	Button_8->LookAndFeel->Reset();
+	Button_9->LookAndFeel->Reset();
+
+	//-----------------------------
+
+	// Reset "Blue_Button" skin
+	Button_Plus->LookAndFeel->Reset();
+	Button_Minus->LookAndFeel->Reset();
+	Button_Multiply->LookAndFeel->Reset();
+	Button_Divide->LookAndFeel->Reset();
+	Button_Equal->LookAndFeel->Reset();
 }

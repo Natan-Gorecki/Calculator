@@ -50,6 +50,7 @@
 #include "dxSkinOffice2016Dark.hpp"
 #include "dxSkins.hpp"
 #include "dxLayoutLookAndFeels.hpp"
+#include "dxSkinProject1.hpp"
 //------------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -147,6 +148,7 @@ __published:	// IDE-managed Components
 	void __fastcall Button_EqualClick(TObject *Sender);
 	void __fastcall Memory_Click(TObject *Sender);
 	void __fastcall BarButton_ExitClick(TObject *Sender);
+	void __fastcall Skin_Click(TObject *Sender);
 
 //------------------------------------------------------------------------------
 private:	// User declarations
@@ -155,6 +157,8 @@ private:	// User declarations
 
 
 	bool PreviousCharIsSign();
+	void SetDefaultSkin();
+	void ResetDefaultSkin();
 
 
 	I_Calculator* calculator = NULL;
