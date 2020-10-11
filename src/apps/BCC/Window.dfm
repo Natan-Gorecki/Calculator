@@ -40,6 +40,7 @@ object Form1: TForm1
     Transparent = True
     LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
     object Button_RightBracket: TcxButton
+      Tag = 16
       Left = 258
       Top = 182
       Width = 126
@@ -53,8 +54,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_C: TcxButton
+      Tag = 18
       Left = 2
       Top = 182
       Width = 127
@@ -68,8 +71,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Divide: TcxButton
+      Tag = 15
       Left = 385
       Top = 182
       Width = 128
@@ -84,8 +89,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_LeftBracket: TcxButton
+      Tag = 17
       Left = 130
       Top = 182
       Width = 127
@@ -99,8 +106,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Minus: TcxButton
+      Tag = 13
       Left = 385
       Top = 317
       Width = 128
@@ -115,8 +124,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_5: TcxButton
+      Tag = 5
       Left = 130
       Top = 317
       Width = 127
@@ -131,8 +142,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_6: TcxButton
+      Tag = 6
       Left = 258
       Top = 317
       Width = 126
@@ -147,8 +160,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_4: TcxButton
+      Tag = 4
       Left = 2
       Top = 317
       Width = 127
@@ -163,8 +178,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_2: TcxButton
+      Tag = 2
       Left = 130
       Top = 384
       Width = 127
@@ -179,8 +196,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_3: TcxButton
+      Tag = 3
       Left = 258
       Top = 384
       Width = 126
@@ -195,8 +214,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_1: TcxButton
+      Tag = 1
       Left = 2
       Top = 384
       Width = 127
@@ -211,8 +232,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Plus: TcxButton
+      Tag = 12
       Left = 385
       Top = 384
       Width = 128
@@ -227,8 +250,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Clear: TcxButton
+      Tag = 10
       Left = 2
       Top = 451
       Width = 127
@@ -237,6 +262,7 @@ object Form1: TForm1
       OptionsImage.Images = cxImageList1
       SpeedButtonOptions.CanBeFocused = False
       TabOrder = 24
+      OnClick = Button_Click
     end
     object Button_0: TcxButton
       Left = 130
@@ -253,8 +279,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Comma: TcxButton
+      Tag = 11
       Left = 258
       Top = 451
       Width = 126
@@ -268,6 +296,7 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Equal: TcxButton
       Left = 385
@@ -286,6 +315,7 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_7: TcxButton
+      Tag = 7
       Left = 2
       Top = 250
       Width = 127
@@ -300,8 +330,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_8: TcxButton
+      Tag = 8
       Left = 130
       Top = 250
       Width = 127
@@ -316,8 +348,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Multiply: TcxButton
+      Tag = 14
       Left = 385
       Top = 250
       Width = 128
@@ -332,8 +366,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_9: TcxButton
+      Tag = 9
       Left = 258
       Top = 250
       Width = 126
@@ -348,6 +384,7 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_MC: TcxButton
       Left = 76
@@ -382,6 +419,7 @@ object Form1: TForm1
       ParentFont = False
     end
     object Button_CE: TcxButton
+      Tag = 19
       Left = 1
       Top = 156
       Width = 75
@@ -396,6 +434,7 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_MS: TcxButton
       Left = 376

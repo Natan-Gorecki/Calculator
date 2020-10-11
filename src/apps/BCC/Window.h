@@ -141,9 +141,12 @@ __published:	// IDE-managed Components
 	TdxSkinController *dxSkinController1;
 	TdxLayoutLookAndFeelList *dxLayoutLookAndFeelList1;
 	TdxLayoutSkinLookAndFeel *dxLayoutSkinLookAndFeel1;
+
 	void __fastcall FormDestroy(TObject *Sender);
+	void __fastcall Button_Click(TObject *Sender);
 //------------------------------------------------------------------------------
 private:	// User declarations
+	void __fastcall Button_CEClick();
 
 	I_Calculator* calculator = NULL;
 //------------------------------------------------------------------------------
