@@ -149,6 +149,8 @@ __published:	// IDE-managed Components
 	void __fastcall Memory_Click(TObject *Sender);
 	void __fastcall BarButton_ExitClick(TObject *Sender);
 	void __fastcall Skin_Click(TObject *Sender);
+	void __fastcall FormKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 
 //------------------------------------------------------------------------------
 private:	// User declarations

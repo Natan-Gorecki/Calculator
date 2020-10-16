@@ -21,6 +21,8 @@ object Form1: TForm1
   Position = poScreenCenter
   Visible = True
   OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object dxLayoutControl_Main: TdxLayoutControl

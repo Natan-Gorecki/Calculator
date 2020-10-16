@@ -481,3 +481,133 @@ void TForm1::ResetDefaultSkin()
 	Button_Divide->LookAndFeel->Reset();
 	Button_Equal->LookAndFeel->Reset();
 }
+
+void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
+{
+	switch(Key)
+	{
+	// 0
+	case vk0:
+		this->Button_0->Click();
+		break;
+
+
+	// 1
+	case vk1:
+		this->Button_1->Click();
+		break;
+
+
+	// 2
+	case vk2:
+		this->Button_2->Click();
+		break;
+
+
+	// 3
+	case vk3:
+		this->Button_3->Click();
+		break;
+
+
+	// 4
+	case vk4:
+		this->Button_4->Click();
+		break;
+
+
+	// 5
+	case vk5:
+		this->Button_5->Click();
+		break;
+
+
+	// 6
+	case vk6:
+		this->Button_6->Click();
+		break;
+
+
+	// 7
+	case vk7:
+		this->Button_7->Click();
+		break;
+
+
+	// 8
+	case vk8:
+		this->Button_8->Click();
+		break;
+
+
+	// 9
+	case vk9:
+		this->Button_9->Click();
+		break;
+
+
+	// Comma
+	case ',':
+		this->Button_Comma->Click();
+		break;
+
+
+	// Plus
+	case L'+':
+		this->Button_Plus->Click();
+		break;
+
+
+	// Minus
+	case '-':
+		this->Button_Minus->Click();
+		break;
+
+
+	// Multiply
+	case L'x':
+	case L'*':
+		this->Button_Multiply->Click();
+		break;
+
+
+	// Divide
+	case L'/':
+		this->Button_Divide->Click();
+		break;
+
+
+	// Left Bracket
+	case L'(':
+		this->Button_LeftBracket->Click();
+		break;
+
+
+	// Right Bracket
+	case L')':
+		this->Button_RightBracket->Click();
+		break;
+
+
+	// Backspace
+	case vkBack:
+		this->Button_Clear->Click();
+		break;
+
+
+	// Enter
+	case vkReturn:
+		this->Button_Equal->Click();
+		break;
+	}
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
+{
+	if(Key == vkDelete)
+        this->Button_C->Click();
+}
+//---------------------------------------------------------------------------
+
