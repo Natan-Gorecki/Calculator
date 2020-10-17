@@ -161,6 +161,8 @@ private:	// User declarations
 	bool PreviousCharIsSign();
 	void SetDefaultSkin();
 	void ResetDefaultSkin();
+	void EnableMemoryButtons(bool enable);
+	void SetMinWidth();
 
 
 	I_Calculator* calculator = NULL;

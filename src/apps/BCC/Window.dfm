@@ -396,6 +396,7 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'MC'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 3
@@ -414,6 +415,7 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'M+'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 5
@@ -450,6 +452,7 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'MS'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 7
@@ -468,6 +471,7 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'M-'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 6
@@ -486,6 +490,7 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'MR'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 4
@@ -799,6 +804,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 1
     end
     object Item_MPlus: TdxLayoutItem
@@ -811,6 +817,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 3
     end
     object Item_CE: TdxLayoutItem
@@ -835,6 +842,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 5
     end
     object Item_MMinus: TdxLayoutItem
@@ -847,6 +855,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 4
     end
     object Item_MR: TdxLayoutItem
@@ -859,6 +868,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 2
     end
     object dxLayoutGroup2: TdxLayoutGroup

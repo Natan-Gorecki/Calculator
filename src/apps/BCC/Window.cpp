@@ -109,7 +109,29 @@ void __fastcall TForm1::FormDestroy(TObject *Sender)
 
 void __fastcall TForm1::Button_Click(TObject *Sender)
 {
+	EnableMemoryButtons(false);
+	Label_PreviousExpression->Caption = "";
+
+
+	//-------------------------------------------------------------------
+	//  IF EXPRESSION CONTAIN PHRASE "Invalid format!"
+	//
+	if(Label_Expression->Caption.Length()>1 && ((Label_Expression->Caption)[Label_Expression->Caption.Length()] == '!'))
+	{
+		Label_Expression->Caption = "";
+	}
+	//-------------------------------------------------------------------
+
+
 	int tag = dynamic_cast<TcxButton*>(Sender)->Tag;
+
+
+	if(tag < 10 || (11 <= tag && tag <= 17))
+	{
+		if(Label_Expression->Width > Form1->Width - 60)
+			return;
+	}
+
 
 	switch(tag) {
 	case 10: // Clear Button
@@ -177,6 +199,9 @@ void __fastcall TForm1::Button_Click(TObject *Sender)
 			Label_Expression->Caption += " ";
 		Label_Expression->Caption += tag;
 	}
+
+
+	SetMinWidth();
 }
 
 //------------------------------------------------------------------------------
@@ -205,12 +230,16 @@ void __fastcall TForm1::Button_EqualClick(TObject *Sender)
 		{
 			result = this->calculator->Calculate(ansi.c_str());
 			Label_Expression->Caption = result;
+			EnableMemoryButtons(true);
 		}
 		catch(...)
 		{
 			result = 0;
 			Label_Expression->Caption = "Invalid format!";
 		}
+
+
+		SetMinWidth();
 	}
 }
 
@@ -341,11 +370,12 @@ void __fastcall TForm1::Button_MRClick()
 		Label_Expression->Caption = memory;
 
 
-		Button_MPlus->Enabled = true;
-		Button_MMinus->Enabled = true;
-		Button_MS->Enabled = true;
+		EnableMemoryButtons(true);
 	}
 	//--------------------------------------------------------
+
+
+	SetMinWidth();
 }
 
 //------------------------------------------------------------------------------
@@ -482,6 +512,8 @@ void TForm1::ResetDefaultSkin()
 	Button_Equal->LookAndFeel->Reset();
 }
 
+//------------------------------------------------------------------------------
+
 void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
 {
 	switch(Key)
@@ -602,12 +634,30 @@ void __fastcall TForm1::FormKeyPress(TObject *Sender, System::WideChar &Key)
 	}
 
 }
-//---------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
 
 void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
 {
 	if(Key == vkDelete)
-        this->Button_C->Click();
+		this->Button_C->Click();
 }
-//---------------------------------------------------------------------------
 
+//------------------------------------------------------------------------------
+
+void TForm1::EnableMemoryButtons(bool enable)
+{
+	this->Button_MPlus->Enabled = enable;
+	this->Button_MMinus->Enabled = enable;
+	this->Button_MS->Enabled = enable;
+}
+
+//------------------------------------------------------------------------------
+
+void TForm1::SetMinWidth()
+{
+	if(Label_Expression->Width > 360)
+		Form1->Constraints->MinWidth = Label_Expression->Width + 40;
+	else
+		Form1->Constraints->MinWidth = 360;
+}
