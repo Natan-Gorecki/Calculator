@@ -7,9 +7,10 @@ class C_Parser
 public:
 	C_Command* Parse(const char* expression);
 
+
 private:
 	// main function after check if the equation is correct
-	double calculate(const char* text, int start, int end);
+	C_Command* Parse(std::string expression);
 
 
 
@@ -23,8 +24,8 @@ private:
 	//	Return the place, where find this operation
 	//
 	//-----------------------------------------------------------------
-	bool operation_outside_parentheses(const char* tekst, int start, int end);
-	int finding_last_operation(const char* tekst, int start, int end);
+	bool operation_outside_parentheses(std::string text);
+	int finding_last_operation(std::string text);
 
 
 
@@ -35,8 +36,8 @@ private:
 	//	Return -	-1	in case when there are only whitespace char in searched range
 	//
 	//-----------------------------------------------------------------
-	int next_char(const char* text, int start, int end);
-	int previous_char(const char* text, int start, int end);
+	int next_char(std::string text, int start, int end);
+	int previous_char(std::string text, int start, int end);
 
 
 
@@ -54,15 +55,15 @@ private:
 	//	and give their location in the left and right variable
 	//	e.g (2+2)	v	(4*2)
 	//-----------------------------------------------------------------
-	bool are_parentheses(const char* text, int start, int end, int& left, int& right);
+	bool are_parentheses(std::string text, int& left, int& right);
 
 
 
 	//-----------------------------------------------------------------
 	//	Funtions checking if the equation is correct
 	//-----------------------------------------------------------------
-	void check_if_equation_is_correct(const char* text, int start, int end);
-	bool correct_parentheses(const char* text, int start, int end);
-	bool correct_characters(const char* text, int start, int end);
-	bool empty_parentheses(const char* text, int start, int end);
+	void check_if_equation_is_correct(std::string text);
+	bool correct_parentheses(std::string text);
+	bool correct_characters(std::string text);
+	bool empty_parentheses(std::string text);
 };

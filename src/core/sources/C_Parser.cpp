@@ -1,48 +1,53 @@
 #include "C_Parser.h"
-
 #include <string.h>
 #include <string>
 
-/*
-* check_if_equation_is_correct(expression, 0, (int)strlen(expression) - 1);
-	return calculate(expression, 0, (int)strlen(expression) - 1);
-*/
+
+
+C_Command* C_Parser::Parse(const char* expression)
+{
+	std::string exp = std::string(expression);
+	check_if_equation_is_correct(exp);
+	return this->Parse(exp);
+}
+
+
 
 //------------------------------------------------------------------------------
 //
 //	Function calculating the result
 //
 //------------------------------------------------------------------------------
-double C_Parser::calculate(const char* text, int start, int end)
+C_Command* C_Parser::Parse(std::string text)
 {
 	int char_place;
 
 	// If there is operation oustide patentheses => char_place = the place of LAST operation to do
-	if (operation_outside_parentheses(text, start, end) == true)
+	if (operation_outside_parentheses(text) == true)
 	{
-		char_place = finding_last_operation(text, start, end);
+		char_place = finding_last_operation(text);
 
 		//	e.g. +2 v *4
-		if (char_place == start)
+		if (char_place == 0)
 			goto first_in_equation;
 
 
 
 		//-----------------------------------------------------------
 		//	Conditon functions:
-		//		* throw exception for expression like "**" or "+/" 
-		//		* throw exception for expression like "*2" or "/4"
+		//		* throw exception for text like "**" or "+/" 
+		//		* throw exception for text like "*2" or "/4"
 		//		* +(part_of_equation) => return  1 * part_of_equation
 		//		* -(part_of_equation) => return -1 * part_of_equation
 		//-----------------------------------------------------------
-		if (char_place > start)
+		if (char_place > 0)
 		{
 
 			// We're checking multiplied operation char
 			// e.g ++, *+
-			if (previous_char(text, start, char_place - 1) != -1)
+			if (previous_char(text, 0, char_place - 1) != -1)
 			{
-				char temp_ch = text[previous_char(text, start, char_place - 1)];
+				char temp_ch = text[previous_char(text, 0, char_place - 1)];
 				if (temp_ch == '+' || temp_ch == '-' || temp_ch == '*' || temp_ch == '/')
 					throw "Too many operation chars ('+', '-', '*', '/')";
 			}
@@ -78,13 +83,13 @@ double C_Parser::calculate(const char* text, int start, int end)
 
 		//-----------------------------------------------------------
 		//	Conditions functions:
-		//		* throw exception for expression like "2*"
-		//		* throw exception for expression like "2 *   "
+		//		* throw exception for text like "2*"
+		//		* throw exception for text like "2 *   "
 		//-----------------------------------------------------------
-		if (char_place == end)
+		if (char_place == text.length()-1)
 			throw "Operation char at the end";
-		if (char_place < end)
-			if (next_char(text, char_place + 1, end) == -1)
+		if (char_place < text.length() - 1)
+			if (next_char(text, char_place + 1, text.length() - 1) == -1)
 				throw "Operation char at the end";
 
 
@@ -97,25 +102,25 @@ double C_Parser::calculate(const char* text, int start, int end)
 		switch (text[char_place])
 		{
 
-		case '+':	return calculate(text, start, char_place - 1) + calculate(text, char_place + 1, end);
+		case '+':	return calculate(text, 0, char_place - 1) + calculate(text, char_place + 1, text.length() - 1);
 
-		case '-':	return calculate(text, start, char_place - 1) - calculate(text, char_place + 1, end);
+		case '-':	return calculate(text, 0, char_place - 1) - calculate(text, char_place + 1, text.length() - 1);
 
-		case '*':	return calculate(text, start, char_place - 1) * calculate(text, char_place + 1, end);
+		case '*':	return calculate(text, 0, char_place - 1) * calculate(text, char_place + 1, text.length() - 1);
 
 		case '/':
 
 			//Throw exception - Division by 0!
-			if (calculate(text, char_place + 1, end) == 0)
+			if (calculate(text, char_place + 1, text.length() - 1) == 0)
 			{
 				;
 			}
 
-			return calculate(text, start, char_place - 1) / calculate(text, char_place + 1, end);
+			return calculate(text, 0, char_place - 1) / calculate(text, char_place + 1, text.length() - 1);
 
-		case '(':	return calculate(text, start, char_place - 1) * calculate(text, char_place, end);
+		case '(':	return calculate(text, 0, char_place - 1) * calculate(text, char_place, text.length() - 1);
 
-		case ')':	return calculate(text, start, char_place) * calculate(text, char_place + 1, end);
+		case ')':	return calculate(text, 0, char_place) * calculate(text, char_place + 1, text.length() - 1);
 		}
 	}
 
@@ -130,7 +135,7 @@ double C_Parser::calculate(const char* text, int start, int end)
 	//
 	//-----------------------------------------------------------
 	int left, rigth;
-	if (are_parentheses(text, start, end, left, rigth) == true)
+	if (are_parentheses(text, left, rigth) == true)
 		return calculate(text, left + 1, rigth - 1);
 
 
@@ -144,7 +149,7 @@ double C_Parser::calculate(const char* text, int start, int end)
 	//-----------------------------------------------------------
 	//	Convert part of equation from char[] to double 
 	//-----------------------------------------------------------
-	for (int i = start; i <= end; i++)
+	for (int i = 0; i <= text.length() - 1; i++)
 	{
 		if ('0' <= text[i] && text[i] <= '9')
 			result += text[i];
@@ -191,7 +196,7 @@ double C_Parser::calculate(const char* text, int start, int end)
 //		 2+4	- addition
 //
 //------------------------------------------------------------------------------
-bool C_Parser::operation_outside_parentheses(const char* tekst, int start, int end)
+bool C_Parser::operation_outside_parentheses(std::string text)
 {
 
 	// We're looking for operation ONLY OUTSIDE parentheses
@@ -203,18 +208,18 @@ bool C_Parser::operation_outside_parentheses(const char* tekst, int start, int e
 	//	Loop that checks if there is addition or  subtraction
 	//	Return TRUE -	'+' v '-'
 	//------------------------------------------
-	for (int i = end; i >= start; i--)
+	for (int i = text.length() - 1; i >= 0; i--)
 	{
-		if (tekst[i] == '+' || tekst[i] == '-')
+		if (text[i] == '+' || text[i] == '-')
 			if (level == 0)
 				return true;
 
 		//	Opening the bracket increases level
-		if (tekst[i] == ')')
+		if (text[i] == ')')
 			level++;
 
 		//	Closing the bracket decreases level
-		if (tekst[i] == '(')
+		if (text[i] == '(')
 			level--;
 	}
 
@@ -224,35 +229,35 @@ bool C_Parser::operation_outside_parentheses(const char* tekst, int start, int e
 	//	Return TRUE -	'*' v '/'
 	//	Return TRUE -	")2" v ")(" v "2("
 	//------------------------------------------
-	for (int i = end; i >= start; i--)
+	for (int i = text.length() - 1; i >= 0; i--)
 	{
-		if (tekst[i] == '*' || tekst[i] == '/')
+		if (text[i] == '*' || text[i] == '/')
 			if (level == 0)
 				return true;
 
 		//	Opening the bracket increases level
-		if (tekst[i] == ')')
+		if (text[i] == ')')
 		{
 			level++;
 
 			//	Return TRUE, when next char is number <==> ") 2"
-			if (i < end && level == 1)
-				if (next_char(tekst, i + 1, end) != -1)
-					if (is_number(tekst[next_char(tekst, i + 1, end)]))
+			if (i < text.length()-1 && level == 1)
+				if (next_char(text, i + 1, text.length() - 1) != -1)
+					if (is_number(text[next_char(text, i + 1, text.length() - 1)]))
 						return true;
 		}
 
 
 		//	Closing the bracket decreases level
-		if (tekst[i] == '(')
+		if (text[i] == '(')
 		{
 			level--;
 
 			//	Return TRUE, when previous char is number or the opposite bracket
 			//	<==> ") (" v "2 ("
-			if (i > start && level == 0)
-				if (previous_char(tekst, start, i - 1) != -1)
-					if (is_number(tekst[previous_char(tekst, start, i - 1)]) || tekst[previous_char(tekst, start, i - 1)] == ')')
+			if (i > 0 && level == 0)
+				if (previous_char(text, 0, i - 1) != -1)
+					if (is_number(text[previous_char(text, 0, i - 1)]) || text[previous_char(text, 0, i - 1)] == ')')
 						return true;
 		}
 	}
@@ -270,7 +275,7 @@ bool C_Parser::operation_outside_parentheses(const char* tekst, int start, int e
 //
 //	Return the place, where find this operation
 //------------------------------------------------------------------------------
-int C_Parser::finding_last_operation(const char* tekst, int start, int end)
+int C_Parser::finding_last_operation(std::string text)
 {
 
 	// We're looking for operation ONLY OUTSIDE parentheses
@@ -282,18 +287,18 @@ int C_Parser::finding_last_operation(const char* tekst, int start, int end)
 	//	Loop that checks if there is addition or  subtraction
 	//	If there is return the place of last '+' v '-'
 	//------------------------------------------
-	for (int i = end; i >= start; i--)
+	for (int i = text.length() - 1; i >= 0; i--)
 	{
-		if (tekst[i] == '+' || tekst[i] == '-')
+		if (text[i] == '+' || text[i] == '-')
 			if (level == 0)
 				return i;
 
 		//	Opening the bracket increases level
-		if (tekst[i] == ')')
+		if (text[i] == ')')
 			level++;
 
 		//	Closing the bracket decreases level
-		if (tekst[i] == '(')
+		if (text[i] == '(')
 			level--;
 	}
 
@@ -302,37 +307,37 @@ int C_Parser::finding_last_operation(const char* tekst, int start, int end)
 	//	Loop that checks if there is multiplication or division
 	//	Return the place of LAST operation to do
 	//------------------------------------------
-	for (int i = end; i >= start; i--)
+	for (int i = text.length() - 1; i >= 0; i--)
 	{
 
 		// If there is '*' or '/' return the place of this char
-		if (tekst[i] == '*' || tekst[i] == '/')
+		if (text[i] == '*' || text[i] == '/')
 			if (level == 0)
 				return i;
 
 
 		//	Opening the bracket increases level
-		if (tekst[i] == ')')
+		if (text[i] == ')')
 		{
 			level++;
 
 			//	Return the place of ')' when multiplication like ") 2" was found
-			if (i < end && level == 1)
-				if (next_char(tekst, i + 1, end) != -1)
-					if (is_number(tekst[previous_char(tekst, i + 1, end)]))
+			if (i < text.length() - 1 && level == 1)
+				if (next_char(text, i + 1, text.length() - 1) != -1)
+					if (is_number(text[previous_char(text, i + 1, text.length() - 1)]))
 						return i;
 		}
 
 
 		//	Closing the bracket decreases level
-		if (tekst[i] == '(')
+		if (text[i] == '(')
 		{
 			level--;
 
 			//	Return the place of '(' when multiplication like "2 (" or ") (" was found
-			if (i > start && level == 0)
-				if (previous_char(tekst, start, i - 1) != -1)
-					if (is_number(tekst[previous_char(tekst, start, i - 1)]) || tekst[previous_char(tekst, start, i - 1)] == ')')
+			if (i > 0 && level == 0)
+				if (previous_char(text, 0, i - 1) != -1)
+					if (is_number(text[previous_char(text, 0, i - 1)]) || text[previous_char(text, 0, i - 1)] == ')')
 						return i;
 		}
 	}
@@ -349,7 +354,7 @@ int C_Parser::finding_last_operation(const char* tekst, int start, int end)
 //	Return - the place of following char
 //	Return -	-1	in case when there are only whitespace char in searched range
 //-----------------------------------------------------------------
-int C_Parser::next_char(const char* text, int start, int end)
+int C_Parser::next_char(std::string text, int start, int end)
 {
 	for (int i = start; i <= end; i++)
 		if (text[i] != ' ')
@@ -366,7 +371,7 @@ int C_Parser::next_char(const char* text, int start, int end)
 //	Return - the place of previous char
 //	Return -	-1	in case when there are only whitespace char in searched range
 //-----------------------------------------------------------------
-int C_Parser::previous_char(const char* text, int start, int end)
+int C_Parser::previous_char(std::string text, int start, int end)
 {
 	for (int i = end; i >= start; i--)
 		if (text[i] != ' ')
@@ -398,10 +403,10 @@ bool C_Parser::is_number(char c)
 //	e.g (2+2)	v	(4*2)
 //	
 //-----------------------------------------------------------------
-bool C_Parser::are_parentheses(const char* text, int start, int end, int& left, int& right)
+bool C_Parser::are_parentheses(std::string text, int& left, int& right)
 {
 	left = -1; right = -1;
-	for (int i = start; i <= end; i++)
+	for (int i = 0; i <= text.length() - 1; i++)
 	{
 		if (text[i] == ' ') continue;
 
@@ -410,7 +415,7 @@ bool C_Parser::are_parentheses(const char* text, int start, int end, int& left, 
 		if (text[i] == '(')
 		{
 			left = i;
-			for (int j = end; j > i; j--)
+			for (int j = text.length() - 1; j > i; j--)
 			{
 				if (text[j] == ' ') continue;
 
@@ -445,18 +450,18 @@ bool C_Parser::are_parentheses(const char* text, int start, int end, int& left, 
 //	Funtion checking if the equation is correct
 //
 //-----------------------------------------------------------------
-void C_Parser::check_if_equation_is_correct(const char* text, int start, int end)
+void C_Parser::check_if_equation_is_correct(std::string text)
 {
-	if (correct_parentheses(text, start, end) == false)
+	if (correct_parentheses(text) == false)
 		throw "Invalid parentheses";
 
-	if (empty_parentheses(text, start, end) == true)
+	if (empty_parentheses(text) == true)
 		throw "Empty parentheses";
 
-	if (correct_characters(text, start, end) == false)
+	if (correct_characters(text) == false)
 		throw "Invalid character";
 
-	if (start > end)
+	if (text.empty())
 		throw "Empty equation";
 }
 
@@ -467,11 +472,11 @@ void C_Parser::check_if_equation_is_correct(const char* text, int start, int end
 //	Funtion checking if the number and position of parentheses is correct
 //
 //-----------------------------------------------------------------
-bool C_Parser::correct_parentheses(const char* text, int start, int end)
+bool C_Parser::correct_parentheses(std::string text)
 {
 	int counter = 0;
 
-	for (int i = start; i <= end; i++)
+	for (int i = 0; i <= text.length() - 1; i++)
 	{
 		if (text[i] == '(')
 			counter++;
@@ -505,11 +510,12 @@ bool C_Parser::correct_parentheses(const char* text, int start, int end)
 //	Correct characters are (, ), *, +, -, ., /, 0-9 and ','
 //
 //-----------------------------------------------------------------
-bool C_Parser::correct_characters(const char* text, int start, int end)
+bool C_Parser::correct_characters(std::string text)
 {
-	for (int i = start; i <= end; i++)
+	for (int i = 0; i <= text.length() - 1; i++)
 		if (!(('(' <= text[i] && text[i] <= '9') || text[i] == ' '))
 			return false;
+
 
 	return true;
 }
@@ -522,14 +528,20 @@ bool C_Parser::correct_characters(const char* text, int start, int end)
 //	e.g. '( )'
 //
 //-----------------------------------------------------------------
-bool C_Parser::empty_parentheses(const char* text, int start, int end)
+bool C_Parser::empty_parentheses(std::string text)
 {
-	for (int i = start; i <= end; i++)
+	for (int i = 0; i <= text.length()-1; i++)
+	{
 		if (text[i] == '(')
-			if (i < end)
-				if (next_char(text, i + 1, end) != -1)
-					if (text[next_char(text, i + 1, end)] == ')')
-						return true;
-	return false;
+		{
+			if (next_char(text, i + 1, text.length() - 1) != -1)
+			{
+				if (text[next_char(text, i + 1, text.length() - 1)] == ')')
+					return true;
+			}
+		}
+	}
+		
 
+	return false;
 }
