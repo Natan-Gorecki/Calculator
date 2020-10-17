@@ -157,10 +157,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\api\api.h" />
     <ClInclude Include="..\..\api\I_Calculator.h" />
+    <ClInclude Include="..\..\sources\Commands.h" />
     <ClInclude Include="..\..\sources\C_Calculator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\api.cpp" />
+    <ClCompile Include="..\..\sources\Commands.cpp" />
     <ClCompile Include="..\..\sources\C_Calculator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

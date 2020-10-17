@@ -1,10 +1,17 @@
 #pragma once
 
-#define NULL 0
+
+#ifndef NULL
+	#define NULL 0
+#endif
+
 
 //Calling Convenion
 //__cdecl v __stdcall
-#define CC __cdecl
+#ifndef CC
+	#define CC __cdecl
+#endif 
+
 
 
 // pragma comment and dllimport/dllexport
