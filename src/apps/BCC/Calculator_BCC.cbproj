@@ -75,10 +75,10 @@
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <IncludePath>..\..\core\projects\BCC Custom_VCL_Skins\;C:\Projects\Calculator\src\apps\BCC\;$(IncludePath)</IncludePath>
-        <ILINK_LibraryPath>..\..\core\projects\BCC Custom_VCL_Skins\;C:\Projects\Calculator\src\apps\BCC\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>..\..\core\api\;..\..\core\projects\BCC Custom_VCL_Skins\;$(IncludePath)</IncludePath>
         <SanitizedProjectName>Calculator_BCC</SanitizedProjectName>
         <VerInfo_Locale>1045</VerInfo_Locale>
+        <ILINK_LibraryPath>..\..\core\projects\BCC Custom_VCL_Skins\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
@@ -133,10 +133,18 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <LinkPackageStatics>Custom_VCL_SkinsRS26.lib</LinkPackageStatics>
+        <Icon_MainIcon>Icon_x86.ico</Icon_MainIcon>
+        <FinalOutputDir>..\..\..\out\bin\x86\Debug\</FinalOutputDir>
+        <ILINK_LibraryPath>..\..\..\out\lib\x86\Debug\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <FinalOutputDir>..\..\..\out\bin\x64\Debug</FinalOutputDir>
+        <ILINK_LibraryPath>..\..\..\out\lib\x64\Debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>Icon_x64.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <Defines>NDEBUG;$(Defines)</Defines>
@@ -147,11 +155,21 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
         <BCC_PCHName_Clang>Calculator_BCCPCH1.h</BCC_PCHName_Clang>
+        <FinalOutputDir>..\..\..\out\bin\x86\Release\</FinalOutputDir>
+        <ILINK_LibraryPath>..\..\..\out\lib\x86\Release\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>Icon_x86.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <BCC_PCHName_Clang>Calculator_BCCPCH1.h</BCC_PCHName_Clang>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <FinalOutputDir>..\..\..\out\bin\x64\Release\</FinalOutputDir>
+        <ILINK_LibraryPath>..\..\..\out\lib\x64\Release\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>Icon_x64.ico</Icon_MainIcon>
     </PropertyGroup>
     <ItemGroup>
         <CppCompile Include="Calculator_BCC.cpp">

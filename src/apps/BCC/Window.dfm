@@ -20,6 +20,9 @@ object Form1: TForm1
   OldCreateOrder = False
   Position = poScreenCenter
   Visible = True
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object dxLayoutControl_Main: TdxLayoutControl
@@ -39,6 +42,7 @@ object Form1: TForm1
     Transparent = True
     LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
     object Button_RightBracket: TcxButton
+      Tag = 16
       Left = 258
       Top = 182
       Width = 126
@@ -52,8 +56,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_C: TcxButton
+      Tag = 18
       Left = 2
       Top = 182
       Width = 127
@@ -67,8 +73,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Divide: TcxButton
+      Tag = 15
       Left = 385
       Top = 182
       Width = 128
@@ -83,8 +91,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_LeftBracket: TcxButton
+      Tag = 17
       Left = 130
       Top = 182
       Width = 127
@@ -98,8 +108,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Minus: TcxButton
+      Tag = 13
       Left = 385
       Top = 317
       Width = 128
@@ -114,8 +126,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_5: TcxButton
+      Tag = 5
       Left = 130
       Top = 317
       Width = 127
@@ -130,8 +144,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_6: TcxButton
+      Tag = 6
       Left = 258
       Top = 317
       Width = 126
@@ -146,8 +162,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_4: TcxButton
+      Tag = 4
       Left = 2
       Top = 317
       Width = 127
@@ -162,8 +180,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_2: TcxButton
+      Tag = 2
       Left = 130
       Top = 384
       Width = 127
@@ -178,8 +198,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_3: TcxButton
+      Tag = 3
       Left = 258
       Top = 384
       Width = 126
@@ -194,8 +216,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_1: TcxButton
+      Tag = 1
       Left = 2
       Top = 384
       Width = 127
@@ -210,8 +234,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Plus: TcxButton
+      Tag = 12
       Left = 385
       Top = 384
       Width = 128
@@ -226,8 +252,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Clear: TcxButton
+      Tag = 10
       Left = 2
       Top = 451
       Width = 127
@@ -236,6 +264,7 @@ object Form1: TForm1
       OptionsImage.Images = cxImageList1
       SpeedButtonOptions.CanBeFocused = False
       TabOrder = 24
+      OnClick = Button_Click
     end
     object Button_0: TcxButton
       Left = 130
@@ -252,8 +281,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Comma: TcxButton
+      Tag = 11
       Left = 258
       Top = 451
       Width = 126
@@ -267,6 +298,7 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Equal: TcxButton
       Left = 385
@@ -283,8 +315,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_EqualClick
     end
     object Button_7: TcxButton
+      Tag = 7
       Left = 2
       Top = 250
       Width = 127
@@ -299,8 +333,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_8: TcxButton
+      Tag = 8
       Left = 130
       Top = 250
       Width = 127
@@ -315,8 +351,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_Multiply: TcxButton
+      Tag = 14
       Left = 385
       Top = 250
       Width = 128
@@ -331,8 +369,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_9: TcxButton
+      Tag = 9
       Left = 258
       Top = 250
       Width = 126
@@ -347,13 +387,16 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_MC: TcxButton
+      Tag = 1
       Left = 76
       Top = 156
       Width = 75
       Height = 25
       Caption = 'MC'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 3
@@ -363,13 +406,16 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Memory_Click
     end
     object Button_MPlus: TcxButton
+      Tag = 3
       Left = 226
       Top = 156
       Width = 75
       Height = 25
       Caption = 'M+'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 5
@@ -379,8 +425,10 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Memory_Click
     end
     object Button_CE: TcxButton
+      Tag = 19
       Left = 1
       Top = 156
       Width = 75
@@ -395,13 +443,16 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Button_Click
     end
     object Button_MS: TcxButton
+      Tag = 5
       Left = 376
       Top = 156
       Width = 75
       Height = 25
       Caption = 'MS'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 7
@@ -411,13 +462,16 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Memory_Click
     end
     object Button_MMinus: TcxButton
+      Tag = 4
       Left = 301
       Top = 156
       Width = 75
       Height = 25
       Caption = 'M-'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 6
@@ -427,13 +481,16 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Memory_Click
     end
     object Button_MR: TcxButton
+      Tag = 2
       Left = 151
       Top = 156
       Width = 75
       Height = 25
       Caption = 'MR'
+      Enabled = False
       SpeedButtonOptions.CanBeFocused = False
       SpeedButtonOptions.Transparent = True
       TabOrder = 4
@@ -443,6 +500,7 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
+      OnClick = Memory_Click
     end
     object Label_Expression: TcxLabel
       Left = 168
@@ -746,6 +804,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 1
     end
     object Item_MPlus: TdxLayoutItem
@@ -758,6 +817,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 3
     end
     object Item_CE: TdxLayoutItem
@@ -782,6 +842,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 5
     end
     object Item_MMinus: TdxLayoutItem
@@ -794,6 +855,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 4
     end
     object Item_MR: TdxLayoutItem
@@ -806,6 +868,7 @@ object Form1: TForm1
       ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 75
       ControlOptions.ShowBorder = False
+      Enabled = False
       Index = 2
     end
     object dxLayoutGroup2: TdxLayoutGroup
@@ -1064,12 +1127,14 @@ object Form1: TForm1
       Category = 0
       Hint = 'Exit'
       Visible = ivAlways
+      OnClick = BarButton_ExitClick
     end
     object BarButton_DefaultSkin: TdxBarButton
       Caption = 'Default'
       Category = 0
       Hint = 'Default'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarSeparator_Skins: TdxBarSeparator
       Category = 0
@@ -1077,46 +1142,60 @@ object Form1: TForm1
       ShowCaption = False
     end
     object BarButton_Blueprint: TdxBarButton
+      Tag = 1
       Caption = 'Blueprint'
       Category = 0
       Hint = 'Blueprint'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_DevExpressDarkStyle: TdxBarButton
+      Tag = 2
       Caption = 'DevExpressDarkStyle'
       Category = 0
       Hint = 'DevExpressDarkStyle'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_DevExpressStyle: TdxBarButton
+      Tag = 3
       Caption = 'DevExpressStyle'
       Category = 0
       Hint = 'DevExpressStyle'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_HighContrast: TdxBarButton
+      Tag = 4
       Caption = 'HighContrast'
       Category = 0
       Hint = 'HighContrast'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_Office2016Dark: TdxBarButton
+      Tag = 5
       Caption = 'Office2016Dark'
       Category = 0
       Hint = 'Office2016Dark'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_Pumpkin: TdxBarButton
+      Tag = 6
       Caption = 'Pumpkin'
       Category = 0
       Hint = 'Pumpkin'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarButton_Xmas2008Blue: TdxBarButton
+      Tag = 7
       Caption = 'Xmas2008Blue'
       Category = 0
       Hint = 'Xmas2008Blue'
       Visible = ivAlways
+      OnClick = Skin_Click
     end
     object BarStatic_MemoryLabel: TdxBarStatic
       Caption = 'Memory'
