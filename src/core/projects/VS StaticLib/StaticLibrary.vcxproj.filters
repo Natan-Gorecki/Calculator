@@ -7,16 +7,28 @@
     <ClInclude Include="..\..\api\I_Calculator.h">
       <Filter>api</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sources\C_Parser.h">
+      <Filter>sources\header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\Commands.h">
+      <Filter>sources\header files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\sources\C_Calculator.h">
-      <Filter>sources</Filter>
+      <Filter>sources\header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\sources\C_Parser.cpp">
+      <Filter>sources\source files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\sources\C_Calculator.cpp">
-      <Filter>sources</Filter>
+      <Filter>sources\source files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\sources\api.cpp">
-      <Filter>sources</Filter>
+      <Filter>sources\source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\Commands.cpp">
+      <Filter>sources\source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +37,12 @@
     </Filter>
     <Filter Include="sources">
       <UniqueIdentifier>{379e46fd-9cc3-4897-bcce-9e0ab3d5fb49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\source files">
+      <UniqueIdentifier>{0c9b02c7-265a-48c9-a540-ceebcde6b4c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\header files">
+      <UniqueIdentifier>{181103bf-c718-42e9-a142-a11e3ec64b26}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

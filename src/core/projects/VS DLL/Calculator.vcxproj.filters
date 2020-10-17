@@ -8,16 +8,28 @@
       <Filter>api</Filter>
     </ClInclude>
     <ClInclude Include="..\..\sources\C_Calculator.h">
-      <Filter>sources</Filter>
+      <Filter>sources\header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\C_Parser.h">
+      <Filter>sources\header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\Commands.h">
+      <Filter>sources\header files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="..\..\sources\C_Calculator.cpp">
-      <Filter>sources</Filter>
+      <Filter>sources\source files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\sources\api.cpp">
-      <Filter>sources</Filter>
+      <Filter>sources\source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\C_Parser.cpp">
+      <Filter>sources\source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\Commands.cpp">
+      <Filter>sources\source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -26,6 +38,12 @@
     </Filter>
     <Filter Include="sources">
       <UniqueIdentifier>{80630913-6ac2-4585-87ab-9f9932abc2c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\header files">
+      <UniqueIdentifier>{ad5e62aa-2bdc-4c45-857b-a3c0e0dae3e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sources\source files">
+      <UniqueIdentifier>{a2c477f5-694e-4afc-8f3d-b6c3485c74cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
