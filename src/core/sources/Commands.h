@@ -26,7 +26,7 @@ public:
 //-----------------------------------------------------------------
 //	Command representing single number
 //-----------------------------------------------------------------
-class C_NumberCommand : C_Command
+class C_NumberCommand : public C_Command
 {
 public:
 	virtual double CC Execute();
@@ -44,7 +44,7 @@ private:
 //-----------------------------------------------------------------
 //	Command representing addition
 //-----------------------------------------------------------------
-class C_AddCommand : C_Command
+class C_AddCommand : public C_Command
 {
 public:
 	virtual double CC Execute();
@@ -63,7 +63,7 @@ private:
 //-----------------------------------------------------------------
 //	Command representing subtraction
 //-----------------------------------------------------------------
-class C_SubtractCommand : C_Command
+class C_SubtractCommand : public C_Command
 {
 public:
 	virtual double CC Execute();
@@ -82,7 +82,7 @@ private:
 //-----------------------------------------------------------------
 //	Command representing multiplication
 //-----------------------------------------------------------------
-class C_MultiplyCommand : C_Command
+class C_MultiplyCommand : public C_Command
 {
 public:
 	virtual double CC Execute();
@@ -101,7 +101,7 @@ private:
 //-----------------------------------------------------------------
 //	Command representing division
 //-----------------------------------------------------------------
-class C_DivideCommand : C_Command
+class C_DivideCommand : public C_Command
 {
 public:
 	virtual double CC Execute();

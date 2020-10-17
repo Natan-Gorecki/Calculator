@@ -66,9 +66,9 @@ C_Command* C_Parser::Parse(std::string text)
 				switch (text[char_place])
 				{
 
-				case '+':	return 1 * calculate(text, char_place + 1, end);
+				case '+':	return new C_MultiplyCommand(new C_NumberCommand(1), Parse(text.substr(char_place + 1, text.length() - char_place)));
 
-				case '-':	return -1 * calculate(text, char_place + 1, end);
+				case '-':	return new C_MultiplyCommand(new C_NumberCommand(-1), Parse(text.substr(char_place + 1, text.length() - char_place)));
 
 					//	Invalid equation
 					//	e.g. *2 v /4
@@ -99,28 +99,27 @@ C_Command* C_Parser::Parse(std::string text)
 		//		* we have place of LAST operation to do in variable char_place
 		//		* we do this operation on two parts of the eqation separated by char_place
 		//---------------------------------------------------------------------------------------
+		std::string left = text.substr(0, char_place - 1);
+		std::string right = text.substr(char_place + 1, text.length() - char_place);
 		switch (text[char_place])
 		{
+		case '+':	
+			return new C_AddCommand(Parse(left), Parse(right));
 
-		case '+':	return calculate(text, 0, char_place - 1) + calculate(text, char_place + 1, text.length() - 1);
+		case '-':
+			return new C_SubtractCommand(Parse(left), Parse(right));
 
-		case '-':	return calculate(text, 0, char_place - 1) - calculate(text, char_place + 1, text.length() - 1);
-
-		case '*':	return calculate(text, 0, char_place - 1) * calculate(text, char_place + 1, text.length() - 1);
+		case '*':	
+			return new C_MultiplyCommand(Parse(left), Parse(right));
 
 		case '/':
+			return new C_DivideCommand(Parse(left), Parse(right));
 
-			//Throw exception - Division by 0!
-			if (calculate(text, char_place + 1, text.length() - 1) == 0)
-			{
-				;
-			}
+		case '(':
+			return new C_MultiplyCommand(Parse(left), Parse(text.substr(char_place, text.length() - char_place)));
 
-			return calculate(text, 0, char_place - 1) / calculate(text, char_place + 1, text.length() - 1);
-
-		case '(':	return calculate(text, 0, char_place - 1) * calculate(text, char_place, text.length() - 1);
-
-		case ')':	return calculate(text, 0, char_place) * calculate(text, char_place + 1, text.length() - 1);
+		case ')':
+			return new C_MultiplyCommand(Parse(text.substr(0, char_place)), Parse(right));
 		}
 	}
 
@@ -134,9 +133,9 @@ C_Command* C_Parser::Parse(std::string text)
 	//	(part_of_equation) => return part_of_eqation
 	//
 	//-----------------------------------------------------------
-	int left, rigth;
-	if (are_parentheses(text, left, rigth) == true)
-		return calculate(text, left + 1, rigth - 1);
+	int left, right;
+	if (are_parentheses(text, left, right) == true)
+		return Parse(text.substr(left + 1, right - left - 1));
 
 
 
@@ -185,7 +184,7 @@ C_Command* C_Parser::Parse(std::string text)
 	//	RETURN VALUE OF THIS PART OF THE EQUATION 
 	//
 	//------------------------------------------------------------
-	return stod(result);
+	return new C_NumberCommand(stod(result));
 }
 
 
