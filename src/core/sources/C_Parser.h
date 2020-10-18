@@ -23,13 +23,10 @@ private:
 	//	e.g. 2(4*2) - multiply
 	//		 2+4	- addition
 	//
-	//	Second function find	LAST	operation to do
 	//
-	//	Return the place, where find this operation
-	//
+	//	Return the place, where find  LAST  operation to do or -1
 	//-----------------------------------------------------------------
-	bool operation_outside_parentheses(std::string text);
-	int finding_last_operation(std::string text);
+	int OperationOutsideParentheses(std::string text);
 
 
 

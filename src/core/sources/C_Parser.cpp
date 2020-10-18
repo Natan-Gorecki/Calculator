@@ -18,12 +18,11 @@ C_Command* C_Parser::Parse(const char* expression)
 //------------------------------------------------------------------------------
 C_Command* C_Parser::Parse(std::string text)
 {
-	int char_place;
+	int char_place = OperationOutsideParentheses(text);
 
 	// If there is operation oustide patentheses => char_place = the place of LAST operation to do
-	if (operation_outside_parentheses(text) == true)
+	if (char_place != -1)
 	{
-		char_place = finding_last_operation(text);
 
 		//	e.g. +2 v *4
 		if (char_place == 0)
@@ -189,93 +188,12 @@ C_Command* C_Parser::Parse(std::string text)
 
 
 //------------------------------------------------------------------------------
-//	Function check if there is operation outside parentheses to do  
-//	e.g. 2(4*2) - multiply
-//		 2+4	- addition
-//
-//------------------------------------------------------------------------------
-bool C_Parser::operation_outside_parentheses(std::string text)
-{
-
-	// We're looking for operation ONLY OUTSIDE parentheses
-	// Level must have value 0
-	int level = 0;
-
-
-	//------------------------------------------
-	//	Loop that checks if there is addition or  subtraction
-	//	Return TRUE -	'+' v '-'
-	//------------------------------------------
-	for (int i = text.length() - 1; i >= 0; i--)
-	{
-		if (text[i] == '+' || text[i] == '-')
-			if (level == 0)
-				return true;
-
-		//	Opening the bracket increases level
-		if (text[i] == ')')
-			level++;
-
-		//	Closing the bracket decreases level
-		if (text[i] == '(')
-			level--;
-	}
-
-
-	//------------------------------------------
-	//	Loop that checks if there is multiplication or division
-	//	Return TRUE -	'*' v '/'
-	//	Return TRUE -	")2" v ")(" v "2("
-	//------------------------------------------
-	for (int i = text.length() - 1; i >= 0; i--)
-	{
-		if (text[i] == '*' || text[i] == '/')
-			if (level == 0)
-				return true;
-
-		//	Opening the bracket increases level
-		if (text[i] == ')')
-		{
-			level++;
-
-			//	Return TRUE, when next char is number <==> ") 2"
-			if (i < text.length()-1 && level == 1)
-				if (next_char(text, i + 1, text.length() - 1) != -1)
-					if (is_number(text[next_char(text, i + 1, text.length() - 1)]))
-						return true;
-		}
-
-
-		//	Closing the bracket decreases level
-		if (text[i] == '(')
-		{
-			level--;
-
-			//	Return TRUE, when previous char is number or the opposite bracket
-			//	<==> ") (" v "2 ("
-			if (i > 0 && level == 0)
-				if (previous_char(text, 0, i - 1) != -1)
-					if (is_number(text[previous_char(text, 0, i - 1)]) || text[previous_char(text, 0, i - 1)] == ')')
-						return true;
-		}
-	}
-
-
-	//	Return false, when no matching operation was found 
-	//	Ramaining number or operations in parentheses
-	return false;
-}
-
-
-
-//------------------------------------------------------------------------------
 //	Function find	LAST	operation to do
 //
 //	Return the place, where find this operation
 //------------------------------------------------------------------------------
-int C_Parser::finding_last_operation(std::string text)
+int C_Parser::OperationOutsideParentheses(std::string text)
 {
-
 	// We're looking for operation ONLY OUTSIDE parentheses
 	// Level must have value 0
 	int level = 0;
