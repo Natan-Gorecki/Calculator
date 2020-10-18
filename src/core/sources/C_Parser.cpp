@@ -83,9 +83,9 @@ C_Command* C_Parser::Parse(std::string text)
 		//		* throw exception for text like "2*"
 		//		* throw exception for text like "2 *   "
 		//-----------------------------------------------------------
-		if (char_place == text.length()-1)
+		if (char_place == (int)text.length()-1)
 			throw "Operation char at the end";
-		if (char_place < text.length() - 1)
+		if (char_place < (int)text.length() - 1)
 			if (NextChar(text, char_place + 1, text.length() - 1) == -1)
 				throw "Operation char at the end";
 
@@ -96,8 +96,8 @@ C_Command* C_Parser::Parse(std::string text)
 		//		* we have place of LAST operation to do in variable char_place
 		//		* we do this operation on two parts of the eqation separated by char_place
 		//---------------------------------------------------------------------------------------
-		std::string left = text.substr(0, char_place - 1);
-		std::string right = text.substr(char_place + 1, text.length() - char_place);
+		std::string left = text.substr(0, char_place);
+		std::string right = text.substr(char_place + 1, text.length() - (char_place+1));
 		switch (text[char_place])
 		{
 		case '+':	
@@ -116,7 +116,7 @@ C_Command* C_Parser::Parse(std::string text)
 			return new C_MultiplyCommand(Parse(left), Parse(text.substr(char_place, text.length() - char_place)));
 
 		case ')':
-			return new C_MultiplyCommand(Parse(text.substr(0, char_place)), Parse(right));
+			return new C_MultiplyCommand(Parse(text.substr(0, char_place+1)), Parse(right));
 		}
 	}
 
@@ -146,7 +146,7 @@ C_Command* C_Parser::Parse(std::string text)
 	//-----------------------------------------------------------
 	//	Convert part of equation from char[] to double 
 	//-----------------------------------------------------------
-	for (int i = 0; i <= text.length() - 1; i++)
+	for (int i = 0; i <= (int)text.length() - 1; i++)
 	{
 		if ('0' <= text[i] && text[i] <= '9')
 			result += text[i];
@@ -238,7 +238,7 @@ int C_Parser::OperationOutsideParentheses(std::string text)
 			level++;
 
 			//	Return the place of ')' when multiplication like ") 2" was found
-			if (i < text.length() - 1 && level == 1)
+			if (i < (int)text.length() - 1 && level == 1)
 				if (NextChar(text, i + 1, text.length() - 1) != -1)
 					if (IsNumber(text[PreviousChar(text, i + 1, text.length() - 1)]))
 						return i;
@@ -322,7 +322,7 @@ bool C_Parser::IsNumber(char c)
 std::string C_Parser::InsideParentheses(std::string text)
 {
 	int left = -1, right = -1;
-	for (int i = 0; i <= text.length() - 1; i++)
+	for (int i = 0; i <= (int)text.length() - 1; i++)
 	{
 		if (text[i] == ' ') continue;
 
@@ -392,7 +392,7 @@ bool C_Parser::CorrectParentheses(std::string text)
 {
 	int counter = 0;
 
-	for (int i = 0; i <= text.length() - 1; i++)
+	for (int i = 0; i <= (int)text.length() - 1; i++)
 	{
 		if (text[i] == '(')
 			counter++;
@@ -428,7 +428,7 @@ bool C_Parser::CorrectParentheses(std::string text)
 //-----------------------------------------------------------------
 bool C_Parser::CorrectCharacters(std::string text)
 {
-	for (int i = 0; i <= text.length() - 1; i++)
+	for (int i = 0; i <= (int)text.length() - 1; i++)
 		if (!(('(' <= text[i] && text[i] <= '9') || text[i] == ' '))
 			return false;
 
@@ -446,7 +446,7 @@ bool C_Parser::CorrectCharacters(std::string text)
 //-----------------------------------------------------------------
 bool C_Parser::EmptyParentheses(std::string text)
 {
-	for (int i = 0; i <= text.length()-1; i++)
+	for (int i = 0; i <= (int)text.length()-1; i++)
 	{
 		if (text[i] == '(')
 		{

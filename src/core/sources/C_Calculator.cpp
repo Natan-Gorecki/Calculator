@@ -32,7 +32,11 @@ C_Calculator::~C_Calculator()
 //------------------------------------------------------------------------------
 double CC C_Calculator::Calculate(const char* expression)
 {
-	if (command) delete command;
+	if (command)
+	{
+		delete command;
+		command = NULL;
+	}
 	this->command = parser->Parse(expression);
 	return this->command->Execute();
 }
