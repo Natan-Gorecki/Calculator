@@ -1,6 +1,4 @@
 #include "C_Parser.h"
-#include <string.h>
-#include <string>
 
 
 
@@ -133,9 +131,9 @@ C_Command* C_Parser::Parse(std::string text)
 	//	(part_of_equation) => return part_of_eqation
 	//
 	//-----------------------------------------------------------
-	int left, right;
-	if (are_parentheses(text, left, right) == true)
-		return Parse(text.substr(left + 1, right - left - 1));
+	std::string inner_expression = inside_parentheses(text);
+	if (inner_expression != "")
+		return Parse(inner_expression);
 
 
 
@@ -144,6 +142,7 @@ C_Command* C_Parser::Parse(std::string text)
 	//-----------------------------------------------------------
 	std::string result;
 	int count_of_dot = 0;
+
 
 	//-----------------------------------------------------------
 	//	Convert part of equation from char[] to double 
@@ -402,9 +401,9 @@ bool C_Parser::is_number(char c)
 //	e.g (2+2)	v	(4*2)
 //	
 //-----------------------------------------------------------------
-bool C_Parser::are_parentheses(std::string text, int& left, int& right)
+std::string C_Parser::inside_parentheses(std::string text)
 {
-	left = -1; right = -1;
+	int left = -1, right = -1;
 	for (int i = 0; i <= text.length() - 1; i++)
 	{
 		if (text[i] == ' ') continue;
@@ -423,23 +422,23 @@ bool C_Parser::are_parentheses(std::string text, int& left, int& right)
 				if (text[j] == ')')
 				{
 					right = j;
-					return true;
+					return text.substr(left + 1, right - left - 1);
 				}
 
 
 				// Last non-whitespace character isn't rigth bracket - return false
-				return false;
+				return "";
 			}
 		}
 
 
 		// First non-whitespace character isn't left bracket - return false
-		return false;
+		return "";
 	}
 
 
 	//	There are no parentheses - return false;
-	return false;
+	return "";
 }
 
 

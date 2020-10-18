@@ -2,6 +2,10 @@
 
 #include "Commands.h"
 
+#include <string.h>
+#include <string>
+
+
 class C_Parser
 {
 public:
@@ -52,10 +56,11 @@ private:
 
 	//-----------------------------------------------------------------
 	//	Method check if there are outside parentheses
-	//	and give their location in the left and right variable
 	//	e.g (2+2)	v	(4*2)
+	//
+	// Return empty string or expression inside parentheses 
 	//-----------------------------------------------------------------
-	bool are_parentheses(std::string text, int& left, int& right);
+	std::string inside_parentheses(std::string text);
 
 
 
