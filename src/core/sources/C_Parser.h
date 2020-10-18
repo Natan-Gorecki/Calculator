@@ -37,8 +37,8 @@ private:
 	//	Return -	-1	in case when there are only whitespace char in searched range
 	//
 	//-----------------------------------------------------------------
-	int next_char(std::string text, int start, int end);
-	int previous_char(std::string text, int start, int end);
+	int NextChar(std::string text, int start, int end);
+	int PreviousChar(std::string text, int start, int end);
 
 
 
@@ -47,7 +47,7 @@ private:
 	//
 	//	Return FALSE - other characters
 	//-----------------------------------------------------------------
-	bool is_number(char c);
+	bool IsNumber(char c);
 
 
 
@@ -57,15 +57,15 @@ private:
 	//
 	// Return empty string or expression inside parentheses 
 	//-----------------------------------------------------------------
-	std::string inside_parentheses(std::string text);
+	std::string InsideParentheses(std::string text);
 
 
 
 	//-----------------------------------------------------------------
 	//	Funtions checking if the equation is correct
 	//-----------------------------------------------------------------
-	void check_if_equation_is_correct(std::string text);
-	bool correct_parentheses(std::string text);
-	bool correct_characters(std::string text);
-	bool empty_parentheses(std::string text);
+	void CheckIfExpressionIsCorrect(std::string text);
+	bool CorrectParentheses(std::string text);
+	bool CorrectCharacters(std::string text);
+	bool EmptyParentheses(std::string text);
 };

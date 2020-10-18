@@ -5,7 +5,7 @@
 C_Command* C_Parser::Parse(const char* expression)
 {
 	std::string exp = std::string(expression);
-	check_if_equation_is_correct(exp);
+	CheckIfExpressionIsCorrect(exp);
 	return this->Parse(exp);
 }
 
@@ -42,9 +42,9 @@ C_Command* C_Parser::Parse(std::string text)
 
 			// We're checking multiplied operation char
 			// e.g ++, *+
-			if (previous_char(text, 0, char_place - 1) != -1)
+			if (PreviousChar(text, 0, char_place - 1) != -1)
 			{
-				char temp_ch = text[previous_char(text, 0, char_place - 1)];
+				char temp_ch = text[PreviousChar(text, 0, char_place - 1)];
 				if (temp_ch == '+' || temp_ch == '-' || temp_ch == '*' || temp_ch == '/')
 					throw "Too many operation chars ('+', '-', '*', '/')";
 			}
@@ -86,7 +86,7 @@ C_Command* C_Parser::Parse(std::string text)
 		if (char_place == text.length()-1)
 			throw "Operation char at the end";
 		if (char_place < text.length() - 1)
-			if (next_char(text, char_place + 1, text.length() - 1) == -1)
+			if (NextChar(text, char_place + 1, text.length() - 1) == -1)
 				throw "Operation char at the end";
 
 
@@ -130,7 +130,7 @@ C_Command* C_Parser::Parse(std::string text)
 	//	(part_of_equation) => return part_of_eqation
 	//
 	//-----------------------------------------------------------
-	std::string inner_expression = inside_parentheses(text);
+	std::string inner_expression = InsideParentheses(text);
 	if (inner_expression != "")
 		return Parse(inner_expression);
 
@@ -239,8 +239,8 @@ int C_Parser::OperationOutsideParentheses(std::string text)
 
 			//	Return the place of ')' when multiplication like ") 2" was found
 			if (i < text.length() - 1 && level == 1)
-				if (next_char(text, i + 1, text.length() - 1) != -1)
-					if (is_number(text[previous_char(text, i + 1, text.length() - 1)]))
+				if (NextChar(text, i + 1, text.length() - 1) != -1)
+					if (IsNumber(text[PreviousChar(text, i + 1, text.length() - 1)]))
 						return i;
 		}
 
@@ -252,8 +252,8 @@ int C_Parser::OperationOutsideParentheses(std::string text)
 
 			//	Return the place of '(' when multiplication like "2 (" or ") (" was found
 			if (i > 0 && level == 0)
-				if (previous_char(text, 0, i - 1) != -1)
-					if (is_number(text[previous_char(text, 0, i - 1)]) || text[previous_char(text, 0, i - 1)] == ')')
+				if (PreviousChar(text, 0, i - 1) != -1)
+					if (IsNumber(text[PreviousChar(text, 0, i - 1)]) || text[PreviousChar(text, 0, i - 1)] == ')')
 						return i;
 		}
 	}
@@ -270,7 +270,7 @@ int C_Parser::OperationOutsideParentheses(std::string text)
 //	Return - the place of following char
 //	Return -	-1	in case when there are only whitespace char in searched range
 //-----------------------------------------------------------------
-int C_Parser::next_char(std::string text, int start, int end)
+int C_Parser::NextChar(std::string text, int start, int end)
 {
 	for (int i = start; i <= end; i++)
 		if (text[i] != ' ')
@@ -287,7 +287,7 @@ int C_Parser::next_char(std::string text, int start, int end)
 //	Return - the place of previous char
 //	Return -	-1	in case when there are only whitespace char in searched range
 //-----------------------------------------------------------------
-int C_Parser::previous_char(std::string text, int start, int end)
+int C_Parser::PreviousChar(std::string text, int start, int end)
 {
 	for (int i = end; i >= start; i--)
 		if (text[i] != ' ')
@@ -303,7 +303,7 @@ int C_Parser::previous_char(std::string text, int start, int end)
 //
 //	Return FALSE - other characters
 //-----------------------------------------------------------------
-bool C_Parser::is_number(char c)
+bool C_Parser::IsNumber(char c)
 {
 	if (('0' <= c && c <= '9') || c == '.' || c == ',')
 		return true;
@@ -319,7 +319,7 @@ bool C_Parser::is_number(char c)
 //	e.g (2+2)	v	(4*2)
 //	
 //-----------------------------------------------------------------
-std::string C_Parser::inside_parentheses(std::string text)
+std::string C_Parser::InsideParentheses(std::string text)
 {
 	int left = -1, right = -1;
 	for (int i = 0; i <= text.length() - 1; i++)
@@ -366,15 +366,15 @@ std::string C_Parser::inside_parentheses(std::string text)
 //	Funtion checking if the equation is correct
 //
 //-----------------------------------------------------------------
-void C_Parser::check_if_equation_is_correct(std::string text)
+void C_Parser::CheckIfExpressionIsCorrect(std::string text)
 {
-	if (correct_parentheses(text) == false)
+	if (CorrectParentheses(text) == false)
 		throw "Invalid parentheses";
 
-	if (empty_parentheses(text) == true)
+	if (EmptyParentheses(text) == true)
 		throw "Empty parentheses";
 
-	if (correct_characters(text) == false)
+	if (CorrectCharacters(text) == false)
 		throw "Invalid character";
 
 	if (text.empty())
@@ -388,7 +388,7 @@ void C_Parser::check_if_equation_is_correct(std::string text)
 //	Funtion checking if the number and position of parentheses is correct
 //
 //-----------------------------------------------------------------
-bool C_Parser::correct_parentheses(std::string text)
+bool C_Parser::CorrectParentheses(std::string text)
 {
 	int counter = 0;
 
@@ -426,7 +426,7 @@ bool C_Parser::correct_parentheses(std::string text)
 //	Correct characters are (, ), *, +, -, ., /, 0-9 and ','
 //
 //-----------------------------------------------------------------
-bool C_Parser::correct_characters(std::string text)
+bool C_Parser::CorrectCharacters(std::string text)
 {
 	for (int i = 0; i <= text.length() - 1; i++)
 		if (!(('(' <= text[i] && text[i] <= '9') || text[i] == ' '))
@@ -444,15 +444,15 @@ bool C_Parser::correct_characters(std::string text)
 //	e.g. '( )'
 //
 //-----------------------------------------------------------------
-bool C_Parser::empty_parentheses(std::string text)
+bool C_Parser::EmptyParentheses(std::string text)
 {
 	for (int i = 0; i <= text.length()-1; i++)
 	{
 		if (text[i] == '(')
 		{
-			if (next_char(text, i + 1, text.length() - 1) != -1)
+			if (NextChar(text, i + 1, text.length() - 1) != -1)
 			{
-				if (text[next_char(text, i + 1, text.length() - 1)] == ')')
+				if (text[NextChar(text, i + 1, text.length() - 1)] == ')')
 					return true;
 			}
 		}
