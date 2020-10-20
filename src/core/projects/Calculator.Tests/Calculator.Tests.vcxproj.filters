@@ -1,33 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{e51bcb78-a43b-4d4a-8fe2-212817405609}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files">
+    <Filter Include="Tests">
       <UniqueIdentifier>{239bab24-b4db-40fe-a272-bacdd0f8cbad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\tests\C_Calculator.Tests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tests\C_Parser.Tests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\tests\Commands.Tests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="..\..\tests\C_Calculator.Tests.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tests\C_Parser.Tests.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tests\Commands.Tests.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
