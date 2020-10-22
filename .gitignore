@@ -9,3 +9,4 @@ out/
 src/apps/VC++/Debug/
 src/core/projects/BCC StaticLib/Win32/
 src/apps/BCC/Win32/
+src/core/projects/Calculator.Tests/Debug/
