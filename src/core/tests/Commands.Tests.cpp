@@ -1,8 +1,9 @@
 #include "Commands.h"
 #include "CppUnitTest.h"
-#include <functional>
+
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+
 
 namespace CalculatorTests
 {
@@ -69,7 +70,7 @@ namespace CalculatorTests
 			C_DivideCommand command(left, right);
 
 			
-			auto method = std::bind(&C_DivideCommand::Execute, &command);
+			auto method = [&command] { return command.Execute(); };
 			Assert::ExpectException<const char*>(method, L"Division by 0");
 		}
 	};
