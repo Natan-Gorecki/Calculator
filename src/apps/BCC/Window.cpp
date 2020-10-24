@@ -45,6 +45,14 @@ TForm1 *Form1;
 
 //------------------------------------------------------------------------------
 
+void ErrorHandler(const char* message)
+{
+	Form1->Label_Expression->Caption = message;
+	Form1->Label_Expression->Caption += "!";
+}
+
+//------------------------------------------------------------------------------
+
 __fastcall TForm1::TForm1(TComponent* Owner)
 	: TForm(Owner)
 {
@@ -58,20 +66,24 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 	else
 	{
 		create_calculator CreateCalculator = (create_calculator)GetProcAddress(h_dll, "CreateCalculator");
+		set_error_callback SetErrorCallback = (set_error_callback)GetProcAddress(h_dll, "SetErrorCallback");
 
-		if(CreateCalculator)
+
+		if(CreateCalculator && SetErrorCallback)
 		{
 #endif
 
 			//*********************************************
 			this->calculator = CreateCalculator();
+			SetErrorCallback(ErrorHandler);
 			//*********************************************
+
 
 #if !(defined(USE_DLL) || defined(USE_STATIC_LIB))
 		}
 		else
 		{
-			Label_Expression->Caption = "Address to CreateCalculator() function is not valid !!!";
+			Label_Expression->Caption = "Address to CreateCalculator() or SetErrorCallback() function is not valid !!!";
 		}
 	}
 #endif
@@ -235,7 +247,6 @@ void __fastcall TForm1::Button_EqualClick(TObject *Sender)
 		catch(...)
 		{
 			result = 0;
-			Label_Expression->Caption = "Invalid format!";
 		}
 
 

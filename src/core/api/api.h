@@ -65,3 +65,14 @@ typedef I_Calculator* (CC* create_calculator)();
 typedef void (CC* delete_calculator)(I_Calculator*);
 //
 //-----------------------------------------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------------------------------------------
+//	Error Callback
+//
+typedef void (CC* ErrorCallback)(const char* message);
+
+EXPORT void CC SetErrorCallback(ErrorCallback callback);
+typedef void (CC* set_error_callback)(ErrorCallback);
+//
+//-----------------------------------------------------------------------------------------------------

@@ -1,5 +1,9 @@
 #include "C_Calculator.h"
 
+
+extern ErrorCallback error_callback;
+
+
 //------------------------------------------------------------------------------
 //
 //	Constructor
@@ -32,11 +36,26 @@ C_Calculator::~C_Calculator()
 //------------------------------------------------------------------------------
 double CC C_Calculator::Calculate(const char* expression)
 {
-	if (command)
+	try
 	{
-		delete command;
-		command = NULL;
+		if (command)
+		{
+			delete command;
+			command = NULL;
+		}
+		this->command = parser->Parse(expression);
+		return this->command->Execute();
 	}
-	this->command = parser->Parse(expression);
-	return this->command->Execute();
+
+
+	// Invoke error callback and rethrow exception
+	catch (const char* exception)
+	{
+		if (error_callback)
+		{
+			error_callback(exception);
+		}
+
+		throw;
+	}
 }
