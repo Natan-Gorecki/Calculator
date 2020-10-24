@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F4BD0DF1-4DE9-4344-B96D-2F246A9C5062}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Calculator_BCC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\core\projects\BCC StaticLib\StaticLibrary_BCC.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Calculator_BCC">
+        <MSBuild Projects="Calculator_BCC.cbproj"/>
+    </Target>
+    <Target Name="Calculator_BCC:Clean">
+        <MSBuild Projects="Calculator_BCC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Calculator_BCC:Make">
+        <MSBuild Projects="Calculator_BCC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="StaticLibrary_BCC">
+        <MSBuild Projects="..\..\core\projects\BCC StaticLib\StaticLibrary_BCC.cbproj"/>
+    </Target>
+    <Target Name="StaticLibrary_BCC:Clean">
+        <MSBuild Projects="..\..\core\projects\BCC StaticLib\StaticLibrary_BCC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StaticLibrary_BCC:Make">
+        <MSBuild Projects="..\..\core\projects\BCC StaticLib\StaticLibrary_BCC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Calculator_BCC;StaticLibrary_BCC"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Calculator_BCC:Clean;StaticLibrary_BCC:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Calculator_BCC:Make;StaticLibrary_BCC:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
