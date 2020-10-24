@@ -4,7 +4,7 @@
         <ProjectVersion>18.6</ProjectVersion>
         <FrameworkType>None</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>StaticLibrary</AppType>
@@ -169,13 +169,25 @@
             <BuildOrder>1</BuildOrder>
         </None>
         <CppCompile Include="..\..\sources\api.cpp">
-            <BuildOrder>2</BuildOrder>
+            <BuildOrder>4</BuildOrder>
         </CppCompile>
+        <CppCompile Include="..\..\sources\Commands.cpp">
+            <BuildOrder>7</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\sources\Commands.h">
+            <BuildOrder>8</BuildOrder>
+        </None>
         <CppCompile Include="..\..\sources\C_Calculator.cpp">
             <BuildOrder>3</BuildOrder>
         </CppCompile>
         <None Include="..\..\sources\C_Calculator.h">
             <BuildOrder>4</BuildOrder>
+        </None>
+        <CppCompile Include="..\..\sources\C_Parser.cpp">
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <None Include="..\..\sources\C_Parser.h">
+            <BuildOrder>6</BuildOrder>
         </None>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -204,6 +216,12 @@
             <Deployment Version="3">
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c260.dll" Class="DependencyModule">
                     <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="..\..\..\..\out\lib\x86\Release\StaticLibrary_BCC.lib" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>StaticLibrary_BCC.lib</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -270,12 +288,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\..\..\out\lib\x86\Debug\StaticLibrary_BCC.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>StaticLibrary_BCC.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

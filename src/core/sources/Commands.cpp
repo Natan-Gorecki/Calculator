@@ -26,7 +26,8 @@ C_AddCommand::C_AddCommand(C_Command* left, C_Command* right)
 
 C_AddCommand::~C_AddCommand()
 {
-	delete _left, _right;
+	delete _left,
+	delete _right;
 }
 
 double C_AddCommand::Execute()
@@ -47,7 +48,8 @@ C_SubtractCommand::C_SubtractCommand(C_Command* left, C_Command* right)
 
 C_SubtractCommand::~C_SubtractCommand()
 {
-	delete _left, _right;
+	delete _left;
+	delete _right;
 }
 
 double C_SubtractCommand::Execute()
@@ -68,7 +70,8 @@ C_MultiplyCommand::C_MultiplyCommand(C_Command* left, C_Command* right)
 
 C_MultiplyCommand::~C_MultiplyCommand()
 {
-	delete _left, _right;
+	delete _left;
+	delete _right;
 }
 
 double C_MultiplyCommand::Execute()
@@ -89,7 +92,8 @@ C_DivideCommand::C_DivideCommand(C_Command* left, C_Command* right)
 
 C_DivideCommand::~C_DivideCommand()
 {
-	delete _left, _right;
+	delete _left;
+    delete _right;
 }
 
 double C_DivideCommand::Execute()

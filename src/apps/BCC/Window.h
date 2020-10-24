@@ -1,12 +1,12 @@
 //------------------------------------------------------------------------------
 //
 //	Use static library "StaticLibrary_BCC.lib"
-//	#define USE_STATIC_LIB
+	#define USE_STATIC_LIB 1
 //
 //------------------------------------------------------------------------------
 //
 //	Use dll "Calculator.dll" with linking library "Calculator_BCC.lib"
-//	#define USE_DLL
+//	#define USE_DLL 1
 //
 //------------------------------------------------------------------------------
 //
