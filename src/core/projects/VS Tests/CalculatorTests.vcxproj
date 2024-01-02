@@ -33,20 +33,24 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\api;..\..\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>..\..\sources;$(VC_SourcePath);</SourcePath>
+    <IncludePath>$(SolutionDir)src\core\api;$(SolutionDir)src\core\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>$(SolutionDir)src\core\sources;$(VC_SourcePath);</SourcePath>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\..\api;..\..\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>..\..\sources;$(VC_SourcePath);</SourcePath>
+    <IncludePath>$(SolutionDir)src\core\api;$(SolutionDir)src\core\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>$(SolutionDir)src\core\sources;$(VC_SourcePath);</SourcePath>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\..\api;..\..\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>..\..\sources;$(VC_SourcePath);</SourcePath>
+    <IncludePath>$(SolutionDir)src\core\api;$(SolutionDir)src\core\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>$(SolutionDir)src\core\sources;$(VC_SourcePath);</SourcePath>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>..\..\api;..\..\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>..\..\sources;$(VC_SourcePath);</SourcePath>
+    <IncludePath>$(SolutionDir)src\core\api;$(SolutionDir)src\core\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>$(SolutionDir)src\core\sources;$(VC_SourcePath);</SourcePath>
+    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,16 +116,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\sources\api.cpp" />
-    <ClCompile Include="..\..\sources\Calculator.cpp" />
-    <ClCompile Include="..\..\sources\Commands.cpp" />
-    <ClCompile Include="..\..\sources\Parser.cpp" />
     <ClCompile Include="..\..\tests\Calculator.Tests.cpp" />
     <ClCompile Include="..\..\tests\Commands.Tests.cpp" />
     <ClCompile Include="..\..\tests\Parser.Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VS Static\CalculatorStatic.vcxproj">
+      <Project>{eafe51d4-2eb2-4332-86ba-63e57468315f}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
