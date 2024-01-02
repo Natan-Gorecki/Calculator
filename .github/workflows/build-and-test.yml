@@ -22,5 +22,5 @@ jobs:
       run: msbuild CalculatorSolution.sln /p:Configuration=Release /p:Platform=x64
 
     - name: Test
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: out/Release/x64/CalculatorTests.exe
+      working-directory: ${{env.GITHUB_WORKSPACE}}/out/Release/x64
+      run: CalculatorTests.exe
