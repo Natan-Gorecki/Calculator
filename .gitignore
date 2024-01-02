@@ -1,12 +1,7 @@
-src/apps/VC++/.vs/
-src/core/projects/VS DLL/Debug/
-src/core/projects/VS DLL/Release/
-src/core/projects/VS DLL/x64/
-src/core/projects/VS StaticLib/Debug/
-src/core/projects/VS StaticLib/Release/
-src/core/projects/VS StaticLib/x64/
-out/
-src/apps/VC++/Debug/
-src/core/projects/BCC StaticLib/Win32/
-src/apps/BCC/Win32/
-src/core/projects/Calculator.Tests/Debug/
+# Visual Studio files
+.vs/
+
+# Binary files
+x64/
+Debug/
+Release/
