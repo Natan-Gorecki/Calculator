@@ -34,22 +34,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)src\core\api;$(SolutionDir)src\core\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>$(SolutionDir)src\core\sources;$(VC_SourcePath);</SourcePath>
+    <SourcePath>$(SolutionDir)packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.7\build\native\include;$(SolutionDir)src\core\sources;$(VC_SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDir)src\core\api;$(SolutionDir)src\core\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>$(SolutionDir)src\core\sources;$(VC_SourcePath);</SourcePath>
+    <SourcePath>$(SolutionDir)packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.7\build\native\include;$(SolutionDir)src\core\sources;$(VC_SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)src\core\api;$(SolutionDir)src\core\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>$(SolutionDir)src\core\sources;$(VC_SourcePath);</SourcePath>
+    <SourcePath>$(SolutionDir)packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.7\build\native\include;$(SolutionDir)src\core\sources;$(VC_SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)src\core\api;$(SolutionDir)src\core\sources;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>$(SolutionDir)src\core\sources;$(VC_SourcePath);</SourcePath>
+    <SourcePath>$(SolutionDir)packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.7\build\native\include;$(SolutionDir)src\core\sources;$(VC_SourcePath)</SourcePath>
     <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup />
