@@ -29,7 +29,7 @@ int main()
 	//	Get export functions from dll without using linking library
 	//
 	#if !(USE_DLL || USE_STATIC_LIB)
-		HMODULE h_dll = LoadLibrary(L"Calculator");
+		HMODULE h_dll = LoadLibrary(L"CalculatorShared");
 
 		if (h_dll == 0) 
 		{
@@ -46,7 +46,7 @@ int main()
 
 
 	//******************************************************************************************************
-	I_Calculator* calculator = CreateCalculator();
+	ICalculator* calculator = CreateCalculator();
 	//******************************************************************************************************
 
 
