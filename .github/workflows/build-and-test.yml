@@ -22,11 +22,14 @@ jobs:
       run: msbuild CalculatorSolution.sln /p:Configuration=Release /p:Platform=x64
 
     - name: Print GITHUB_WORKSPACE
-      run: echo "Workspace: ${{env.GITHUB_WORKSPACE}}"
+      run: |
+        echo "Workspace: ${{env.GITHUB_WORKSPACE}}"
 
     - name: List Contents
-      run: ls -la ${{env.GITHUB_WORKSPACE}}/out/Release/x64
+      run: |
+        ls -la ${{env.GITHUB_WORKSPACE}}/out/Release/x64
 
     - name: Test
       working-directory: ${{env.GITHUB_WORKSPACE}}/out/Release/x64
-      run: .\CalculatorTests.exe
+      run: |
+        .\CalculatorTests.exe
