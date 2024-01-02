@@ -18,33 +18,33 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="..\..\..\sources\api.cpp">
+    <ClCompile Include="..\..\sources\api.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\sources\Calculator.cpp">
+    <ClCompile Include="..\..\sources\Calculator.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\sources\Commands.cpp">
+    <ClCompile Include="..\..\sources\Commands.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\sources\Parser.cpp">
+    <ClCompile Include="..\..\sources\Parser.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\api\api.h">
+    <ClInclude Include="..\..\api\api.h">
       <Filter>Headers\api</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\api\ICalculator.h">
+    <ClInclude Include="..\..\api\ICalculator.h">
       <Filter>Headers\api</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\sources\Calculator.h">
+    <ClInclude Include="..\..\sources\Calculator.h">
       <Filter>Headers\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\sources\Commands.h">
+    <ClInclude Include="..\..\sources\Commands.h">
       <Filter>Headers\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\sources\Parser.h">
+    <ClInclude Include="..\..\sources\Parser.h">
       <Filter>Headers\sources</Filter>
     </ClInclude>
   </ItemGroup>

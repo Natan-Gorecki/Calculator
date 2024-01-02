@@ -1,6 +1,9 @@
 # Visual Studio files
 .vs/
 
+# NuGet
+packages/
+
 # Binary files
 x64/
 Debug/
