@@ -2,11 +2,11 @@
 
 #include "api.h"
 #include "Commands.h"
-#include "C_Parser.h"
+#include "Parser.h"
 
 
-class C_Calculator :
-	public I_Calculator
+class Calculator :
+	public ICalculator
 {
 	// Calculate Method
 public:
@@ -15,12 +15,12 @@ public:
 
 	// Constructor / Destructor
 public:
-	C_Calculator();
-	virtual ~C_Calculator();
+	Calculator();
+	virtual ~Calculator();
 
 
 	// Attributes
 private:
-	C_Command* command = NULL;
-	C_Parser* parser = NULL;
+	Command* command = NULL;
+	Parser* parser = NULL;
 };

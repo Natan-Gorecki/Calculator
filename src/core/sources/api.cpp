@@ -1,5 +1,5 @@
 #include "api.h"
-#include "C_Calculator.h"
+#include "Calculator.h"
 
 
 //	Error Callback
@@ -11,9 +11,9 @@ ErrorCallback error_callback = NULL;
 //	CreateCalculator()
 //
 //-----------------------------------------------------------------------------------------------------
-EXPORT I_Calculator* CC CreateCalculator()
+EXPORT ICalculator* CC CreateCalculator()
 {
-	return (I_Calculator*) new C_Calculator();
+	return (ICalculator*) new Calculator();
 }
 
 
@@ -22,7 +22,7 @@ EXPORT I_Calculator* CC CreateCalculator()
 //	DeleteCalculator( I_Calculator* calculator)
 //
 //-----------------------------------------------------------------------------------------------------
-EXPORT void CC DeleteCalculator(I_Calculator* calculator)
+EXPORT void CC DeleteCalculator(ICalculator* calculator)
 {
 	delete calculator;
 	return;

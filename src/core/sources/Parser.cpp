@@ -1,8 +1,8 @@
-#include "C_Parser.h"
+#include "Parser.h"
 
 
 
-C_Command* C_Parser::Parse(const char* expression)
+Command* Parser::Parse(const char* expression)
 {
 	std::string exp = std::string(expression);
 	CheckIfExpressionIsCorrect(exp);
@@ -16,7 +16,7 @@ C_Command* C_Parser::Parse(const char* expression)
 //	Function calculating the result
 //
 //------------------------------------------------------------------------------
-C_Command* C_Parser::Parse(std::string text)
+Command* Parser::Parse(std::string text)
 {
 	int char_place = OperationOutsideParentheses(text);
 
@@ -63,9 +63,9 @@ C_Command* C_Parser::Parse(std::string text)
 				switch (text[char_place])
 				{
 
-				case '+':	return new C_MultiplyCommand(new C_NumberCommand(1), Parse(text.substr(char_place + 1, text.length() - char_place)));
+				case '+':	return new MultiplyCommand(new NumberCommand(1), Parse(text.substr(char_place + 1, text.length() - char_place)));
 
-				case '-':	return new C_MultiplyCommand(new C_NumberCommand(-1), Parse(text.substr(char_place + 1, text.length() - char_place)));
+				case '-':	return new MultiplyCommand(new NumberCommand(-1), Parse(text.substr(char_place + 1, text.length() - char_place)));
 
 					//	Invalid equation
 					//	e.g. *2 v /4
@@ -101,22 +101,22 @@ C_Command* C_Parser::Parse(std::string text)
 		switch (text[char_place])
 		{
 		case '+':	
-			return new C_AddCommand(Parse(left), Parse(right));
+			return new AddCommand(Parse(left), Parse(right));
 
 		case '-':
-			return new C_SubtractCommand(Parse(left), Parse(right));
+			return new SubtractCommand(Parse(left), Parse(right));
 
 		case '*':	
-			return new C_MultiplyCommand(Parse(left), Parse(right));
+			return new MultiplyCommand(Parse(left), Parse(right));
 
 		case '/':
-			return new C_DivideCommand(Parse(left), Parse(right));
+			return new DivideCommand(Parse(left), Parse(right));
 
 		case '(':
-			return new C_MultiplyCommand(Parse(left), Parse(text.substr(char_place, text.length() - char_place)));
+			return new MultiplyCommand(Parse(left), Parse(text.substr(char_place, text.length() - char_place)));
 
 		case ')':
-			return new C_MultiplyCommand(Parse(text.substr(0, char_place+1)), Parse(right));
+			return new MultiplyCommand(Parse(text.substr(0, char_place+1)), Parse(right));
 		}
 	}
 
@@ -182,7 +182,7 @@ C_Command* C_Parser::Parse(std::string text)
 	//	RETURN VALUE OF THIS PART OF THE EQUATION 
 	//
 	//------------------------------------------------------------
-	return new C_NumberCommand(stod(result));
+	return new NumberCommand(stod(result));
 }
 
 
@@ -192,7 +192,7 @@ C_Command* C_Parser::Parse(std::string text)
 //
 //	Return the place, where find this operation
 //------------------------------------------------------------------------------
-int C_Parser::OperationOutsideParentheses(std::string text)
+int Parser::OperationOutsideParentheses(std::string text)
 {
 	// We're looking for operation ONLY OUTSIDE parentheses
 	// Level must have value 0
@@ -270,7 +270,7 @@ int C_Parser::OperationOutsideParentheses(std::string text)
 //	Return - the place of following char
 //	Return -	-1	in case when there are only whitespace char in searched range
 //-----------------------------------------------------------------
-int C_Parser::NextChar(std::string text, int start, int end)
+int Parser::NextChar(std::string text, int start, int end)
 {
 	for (int i = start; i <= end; i++)
 		if (text[i] != ' ')
@@ -287,7 +287,7 @@ int C_Parser::NextChar(std::string text, int start, int end)
 //	Return - the place of previous char
 //	Return -	-1	in case when there are only whitespace char in searched range
 //-----------------------------------------------------------------
-int C_Parser::PreviousChar(std::string text, int start, int end)
+int Parser::PreviousChar(std::string text, int start, int end)
 {
 	for (int i = end; i >= start; i--)
 		if (text[i] != ' ')
@@ -303,7 +303,7 @@ int C_Parser::PreviousChar(std::string text, int start, int end)
 //
 //	Return FALSE - other characters
 //-----------------------------------------------------------------
-bool C_Parser::IsNumber(char c)
+bool Parser::IsNumber(char c)
 {
 	if (('0' <= c && c <= '9') || c == '.' || c == ',')
 		return true;
@@ -319,7 +319,7 @@ bool C_Parser::IsNumber(char c)
 //	e.g (2+2)	v	(4*2)
 //	
 //-----------------------------------------------------------------
-std::string C_Parser::InsideParentheses(std::string text)
+std::string Parser::InsideParentheses(std::string text)
 {
 	int left = -1, right = -1;
 	for (int i = 0; i <= (int)text.length() - 1; i++)
@@ -366,7 +366,7 @@ std::string C_Parser::InsideParentheses(std::string text)
 //	Funtion checking if the equation is correct
 //
 //-----------------------------------------------------------------
-void C_Parser::CheckIfExpressionIsCorrect(std::string text)
+void Parser::CheckIfExpressionIsCorrect(std::string text)
 {
 	if (CorrectParentheses(text) == false)
 		throw "Invalid parentheses";
@@ -388,7 +388,7 @@ void C_Parser::CheckIfExpressionIsCorrect(std::string text)
 //	Funtion checking if the number and position of parentheses is correct
 //
 //-----------------------------------------------------------------
-bool C_Parser::CorrectParentheses(std::string text)
+bool Parser::CorrectParentheses(std::string text)
 {
 	int counter = 0;
 
@@ -426,7 +426,7 @@ bool C_Parser::CorrectParentheses(std::string text)
 //	Correct characters are (, ), *, +, -, ., /, 0-9 and ','
 //
 //-----------------------------------------------------------------
-bool C_Parser::CorrectCharacters(std::string text)
+bool Parser::CorrectCharacters(std::string text)
 {
 	for (int i = 0; i <= (int)text.length() - 1; i++)
 		if (!(('(' <= text[i] && text[i] <= '9') || text[i] == ' '))
@@ -444,7 +444,7 @@ bool C_Parser::CorrectCharacters(std::string text)
 //	e.g. '( )'
 //
 //-----------------------------------------------------------------
-bool C_Parser::EmptyParentheses(std::string text)
+bool Parser::EmptyParentheses(std::string text)
 {
 	for (int i = 0; i <= (int)text.length()-1; i++)
 	{

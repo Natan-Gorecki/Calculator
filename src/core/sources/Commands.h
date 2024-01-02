@@ -14,11 +14,11 @@
 //-----------------------------------------------------------------
 // Abstract base class with virtual Execute method
 //-----------------------------------------------------------------
-class C_Command
+class Command
 {
 public:
 	virtual double CC Execute() = 0;
-	virtual ~C_Command() {};
+	virtual ~Command() {};
 };
 
 
@@ -26,14 +26,14 @@ public:
 //-----------------------------------------------------------------
 //	Command representing single number
 //-----------------------------------------------------------------
-class C_NumberCommand : public C_Command
+class NumberCommand : public Command
 {
 public:
 	virtual double CC Execute();
 
 public:
-	C_NumberCommand(double number);
-	virtual ~C_NumberCommand() {};
+	NumberCommand(double number);
+	virtual ~NumberCommand() {};
 
 private:
 	double _number;
@@ -44,18 +44,18 @@ private:
 //-----------------------------------------------------------------
 //	Command representing addition
 //-----------------------------------------------------------------
-class C_AddCommand : public C_Command
+class AddCommand : public Command
 {
 public:
 	virtual double CC Execute();
 
 public:
-	C_AddCommand(C_Command* left, C_Command* right);
-	virtual ~C_AddCommand();
+	AddCommand(Command* left, Command* right);
+	virtual ~AddCommand();
 
 private:
-	C_Command* _left;
-	C_Command* _right;
+	Command* _left;
+	Command* _right;
 };
 
 
@@ -63,18 +63,18 @@ private:
 //-----------------------------------------------------------------
 //	Command representing subtraction
 //-----------------------------------------------------------------
-class C_SubtractCommand : public C_Command
+class SubtractCommand : public Command
 {
 public:
 	virtual double CC Execute();
 
 public:
-	C_SubtractCommand(C_Command* left, C_Command* right);
-	virtual ~C_SubtractCommand();
+	SubtractCommand(Command* left, Command* right);
+	virtual ~SubtractCommand();
 
 private:
-	C_Command* _left;
-	C_Command* _right;
+	Command* _left;
+	Command* _right;
 };
 
 
@@ -82,18 +82,18 @@ private:
 //-----------------------------------------------------------------
 //	Command representing multiplication
 //-----------------------------------------------------------------
-class C_MultiplyCommand : public C_Command
+class MultiplyCommand : public Command
 {
 public:
 	virtual double CC Execute();
 
 public:
-	C_MultiplyCommand(C_Command* left, C_Command* right);
-	virtual ~C_MultiplyCommand();
+	MultiplyCommand(Command* left, Command* right);
+	virtual ~MultiplyCommand();
 
 private:
-	C_Command* _left;
-	C_Command* _right;
+	Command* _left;
+	Command* _right;
 };
 
 
@@ -101,16 +101,16 @@ private:
 //-----------------------------------------------------------------
 //	Command representing division
 //-----------------------------------------------------------------
-class C_DivideCommand : public C_Command
+class DivideCommand : public Command
 {
 public:
 	virtual double CC Execute();
 
 public:
-	C_DivideCommand(C_Command* left, C_Command* right);
-	virtual ~C_DivideCommand();
+	DivideCommand(Command* left, Command* right);
+	virtual ~DivideCommand();
 
 private:
-	C_Command* _left;
-	C_Command* _right;
+	Command* _left;
+	Command* _right;
 };

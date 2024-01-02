@@ -1,4 +1,4 @@
-#include "C_Calculator.h"
+#include "Calculator.h"
 
 
 extern ErrorCallback error_callback;
@@ -9,9 +9,9 @@ extern ErrorCallback error_callback;
 //	Constructor
 //
 //------------------------------------------------------------------------------
-C_Calculator::C_Calculator()
+Calculator::Calculator()
 {
-	this->parser = new C_Parser();
+	this->parser = new Parser();
 }
 
 
@@ -21,7 +21,7 @@ C_Calculator::C_Calculator()
 //	Virtual destructor
 //
 //------------------------------------------------------------------------------
-C_Calculator::~C_Calculator()
+Calculator::~Calculator()
 {
 	delete parser;
 	if (command) delete command;
@@ -34,7 +34,7 @@ C_Calculator::~C_Calculator()
 // Public method return result using command object
 //
 //------------------------------------------------------------------------------
-double CC C_Calculator::Calculate(const char* expression)
+double CC Calculator::Calculate(const char* expression)
 {
 	try
 	{

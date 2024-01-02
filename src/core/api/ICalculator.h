@@ -1,8 +1,8 @@
 #pragma once
 
-class I_Calculator
+class ICalculator
 {
 public:
 	virtual double CC Calculate(const char* expression) = 0;
-	virtual ~I_Calculator() {};
+	virtual ~ICalculator() {};
 };

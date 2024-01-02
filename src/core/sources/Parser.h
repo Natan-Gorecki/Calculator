@@ -6,15 +6,15 @@
 #include <string>
 
 
-class C_Parser
+class Parser
 {
 public:
-	C_Command* Parse(const char* expression);
+	Command* Parse(const char* expression);
 
 
 private:
 	// main function after check if the equation is correct
-	C_Command* Parse(std::string expression);
+	Command* Parse(std::string expression);
 
 
 
