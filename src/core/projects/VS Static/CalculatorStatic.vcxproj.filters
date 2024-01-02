@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Headers\api">
+      <UniqueIdentifier>{06094a4b-a7a0-40ee-82a5-9a79a7bd8c01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\sources">
+      <UniqueIdentifier>{adf7334b-1fbc-4c97-b1ab-b056b4e89044}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\api\api.h">
+      <Filter>Headers\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\api\ICalculator.h">
+      <Filter>Headers\api</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\Calculator.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\Commands.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\Parser.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\sources\api.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\Calculator.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\Commands.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\Parser.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

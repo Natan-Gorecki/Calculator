@@ -3,12 +3,12 @@
 //-----------------------------------------------------------------
 //	Command representing single number
 //-----------------------------------------------------------------
-C_NumberCommand::C_NumberCommand(double number)
+NumberCommand::NumberCommand(double number)
 {
 	this->_number = number;
 }
 
-double C_NumberCommand::Execute()
+double NumberCommand::Execute()
 {
 	return this->_number;
 }
@@ -18,19 +18,19 @@ double C_NumberCommand::Execute()
 //-----------------------------------------------------------------
 //	Command representing addition
 //-----------------------------------------------------------------
-C_AddCommand::C_AddCommand(C_Command* left, C_Command* right)
+AddCommand::AddCommand(Command* left, Command* right)
 {
 	this->_left = left;
 	this->_right = right;
 }
 
-C_AddCommand::~C_AddCommand()
+AddCommand::~AddCommand()
 {
 	delete _left,
 	delete _right;
 }
 
-double C_AddCommand::Execute()
+double AddCommand::Execute()
 {
 	return _left->Execute() + _right->Execute();
 }
@@ -40,19 +40,19 @@ double C_AddCommand::Execute()
 //-----------------------------------------------------------------
 //	Command representing subtraction
 //-----------------------------------------------------------------
-C_SubtractCommand::C_SubtractCommand(C_Command* left, C_Command* right)
+SubtractCommand::SubtractCommand(Command* left, Command* right)
 {
 	this->_left = left;
 	this->_right = right;
 }
 
-C_SubtractCommand::~C_SubtractCommand()
+SubtractCommand::~SubtractCommand()
 {
 	delete _left;
 	delete _right;
 }
 
-double C_SubtractCommand::Execute()
+double SubtractCommand::Execute()
 {
 	return _left->Execute() - _right->Execute();
 }
@@ -62,19 +62,19 @@ double C_SubtractCommand::Execute()
 //-----------------------------------------------------------------
 //	Command representing multiplication
 //-----------------------------------------------------------------
-C_MultiplyCommand::C_MultiplyCommand(C_Command* left, C_Command* right)
+MultiplyCommand::MultiplyCommand(Command* left, Command* right)
 {
 	this->_left = left;
 	this->_right = right;
 }
 
-C_MultiplyCommand::~C_MultiplyCommand()
+MultiplyCommand::~MultiplyCommand()
 {
 	delete _left;
 	delete _right;
 }
 
-double C_MultiplyCommand::Execute()
+double MultiplyCommand::Execute()
 {
 	return _left->Execute() * _right->Execute();
 }
@@ -84,19 +84,19 @@ double C_MultiplyCommand::Execute()
 //-----------------------------------------------------------------
 //	Command representing division
 //-----------------------------------------------------------------
-C_DivideCommand::C_DivideCommand(C_Command* left, C_Command* right)
+DivideCommand::DivideCommand(Command* left, Command* right)
 {
 	this->_left = left;
 	this->_right = right;
 }
 
-C_DivideCommand::~C_DivideCommand()
+DivideCommand::~DivideCommand()
 {
 	delete _left;
     delete _right;
 }
 
-double C_DivideCommand::Execute()
+double DivideCommand::Execute()
 {
 	double divisor = _right->Execute();
 	

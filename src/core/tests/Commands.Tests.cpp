@@ -1,77 +1,59 @@
+#include "gtest/gtest.h"
 #include "Commands.h"
-#include "CppUnitTest.h"
 
-
-using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-
-
-namespace CalculatorTests
+TEST(CommandsTests, NumberCommandTests)
 {
-	TEST_CLASS(Commands_Tests)
-	{
-	public:
+	NumberCommand number(13.456);
 
-		TEST_METHOD(NumberCommand_ExecuteMethod_ShouldBeEqual)
-		{
-			C_NumberCommand number(13.456);
+	ASSERT_EQ(number.Execute(), 13.456);
+}
 
-			Assert::AreEqual(number.Execute(), 13.456);
-		}
-
-
-		TEST_METHOD(AddCommand_ExecuteMethod_ShouldBeEqual)
-		{
-			C_NumberCommand* left = new C_NumberCommand(-13);
-			C_NumberCommand* right = new C_NumberCommand(36);
-			C_AddCommand command(left, right);
-			
-
-			Assert::AreEqual(command.Execute(), 23.0);
-		}
+TEST(CommandsTests, AddCommandTests)
+{
+	NumberCommand* left = new NumberCommand(-13);
+	NumberCommand* right = new NumberCommand(36);
+	AddCommand command(left, right);
 
 
-		TEST_METHOD(SubtractCommand_ExecuteMethod_ShouldBeEqual)
-		{
-			C_NumberCommand* left = new C_NumberCommand(-13);
-			C_NumberCommand* right = new C_NumberCommand(36);
-			C_SubtractCommand command(left, right);
+	ASSERT_EQ(command.Execute(), 23.0);
+}
+
+TEST(CommandsTests, SubtractCommandTests)
+{
+	NumberCommand* left = new NumberCommand(-13);
+	NumberCommand* right = new NumberCommand(36);
+	SubtractCommand command(left, right);
 
 
-			Assert::AreEqual(command.Execute(), -49.0);
-		}
+	ASSERT_EQ(command.Execute(), -49.0);
+}
+
+TEST(CommandsTests, MultiplyCommandTests)
+{
+	NumberCommand* left = new NumberCommand(-13);
+	NumberCommand* right = new NumberCommand(36);
+	MultiplyCommand command(left, right);
 
 
-		TEST_METHOD(MultiplyCommand_ExecuteMethod_ShouldBeEqual)
-		{
-			C_NumberCommand* left = new C_NumberCommand(-13);
-			C_NumberCommand* right = new C_NumberCommand(36);
-			C_MultiplyCommand command(left, right);
+	ASSERT_EQ(command.Execute(), -468.0);
+}
+
+TEST(CommandsTests, DivideCommandTests)
+{
+	NumberCommand* left = new NumberCommand(1);
+	NumberCommand* right = new NumberCommand(4);
+	DivideCommand command(left, right);
 
 
-			Assert::AreEqual(command.Execute(), -468.0);
-		}
+	ASSERT_EQ(command.Execute(), 0.25);
+}
+
+TEST(CommandsTests, DivideCommand_ShouldHandleInvalidDivisor)
+{
+	NumberCommand* left = new NumberCommand(56);
+	NumberCommand* right = new NumberCommand(0);
+	DivideCommand command(left, right);
 
 
-		TEST_METHOD(DivideCommand_ExecuteMethod_ShouldBeEqual)
-		{
-			C_NumberCommand* left = new C_NumberCommand(1);
-			C_NumberCommand* right = new C_NumberCommand(4);
-			C_DivideCommand command(left, right);
-
-
-			Assert::AreEqual(command.Execute(), 0.25);
-		}
-
-		
-		TEST_METHOD(DivideCommand_ExecuteMethod_ExpectedException)
-		{
-			C_NumberCommand* left = new C_NumberCommand(56);
-			C_NumberCommand* right = new C_NumberCommand(0);
-			C_DivideCommand command(left, right);
-
-			
-			auto method = [&command] { return command.Execute(); };
-			Assert::ExpectException<const char*>(method, L"Division by 0");
-		}
-	};
+	EXPECT_THROW(command.Execute(), const char*);
 }
