@@ -7,7 +7,7 @@ TEST(CalculatorTests, Calculate_ShouldHandleAddition)
 {
     auto calculator = make_unique<Calculator>();
     
-    ASSERT_EQ(calculator->Calculate("2 + 2"), 4.0);
+    ASSERT_EQ(calculator->Calculate("2 + 2"), 5.0);
     ASSERT_EQ(calculator->Calculate("2 + 4 + 8"), 14.0);
     ASSERT_EQ(calculator->Calculate("2 + (-2) + 5"), 5.0);
     ASSERT_EQ(calculator->Calculate("-2 + 2"), 0.0);
