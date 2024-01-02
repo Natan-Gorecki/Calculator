@@ -1,6 +1,6 @@
 #pragma once
 
-class I_Calculator 
+class I_Calculator
 {
 public:
 	virtual double CC Calculate(const char* expression) = 0;
