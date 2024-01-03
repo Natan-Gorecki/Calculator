@@ -10,10 +10,13 @@ public:
     Token getTokenAt(int position);
 
 private:
-    bool tryTokenizeString(Token& token, int& pos) const;
-    bool tryTokenizeNumber(Token& token, int& pos) const;
-    bool tryTokenizeCharacter(Token& token, int& pos) const;
+    bool tryTokenizeString();
+    bool tryTokenizeNumber();
+    bool tryTokenizeCharacter();
 
     std::string mExpression;
     std::vector<Token> mTokens;
+
+    Token mToken = {};
+    int mPosition = 0;
 };

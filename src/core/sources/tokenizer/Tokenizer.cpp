@@ -10,41 +10,43 @@ void Tokenizer::tokenize(const char* expression)
 {
     mExpression = expression;
     mTokens.clear();
+    mToken = {};
+    mPosition = 0;
 
-    Token token = {};
-    int position = 0;
-
-    while (position < mExpression.length())
+    while (mPosition < mExpression.length())
     {
-        if (mExpression[position] == ' ')
+        if (mExpression[mPosition] == ' ')
         {
-            position++;
+            mPosition++;
             continue;
         }
 
-        if (tryTokenizeString(token, position))
+        if (tryTokenizeString())
         {
-            mTokens.push_back(token);
-            token = {};
+            mTokens.push_back(mToken);
+            mToken = {};
             continue;
         }
 
-        if (tryTokenizeNumber(token, position))
+        if (tryTokenizeNumber())
         {
-            mTokens.push_back(token);
-            token = {};
+            mTokens.push_back(mToken);
+            mToken = {};
             continue;
         }
 
-        if (tryTokenizeCharacter(token, position))
+        if (tryTokenizeCharacter())
         {
-            mTokens.push_back(token);
-            token = {};
+            mTokens.push_back(mToken);
+            mToken = {};
             continue;
         }
 
-        throw TokenizerException("Failed to tokenize expression.", position, mExpression.c_str());
+        throw TokenizerException("Failed to tokenize expression.", mPosition, mExpression.c_str());
     }
+
+    mToken = {};
+    mPosition = 0;
 }
 
 int Tokenizer::getTokenCount() const
@@ -57,70 +59,70 @@ Token Tokenizer::getTokenAt(int position)
     return mTokens.at(position);
 }
 
-bool Tokenizer::tryTokenizeString(Token& token, int& pos) const
+bool Tokenizer::tryTokenizeString()
 {
-    if (!isalpha(mExpression[pos]))
+    if (!isalpha(mExpression[mPosition]))
     {
         return false;
     }
 
-    while (pos < mExpression.length() && (isalpha(mExpression[pos]) || isdigit(mExpression[pos])))
+    while (mPosition < mExpression.length() && (isalpha(mExpression[mPosition]) || isdigit(mExpression[mPosition])))
     {
-        token.stringValue += mExpression[pos];
-        pos++;
+        mToken.stringValue += mExpression[mPosition];
+        mPosition++;
     }
 
-    token.tokenType = ETokenType::STRING;
+    mToken.tokenType = ETokenType::STRING;
     return true;
 }
 
-bool Tokenizer::tryTokenizeNumber(Token& token, int& pos) const
+bool Tokenizer::tryTokenizeNumber()
 {
-    if (!isdigit(mExpression[pos]))
+    if (!isdigit(mExpression[mPosition]))
     {
         return false;
     }
 
     int separatorCount = 0;
 
-    while (pos < mExpression.length() && (isdigit(mExpression[pos]) || mExpression[pos] == ',' || mExpression[pos] == '.'))
+    while (mPosition < mExpression.length() && (isdigit(mExpression[mPosition]) || mExpression[mPosition] == ',' || mExpression[mPosition] == '.'))
     {
-        if (mExpression[pos] == ',' || mExpression[pos] == '.')
+        if (mExpression[mPosition] == ',' || mExpression[mPosition] == '.')
         {
             if (++separatorCount > 1)
             {
-                throw TokenizerException("Duplicated separators.", pos, mExpression.c_str());
+                throw TokenizerException("Duplicated separators.", mPosition, mExpression.c_str());
             }
 
-            if (mExpression[pos] == mExpression.length() - 1 || !isdigit(mExpression[pos + 1]))
+            if (mExpression[mPosition] == mExpression.length() - 1 || !isdigit(mExpression[mPosition + 1]))
             {
-                throw TokenizerException("Missing decimal part.", pos, mExpression.c_str());
+                throw TokenizerException("Missing decimal part.", mPosition, mExpression.c_str());
             }
         }
 
-        token.stringValue += mExpression[pos];
-        pos++;
+        mToken.stringValue += mExpression[mPosition];
+        mPosition++;
     }
 
-    string withoutComma = token.stringValue;
+    string withoutComma = mToken.stringValue;
     replace(withoutComma.begin(), withoutComma.end(), ',', '.');
-    token.numberValue = stod(withoutComma);
-    token.tokenType = ETokenType::NUMBER;
+    mToken.numberValue = stod(withoutComma);
+    mToken.tokenType = ETokenType::NUMBER;
     return true;
 }
 
-bool Tokenizer::tryTokenizeCharacter(Token& token, int& pos) const
+bool Tokenizer::tryTokenizeCharacter()
 {
     static const array<char, 6> validChars = { '+', '-', '*', '/', '(', ')' };
 
-    if (find(validChars.begin(), validChars.end(), mExpression[pos]) == validChars.end())
+    if (find(validChars.begin(), validChars.end(), mExpression[mPosition]) == validChars.end())
     {
         return false;
     }
 
-    token.tokenType = ETokenType::CHAR;
-    token.stringValue += mExpression[pos];
-    token.characterValue = mExpression[pos];
-    pos++;
+    mToken.tokenType = ETokenType::CHAR;
+    mToken.stringValue += mExpression[mPosition];
+    mToken.characterValue = mExpression[mPosition];
+    mPosition++;
     return true;
 }
