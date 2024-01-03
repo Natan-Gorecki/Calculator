@@ -15,6 +15,12 @@
     <Filter Include="Headers\sources">
       <UniqueIdentifier>{d0a26151-caa6-4d58-ab33-511731521865}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\sources\tokenizer">
+      <UniqueIdentifier>{6c038dfc-c80b-46fa-9b9c-d12a0e67562e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\tokenizer">
+      <UniqueIdentifier>{94cd5045-8eee-47f7-a69a-e3aac9d3a9d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -29,6 +35,9 @@
     </ClCompile>
     <ClCompile Include="..\..\sources\Parser.cpp">
       <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\tokenizer\Tokenizer.cpp">
+      <Filter>Sources\tokenizer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +54,18 @@
       <Filter>Headers\sources</Filter>
     </ClInclude>
     <ClInclude Include="..\..\sources\Parser.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\tokenizer\ETokenType.h">
+      <Filter>Headers\sources\tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\tokenizer\Token.h">
+      <Filter>Headers\sources\tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h">
+      <Filter>Headers\sources\tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\CalculatorException.h">
       <Filter>Headers\sources</Filter>
     </ClInclude>
   </ItemGroup>
