@@ -119,6 +119,7 @@
     <ClCompile Include="..\..\tests\Calculator.Tests.cpp" />
     <ClCompile Include="..\..\tests\Commands.Tests.cpp" />
     <ClCompile Include="..\..\tests\Parser.Tests.cpp" />
+    <ClCompile Include="..\..\tests\Tokenizer.Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

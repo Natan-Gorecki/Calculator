@@ -24,12 +24,16 @@
     <ClInclude Include="..\..\sources\Calculator.h" />
     <ClInclude Include="..\..\sources\Commands.h" />
     <ClInclude Include="..\..\sources\Parser.h" />
+    <ClInclude Include="..\..\sources\tokenizer\ETokenType.h" />
+    <ClInclude Include="..\..\sources\tokenizer\Token.h" />
+    <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\api.cpp" />
     <ClCompile Include="..\..\sources\Calculator.cpp" />
     <ClCompile Include="..\..\sources\Commands.cpp" />
     <ClCompile Include="..\..\sources\Parser.cpp" />
+    <ClCompile Include="..\..\sources\tokenizer\Tokenizer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

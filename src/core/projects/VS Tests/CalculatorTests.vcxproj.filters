@@ -10,6 +10,9 @@
     <ClCompile Include="..\..\tests\Parser.Tests.cpp">
       <Filter>tests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\tests\Tokenizer.Tests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="tests">
