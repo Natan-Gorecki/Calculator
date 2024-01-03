@@ -6,10 +6,45 @@
 
 using namespace std;
 
-Tokenizer::Tokenizer(const char* expression)
-    : mExpression(expression)
+void Tokenizer::tokenize(const char* expression)
 {
-    tokenize(expression);
+    mExpression = expression;
+    mTokens.clear();
+
+    Token token = {};
+    int position = 0;
+
+    while (position < mExpression.length())
+    {
+        if (mExpression[position] == ' ')
+        {
+            position++;
+            continue;
+        }
+
+        if (tryTokenizeString(token, position))
+        {
+            mTokens.push_back(token);
+            token = {};
+            continue;
+        }
+
+        if (tryTokenizeNumber(token, position))
+        {
+            mTokens.push_back(token);
+            token = {};
+            continue;
+        }
+
+        if (tryTokenizeCharacter(token, position))
+        {
+            mTokens.push_back(token);
+            token = {};
+            continue;
+        }
+
+        throw CalculatorException("Failed to tokenize expression.", position, mExpression.c_str());
+    }
 }
 
 int Tokenizer::getTokenCount() const
@@ -22,55 +57,16 @@ Token Tokenizer::getTokenAt(int position)
     return mTokens.at(position);
 }
 
-void Tokenizer::tokenize(const char* expression)
+bool Tokenizer::tryTokenizeString(Token& token, int& pos) const
 {
-    string expressionString = expression;
-    Token token = {};
-    int position = 0;
-
-    while (position < expressionString.length())
-    {
-        if (expressionString[position] == ' ')
-        {
-            position++;
-            continue;
-        }
-
-        if (tryTokenizeString(expressionString, token, position))
-        {
-            mTokens.push_back(token);
-            token = {};
-            continue;
-        }
-
-        if (tryTokenizeNumber(expressionString, token, position))
-        {
-            mTokens.push_back(token);
-            token = {};
-            continue;
-        }
-
-        if (tryTokenizeCharacter(expressionString, token, position))
-        {
-            mTokens.push_back(token);
-            token = {};
-            continue;
-        }
-
-        throw CalculatorException("Failed to tokenize expression.", position, expression);
-    }
-}
-
-bool Tokenizer::tryTokenizeString(const std::string& exp, Token& token, int& pos) const
-{
-    if (!isalpha(exp[pos]))
+    if (!isalpha(mExpression[pos]))
     {
         return false;
     }
 
-    while (pos < exp.length() && (isalpha(exp[pos]) || isdigit(exp[pos])))
+    while (pos < mExpression.length() && (isalpha(mExpression[pos]) || isdigit(mExpression[pos])))
     {
-        token.stringValue += exp[pos];
+        token.stringValue += mExpression[pos];
         pos++;
     }
 
@@ -78,31 +74,31 @@ bool Tokenizer::tryTokenizeString(const std::string& exp, Token& token, int& pos
     return true;
 }
 
-bool Tokenizer::tryTokenizeNumber(const std::string& exp, Token& token, int& pos) const
+bool Tokenizer::tryTokenizeNumber(Token& token, int& pos) const
 {
-    if (!isdigit(exp[pos]))
+    if (!isdigit(mExpression[pos]))
     {
         return false;
     }
 
     int separatorCount = 0;
 
-    while (pos < exp.length() && (isdigit(exp[pos]) || exp[pos] == ',' || exp[pos] == '.'))
+    while (pos < mExpression.length() && (isdigit(mExpression[pos]) || mExpression[pos] == ',' || mExpression[pos] == '.'))
     {
-        if (exp[pos] == ',' || exp[pos] == '.')
+        if (mExpression[pos] == ',' || mExpression[pos] == '.')
         {
             if (++separatorCount > 1)
             {
-                throw CalculatorException("Duplicated separators.", pos, exp);
+                throw CalculatorException("Duplicated separators.", pos, mExpression.c_str());
             }
 
-            if (exp[pos] == exp.length() - 1 || !isdigit(exp[pos + 1]))
+            if (mExpression[pos] == mExpression.length() - 1 || !isdigit(mExpression[pos + 1]))
             {
-                throw CalculatorException("Missing decimal part.", pos, exp);
+                throw CalculatorException("Missing decimal part.", pos, mExpression.c_str());
             }
         }
 
-        token.stringValue += exp[pos];
+        token.stringValue += mExpression[pos];
         pos++;
     }
 
@@ -113,19 +109,18 @@ bool Tokenizer::tryTokenizeNumber(const std::string& exp, Token& token, int& pos
     return true;
 }
 
-bool Tokenizer::tryTokenizeCharacter(const std::string& exp, Token& token, int& pos) const
+bool Tokenizer::tryTokenizeCharacter(Token& token, int& pos) const
 {
     static const array<char, 6> validChars = { '+', '-', '*', '/', '(', ')' };
 
-    char c = exp[pos];
-    if (find(validChars.begin(), validChars.end(), c) == validChars.end())
+    if (find(validChars.begin(), validChars.end(), mExpression[pos]) == validChars.end())
     {
         return false;
     }
 
     token.tokenType = ETokenType::CHAR;
-    token.stringValue += c;
-    token.characterValue = c;
+    token.stringValue += mExpression[pos];
+    token.characterValue = mExpression[pos];
     pos++;
     return true;
 }

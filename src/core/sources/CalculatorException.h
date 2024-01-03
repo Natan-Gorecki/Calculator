@@ -4,13 +4,13 @@
 class CalculatorException : public std::exception
 {
 public:
-    CalculatorException(const char* message, int position, std::string expression)
-        : std::exception(message), mExpression(expression), mPosition(position) {}
+    CalculatorException(const char* message, int position, const char* expression)
+        : std::exception(message), mPosition(position), mExpression(expression) {}
 
     int getPosition() const { return mPosition; }
-    const char* getExpression() const { return mExpression.c_str(); }
+    const char* getExpression() const { return mExpression; }
 
 private:
     int mPosition;
-    std::string mExpression;
+    const char* mExpression;
 };

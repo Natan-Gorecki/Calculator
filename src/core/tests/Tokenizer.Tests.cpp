@@ -6,7 +6,9 @@ using namespace std;
 
 TEST(TokenizerTests, ShouldTokenizeString)
 {
-    auto tokenizer = make_unique<Tokenizer>("sin30");
+    auto tokenizer = make_unique<Tokenizer>();
+
+    tokenizer->tokenize("sin30");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
     EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::STRING);
@@ -15,7 +17,9 @@ TEST(TokenizerTests, ShouldTokenizeString)
 
 TEST(TokenizerTests, ShouldTokenizeNumber_WithDot)
 {
-    auto tokenizer = make_unique<Tokenizer>("123.456");
+    auto tokenizer = make_unique<Tokenizer>();
+
+    tokenizer->tokenize("123.456");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
     EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
@@ -25,7 +29,9 @@ TEST(TokenizerTests, ShouldTokenizeNumber_WithDot)
 
 TEST(TokenizerTests, ShouldTokenizeNumber_WithComma)
 {
-    auto tokenizer = make_unique<Tokenizer>("123,456");
+    auto tokenizer = make_unique<Tokenizer>();
+
+    tokenizer->tokenize("123,456");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
     EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
@@ -35,7 +41,9 @@ TEST(TokenizerTests, ShouldTokenizeNumber_WithComma)
 
 TEST(TokenizerTests, ShouldTokenizeCharacter)
 {
-    auto tokenizer = make_unique<Tokenizer>("+");
+    auto tokenizer = make_unique<Tokenizer>();
+
+    tokenizer->tokenize("+");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
     EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::CHAR);
@@ -45,7 +53,9 @@ TEST(TokenizerTests, ShouldTokenizeCharacter)
 
 TEST(TokenizerTests, ShouldTrimExpression)
 {
-    auto tokenizer = make_unique<Tokenizer>("   sin30   ");
+    auto tokenizer = make_unique<Tokenizer>();
+
+    tokenizer->tokenize("   sin30   ");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
     EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::STRING);
@@ -54,7 +64,9 @@ TEST(TokenizerTests, ShouldTrimExpression)
 
 TEST(TokenizerTests, ShouldHandleManyTokens)
 {
-    auto tokenizer = make_unique<Tokenizer>("sin30 sin60 sin90");
+    auto tokenizer = make_unique<Tokenizer>();
+
+    tokenizer->tokenize("sin30 sin60 sin90");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 3);
     EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::STRING);
@@ -67,13 +79,15 @@ TEST(TokenizerTests, ShouldHandleManyTokens)
 
 TEST(TokenizerTests, ShouldThrowException_ForUnexpectedToken)
 {
+    auto tokenizer = make_unique<Tokenizer>();
+
     EXPECT_THROW({
-        auto tokenizer = make_unique<Tokenizer>("+?");
-        }, CalculatorException);
+        tokenizer->tokenize("+?");
+    }, CalculatorException);
 
     try
     {
-        auto tokenizer = make_unique<Tokenizer>("+?");
+        tokenizer->tokenize("+?");
     }
     catch (const CalculatorException& ex)
     {
@@ -84,13 +98,15 @@ TEST(TokenizerTests, ShouldThrowException_ForUnexpectedToken)
 
 TEST(TokenizerTests, ShouldThrowException_ForDuplicatedSeparators)
 {
+    auto tokenizer = make_unique<Tokenizer>();
+
     EXPECT_THROW({
-        auto tokenizer = make_unique<Tokenizer>("1,1,1");
-        }, CalculatorException);
+        tokenizer->tokenize("1,1,1");
+    }, CalculatorException);
 
     try
     {
-        auto tokenizer = make_unique<Tokenizer>("1,1,1");
+        tokenizer->tokenize("1,1,1");
     }
     catch (const CalculatorException& ex)
     {
@@ -101,13 +117,15 @@ TEST(TokenizerTests, ShouldThrowException_ForDuplicatedSeparators)
 
 TEST(TokenizerTests, ShouldThrowException_ForMissingDecimalPart)
 {
+    auto tokenizer = make_unique<Tokenizer>();
+
     EXPECT_THROW({
-        auto tokenizer = make_unique<Tokenizer>("1,");
-        }, CalculatorException);
+        tokenizer->tokenize("1,");
+    }, CalculatorException);
 
     try
     {
-        auto tokenizer = make_unique<Tokenizer>("1,");
+        tokenizer->tokenize("1,");
     }
     catch (const CalculatorException& ex)
     {
