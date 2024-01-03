@@ -1,19 +1,20 @@
-#include "Tokenizer.h"
 #include <algorithm>
 #include <array>
 #include <stdexcept>
+#include "../CalculatorException.h"
+#include "Tokenizer.h"
 
 using namespace std;
 
 Tokenizer::Tokenizer(const char* expression)
+    : mExpression(expression)
 {
-    mExpression = expression;
     tokenize(expression);
 }
 
-int Tokenizer::getTokenCount()
+int Tokenizer::getTokenCount() const
 {
-    return mTokens.size();
+    return (int)mTokens.size();
 }
 
 Token Tokenizer::getTokenAt(int position)
@@ -56,11 +57,11 @@ void Tokenizer::tokenize(const char* expression)
             continue;
         }
 
-        throw runtime_error("Failed to tokenize expression!");
+        throw CalculatorException("Failed to tokenize expression.", position, expression);
     }
 }
 
-bool Tokenizer::tryTokenizeString(const std::string& exp, Token& token, int& pos)
+bool Tokenizer::tryTokenizeString(const std::string& exp, Token& token, int& pos) const
 {
     if (!isalpha(exp[pos]))
     {
@@ -77,7 +78,7 @@ bool Tokenizer::tryTokenizeString(const std::string& exp, Token& token, int& pos
     return true;
 }
 
-bool Tokenizer::tryTokenizeNumber(const std::string& exp, Token& token, int& pos)
+bool Tokenizer::tryTokenizeNumber(const std::string& exp, Token& token, int& pos) const
 {
     if (!isdigit(exp[pos]))
     {
@@ -92,12 +93,12 @@ bool Tokenizer::tryTokenizeNumber(const std::string& exp, Token& token, int& pos
         {
             if (++separatorCount > 1)
             {
-                throw runtime_error("To many separators!");
+                throw CalculatorException("Duplicated separators.", pos, exp);
             }
 
             if (exp[pos] == exp.length() - 1 || !isdigit(exp[pos + 1]))
             {
-                throw runtime_error("Missing decimal part!");
+                throw CalculatorException("Missing decimal part.", pos, exp);
             }
         }
 
@@ -112,7 +113,7 @@ bool Tokenizer::tryTokenizeNumber(const std::string& exp, Token& token, int& pos
     return true;
 }
 
-bool Tokenizer::tryTokenizeCharacter(const std::string& exp, Token& token, int& pos)
+bool Tokenizer::tryTokenizeCharacter(const std::string& exp, Token& token, int& pos) const
 {
     static const array<char, 6> validChars = { '+', '-', '*', '/', '(', ')' };
 

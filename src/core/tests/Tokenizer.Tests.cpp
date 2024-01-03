@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "tokenizer/Tokenizer.h"
+#include "CalculatorException.h"
 
 using namespace std;
 
@@ -64,4 +65,53 @@ TEST(TokenizerTests, ShouldHandleManyTokens)
     EXPECT_STREQ(tokenizer->getTokenAt(2).stringValue.c_str(), "sin90");
 }
 
-// TODO exceptions
+TEST(TokenizerTests, ShouldThrowException_ForUnexpectedToken)
+{
+    EXPECT_THROW({
+        auto tokenizer = make_unique<Tokenizer>("+?");
+        }, CalculatorException);
+
+    try
+    {
+        auto tokenizer = make_unique<Tokenizer>("+?");
+    }
+    catch (const CalculatorException& ex)
+    {
+        EXPECT_STREQ(ex.getExpression(), "+?");
+        EXPECT_EQ(ex.getPosition(), 1);
+    }
+}
+
+TEST(TokenizerTests, ShouldThrowException_ForDuplicatedSeparators)
+{
+    EXPECT_THROW({
+        auto tokenizer = make_unique<Tokenizer>("1,1,1");
+        }, CalculatorException);
+
+    try
+    {
+        auto tokenizer = make_unique<Tokenizer>("1,1,1");
+    }
+    catch (const CalculatorException& ex)
+    {
+        EXPECT_STREQ(ex.getExpression(), "1,1,1");
+        EXPECT_EQ(ex.getPosition(), 3);
+    }
+}
+
+TEST(TokenizerTests, ShouldThrowException_ForMissingDecimalPart)
+{
+    EXPECT_THROW({
+        auto tokenizer = make_unique<Tokenizer>("1,");
+        }, CalculatorException);
+
+    try
+    {
+        auto tokenizer = make_unique<Tokenizer>("1,");
+    }
+    catch (const CalculatorException& ex)
+    {
+        EXPECT_STREQ(ex.getExpression(), "1,");
+        EXPECT_EQ(ex.getPosition(), 1);
+    }
+}

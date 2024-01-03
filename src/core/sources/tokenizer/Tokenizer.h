@@ -5,16 +5,16 @@
 class Tokenizer
 {
 public:
-    Tokenizer(const char* expression);
+    explicit Tokenizer(const char* expression);
 
-    int getTokenCount();
+    int getTokenCount() const;
     Token getTokenAt(int position);
 
 private:
     void tokenize(const char* expression);
-    bool tryTokenizeString(const std::string& exp, Token& token, int& pos);
-    bool tryTokenizeNumber(const std::string& exp, Token& token, int& pos);
-    bool tryTokenizeCharacter(const std::string& exp, Token& token, int& pos);
+    bool tryTokenizeString(const std::string& exp, Token& token, int& pos) const;
+    bool tryTokenizeNumber(const std::string& exp, Token& token, int& pos) const;
+    bool tryTokenizeCharacter(const std::string& exp, Token& token, int& pos) const;
 
     const char* mExpression;
     std::vector<Token> mTokens;

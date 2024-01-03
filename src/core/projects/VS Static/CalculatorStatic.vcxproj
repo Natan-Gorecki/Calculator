@@ -22,6 +22,7 @@
     <ClInclude Include="..\..\api\api.h" />
     <ClInclude Include="..\..\api\ICalculator.h" />
     <ClInclude Include="..\..\sources\Calculator.h" />
+    <ClInclude Include="..\..\sources\CalculatorException.h" />
     <ClInclude Include="..\..\sources\Commands.h" />
     <ClInclude Include="..\..\sources\Parser.h" />
     <ClInclude Include="..\..\sources\tokenizer\ETokenType.h" />

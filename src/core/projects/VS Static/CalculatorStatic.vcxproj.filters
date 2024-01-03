@@ -47,6 +47,9 @@
     <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h">
       <Filter>Headers\sources\tokenizer</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sources\CalculatorException.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\api.cpp">
