@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <array>
 #include <stdexcept>
-#include "../CalculatorException.h"
 #include "Tokenizer.h"
+#include "TokenizerException.h"
 
 using namespace std;
 
@@ -43,7 +43,7 @@ void Tokenizer::tokenize(const char* expression)
             continue;
         }
 
-        throw CalculatorException("Failed to tokenize expression.", position, mExpression.c_str());
+        throw TokenizerException("Failed to tokenize expression.", position, mExpression.c_str());
     }
 }
 
@@ -89,12 +89,12 @@ bool Tokenizer::tryTokenizeNumber(Token& token, int& pos) const
         {
             if (++separatorCount > 1)
             {
-                throw CalculatorException("Duplicated separators.", pos, mExpression.c_str());
+                throw TokenizerException("Duplicated separators.", pos, mExpression.c_str());
             }
 
             if (mExpression[pos] == mExpression.length() - 1 || !isdigit(mExpression[pos + 1]))
             {
-                throw CalculatorException("Missing decimal part.", pos, mExpression.c_str());
+                throw TokenizerException("Missing decimal part.", pos, mExpression.c_str());
             }
         }
 

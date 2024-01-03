@@ -22,12 +22,20 @@
     <ClInclude Include="..\..\api\api.h" />
     <ClInclude Include="..\..\api\ICalculator.h" />
     <ClInclude Include="..\..\sources\Calculator.h" />
-    <ClInclude Include="..\..\sources\CalculatorException.h" />
     <ClInclude Include="..\..\sources\Commands.h" />
+    <ClInclude Include="..\..\sources\commands\AddCommand.h" />
+    <ClInclude Include="..\..\sources\commands\BracketCommand.h" />
+    <ClInclude Include="..\..\sources\commands\Command.h" />
+    <ClInclude Include="..\..\sources\commands\CommandException.h" />
+    <ClInclude Include="..\..\sources\commands\DivideCommand.h" />
+    <ClInclude Include="..\..\sources\commands\MultiplyCommand.h" />
+    <ClInclude Include="..\..\sources\commands\NumberCommand.h" />
+    <ClInclude Include="..\..\sources\commands\SubstractCommand.h" />
     <ClInclude Include="..\..\sources\Parser.h" />
     <ClInclude Include="..\..\sources\tokenizer\ETokenType.h" />
     <ClInclude Include="..\..\sources\tokenizer\Token.h" />
     <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h" />
+    <ClInclude Include="..\..\sources\tokenizer\TokenizerException.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\api.cpp" />

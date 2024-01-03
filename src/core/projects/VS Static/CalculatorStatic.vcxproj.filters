@@ -21,6 +21,12 @@
     <Filter Include="Sources\tokenizer">
       <UniqueIdentifier>{29da87d7-a21c-4c49-b2ea-6f992f8a9b2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\sources\interpreter">
+      <UniqueIdentifier>{5649aaa7-04ab-4508-80c0-5c0c2142e340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\sources\commands">
+      <UniqueIdentifier>{c5d5eba0-4515-4ea9-b9ad-b5cda09e504f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\api\api.h">
@@ -47,8 +53,32 @@
     <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h">
       <Filter>Headers\sources\tokenizer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\sources\CalculatorException.h">
-      <Filter>Headers\sources</Filter>
+    <ClInclude Include="..\..\sources\commands\BracketCommand.h">
+      <Filter>Headers\sources\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\commands\Command.h">
+      <Filter>Headers\sources\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\commands\DivideCommand.h">
+      <Filter>Headers\sources\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\commands\MultiplyCommand.h">
+      <Filter>Headers\sources\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\commands\SubstractCommand.h">
+      <Filter>Headers\sources\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\commands\AddCommand.h">
+      <Filter>Headers\sources\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\commands\NumberCommand.h">
+      <Filter>Headers\sources\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\commands\CommandException.h">
+      <Filter>Headers\sources\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\tokenizer\TokenizerException.h">
+      <Filter>Headers\sources\tokenizer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

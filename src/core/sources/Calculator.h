@@ -1,7 +1,7 @@
 #pragma once
 
 #include "api.h"
-#include "Commands.h"
+#include "commands/Command.h"
 #include "Parser.h"
 
 

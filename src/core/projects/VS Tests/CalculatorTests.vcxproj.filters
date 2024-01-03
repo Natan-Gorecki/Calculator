@@ -4,19 +4,37 @@
     <ClCompile Include="..\..\tests\Calculator.Tests.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\tests\Commands.Tests.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\tests\Parser.Tests.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\tests\Tokenizer.Tests.cpp">
-      <Filter>tests</Filter>
+    <ClCompile Include="..\..\tests\commands\AddCommand.Tests.cpp">
+      <Filter>tests\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\commands\NumberCommand.Tests.cpp">
+      <Filter>tests\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\commands\SubstractCommand.Tests.cpp">
+      <Filter>tests\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\commands\MultiplyCommand.Tests.cpp">
+      <Filter>tests\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tokenizer\Tokenizer.Tests.cpp">
+      <Filter>tests\tokenizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\commands\DivideCommand.Tests.cpp">
+      <Filter>tests\commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="tests">
       <UniqueIdentifier>{194fc87d-87ee-4531-9ade-e354d35ded57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\commands">
+      <UniqueIdentifier>{17d8e600-e424-4801-a326-d580f6d12825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\tokenizer">
+      <UniqueIdentifier>{22ac273a-55c9-47f1-8b4b-e565c8d83420}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

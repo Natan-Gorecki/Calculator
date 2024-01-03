@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "tokenizer/Tokenizer.h"
-#include "CalculatorException.h"
+#include "tokenizer/TokenizerException.h"
 
 using namespace std;
 
@@ -83,13 +83,13 @@ TEST(TokenizerTests, ShouldThrowException_ForUnexpectedToken)
 
     EXPECT_THROW({
         tokenizer->tokenize("+?");
-    }, CalculatorException);
+    }, TokenizerException);
 
     try
     {
         tokenizer->tokenize("+?");
     }
-    catch (const CalculatorException& ex)
+    catch (const TokenizerException& ex)
     {
         EXPECT_STREQ(ex.getExpression(), "+?");
         EXPECT_EQ(ex.getPosition(), 1);
@@ -102,13 +102,13 @@ TEST(TokenizerTests, ShouldThrowException_ForDuplicatedSeparators)
 
     EXPECT_THROW({
         tokenizer->tokenize("1,1,1");
-    }, CalculatorException);
+    }, TokenizerException);
 
     try
     {
         tokenizer->tokenize("1,1,1");
     }
-    catch (const CalculatorException& ex)
+    catch (const TokenizerException& ex)
     {
         EXPECT_STREQ(ex.getExpression(), "1,1,1");
         EXPECT_EQ(ex.getPosition(), 3);
@@ -121,13 +121,13 @@ TEST(TokenizerTests, ShouldThrowException_ForMissingDecimalPart)
 
     EXPECT_THROW({
         tokenizer->tokenize("1,");
-    }, CalculatorException);
+    }, TokenizerException);
 
     try
     {
         tokenizer->tokenize("1,");
     }
-    catch (const CalculatorException& ex)
+    catch (const TokenizerException& ex)
     {
         EXPECT_STREQ(ex.getExpression(), "1,");
         EXPECT_EQ(ex.getPosition(), 1);

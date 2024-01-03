@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 
 using namespace std;
+
 TEST(CalculatorTests, Calculate_ShouldHandleAddition)
 {
     auto calculator = make_unique<Calculator>();
