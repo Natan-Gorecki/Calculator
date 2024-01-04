@@ -6,7 +6,7 @@
 class ShuntingYardInterpreter : public Interpreter
 {
 public:
-    virtual ~ShuntingYardInterpreter() = default;
+    ~ShuntingYardInterpreter() override = default;
     double interpret(Tokenizer* tokenizer) override;
 
 private:

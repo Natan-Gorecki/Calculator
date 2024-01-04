@@ -6,7 +6,7 @@
 class RecursiveInterpreter : public Interpreter
 {
 public:
-    virtual ~RecursiveInterpreter() = default;
+    ~RecursiveInterpreter() override = default;
     double interpret(Tokenizer* tokenizer) override;
 
 private:
