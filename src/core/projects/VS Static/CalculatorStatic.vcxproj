@@ -22,6 +22,7 @@
     <ClInclude Include="..\..\api\api.h" />
     <ClInclude Include="..\..\api\ICalculator.h" />
     <ClInclude Include="..\..\sources\Calculator.h" />
+    <ClInclude Include="..\..\sources\Interpreter.h" />
     <ClInclude Include="..\..\sources\InterpreterException.h" />
     <ClInclude Include="..\..\sources\Parser.h" />
     <ClInclude Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.h" />
@@ -34,6 +35,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\sources\api.cpp" />
     <ClCompile Include="..\..\sources\Calculator.cpp" />
+    <ClCompile Include="..\..\sources\Interpreter.cpp" />
     <ClCompile Include="..\..\sources\Parser.cpp" />
     <ClCompile Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.cpp" />
     <ClCompile Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.cpp" />

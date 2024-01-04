@@ -68,6 +68,9 @@
     <ClInclude Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.h">
       <Filter>Headers\sources\recursive_interpreter</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sources\Interpreter.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\api.cpp">
@@ -87,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.cpp">
       <Filter>Sources\recursive_interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\Interpreter.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
