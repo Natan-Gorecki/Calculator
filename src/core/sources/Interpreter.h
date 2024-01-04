@@ -4,7 +4,7 @@
 class Interpreter
 {
 public:
-    virtual ~Interpreter() {};
+    virtual ~Interpreter() = default;
     virtual double interpret(Tokenizer* tokenizer) = 0;
 
 protected:

@@ -12,7 +12,9 @@ double ShuntingYardInterpreter::interpret(Tokenizer* tokenizer)
     int position = 0;
     while (position < tokenizer->getTokenCount()) 
     {
-        const auto& token = tokenizer->getTokenAt(position++);
+        const auto& token = tokenizer->getTokenAt(position);
+        position++;
+
         if (token.type == ETokenType::NUMBER)
         {
             mOutputStack.push_back(token);
@@ -53,10 +55,8 @@ double ShuntingYardInterpreter::interpret(Tokenizer* tokenizer)
 
 double ShuntingYardInterpreter::calculate()
 {
-    for (int i = 0; i < mOutputStack.size(); i++)
+    for (const auto& token : mOutputStack)
     {
-        const auto& token = mOutputStack.at(i);
-
         if (token.type == ETokenType::NUMBER)
         {
             mNumberStack.push_back(token.numberValue);

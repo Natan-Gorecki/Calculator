@@ -63,9 +63,11 @@ double Parser::Parse(std::string text)
 				switch (text[char_place])
 				{
 
-				case '+':	Parse(text.substr(char_place + 1, text.length() - char_place));
+				case '+':
+					return Parse(text.substr(char_place + 1, text.length() - char_place));
 
-				case '-':	-1 * Parse(text.substr(char_place + 1, text.length() - char_place));
+				case '-':
+					return -1 * Parse(text.substr(char_place + 1, text.length() - char_place));
 
 					//	Invalid equation
 					//	e.g. *2 v /4
@@ -113,7 +115,7 @@ double Parser::Parse(std::string text)
 			return Parse(left) / Parse(right);
 
 		case '(':
-			Parse(left) * Parse(text.substr(char_place, text.length() - char_place));
+			return Parse(left) * Parse(text.substr(char_place, text.length() - char_place));
 
 		case ')':
 			return Parse(text.substr(0, char_place+1)) * Parse(right);
