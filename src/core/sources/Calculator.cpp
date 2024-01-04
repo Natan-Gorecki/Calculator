@@ -1,7 +1,7 @@
 #include <memory>
 #include "Calculator.h"
-#include "recursive_interpreter/RecursiveInterpreter.h"
-#include "shunting_yard_interpreter/ShuntingYardInterpreter.h"
+#include "interpreter/RecursiveInterpreter.h"
+#include "interpreter/ShuntingYardInterpreter.h"
 #include "tokenizer/Tokenizer.h"
 
 extern ErrorCallback error_callback;

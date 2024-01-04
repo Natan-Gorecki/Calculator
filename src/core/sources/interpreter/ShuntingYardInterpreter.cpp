@@ -1,4 +1,4 @@
-#include "../InterpreterException.h"
+#include "InterpreterException.h"
 #include "ShuntingYardInterpreter.h"
 
 using namespace std;

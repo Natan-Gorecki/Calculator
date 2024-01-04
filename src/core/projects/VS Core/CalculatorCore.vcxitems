@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{5fb440ab-d765-4703-abaa-fa3113d8f37b}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\api.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\ICalculator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Calculator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\InterpreterException.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\ShuntingYardInterpreter.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Parser.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\ETokenType.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Token.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Tokenizer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\TokenizerException.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\api.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\Calculator.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\ShuntingYardInterpreter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\Parser.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Tokenizer.cpp" />
+  </ItemGroup>
+</Project>

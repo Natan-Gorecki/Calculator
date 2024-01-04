@@ -18,29 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\api\api.h" />
-    <ClInclude Include="..\..\api\ICalculator.h" />
-    <ClInclude Include="..\..\sources\Calculator.h" />
-    <ClInclude Include="..\..\sources\Interpreter.h" />
-    <ClInclude Include="..\..\sources\InterpreterException.h" />
-    <ClInclude Include="..\..\sources\Parser.h" />
-    <ClInclude Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.h" />
-    <ClInclude Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.h" />
-    <ClInclude Include="..\..\sources\tokenizer\ETokenType.h" />
-    <ClInclude Include="..\..\sources\tokenizer\Token.h" />
-    <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h" />
-    <ClInclude Include="..\..\sources\tokenizer\TokenizerException.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\sources\api.cpp" />
-    <ClCompile Include="..\..\sources\Calculator.cpp" />
-    <ClCompile Include="..\..\sources\Interpreter.cpp" />
-    <ClCompile Include="..\..\sources\Parser.cpp" />
-    <ClCompile Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.cpp" />
-    <ClCompile Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.cpp" />
-    <ClCompile Include="..\..\sources\tokenizer\Tokenizer.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -79,6 +56,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\VS Core\CalculatorCore.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />

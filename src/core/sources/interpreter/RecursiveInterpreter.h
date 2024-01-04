@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include "../tokenizer/Tokenizer.h"
-#include "../Interpreter.h"
+#include "Interpreter.h"
 
 class RecursiveInterpreter : public Interpreter
 {
