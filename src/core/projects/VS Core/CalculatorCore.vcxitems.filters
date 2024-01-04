@@ -63,6 +63,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\InterpreterException.h">
       <Filter>Headers\sources\interpreter</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\EInterpreterType.h">
+      <Filter>Headers\sources\interpreter</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.cpp">

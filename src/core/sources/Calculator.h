@@ -1,13 +1,14 @@
 #pragma once
 
 #include "api.h"
+#include "interpreter/EInterpreterType.h"
 
 class Calculator : public ICalculator
 {
 public:
-    double CC Calculate(const char* expression) override;
+    explicit Calculator(EInterpreterType interpreterType);
+    double CC calculate(const char* expression) override;
 
 private:
-    bool mUseShuntingYardInterpreter = false;
-    bool mUseRecursiveInterpreter = true;
+    EInterpreterType mInterpreterType = EInterpreterType::UNDEFINED;
 };

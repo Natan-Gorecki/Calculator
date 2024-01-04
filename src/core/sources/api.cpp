@@ -13,7 +13,7 @@ ErrorCallback error_callback = NULL;
 //-----------------------------------------------------------------------------------------------------
 EXPORT ICalculator* CC CreateCalculator()
 {
-	return (ICalculator*) new Calculator();
+	return (ICalculator*) new Calculator(EInterpreterType::SHUNTING_YARD);
 }
 
 

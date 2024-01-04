@@ -70,7 +70,7 @@ int main()
 		//-----------------------------------------------------------------
 		try 
 		{
-			std::cout << "Result:   " << calculator->Calculate(text.c_str()) << std::endl;
+			std::cout << "Result:   " << calculator->calculate(text.c_str()) << std::endl;
 		}
 		catch (const char* exception)
 		{
