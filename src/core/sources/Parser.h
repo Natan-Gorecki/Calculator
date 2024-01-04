@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Commands.h"
+#include "commands/Command.h"
 
 #include <string.h>
 #include <string>

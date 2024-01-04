@@ -10,7 +10,6 @@ void Tokenizer::tokenize(const char* expression)
 {
     mExpression = expression;
     mTokens.clear();
-    mToken = {};
     mPosition = 0;
 
     while (mPosition < mExpression.length())
@@ -21,32 +20,23 @@ void Tokenizer::tokenize(const char* expression)
             continue;
         }
 
-        if (tryTokenizeString())
-        {
-            mTokens.push_back(mToken);
-            mToken = {};
-            continue;
-        }
-
         if (tryTokenizeNumber())
         {
-            mTokens.push_back(mToken);
-            mToken = {};
             continue;
         }
 
-        if (tryTokenizeCharacter())
+        if (tryTokenizeSeparator())
         {
-            mTokens.push_back(mToken);
-            mToken = {};
+            continue;
+        }
+
+        if (tryTokenizeOperator())
+        {
             continue;
         }
 
         throw TokenizerException("Failed to tokenize expression.", mPosition, mExpression.c_str());
     }
-
-    mToken = {};
-    mPosition = 0;
 }
 
 int Tokenizer::getTokenCount() const
@@ -59,23 +49,6 @@ Token Tokenizer::getTokenAt(int position)
     return mTokens.at(position);
 }
 
-bool Tokenizer::tryTokenizeString()
-{
-    if (!isalpha(mExpression[mPosition]))
-    {
-        return false;
-    }
-
-    while (mPosition < mExpression.length() && (isalpha(mExpression[mPosition]) || isdigit(mExpression[mPosition])))
-    {
-        mToken.stringValue += mExpression[mPosition];
-        mPosition++;
-    }
-
-    mToken.tokenType = ETokenType::STRING;
-    return true;
-}
-
 bool Tokenizer::tryTokenizeNumber()
 {
     if (!isdigit(mExpression[mPosition]))
@@ -84,6 +57,7 @@ bool Tokenizer::tryTokenizeNumber()
     }
 
     int separatorCount = 0;
+    string tokenString = "";
 
     while (mPosition < mExpression.length() && (isdigit(mExpression[mPosition]) || mExpression[mPosition] == ',' || mExpression[mPosition] == '.'))
     {
@@ -100,29 +74,68 @@ bool Tokenizer::tryTokenizeNumber()
             }
         }
 
-        mToken.stringValue += mExpression[mPosition];
+        tokenString += mExpression[mPosition];
         mPosition++;
     }
 
-    string withoutComma = mToken.stringValue;
-    replace(withoutComma.begin(), withoutComma.end(), ',', '.');
-    mToken.numberValue = stod(withoutComma);
-    mToken.tokenType = ETokenType::NUMBER;
+    replace(tokenString.begin(), tokenString.end(), ',', '.');
+    mTokens.push_back({ ETokenType::NUMBER, stod(tokenString) });
     return true;
 }
 
-bool Tokenizer::tryTokenizeCharacter()
+bool Tokenizer::tryTokenizeSeparator()
 {
-    static const array<char, 6> validChars = { '+', '-', '*', '/', '(', ')' };
-
-    if (find(validChars.begin(), validChars.end(), mExpression[mPosition]) == validChars.end())
+    if (mExpression[mPosition] == '(' || mExpression[mPosition] == ')')
     {
-        return false;
+        mTokens.push_back({ ETokenType::SEPARATOR, 0, mExpression[mPosition] });
+        mPosition++;
+        return true;
     }
 
-    mToken.tokenType = ETokenType::CHAR;
-    mToken.stringValue += mExpression[mPosition];
-    mToken.characterValue = mExpression[mPosition];
-    mPosition++;
-    return true;
+    return false;
+}
+
+bool Tokenizer::tryTokenizeOperator()
+{
+    Token token = {};
+    bool operatorFound = false;
+
+    if (mExpression[mPosition] == '+')
+    {
+        token.operatorType = EOperatorType::ADDITION;
+        token.operatorPriority = 2;
+        operatorFound = true;
+    }
+    else if (mExpression[mPosition] == '-')
+    {
+        token.operatorType = EOperatorType::SUBSTRACTION;
+        token.operatorPriority = 2;
+        operatorFound = true;
+    }
+    else if (mExpression[mPosition] == '*')
+    {
+        token.operatorType = EOperatorType::MULTIPLICATION;
+        token.operatorPriority = 3;
+        operatorFound = true;
+    }
+    else if (mExpression[mPosition] == '/')
+    {
+        token.operatorType = EOperatorType::DIVISION;
+        token.operatorPriority = 3;
+        operatorFound = true;
+    }
+    else if (mExpression[mPosition] == '^')
+    {
+        token.operatorType = EOperatorType::POWER;
+        token.operatorPriority = 4;
+        operatorFound = true;
+    }
+
+    if (operatorFound)
+    {
+        mTokens.push_back(token);
+        mPosition++;
+    }
+
+    return operatorFound;
 }

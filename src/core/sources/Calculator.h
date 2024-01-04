@@ -1,26 +1,12 @@
 #pragma once
 
 #include "api.h"
-#include "commands/Command.h"
-#include "Parser.h"
 
-
-class Calculator :
-	public ICalculator
+class Calculator : public ICalculator
 {
-	// Calculate Method
 public:
-	virtual double CC Calculate(const char* expression);
+    double CC Calculate(const char* expression) override;
 
-
-	// Constructor / Destructor
-public:
-	Calculator();
-	virtual ~Calculator();
-
-
-	// Attributes
 private:
-	Command* command = NULL;
-	Parser* parser = NULL;
+    bool mUseShuntingYardInterpreter = true;
 };
