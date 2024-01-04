@@ -20,18 +20,11 @@ void Tokenizer::tokenize(const char* expression)
             continue;
         }
 
-        if (tryTokenizeNumber())
+        if (tryTokenizeNumber() ||
+            tryTokenizeSeparator() ||
+            tryTokenizeOperator())
         {
-            continue;
-        }
-
-        if (tryTokenizeSeparator())
-        {
-            continue;
-        }
-
-        if (tryTokenizeOperator())
-        {
+            handleHiddenMultiplication();
             continue;
         }
 
@@ -51,15 +44,21 @@ Token Tokenizer::getTokenAt(int position)
 
 bool Tokenizer::tryTokenizeNumber()
 {
-    if (!isdigit(mExpression[mPosition]))
+    int separatorCount = 0;
+    string tokenString = "";
+
+    if (shouldHandleSignForNumber())
+    {
+        tokenString += mExpression[mPosition];
+        mPosition++;
+    }
+
+    if (!isNumberOrSeparator(mExpression[mPosition]))
     {
         return false;
     }
 
-    int separatorCount = 0;
-    string tokenString = "";
-
-    while (mPosition < mExpression.length() && (isdigit(mExpression[mPosition]) || mExpression[mPosition] == ',' || mExpression[mPosition] == '.'))
+    while (mPosition < mExpression.length() && isNumberOrSeparator(mExpression[mPosition]))
     {
         if (mExpression[mPosition] == ',' || mExpression[mPosition] == '.')
         {
@@ -139,4 +138,59 @@ bool Tokenizer::tryTokenizeOperator()
     }
 
     return operatorFound;
+}
+
+void Tokenizer::handleHiddenMultiplication()
+{
+    if (mTokens.size() < 2)
+    {
+        return;
+    }
+
+    Token left = mTokens[mTokens.size() - 2];
+    Token right = mTokens[mTokens.size() - 1];
+
+    if ((left.separatorValue == ')' && right.tokenType == ETokenType::NUMBER) ||
+        (left.tokenType == ETokenType::NUMBER && right.separatorValue == '(') ||
+        (left.separatorValue == ')' && right.separatorValue == '('))
+    {
+        mTokens.pop_back();
+        Token op = { ETokenType::OPERATOR };
+        op.operatorType = EOperatorType::MULTIPLICATION;
+        op.operatorPriority = 3;
+        mTokens.push_back(op);
+        mTokens.push_back(right);
+    }
+}
+
+bool Tokenizer::isNumberOrSeparator(char c) const
+{
+    return isdigit(c) || c == ',' || c == '.';
+}
+
+bool Tokenizer::shouldHandleSignForNumber() const
+{
+    if (mExpression[mPosition] != '+' && mExpression[mPosition] != '-')
+    {
+        return false;
+    }
+
+    if (mPosition + 1 == mExpression.length() || !isNumberOrSeparator(mExpression[mPosition + 1]))
+    {
+        return false;
+    }
+
+    if (mTokens.empty())
+    {
+        return true;
+    }
+
+    const auto& previousToken = mTokens.back();
+
+    if (previousToken.separatorValue == '(')
+    {
+        return true;
+    }
+
+    return false;
 }

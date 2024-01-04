@@ -108,7 +108,7 @@ void ShuntingYardInterpreter::handleOperator(const Token& op1)
 {
     while (!mOperatorStack.empty())
     {
-        const auto& op2 = mOperatorStack.back();
+        Token op2 = mOperatorStack.back();
         
         if (op2.tokenType != ETokenType::OPERATOR)
         {
@@ -136,7 +136,7 @@ void ShuntingYardInterpreter::handleRightParenthesis()
         {
             throw InterpreterException("Mismatched parentheses.");
         }
-        const auto& token = mOperatorStack.back();
+        Token token = mOperatorStack.back();
 
         if (token.separatorValue != '(')
         {
