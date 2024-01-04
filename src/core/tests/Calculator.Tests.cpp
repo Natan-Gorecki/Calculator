@@ -4,9 +4,29 @@
 
 using namespace std;
 
-TEST(CalculatorTests, Calculate_ShouldHandleAddition)
+class CalculatorTests : public ::testing::TestWithParam<EInterpreterType>
 {
-    auto calculator = make_unique<Calculator>();
+protected:
+    unique_ptr<Calculator> createCalculator()
+    {
+        auto interpreterType = GetParam();
+        return make_unique<Calculator>(interpreterType);
+    }
+};
+
+INSTANTIATE_TEST_CASE_P(Undefined, CalculatorTests, ::testing::Values(
+    EInterpreterType::UNDEFINED
+));
+INSTANTIATE_TEST_CASE_P(ShuntingYard, CalculatorTests, ::testing::Values(
+    EInterpreterType::SHUNTING_YARD
+));
+INSTANTIATE_TEST_CASE_P(Recursive, CalculatorTests, ::testing::Values(
+    EInterpreterType::RECURSIVE
+));
+
+TEST_P(CalculatorTests, ShouldHandleAddition)
+{
+    auto calculator = createCalculator();
     
     ASSERT_EQ(calculator->calculate("2 + 2"), 4.0);
     ASSERT_EQ(calculator->calculate("2 + 4 + 8"), 14.0);
@@ -16,9 +36,9 @@ TEST(CalculatorTests, Calculate_ShouldHandleAddition)
     ASSERT_EQ(calculator->calculate("-2,5 + 2.5"), 0.0);
 }
 
-TEST(CalculatorTests, Calculate_ShouldHandleSubstraction)
+TEST_P(CalculatorTests, ShouldHandleSubstraction)
 {
-    auto calculator = make_unique<Calculator>();
+    auto calculator = createCalculator();
 
     ASSERT_EQ(calculator->calculate(" 2- 7"), -5.0);
     ASSERT_EQ(calculator->calculate("-2 - 7 -5"), -14.0);
@@ -26,9 +46,9 @@ TEST(CalculatorTests, Calculate_ShouldHandleSubstraction)
     ASSERT_EQ(calculator->calculate(" 0.5 - 7,2"), -6.7);
 }
 
-TEST(CalculatorTests, Calculate_ShouldHandleMultiplication)
+TEST_P(CalculatorTests, ShouldHandleMultiplication)
 {
-    auto calculator = make_unique<Calculator>();
+    auto calculator = createCalculator();
 
     ASSERT_EQ(calculator->calculate(" 2 * 4"), 8.0);
     ASSERT_EQ(calculator->calculate("2 * (-5)"), -10.0);
@@ -36,9 +56,9 @@ TEST(CalculatorTests, Calculate_ShouldHandleMultiplication)
     ASSERT_EQ(calculator->calculate(" 2 * 4 * (1/2)"), 4.0);
 }
 
-TEST(CalculatorTests, Calculate_ShouldHandleDivision)
+TEST_P(CalculatorTests, ShouldHandleDivision)
 {
-    auto calculator = make_unique<Calculator>();
+    auto calculator = createCalculator();
 
     ASSERT_EQ(calculator->calculate("16 / 2 / 5"), 1.6);
     ASSERT_EQ(calculator->calculate("16 / (-2) / 5"), -1.6);
@@ -46,9 +66,9 @@ TEST(CalculatorTests, Calculate_ShouldHandleDivision)
     ASSERT_EQ(calculator->calculate(" 2 / 4 / (1/2)"), 1.0);
 }
 
-TEST(CalculatorTests, Calculate_ShouldHandleBrackets)
+TEST_P(CalculatorTests, ShouldHandleBrackets)
 {
-    auto calculator = make_unique<Calculator>();
+    auto calculator = createCalculator();
 
     ASSERT_EQ(calculator->calculate("((((2))))"), 2.0);
     ASSERT_EQ(calculator->calculate("(((2.5)(-4.4))-2)"), -13.0);
@@ -56,9 +76,9 @@ TEST(CalculatorTests, Calculate_ShouldHandleBrackets)
     ASSERT_EQ(calculator->calculate("(2 * 5 - 2) * (4.5 - 2 / 8)"), 34.0);
 }
 
-TEST(CalculatorTests, Calculate_ShouldHandleMultiplication_WhenCharacterIsHidden)
+TEST_P(CalculatorTests, ShouldHandleMultiplication_WhenCharacterIsHidden)
 {
-    auto calculator = make_unique<Calculator>();
+    auto calculator = createCalculator();
 
     ASSERT_EQ(calculator->calculate("2(5-7)"), -4.0);
     ASSERT_EQ(calculator->calculate("(5-7)2"), -4.0);
@@ -67,17 +87,17 @@ TEST(CalculatorTests, Calculate_ShouldHandleMultiplication_WhenCharacterIsHidden
     ASSERT_EQ(calculator->calculate("-6(2(2))"), -24.0);
 }
 
-TEST(CalculatorTests, Calculate_ShouldHandleCharacterAtTheBeginning)
+TEST_P(CalculatorTests, ShouldHandleCharacterAtTheBeginning)
 {
-    auto calculator = make_unique<Calculator>();
+    auto calculator = createCalculator();
 
     ASSERT_EQ(calculator->calculate("+7"), 7.0);
     ASSERT_EQ(calculator->calculate("-2 + (-7)"), -9.0);
 }
 
-TEST(CalculatorTests, Calculate_ShouldHandleFractions_WithDots)
+TEST_P(CalculatorTests, ShouldHandleFractions_WithDots)
 {
-    auto calculator = make_unique<Calculator>();
+    auto calculator = createCalculator();
 
     // TODO ASSERT_EQ(calculator->calculate(".5(.5)"), 0.25);
     // TODO ASSERT_EQ(calculator->calculate(".7 + .3"), 1.0);
@@ -85,9 +105,9 @@ TEST(CalculatorTests, Calculate_ShouldHandleFractions_WithDots)
     ASSERT_EQ(calculator->calculate("5.7 - (-0.3)"), 6.0);
 }
 
-TEST(CalculatorTests, Calculate_ShouldHandleFractions_WithCommas)
+TEST_P(CalculatorTests, ShouldHandleFractions_WithCommas)
 {
-    auto calculator = make_unique<Calculator>();
+    auto calculator = createCalculator();
 
     // TODO ASSERT_EQ(calculator->calculate(",5(,5)"), 0.25);
     // TODO ASSERT_EQ(calculator->calculate(",7 + ,3"), 1.0);
