@@ -6,7 +6,7 @@
 class Calculator : public ICalculator
 {
 public:
-    Calculator(EInterpreterType interpreterType);
+    explicit Calculator(EInterpreterType interpreterType);
     double CC calculate(const char* expression) override;
 
 private:
