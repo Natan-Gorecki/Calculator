@@ -9,10 +9,11 @@ public:
 
 private:
     double calculate();
-    double calculate(double left, double right, EOperatorType op) const;
+    double calculate(double left, double right, char op) const;
     void handleOperator(const Token& op1);
     void handleRightParenthesis();
-    bool isLeftAssociative(const Token& op1) const;
+    int getPrecedence(const Token& op) const;
+    bool isLeftAssociative(const Token& op) const;
 
     std::vector<double> mNumberStack;
     std::vector<Token> mOutputStack;

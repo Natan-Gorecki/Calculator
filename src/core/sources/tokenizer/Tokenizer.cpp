@@ -77,67 +77,49 @@ bool Tokenizer::tryTokenizeNumber()
         mPosition++;
     }
 
-    replace(tokenString.begin(), tokenString.end(), ',', '.');
-    mTokens.push_back({ ETokenType::NUMBER, stod(tokenString) });
+    string withoutComma = tokenString;
+    replace(withoutComma.begin(), withoutComma.end(), ',', '.');
+
+    Token token = { ETokenType::NUMBER };
+    token.stringValue = tokenString;
+    token.numberValue = stod(withoutComma);
+
+    mTokens.push_back(token);
     return true;
 }
 
 bool Tokenizer::tryTokenizeSeparator()
 {
-    if (mExpression[mPosition] == '(' || mExpression[mPosition] == ')')
+    if (mExpression[mPosition] != '(' && mExpression[mPosition] != ')')
     {
-        mTokens.push_back({ ETokenType::SEPARATOR, 0, mExpression[mPosition] });
-        mPosition++;
-        return true;
+        return false;
     }
 
-    return false;
+    Token token = { ETokenType::SEPARATOR };
+    token.stringValue += mExpression[mPosition];
+    token.charValue += mExpression[mPosition];
+
+    mTokens.push_back(token);
+    mPosition++;
+    return true;
 }
 
 bool Tokenizer::tryTokenizeOperator()
 {
-    Token token = {};
-    token.tokenType = ETokenType::OPERATOR;
-    bool operatorFound = false;
+    static const array<char, 5> validChars = { '+', '-', '*', '/', '^' };
 
-    if (mExpression[mPosition] == '+')
+    if (find(validChars.begin(), validChars.end(), mExpression[mPosition]) == validChars.end())
     {
-        token.operatorType = EOperatorType::ADDITION;
-        token.operatorPriority = 2;
-        operatorFound = true;
-    }
-    else if (mExpression[mPosition] == '-')
-    {
-        token.operatorType = EOperatorType::SUBSTRACTION;
-        token.operatorPriority = 2;
-        operatorFound = true;
-    }
-    else if (mExpression[mPosition] == '*')
-    {
-        token.operatorType = EOperatorType::MULTIPLICATION;
-        token.operatorPriority = 3;
-        operatorFound = true;
-    }
-    else if (mExpression[mPosition] == '/')
-    {
-        token.operatorType = EOperatorType::DIVISION;
-        token.operatorPriority = 3;
-        operatorFound = true;
-    }
-    else if (mExpression[mPosition] == '^')
-    {
-        token.operatorType = EOperatorType::POWER;
-        token.operatorPriority = 4;
-        operatorFound = true;
+        return false;
     }
 
-    if (operatorFound)
-    {
-        mTokens.push_back(token);
-        mPosition++;
-    }
+    Token token = { ETokenType::OPERATOR };
+    token.stringValue += mExpression[mPosition];
+    token.charValue += mExpression[mPosition];
 
-    return operatorFound;
+    mTokens.push_back(token);
+    mPosition++;
+    return true;
 }
 
 void Tokenizer::handleHiddenMultiplication()
@@ -150,14 +132,15 @@ void Tokenizer::handleHiddenMultiplication()
     Token left = mTokens[mTokens.size() - 2];
     Token right = mTokens[mTokens.size() - 1];
 
-    if ((left.separatorValue == ')' && right.tokenType == ETokenType::NUMBER) ||
-        (left.tokenType == ETokenType::NUMBER && right.separatorValue == '(') ||
-        (left.separatorValue == ')' && right.separatorValue == '('))
+    if ((left.charValue == ')' && right.type == ETokenType::NUMBER) ||
+        (left.type == ETokenType::NUMBER && right.charValue == '(') ||
+        (left.charValue == ')' && right.charValue == '('))
     {
-        mTokens.pop_back();
         Token op = { ETokenType::OPERATOR };
-        op.operatorType = EOperatorType::MULTIPLICATION;
-        op.operatorPriority = 3;
+        op.stringValue += '*';
+        op.charValue = '*';
+
+        mTokens.pop_back();
         mTokens.push_back(op);
         mTokens.push_back(right);
     }
@@ -175,7 +158,7 @@ bool Tokenizer::shouldHandleSignForNumber() const
         return false;
     }
 
-    if (mPosition + 1 == mExpression.length() || !isNumberOrSeparator(mExpression[mPosition + 1]))
+    if (mPosition == mExpression.length() - 1 || !isdigit(mExpression[mPosition + 1]))
     {
         return false;
     }
@@ -187,7 +170,7 @@ bool Tokenizer::shouldHandleSignForNumber() const
 
     const auto& previousToken = mTokens.back();
 
-    if (previousToken.separatorValue == '(')
+    if (previousToken.charValue == '(')
     {
         return true;
     }

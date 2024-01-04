@@ -10,9 +10,8 @@ TEST(TokenizerTests, ShouldTokenizeOperator)
 
     tokenizer->tokenize("+");
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::OPERATOR);
-    EXPECT_EQ(tokenizer->getTokenAt(0).operatorType, EOperatorType::ADDITION);
-    EXPECT_EQ(tokenizer->getTokenAt(0).operatorPriority, 2);
+    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::OPERATOR);
+    EXPECT_EQ(tokenizer->getTokenAt(0).charValue, '+');
 }
 
 TEST(TokenizerTests, ShouldTokenizeNumber_WithDot)
@@ -22,7 +21,7 @@ TEST(TokenizerTests, ShouldTokenizeNumber_WithDot)
     tokenizer->tokenize("123.456");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::NUMBER);
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
 }
 
@@ -33,7 +32,7 @@ TEST(TokenizerTests, ShouldTokenizeNumber_WithComma)
     tokenizer->tokenize("123,456");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::NUMBER);
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
 }
 
@@ -44,8 +43,8 @@ TEST(TokenizerTests, ShouldTokenizeSeparator)
     tokenizer->tokenize("(");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::SEPARATOR);
-    EXPECT_EQ(tokenizer->getTokenAt(0).separatorValue, '(');
+    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::SEPARATOR);
+    EXPECT_EQ(tokenizer->getTokenAt(0).charValue, '(');
 }
 
 TEST(TokenizerTests, ShouldTrimExpression)
@@ -55,7 +54,7 @@ TEST(TokenizerTests, ShouldTrimExpression)
     tokenizer->tokenize("   123.456   ");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::NUMBER);
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
 }
 
@@ -66,11 +65,11 @@ TEST(TokenizerTests, ShouldHandleManyTokens)
     tokenizer->tokenize("2 + 4");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 3);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::NUMBER);
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 2);
-    EXPECT_EQ(tokenizer->getTokenAt(1).tokenType, ETokenType::OPERATOR);
-    EXPECT_EQ(tokenizer->getTokenAt(1).operatorType, EOperatorType::ADDITION);
-    EXPECT_EQ(tokenizer->getTokenAt(2).tokenType, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(1).type, ETokenType::OPERATOR);
+    EXPECT_EQ(tokenizer->getTokenAt(1).charValue, '+');
+    EXPECT_EQ(tokenizer->getTokenAt(2).type, ETokenType::NUMBER);
     EXPECT_EQ(tokenizer->getTokenAt(2).numberValue, 4);
 }
 

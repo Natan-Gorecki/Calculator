@@ -117,11 +117,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\tests\Calculator.Tests.cpp" />
-    <ClCompile Include="..\..\tests\commands\AddCommand.Tests.cpp" />
-    <ClCompile Include="..\..\tests\commands\DivideCommand.Tests.cpp" />
-    <ClCompile Include="..\..\tests\commands\MultiplyCommand.Tests.cpp" />
-    <ClCompile Include="..\..\tests\commands\NumberCommand.Tests.cpp" />
-    <ClCompile Include="..\..\tests\commands\SubstractCommand.Tests.cpp" />
     <ClCompile Include="..\..\tests\Parser.Tests.cpp" />
     <ClCompile Include="..\..\tests\tokenizer\Tokenizer.Tests.cpp" />
   </ItemGroup>

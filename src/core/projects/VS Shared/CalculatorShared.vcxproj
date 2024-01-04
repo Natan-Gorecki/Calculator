@@ -182,7 +182,6 @@
     <ClInclude Include="..\..\sources\InterpreterException.h" />
     <ClInclude Include="..\..\sources\Parser.h" />
     <ClInclude Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.h" />
-    <ClInclude Include="..\..\sources\tokenizer\EOperatorType.h" />
     <ClInclude Include="..\..\sources\tokenizer\ETokenType.h" />
     <ClInclude Include="..\..\sources\tokenizer\Token.h" />
     <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h" />

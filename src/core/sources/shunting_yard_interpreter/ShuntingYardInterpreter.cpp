@@ -13,22 +13,22 @@ double ShuntingYardInterpreter::interpret(Tokenizer* tokenizer)
     while (position < tokenizer->getTokenCount()) 
     {
         const auto& token = tokenizer->getTokenAt(position++);
-        if (token.tokenType == ETokenType::NUMBER)
+        if (token.type == ETokenType::NUMBER)
         {
             mOutputStack.push_back(token);
             continue;
         }
-        if (token.tokenType == ETokenType::OPERATOR)
+        if (token.type == ETokenType::OPERATOR)
         {
             handleOperator(token);
             continue;
         }
-        if (token.separatorValue == '(')
+        if (token.charValue == '(')
         {
             mOperatorStack.push_back(token);
             continue;
         }
-        if (token.separatorValue == ')')
+        if (token.charValue == ')')
         {
             handleRightParenthesis();
             continue;
@@ -40,7 +40,7 @@ double ShuntingYardInterpreter::interpret(Tokenizer* tokenizer)
         const auto& token = mOperatorStack.back();
         mOperatorStack.pop_back();
 
-        if (token.separatorValue == '(')
+        if (token.charValue == '(')
         {
             throw InterpreterException("Mismatched parentheses.");
         }
@@ -57,7 +57,7 @@ double ShuntingYardInterpreter::calculate()
     {
         const auto& token = mOutputStack.at(i);
 
-        if (token.tokenType == ETokenType::NUMBER)
+        if (token.type == ETokenType::NUMBER)
         {
             mNumberStack.push_back(token.numberValue);
             continue;
@@ -73,7 +73,7 @@ double ShuntingYardInterpreter::calculate()
         auto left = mNumberStack.back();
         mNumberStack.pop_back();
 
-        auto result = calculate(left, right, token.operatorType);
+        auto result = calculate(left, right, token.charValue);
         mNumberStack.push_back(result);
     }
 
@@ -85,19 +85,19 @@ double ShuntingYardInterpreter::calculate()
     return mNumberStack.back();
 }
 
-double ShuntingYardInterpreter::calculate(double left, double right, EOperatorType op) const
+double ShuntingYardInterpreter::calculate(double left, double right, char op) const
 {
     switch (op)
     {
-    case EOperatorType::ADDITION:
+    case '+':
         return left + right;
-    case EOperatorType::SUBSTRACTION:
+    case '-':
         return left - right;
-    case EOperatorType::MULTIPLICATION:
+    case '*':
         return left * right;
-    case EOperatorType::DIVISION:
+    case '/':
         return left / right;
-    case EOperatorType::POWER:
+    case '^':
         return pow(left, right);
     default:
         throw InterpreterException("Undefined operator type.");
@@ -110,12 +110,12 @@ void ShuntingYardInterpreter::handleOperator(const Token& op1)
     {
         Token op2 = mOperatorStack.back();
         
-        if (op2.tokenType != ETokenType::OPERATOR)
+        if (op2.type != ETokenType::OPERATOR)
         {
             break;
         }
 
-        if (op2.operatorPriority > op1.operatorPriority || (op1.operatorPriority == op2.operatorPriority && isLeftAssociative(op1)))
+        if (getPrecedence(op2)> getPrecedence(op1) || (getPrecedence(op1) == getPrecedence(op2) && isLeftAssociative(op1)))
         {
             mOperatorStack.pop_back();
             mOutputStack.push_back(op2);
@@ -138,7 +138,7 @@ void ShuntingYardInterpreter::handleRightParenthesis()
         }
         Token token = mOperatorStack.back();
 
-        if (token.separatorValue != '(')
+        if (token.charValue != '(')
         {
             mOperatorStack.pop_back();
             mOutputStack.push_back(token);
@@ -150,7 +150,24 @@ void ShuntingYardInterpreter::handleRightParenthesis()
     }
 }
 
-bool ShuntingYardInterpreter::isLeftAssociative(const Token& op1) const
+int ShuntingYardInterpreter::getPrecedence(const Token& op) const
 {
-    return op1.operatorType != EOperatorType::POWER;
+    switch (op.charValue)
+    {
+    case '+':
+    case '-':
+        return 2;
+    case '*':
+    case '/':
+        return 3;
+    case '^':
+        return 4;
+    default:
+        return 0;
+    }
+}
+
+bool ShuntingYardInterpreter::isLeftAssociative(const Token& op) const
+{
+    return op.type == ETokenType::OPERATOR && op.charValue != '^';
 }

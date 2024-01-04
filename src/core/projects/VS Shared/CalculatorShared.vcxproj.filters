@@ -104,9 +104,6 @@
     <ClInclude Include="..\..\sources\commands\CommandParser.h">
       <Filter>Headers\sources\commands</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\sources\tokenizer\EOperatorType.h">
-      <Filter>Headers\sources\tokenizer</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.h">
       <Filter>Headers\sources\shunting_yard_interpreter</Filter>
     </ClInclude>
