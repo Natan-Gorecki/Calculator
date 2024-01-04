@@ -1,5 +1,5 @@
 #pragma once
-#include "tokenizer/Tokenizer.h"
+#include "../tokenizer/Tokenizer.h"
 
 class Interpreter
 {

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "../tokenizer/Tokenizer.h"
-#include "../Interpreter.h"
+#include "Interpreter.h"
 
 class ShuntingYardInterpreter : public Interpreter
 {

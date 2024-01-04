@@ -1,4 +1,4 @@
-#include "../InterpreterException.h"
+#include "InterpreterException.h"
 #include "RecursiveInterpreter.h"
 
 double RecursiveInterpreter::interpret(Tokenizer* tokenizer)

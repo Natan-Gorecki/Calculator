@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{5eb78c30-fd61-4cba-a415-489bff92c14d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{9d18cda5-34f8-4da4-a719-3b414817e080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\api">
+      <UniqueIdentifier>{c7827131-4843-43e3-88ed-5520a371858b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\sources">
+      <UniqueIdentifier>{572473be-f159-432b-b3c8-8e81a33ef58c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\sources\tokenizer">
+      <UniqueIdentifier>{1f726651-3903-4b91-9fe6-7a8c4cde8e89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\sources\interpreter">
+      <UniqueIdentifier>{4a1bac9d-a67b-4c5d-87b3-32ef52cada60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\interpreter">
+      <UniqueIdentifier>{5684cd60-b228-46c1-a8f6-5bb33474987f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\tokenizer">
+      <UniqueIdentifier>{fc37bd10-5575-4ec8-b4e0-fa2be0a4d3ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\api.h">
+      <Filter>Headers\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\ICalculator.h">
+      <Filter>Headers\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Calculator.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Parser.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\ETokenType.h">
+      <Filter>Headers\sources\tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Token.h">
+      <Filter>Headers\sources\tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Tokenizer.h">
+      <Filter>Headers\sources\tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\TokenizerException.h">
+      <Filter>Headers\sources\tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.h">
+      <Filter>Headers\sources\interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\ShuntingYardInterpreter.h">
+      <Filter>Headers\sources\interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.h">
+      <Filter>Headers\sources\interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\InterpreterException.h">
+      <Filter>Headers\sources\interpreter</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.cpp">
+      <Filter>Sources\interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\ShuntingYardInterpreter.cpp">
+      <Filter>Sources\interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Tokenizer.cpp">
+      <Filter>Sources\tokenizer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\api.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\Calculator.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\Parser.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.cpp">
+      <Filter>Sources\interpreter</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
