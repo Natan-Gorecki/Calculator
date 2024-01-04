@@ -1,61 +1,39 @@
+#include <memory>
 #include "Calculator.h"
-
+#include "recursive_interpreter/RecursiveInterpreter.h"
+#include "shunting_yard_interpreter/ShuntingYardInterpreter.h"
+#include "tokenizer/Tokenizer.h"
 
 extern ErrorCallback error_callback;
 
+using namespace std;
 
-//------------------------------------------------------------------------------
-//
-//	Constructor
-//
-//------------------------------------------------------------------------------
-Calculator::Calculator()
-{
-	this->parser = new Parser();
-}
-
-
-
-//------------------------------------------------------------------------------
-//
-//	Virtual destructor
-//
-//------------------------------------------------------------------------------
-Calculator::~Calculator()
-{
-	delete parser;
-	if (command) delete command;
-}
-
-
-
-//------------------------------------------------------------------------------
-//
-// Public method return result using command object
-//
-//------------------------------------------------------------------------------
 double CC Calculator::Calculate(const char* expression)
 {
-	try
-	{
-		if (command)
-		{
-			delete command;
-			command = NULL;
-		}
-		this->command = parser->Parse(expression);
-		return this->command->Execute();
-	}
+    try
+    {
+        auto tokenizer = make_unique<Tokenizer>();
+        tokenizer->tokenize(expression);
 
+        if (mUseShuntingYardInterpreter)
+        {
+            auto interpreter = make_unique<ShuntingYardInterpreter>();
+            return interpreter->interpret(tokenizer.get());
+        }
+        if (mUseRecursiveInterpreter)
+        {
+            auto interpreter = make_unique<RecursiveInterpreter>();
+            return interpreter->interpret(tokenizer.get());
+        }
+        return 0;
+    }
+    catch (const char* exception)
+    {
+        if (error_callback)
+        {
+            error_callback(exception);
+        }
 
-	// Invoke error callback and rethrow exception
-	catch (const char* exception)
-	{
-		if (error_callback)
-		{
-			error_callback(exception);
-		}
-
-		throw;
-	}
+        throw;
+    }
 }

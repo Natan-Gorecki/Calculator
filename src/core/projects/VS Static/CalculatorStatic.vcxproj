@@ -22,18 +22,23 @@
     <ClInclude Include="..\..\api\api.h" />
     <ClInclude Include="..\..\api\ICalculator.h" />
     <ClInclude Include="..\..\sources\Calculator.h" />
-    <ClInclude Include="..\..\sources\CalculatorException.h" />
-    <ClInclude Include="..\..\sources\Commands.h" />
+    <ClInclude Include="..\..\sources\Interpreter.h" />
+    <ClInclude Include="..\..\sources\InterpreterException.h" />
     <ClInclude Include="..\..\sources\Parser.h" />
+    <ClInclude Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.h" />
+    <ClInclude Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.h" />
     <ClInclude Include="..\..\sources\tokenizer\ETokenType.h" />
     <ClInclude Include="..\..\sources\tokenizer\Token.h" />
     <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h" />
+    <ClInclude Include="..\..\sources\tokenizer\TokenizerException.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\api.cpp" />
     <ClCompile Include="..\..\sources\Calculator.cpp" />
-    <ClCompile Include="..\..\sources\Commands.cpp" />
+    <ClCompile Include="..\..\sources\Interpreter.cpp" />
     <ClCompile Include="..\..\sources\Parser.cpp" />
+    <ClCompile Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.cpp" />
+    <ClCompile Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.cpp" />
     <ClCompile Include="..\..\sources\tokenizer\Tokenizer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

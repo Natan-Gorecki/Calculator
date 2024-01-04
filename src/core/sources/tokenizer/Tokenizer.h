@@ -10,10 +10,16 @@ public:
     Token getTokenAt(int position);
 
 private:
-    bool tryTokenizeString(Token& token, int& pos) const;
-    bool tryTokenizeNumber(Token& token, int& pos) const;
-    bool tryTokenizeCharacter(Token& token, int& pos) const;
+    bool tryTokenizeNumber();
+    bool tryTokenizeSeparator();
+    bool tryTokenizeOperator();
+
+    void handleHiddenMultiplication();
+
+    bool isNumberOrSeparator(char c) const;
+    bool shouldHandleSignForNumber() const;
 
     std::string mExpression;
     std::vector<Token> mTokens;
+    int mPosition = 0;
 };

@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <array>
 #include <stdexcept>
-#include "../CalculatorException.h"
 #include "Tokenizer.h"
+#include "TokenizerException.h"
 
 using namespace std;
 
@@ -10,40 +10,25 @@ void Tokenizer::tokenize(const char* expression)
 {
     mExpression = expression;
     mTokens.clear();
+    mPosition = 0;
 
-    Token token = {};
-    int position = 0;
-
-    while (position < mExpression.length())
+    while (mPosition < mExpression.length())
     {
-        if (mExpression[position] == ' ')
+        if (mExpression[mPosition] == ' ')
         {
-            position++;
+            mPosition++;
             continue;
         }
 
-        if (tryTokenizeString(token, position))
+        if (tryTokenizeNumber() ||
+            tryTokenizeSeparator() ||
+            tryTokenizeOperator())
         {
-            mTokens.push_back(token);
-            token = {};
+            handleHiddenMultiplication();
             continue;
         }
 
-        if (tryTokenizeNumber(token, position))
-        {
-            mTokens.push_back(token);
-            token = {};
-            continue;
-        }
-
-        if (tryTokenizeCharacter(token, position))
-        {
-            mTokens.push_back(token);
-            token = {};
-            continue;
-        }
-
-        throw CalculatorException("Failed to tokenize expression.", position, mExpression.c_str());
+        throw TokenizerException("Failed to tokenize expression.", mPosition, mExpression.c_str());
     }
 }
 
@@ -57,70 +42,138 @@ Token Tokenizer::getTokenAt(int position)
     return mTokens.at(position);
 }
 
-bool Tokenizer::tryTokenizeString(Token& token, int& pos) const
+bool Tokenizer::tryTokenizeNumber()
 {
-    if (!isalpha(mExpression[pos]))
-    {
-        return false;
-    }
-
-    while (pos < mExpression.length() && (isalpha(mExpression[pos]) || isdigit(mExpression[pos])))
-    {
-        token.stringValue += mExpression[pos];
-        pos++;
-    }
-
-    token.tokenType = ETokenType::STRING;
-    return true;
-}
-
-bool Tokenizer::tryTokenizeNumber(Token& token, int& pos) const
-{
-    if (!isdigit(mExpression[pos]))
-    {
-        return false;
-    }
-
     int separatorCount = 0;
+    string tokenString = "";
 
-    while (pos < mExpression.length() && (isdigit(mExpression[pos]) || mExpression[pos] == ',' || mExpression[pos] == '.'))
+    if (shouldHandleSignForNumber())
     {
-        if (mExpression[pos] == ',' || mExpression[pos] == '.')
+        tokenString += mExpression[mPosition];
+        mPosition++;
+    }
+
+    if (!isNumberOrSeparator(mExpression[mPosition]))
+    {
+        return false;
+    }
+
+    while (mPosition < mExpression.length() && isNumberOrSeparator(mExpression[mPosition]))
+    {
+        if (mExpression[mPosition] == ',' || mExpression[mPosition] == '.')
         {
             if (++separatorCount > 1)
             {
-                throw CalculatorException("Duplicated separators.", pos, mExpression.c_str());
+                throw TokenizerException("Duplicated separators.", mPosition, mExpression.c_str());
             }
 
-            if (mExpression[pos] == mExpression.length() - 1 || !isdigit(mExpression[pos + 1]))
+            if (mExpression[mPosition] == mExpression.length() - 1 || !isdigit(mExpression[mPosition + 1]))
             {
-                throw CalculatorException("Missing decimal part.", pos, mExpression.c_str());
+                throw TokenizerException("Missing decimal part.", mPosition, mExpression.c_str());
             }
         }
 
-        token.stringValue += mExpression[pos];
-        pos++;
+        tokenString += mExpression[mPosition];
+        mPosition++;
     }
 
-    string withoutComma = token.stringValue;
+    string withoutComma = tokenString;
     replace(withoutComma.begin(), withoutComma.end(), ',', '.');
+
+    Token token = { ETokenType::NUMBER };
+    token.stringValue = tokenString;
     token.numberValue = stod(withoutComma);
-    token.tokenType = ETokenType::NUMBER;
+
+    mTokens.push_back(token);
     return true;
 }
 
-bool Tokenizer::tryTokenizeCharacter(Token& token, int& pos) const
+bool Tokenizer::tryTokenizeSeparator()
 {
-    static const array<char, 6> validChars = { '+', '-', '*', '/', '(', ')' };
-
-    if (find(validChars.begin(), validChars.end(), mExpression[pos]) == validChars.end())
+    if (mExpression[mPosition] != '(' && mExpression[mPosition] != ')')
     {
         return false;
     }
 
-    token.tokenType = ETokenType::CHAR;
-    token.stringValue += mExpression[pos];
-    token.characterValue = mExpression[pos];
-    pos++;
+    Token token = { ETokenType::SEPARATOR };
+    token.stringValue += mExpression[mPosition];
+    token.charValue += mExpression[mPosition];
+
+    mTokens.push_back(token);
+    mPosition++;
     return true;
+}
+
+bool Tokenizer::tryTokenizeOperator()
+{
+    static const array<char, 5> validChars = { '+', '-', '*', '/', '^' };
+
+    if (find(validChars.begin(), validChars.end(), mExpression[mPosition]) == validChars.end())
+    {
+        return false;
+    }
+
+    Token token = { ETokenType::OPERATOR };
+    token.stringValue += mExpression[mPosition];
+    token.charValue += mExpression[mPosition];
+
+    mTokens.push_back(token);
+    mPosition++;
+    return true;
+}
+
+void Tokenizer::handleHiddenMultiplication()
+{
+    if (mTokens.size() < 2)
+    {
+        return;
+    }
+
+    Token left = mTokens[mTokens.size() - 2];
+    Token right = mTokens[mTokens.size() - 1];
+
+    if ((left.charValue == ')' && right.type == ETokenType::NUMBER) ||
+        (left.type == ETokenType::NUMBER && right.charValue == '(') ||
+        (left.charValue == ')' && right.charValue == '('))
+    {
+        Token op = { ETokenType::OPERATOR };
+        op.stringValue += '*';
+        op.charValue = '*';
+
+        mTokens.pop_back();
+        mTokens.push_back(op);
+        mTokens.push_back(right);
+    }
+}
+
+bool Tokenizer::isNumberOrSeparator(char c) const
+{
+    return isdigit(c) || c == ',' || c == '.';
+}
+
+bool Tokenizer::shouldHandleSignForNumber() const
+{
+    if (mExpression[mPosition] != '+' && mExpression[mPosition] != '-')
+    {
+        return false;
+    }
+
+    if (mPosition == mExpression.length() - 1 || !isdigit(mExpression[mPosition + 1]))
+    {
+        return false;
+    }
+
+    if (mTokens.empty())
+    {
+        return true;
+    }
+
+    const auto& previousToken = mTokens.back();
+
+    if (previousToken.charValue == '(')
+    {
+        return true;
+    }
+
+    return false;
 }

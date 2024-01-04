@@ -21,6 +21,18 @@
     <Filter Include="Sources\tokenizer">
       <UniqueIdentifier>{94cd5045-8eee-47f7-a69a-e3aac9d3a9d1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headers\sources\shunting_yard_interpreter">
+      <UniqueIdentifier>{3ca1badf-f21d-4c0e-b8a4-41cceb8e0c7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\shunting_yard_interpreter">
+      <UniqueIdentifier>{96304eea-531f-451b-b34d-66d16ce8b338}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\sources\recursive_interpreter">
+      <UniqueIdentifier>{361b2145-7a5b-4dcc-91f8-9a576ca1c38d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\recursive_interpreter">
+      <UniqueIdentifier>{f06b374e-c523-4a5f-a5ae-21881d1f3b01}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -30,14 +42,20 @@
     <ClCompile Include="..\..\sources\Calculator.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\sources\Commands.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\sources\Parser.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\sources\tokenizer\Tokenizer.cpp">
       <Filter>Sources\tokenizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.cpp">
+      <Filter>Sources\shunting_yard_interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.cpp">
+      <Filter>Sources\recursive_interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sources\Interpreter.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,9 +66,6 @@
       <Filter>Headers\api</Filter>
     </ClInclude>
     <ClInclude Include="..\..\sources\Calculator.h">
-      <Filter>Headers\sources</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sources\Commands.h">
       <Filter>Headers\sources</Filter>
     </ClInclude>
     <ClInclude Include="..\..\sources\Parser.h">
@@ -65,7 +80,19 @@
     <ClInclude Include="..\..\sources\tokenizer\Tokenizer.h">
       <Filter>Headers\sources\tokenizer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\sources\CalculatorException.h">
+    <ClInclude Include="..\..\sources\tokenizer\TokenizerException.h">
+      <Filter>Headers\sources\tokenizer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.h">
+      <Filter>Headers\sources\shunting_yard_interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.h">
+      <Filter>Headers\sources\recursive_interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\Interpreter.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\InterpreterException.h">
       <Filter>Headers\sources</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,8 +4,8 @@
 
 struct Token
 {
-    ETokenType tokenType = ETokenType::UNDEFINED;
+    ETokenType type = ETokenType::UNDEFINED;
     std::string stringValue = "";
     double numberValue = 0;
-    char characterValue = 0;
+    char charValue = 0;
 };

@@ -1,10 +1,10 @@
 #pragma once
 #include <stdexcept>
 
-class CalculatorException : public std::exception
+class TokenizerException : public std::exception
 {
 public:
-    CalculatorException(const char* message, int position, const char* expression)
+    TokenizerException(const char* message, int position, const char* expression)
         : std::exception(message), mPosition(position), mExpression(expression) {}
 
     int getPosition() const { return mPosition; }

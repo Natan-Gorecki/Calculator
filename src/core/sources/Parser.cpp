@@ -2,7 +2,7 @@
 
 
 
-Command* Parser::Parse(const char* expression)
+double Parser::Parse(const char* expression)
 {
 	std::string exp = std::string(expression);
 	CheckIfExpressionIsCorrect(exp);
@@ -16,7 +16,7 @@ Command* Parser::Parse(const char* expression)
 //	Function calculating the result
 //
 //------------------------------------------------------------------------------
-Command* Parser::Parse(std::string text)
+double Parser::Parse(std::string text)
 {
 	int char_place = OperationOutsideParentheses(text);
 
@@ -63,9 +63,11 @@ Command* Parser::Parse(std::string text)
 				switch (text[char_place])
 				{
 
-				case '+':	return new MultiplyCommand(new NumberCommand(1), Parse(text.substr(char_place + 1, text.length() - char_place)));
+				case '+':
+					return Parse(text.substr(char_place + 1, text.length() - char_place));
 
-				case '-':	return new MultiplyCommand(new NumberCommand(-1), Parse(text.substr(char_place + 1, text.length() - char_place)));
+				case '-':
+					return -1 * Parse(text.substr(char_place + 1, text.length() - char_place));
 
 					//	Invalid equation
 					//	e.g. *2 v /4
@@ -101,22 +103,22 @@ Command* Parser::Parse(std::string text)
 		switch (text[char_place])
 		{
 		case '+':	
-			return new AddCommand(Parse(left), Parse(right));
+			return Parse(left) + Parse(right);
 
 		case '-':
-			return new SubtractCommand(Parse(left), Parse(right));
+			return Parse(left) - Parse(right);
 
 		case '*':	
-			return new MultiplyCommand(Parse(left), Parse(right));
+			return Parse(left) * Parse(right);
 
 		case '/':
-			return new DivideCommand(Parse(left), Parse(right));
+			return Parse(left) / Parse(right);
 
 		case '(':
-			return new MultiplyCommand(Parse(left), Parse(text.substr(char_place, text.length() - char_place)));
+			return Parse(left) * Parse(text.substr(char_place, text.length() - char_place));
 
 		case ')':
-			return new MultiplyCommand(Parse(text.substr(0, char_place+1)), Parse(right));
+			return Parse(text.substr(0, char_place+1)) * Parse(right);
 		}
 	}
 
@@ -182,7 +184,7 @@ Command* Parser::Parse(std::string text)
 	//	RETURN VALUE OF THIS PART OF THE EQUATION 
 	//
 	//------------------------------------------------------------
-	return new NumberCommand(stod(result));
+	return stod(result);
 }
 
 

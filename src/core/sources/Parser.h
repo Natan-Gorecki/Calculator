@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Commands.h"
-
 #include <string.h>
 #include <string>
 
@@ -9,12 +7,12 @@
 class Parser
 {
 public:
-	Command* Parse(const char* expression);
+	double Parse(const char* expression);
 
 
 private:
 	// main function after check if the equation is correct
-	Command* Parse(std::string expression);
+	double Parse(std::string expression);
 
 
 
