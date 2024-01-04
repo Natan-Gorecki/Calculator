@@ -4,15 +4,15 @@
 
 using namespace std;
 
-TEST(TokenizerTests, ShouldTokenizeString)
+TEST(TokenizerTests, ShouldTokenizeOperator)
 {
     auto tokenizer = make_unique<Tokenizer>();
 
-    tokenizer->tokenize("sin30");
-
+    tokenizer->tokenize("+");
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::STRING);
-    EXPECT_STREQ(tokenizer->getTokenAt(0).stringValue.c_str(), "sin30");
+    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::OPERATOR);
+    EXPECT_EQ(tokenizer->getTokenAt(0).operatorType, EOperatorType::ADDITION);
+    EXPECT_EQ(tokenizer->getTokenAt(0).operatorPriority, 2);
 }
 
 TEST(TokenizerTests, ShouldTokenizeNumber_WithDot)
@@ -23,7 +23,6 @@ TEST(TokenizerTests, ShouldTokenizeNumber_WithDot)
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
     EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
-    EXPECT_STREQ(tokenizer->getTokenAt(0).stringValue.c_str(), "123.456");
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
 }
 
@@ -35,46 +34,44 @@ TEST(TokenizerTests, ShouldTokenizeNumber_WithComma)
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
     EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
-    EXPECT_STREQ(tokenizer->getTokenAt(0).stringValue.c_str(), "123,456");
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
 }
 
-TEST(TokenizerTests, ShouldTokenizeCharacter)
+TEST(TokenizerTests, ShouldTokenizeSeparator)
 {
     auto tokenizer = make_unique<Tokenizer>();
 
-    tokenizer->tokenize("+");
+    tokenizer->tokenize("(");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::CHAR);
-    EXPECT_STREQ(tokenizer->getTokenAt(0).stringValue.c_str(), "+");
-    EXPECT_EQ(tokenizer->getTokenAt(0).characterValue, '+');
+    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::SEPARATOR);
+    EXPECT_EQ(tokenizer->getTokenAt(0).separatorValue, '(');
 }
 
 TEST(TokenizerTests, ShouldTrimExpression)
 {
     auto tokenizer = make_unique<Tokenizer>();
 
-    tokenizer->tokenize("   sin30   ");
+    tokenizer->tokenize("   123.456   ");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::STRING);
-    EXPECT_STREQ(tokenizer->getTokenAt(0).stringValue.c_str(), "sin30");
+    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
 }
 
 TEST(TokenizerTests, ShouldHandleManyTokens)
 {
     auto tokenizer = make_unique<Tokenizer>();
 
-    tokenizer->tokenize("sin30 sin60 sin90");
+    tokenizer->tokenize("2 + 4");
 
     EXPECT_EQ(tokenizer->getTokenCount(), 3);
-    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::STRING);
-    EXPECT_STREQ(tokenizer->getTokenAt(0).stringValue.c_str(), "sin30");
-    EXPECT_EQ(tokenizer->getTokenAt(1).tokenType, ETokenType::STRING);
-    EXPECT_STREQ(tokenizer->getTokenAt(1).stringValue.c_str(), "sin60");
-    EXPECT_EQ(tokenizer->getTokenAt(2).tokenType, ETokenType::STRING);
-    EXPECT_STREQ(tokenizer->getTokenAt(2).stringValue.c_str(), "sin90");
+    EXPECT_EQ(tokenizer->getTokenAt(0).tokenType, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 2);
+    EXPECT_EQ(tokenizer->getTokenAt(1).tokenType, ETokenType::OPERATOR);
+    EXPECT_EQ(tokenizer->getTokenAt(1).operatorType, EOperatorType::ADDITION);
+    EXPECT_EQ(tokenizer->getTokenAt(2).tokenType, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(2).numberValue, 4);
 }
 
 TEST(TokenizerTests, ShouldThrowException_ForUnexpectedToken)

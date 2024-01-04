@@ -21,6 +21,7 @@ double ShuntingYardInterpreter::interpret(Tokenizer* tokenizer)
         if (token.tokenType == ETokenType::OPERATOR)
         {
             handleOperator(token);
+            continue;
         }
         if (token.separatorValue == '(')
         {
@@ -120,7 +121,11 @@ void ShuntingYardInterpreter::handleOperator(const Token& op1)
             mOutputStack.push_back(op2);
             continue;
         }
+
+        break;
     }
+
+    mOperatorStack.push_back(op1);
 }
 
 void ShuntingYardInterpreter::handleRightParenthesis()

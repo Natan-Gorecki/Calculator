@@ -98,6 +98,7 @@ bool Tokenizer::tryTokenizeSeparator()
 bool Tokenizer::tryTokenizeOperator()
 {
     Token token = {};
+    token.tokenType = ETokenType::OPERATOR;
     bool operatorFound = false;
 
     if (mExpression[mPosition] == '+')

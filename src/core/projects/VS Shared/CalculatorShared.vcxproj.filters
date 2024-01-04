@@ -42,9 +42,6 @@
     <ClCompile Include="..\..\sources\Calculator.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\sources\Commands.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\sources\Parser.cpp">
       <Filter>Sources</Filter>
     </ClCompile>

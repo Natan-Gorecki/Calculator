@@ -161,7 +161,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\sources\api.cpp" />
     <ClCompile Include="..\..\sources\Calculator.cpp" />
-    <ClCompile Include="..\..\sources\Commands.cpp" />
     <ClCompile Include="..\..\sources\commands\CommandParser.cpp" />
     <ClCompile Include="..\..\sources\Parser.cpp" />
     <ClCompile Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.cpp" />
