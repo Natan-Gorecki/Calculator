@@ -8,5 +8,6 @@ public:
     double CC Calculate(const char* expression) override;
 
 private:
-    bool mUseShuntingYardInterpreter = true;
+    bool mUseShuntingYardInterpreter = false;
+    bool mUseRecursiveInterpreter = true;
 };

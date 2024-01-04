@@ -1,7 +1,8 @@
 #include <memory>
 #include "Calculator.h"
-#include "tokenizer/Tokenizer.h"
+#include "recursive_interpreter/RecursiveInterpreter.h"
 #include "shunting_yard_interpreter/ShuntingYardInterpreter.h"
+#include "tokenizer/Tokenizer.h"
 
 extern ErrorCallback error_callback;
 
@@ -19,7 +20,11 @@ double CC Calculator::Calculate(const char* expression)
             auto interpreter = make_unique<ShuntingYardInterpreter>();
             return interpreter->interpret(tokenizer.get());
         }
-
+        if (mUseRecursiveInterpreter)
+        {
+            auto interpreter = make_unique<RecursiveInterpreter>();
+            return interpreter->interpret(tokenizer.get());
+        }
         return 0;
     }
     catch (const char* exception)
