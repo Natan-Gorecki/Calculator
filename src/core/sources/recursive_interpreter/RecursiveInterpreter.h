@@ -1,20 +1,18 @@
 #pragma once
 #include <memory>
 #include "../tokenizer/Tokenizer.h"
+#include "../Interpreter.h"
 
-class RecursiveInterpreter
+class RecursiveInterpreter : public Interpreter
 {
 public:
-    double interpret(Tokenizer* tokenizer);
+    virtual ~RecursiveInterpreter() {};
+    double interpret(Tokenizer* tokenizer) override;
 
 private:
     double interpretImpl(int start, int end);
     bool findLeastPrecedenceOperator(int start, int end, int& position);
     bool isWrapperWithBrackets(int start, int end);
-
-    double calculate(double left, double right, char op) const;
-    int getPrecedence(const Token& op) const;
-    bool isLeftAssociative(const Token& op) const;
 
     Tokenizer* mTokenizer = nullptr;
 };

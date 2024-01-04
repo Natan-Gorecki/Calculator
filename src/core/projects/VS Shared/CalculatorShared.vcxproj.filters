@@ -54,6 +54,9 @@
     <ClCompile Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.cpp">
       <Filter>Sources\recursive_interpreter</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\sources\Interpreter.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\api\api.h">
@@ -83,11 +86,14 @@
     <ClInclude Include="..\..\sources\shunting_yard_interpreter\ShuntingYardInterpreter.h">
       <Filter>Headers\sources\shunting_yard_interpreter</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\sources\InterpreterException.h">
-      <Filter>Headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\sources\recursive_interpreter\RecursiveInterpreter.h">
       <Filter>Headers\sources\recursive_interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\Interpreter.h">
+      <Filter>Headers\sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sources\InterpreterException.h">
+      <Filter>Headers\sources</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

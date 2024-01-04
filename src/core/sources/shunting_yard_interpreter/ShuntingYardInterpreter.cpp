@@ -73,7 +73,7 @@ double ShuntingYardInterpreter::calculate()
         auto left = mNumberStack.back();
         mNumberStack.pop_back();
 
-        auto result = calculate(left, right, token.charValue);
+        auto result = Interpreter::calculate(left, right, token.charValue);
         mNumberStack.push_back(result);
     }
 
@@ -83,25 +83,6 @@ double ShuntingYardInterpreter::calculate()
     }
 
     return mNumberStack.back();
-}
-
-double ShuntingYardInterpreter::calculate(double left, double right, char op) const
-{
-    switch (op)
-    {
-    case '+':
-        return left + right;
-    case '-':
-        return left - right;
-    case '*':
-        return left * right;
-    case '/':
-        return left / right;
-    case '^':
-        return pow(left, right);
-    default:
-        throw InterpreterException("Undefined operator type.");
-    }
 }
 
 void ShuntingYardInterpreter::handleOperator(const Token& op1)
@@ -148,26 +129,4 @@ void ShuntingYardInterpreter::handleRightParenthesis()
         mOperatorStack.pop_back();
         break;
     }
-}
-
-int ShuntingYardInterpreter::getPrecedence(const Token& op) const
-{
-    switch (op.charValue)
-    {
-    case '+':
-    case '-':
-        return 2;
-    case '*':
-    case '/':
-        return 3;
-    case '^':
-        return 4;
-    default:
-        return 0;
-    }
-}
-
-bool ShuntingYardInterpreter::isLeftAssociative(const Token& op) const
-{
-    return op.type == ETokenType::OPERATOR && op.charValue != '^';
 }

@@ -1,19 +1,18 @@
 #pragma once
 #include <vector>
 #include "../tokenizer/Tokenizer.h"
+#include "../Interpreter.h"
 
-class ShuntingYardInterpreter
+class ShuntingYardInterpreter : public Interpreter
 {
 public:
-    double interpret(Tokenizer* tokenizer);
+    virtual ~ShuntingYardInterpreter() {};
+    double interpret(Tokenizer* tokenizer) override;
 
 private:
     double calculate();
-    double calculate(double left, double right, char op) const;
     void handleOperator(const Token& op1);
     void handleRightParenthesis();
-    int getPrecedence(const Token& op) const;
-    bool isLeftAssociative(const Token& op) const;
 
     std::vector<double> mNumberStack;
     std::vector<Token> mOutputStack;
