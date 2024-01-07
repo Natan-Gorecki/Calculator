@@ -191,13 +191,13 @@ TEST_P(CalculatorTests, ShouldThrowException_ForEmptyExpression)
 {
     EXPECT_EXPRESSION_EXCEPTION("", 0);
     EXPECT_EXPRESSION_EXCEPTION("   ", 0);
+    EXPECT_EXPRESSION_EXCEPTION("()", 0);
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForEmptyBrackets)
 {
     EXPECT_EXPRESSION_EXCEPTION("2 + () - 4", 2);
     EXPECT_EXPRESSION_EXCEPTION("4 - (  )   ", 2);
-    EXPECT_EXPRESSION_EXCEPTION("( )", 0);
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForNotClosedBrackets)
