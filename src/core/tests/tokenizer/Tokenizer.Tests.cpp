@@ -1,9 +1,7 @@
 #include "gtest/gtest.h"
 #include "tokenizer/Tokenizer.h"
-#include "tokenizer/TokenizerException.h"
 
 using namespace std;
-
 TEST(TokenizerTests, ShouldTokenizeOperator)
 {
     auto tokenizer = make_unique<Tokenizer>();
@@ -34,6 +32,28 @@ TEST(TokenizerTests, ShouldTokenizeNumber_WithComma)
     EXPECT_EQ(tokenizer->getTokenCount(), 1);
     EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::NUMBER);
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
+}
+
+TEST(TokenizerTests, ShouldTokenizeNumber_WithTrailingSeparator)
+{
+    auto tokenizer = make_unique<Tokenizer>();
+
+    tokenizer->tokenize("123.");
+
+    EXPECT_EQ(tokenizer->getTokenCount(), 1);
+    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.0);
+}
+
+TEST(TokenizerTests, ShouldTokenizeNumber_WithLeadingSeparator)
+{
+    auto tokenizer = make_unique<Tokenizer>();
+
+    tokenizer->tokenize(".456");
+
+    EXPECT_EQ(tokenizer->getTokenCount(), 1);
+    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::NUMBER);
+    EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 0.456);
 }
 
 TEST(TokenizerTests, ShouldTokenizeSeparator)

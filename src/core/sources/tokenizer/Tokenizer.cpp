@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <array>
 #include <stdexcept>
+#include "../ExpressionException.h"
 #include "Tokenizer.h"
-#include "TokenizerException.h"
 
 using namespace std;
 
@@ -20,15 +20,22 @@ void Tokenizer::tokenize(const char* expression)
             continue;
         }
 
-        if (tryTokenizeNumber() ||
-            tryTokenizeSeparator() ||
-            tryTokenizeOperator())
+        if (tryTokenizeNumber())
         {
-            handleHiddenMultiplication();
             continue;
         }
 
-        throw TokenizerException("Failed to tokenize expression.", mPosition, mExpression.c_str());
+        if (tryTokenizeSeparator())
+        {
+            continue;
+        }
+
+        if (tryTokenizeOperator())
+        {
+            continue;
+        }
+
+        throw ExpressionException("Failed to tokenize expression.", mPosition, mExpression.c_str());
     }
 }
 
@@ -42,35 +49,31 @@ Token Tokenizer::getTokenAt(int position)
     return mTokens.at(position);
 }
 
+void Tokenizer::insertAt(int index, const Token& token)
+{
+    mTokens.insert(mTokens.begin() + index, token);
+}
+
+void Tokenizer::removeAt(int index)
+{
+    mTokens.erase(mTokens.begin() + index);
+}
+
 bool Tokenizer::tryTokenizeNumber()
 {
     int separatorCount = 0;
     string tokenString = "";
 
-    if (shouldHandleSignForNumber())
-    {
-        tokenString += mExpression[mPosition];
-        mPosition++;
-    }
-
-    if (!isNumberOrSeparator(mExpression[mPosition]))
+    if (!isDigitOrSeparator(mExpression[mPosition]))
     {
         return false;
     }
 
-    while (mPosition < mExpression.length() && isNumberOrSeparator(mExpression[mPosition]))
+    while (mPosition < mExpression.length() && isDigitOrSeparator(mExpression[mPosition]))
     {
-        if (mExpression[mPosition] == ',' || mExpression[mPosition] == '.')
+        if ((mExpression[mPosition] == ',' || mExpression[mPosition] == '.') && ++separatorCount > 1)
         {
-            if (++separatorCount > 1)
-            {
-                throw TokenizerException("Duplicated separators.", mPosition, mExpression.c_str());
-            }
-
-            if (mExpression[mPosition] == mExpression.length() - 1 || !isdigit(mExpression[mPosition + 1]))
-            {
-                throw TokenizerException("Missing decimal part.", mPosition, mExpression.c_str());
-            }
+            throw ExpressionException("Duplicated separators.", mPosition, mExpression.c_str());
         }
 
         tokenString += mExpression[mPosition];
@@ -79,6 +82,11 @@ bool Tokenizer::tryTokenizeNumber()
 
     string withoutComma = tokenString;
     replace(withoutComma.begin(), withoutComma.end(), ',', '.');
+
+    if (withoutComma == ".")
+    {
+        throw ExpressionException("Invalid number syntax", mPosition - 1, mExpression.c_str());
+    }
 
     Token token = { ETokenType::NUMBER };
     token.stringValue = tokenString;
@@ -122,58 +130,7 @@ bool Tokenizer::tryTokenizeOperator()
     return true;
 }
 
-void Tokenizer::handleHiddenMultiplication()
-{
-    if (mTokens.size() < 2)
-    {
-        return;
-    }
-
-    Token left = mTokens[mTokens.size() - 2];
-    Token right = mTokens[mTokens.size() - 1];
-
-    if ((left.charValue == ')' && right.type == ETokenType::NUMBER) ||
-        (left.type == ETokenType::NUMBER && right.charValue == '(') ||
-        (left.charValue == ')' && right.charValue == '('))
-    {
-        Token op = { ETokenType::OPERATOR };
-        op.stringValue += '*';
-        op.charValue = '*';
-
-        mTokens.pop_back();
-        mTokens.push_back(op);
-        mTokens.push_back(right);
-    }
-}
-
-bool Tokenizer::isNumberOrSeparator(char c) const
+bool Tokenizer::isDigitOrSeparator(char c) const
 {
     return isdigit(c) || c == ',' || c == '.';
-}
-
-bool Tokenizer::shouldHandleSignForNumber() const
-{
-    if (mExpression[mPosition] != '+' && mExpression[mPosition] != '-')
-    {
-        return false;
-    }
-
-    if (mPosition == mExpression.length() - 1 || !isdigit(mExpression[mPosition + 1]))
-    {
-        return false;
-    }
-
-    if (mTokens.empty())
-    {
-        return true;
-    }
-
-    const auto& previousToken = mTokens.back();
-
-    if (previousToken.charValue == '(')
-    {
-        return true;
-    }
-
-    return false;
 }
