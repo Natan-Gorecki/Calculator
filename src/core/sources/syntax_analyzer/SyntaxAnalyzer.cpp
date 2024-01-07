@@ -6,144 +6,152 @@ using namespace std;
 void SyntaxAnalyzer::analyze(Tokenizer* tokenizer)
 {
     mTokenizer = tokenizer;
-    mPosition = 0;
 
-    while (mPosition < mTokenizer->getTokenCount())
-    {
-        handleSignOfNumber();
-        handleEmptyBrackets();
-        handleHiddenMultiplication();
-
-        throwForDuplicatedOperators();
-        throwForMisplacedOperators();
-
-        mPosition++;
-    }
-
+    handleSignOfNumber();
+    handleEmptyBrackets();
+    handleHiddenMultiplication();
     throwForEmptyExpression();
+    throwForDuplicatedOperators();
+    throwForMisplacedOperators();
     throwForNotClosedBrackets();
 }
 
 void SyntaxAnalyzer::handleSignOfNumber()
 {
-    if (mPosition == mTokenizer->getTokenCount() - 1)
+    if (mTokenizer->getTokenCount() < 2)
     {
         return;
     }
 
-    if (!(mPosition == 0 || mTokenizer->getTokenAt(mPosition - 1).charValue == '('))
+    for (int i = 0; i < mTokenizer->getTokenCount() - 1; i++)
     {
-        return;
+        if (!(i == 0 || mTokenizer->getTokenAt(i - 1).charValue == '('))
+        {
+            continue;
+        }
+
+        const auto& token = mTokenizer->getTokenAt(i);
+        auto nextToken = mTokenizer->getTokenAt(i + 1);
+
+        if (token.charValue != '+' && token.charValue != '-')
+        {
+            continue;
+        }
+
+        if (nextToken.type != ETokenType::NUMBER)
+        {
+            continue;
+        }
+
+        mTokenizer->removeAt(i + 1);
+        mTokenizer->removeAt(i);
+        nextToken.numberValue = token.charValue == '-' ? -nextToken.numberValue : nextToken.numberValue;
+        mTokenizer->insertAt(i, nextToken);
     }
-
-    auto token = mTokenizer->getTokenAt(mPosition);
-    auto nextToken = mTokenizer->getTokenAt(mPosition + 1);
-
-    if (token.charValue != '+' && token.charValue != '-')
-    {
-        return;
-    }
-
-    if (nextToken.type != ETokenType::NUMBER)
-    {
-        return;
-    }
-
-    mTokenizer->removeAt(mPosition + 1);
-    mTokenizer->removeAt(mPosition);
-    nextToken.numberValue = token.charValue == '-' ? -nextToken.numberValue : nextToken.numberValue;
-    mTokenizer->insertAt(mPosition, nextToken);
 }
 
 void SyntaxAnalyzer::handleHiddenMultiplication()
 {
-    if (mPosition == mTokenizer->getTokenCount() - 1)
+    if (mTokenizer->getTokenCount() < 2)
     {
         return;
     }
 
-    auto token = mTokenizer->getTokenAt(mPosition);
-    auto nextToken = mTokenizer->getTokenAt(mPosition + 1);
-
-    if ((token.charValue == ')' && nextToken.type == ETokenType::NUMBER) ||
-        (token.charValue == ')' && nextToken.charValue == '(') ||
-        (token.type == ETokenType::NUMBER && nextToken.charValue == '('))
+    for (int i = 0; i < mTokenizer->getTokenCount() - 1; i++)
     {
-        Token op = { ETokenType::OPERATOR };
-        op.stringValue += '*';
-        op.charValue = '*';
+        const auto& token = mTokenizer->getTokenAt(i);
+        const auto& nextToken = mTokenizer->getTokenAt(i + 1);
 
-        mTokenizer->insertAt(mPosition + 1, op);
+        if ((token.charValue == ')' && nextToken.type == ETokenType::NUMBER) ||
+            (token.charValue == ')' && nextToken.charValue == '(') ||
+            (token.type == ETokenType::NUMBER && nextToken.charValue == '('))
+        {
+            Token op = { ETokenType::OPERATOR };
+            op.stringValue += '*';
+            op.charValue = '*';
+
+            mTokenizer->insertAt(i + 1, op);
+        }
     }
 }
 
 void SyntaxAnalyzer::handleEmptyBrackets()
 {
-    auto token = mTokenizer->getTokenAt(mPosition);
-    if (token.charValue != '(')
+    for (int i = 0; i < mTokenizer->getTokenCount(); i++)
     {
-        return;
-    }
-
-    int position = mPosition + 1;
-    int quantity = 1;
-    
-    while (mTokenizer->getTokenAt(position).charValue == '(')
-    {
-        quantity++;
-        position++;
-    }
-
-    while (quantity > 0)
-    {
-        if (mTokenizer->getTokenAt(position).charValue != ')')
+        const auto& token = mTokenizer->getTokenAt(i);
+        
+        if (token.charValue != '(')
         {
-            return;
+            continue;
         }
 
-        quantity--;
-        position--;
-        mTokenizer->removeAt(position + 1);
-        mTokenizer->removeAt(position);
-    }
+        int position = i + 1;
+        int quantity = 1;
 
-    if (quantity == 0)
-    {
-        mPosition--;
+        while (mTokenizer->getTokenAt(position).charValue == '(')
+        {
+            quantity++;
+            position++;
+        }
+
+        while (quantity > 0)
+        {
+            if (mTokenizer->getTokenAt(position).charValue != ')')
+            {
+                return;
+            }
+
+            quantity--;
+            position--;
+            mTokenizer->removeAt(position + 1);
+            mTokenizer->removeAt(position);
+        }
+
+        if (quantity == 0)
+        {
+            i--;
+        }
     }
 }
 
 void SyntaxAnalyzer::throwForDuplicatedOperators()
 {
-    auto prevToken = tryGetPreviousToken();
-    const auto& token = mTokenizer->getTokenAt(mPosition);
-    auto nextToken = tryGetNextToken();
-
-    if (prevToken.type == ETokenType::OPERATOR && token.type == ETokenType::OPERATOR)
+    if (mTokenizer->getTokenCount() < 2)
     {
-        throw ExpressionException("Duplicated operators.", mPosition - 1, nullptr);
+        return;
     }
-    if (token.type == ETokenType::OPERATOR && nextToken.type == ETokenType::OPERATOR)
+
+    for (int i = 0; i < mTokenizer->getTokenCount() - 1; i++)
     {
-        throw ExpressionException("Duplicated operators.", mPosition, nullptr);
+        const auto& token = mTokenizer->getTokenAt(i);
+        const auto& nextToken = mTokenizer->getTokenAt(i + 1);
+
+        if (token.type == ETokenType::OPERATOR && nextToken.type == ETokenType::OPERATOR)
+        {
+            throw ExpressionException("Duplicated operators.", i, nullptr);
+        }
     }
 }
 
 void SyntaxAnalyzer::throwForMisplacedOperators()
 {
-    auto prevToken = tryGetPreviousToken();
-    const auto& token = mTokenizer->getTokenAt(mPosition);
-    auto nextToken = tryGetNextToken();
-
-    if (token.type != ETokenType::OPERATOR)
+    for (int i = 0; i < mTokenizer->getTokenCount(); i++)
     {
-        return;
-    }
+        Token prevToken = i > 0 ? mTokenizer->getTokenAt(i - 1) : Token{};
+        const auto& token = mTokenizer->getTokenAt(i);
+        Token nextToken = i < mTokenizer->getTokenCount() - 1 ? mTokenizer->getTokenAt(i + 1) : Token{};
 
-    if (prevToken.type == ETokenType::UNDEFINED || prevToken.charValue == '(' ||
-        nextToken.type == ETokenType::UNDEFINED || nextToken.charValue == ')')
-    {
-        throw ExpressionException("Misplaced operator.", mPosition, nullptr);
+        if (token.type != ETokenType::OPERATOR)
+        {
+            continue;
+        }
+
+        if (prevToken.type == ETokenType::UNDEFINED || prevToken.charValue == '(' ||
+            nextToken.type == ETokenType::UNDEFINED || nextToken.charValue == ')')
+        {
+            throw ExpressionException("Misplaced operator.", i, nullptr);
+        }
     }
 }
 
@@ -184,24 +192,4 @@ void SyntaxAnalyzer::throwForNotClosedBrackets()
     {
         throw ExpressionException("Brackets mismatch.", leftIndexes.at(0), nullptr);
     }
-}
-
-Token SyntaxAnalyzer::tryGetPreviousToken()
-{
-    if (mPosition > 0)
-    {
-        return mTokenizer->getTokenAt(mPosition - 1);
-    }
-
-    return {};
-}
-
-Token SyntaxAnalyzer::tryGetNextToken()
-{
-    if (mPosition < mTokenizer->getTokenCount() - 1)
-    {
-        return mTokenizer->getTokenAt(mPosition + 1);
-    }
-
-    return {};
 }

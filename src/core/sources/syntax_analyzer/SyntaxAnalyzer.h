@@ -16,9 +16,5 @@ private:
     void throwForEmptyExpression();
     void throwForNotClosedBrackets();
 
-    Token tryGetPreviousToken();
-    Token tryGetNextToken();
-
     Tokenizer* mTokenizer = nullptr;
-    int mPosition = 0;
 };

@@ -11,7 +11,7 @@ TEST(SyntaxAnalyzerTests, ShouldHandleSignOfNumber)
 
     analyzer->analyze(tokenizer.get());
 
-    EXPECT_EQ(tokenizer->getTokenCount(), 4);
+    EXPECT_EQ(tokenizer->getTokenCount(), 5);
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, -1);
     EXPECT_EQ(tokenizer->getTokenAt(3).numberValue, 4);
 }
@@ -33,7 +33,7 @@ TEST(SyntaxAnalyzerTests, ShouldHandleHiddenMultiplication)
 TEST(SyntaxAnalyzerTests, ShouldHandleEmptyBrackets)
 {
     auto tokenizer = make_unique<Tokenizer>();
-    tokenizer->tokenize("((()))3");
+    tokenizer->tokenize("((()))()3");
     auto analyzer = make_unique<SyntaxAnalyzer>();
 
     analyzer->analyze(tokenizer.get());
