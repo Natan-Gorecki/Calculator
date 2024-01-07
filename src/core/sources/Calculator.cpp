@@ -3,7 +3,6 @@
 #include "interpreter/ShuntingYardInterpreter.h"
 #include "tokenizer/Tokenizer.h"
 #include "Calculator.h"
-#include "Parser.h"
 
 extern ErrorCallback error_callback;
 
@@ -23,20 +22,16 @@ double CC Calculator::calculate(const char* expression)
 
         switch (mInterpreterType)
         {
-        case EInterpreterType::SHUNTING_YARD:
-            {
-                auto interpreter = make_unique<ShuntingYardInterpreter>();
-                return interpreter->interpret(tokenizer.get());
-            }
         case EInterpreterType::RECURSIVE:
             {
                 auto interpreter = make_unique<RecursiveInterpreter>();
                 return interpreter->interpret(tokenizer.get());
             }
+        case EInterpreterType::SHUNTING_YARD:
         default:
             {
-                auto parser = make_unique<Parser>();
-                return parser->Parse(expression);
+                auto interpreter = make_unique<ShuntingYardInterpreter>();
+                return interpreter->interpret(tokenizer.get());
             }
         }
     }
