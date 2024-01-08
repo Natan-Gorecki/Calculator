@@ -6,6 +6,8 @@ class Tokenizer
 {
 public:
     void tokenize(const char* expression);
+
+    const char* getExpression() const;
     int getTokenCount() const;
     Token getTokenAt(int index);
     void insertAt(int index, const Token& token);

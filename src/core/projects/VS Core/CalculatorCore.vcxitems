@@ -20,7 +20,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\ExpressionException.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\EInterpreterType.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\InterpreterException.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\ShuntingYardInterpreter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\syntax_analyzer\SyntaxAnalyzer.h" />

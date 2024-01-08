@@ -39,6 +39,11 @@ void Tokenizer::tokenize(const char* expression)
     }
 }
 
+const char* Tokenizer::getExpression() const
+{
+    return mExpression.c_str();
+}
+
 int Tokenizer::getTokenCount() const
 {
     return (int)mTokens.size();
@@ -91,6 +96,7 @@ bool Tokenizer::tryTokenizeNumber()
     Token token = { ETokenType::NUMBER };
     token.stringValue = tokenString;
     token.numberValue = stod(withoutComma);
+    token.absolutePosition = mPosition - tokenString.length();
 
     mTokens.push_back(token);
     return true;
@@ -106,6 +112,7 @@ bool Tokenizer::tryTokenizeSeparator()
     Token token = { ETokenType::SEPARATOR };
     token.stringValue += mExpression[mPosition];
     token.charValue += mExpression[mPosition];
+    token.absolutePosition = mPosition;
 
     mTokens.push_back(token);
     mPosition++;
@@ -124,6 +131,7 @@ bool Tokenizer::tryTokenizeOperator()
     Token token = { ETokenType::OPERATOR };
     token.stringValue += mExpression[mPosition];
     token.charValue += mExpression[mPosition];
+    token.absolutePosition = mPosition;
 
     mTokens.push_back(token);
     mPosition++;

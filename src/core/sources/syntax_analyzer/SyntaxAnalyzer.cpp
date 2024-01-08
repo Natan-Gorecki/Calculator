@@ -3,6 +3,8 @@
 
 using namespace std;
 
+#define THROW_EXCEPTION(what, index) throw ExpressionException(what, index, mTokenizer->getExpression())
+
 void SyntaxAnalyzer::analyze(Tokenizer* tokenizer)
 {
     mTokenizer = tokenizer;
@@ -129,7 +131,7 @@ void SyntaxAnalyzer::throwForDuplicatedOperators()
 
         if (token.type == ETokenType::OPERATOR && nextToken.type == ETokenType::OPERATOR)
         {
-            throw ExpressionException("Duplicated operators.", i, nullptr);
+            THROW_EXCEPTION("Duplicated operators.", nextToken.absolutePosition);
         }
     }
 }
@@ -150,7 +152,7 @@ void SyntaxAnalyzer::throwForMisplacedOperators()
         if (prevToken.type == ETokenType::UNDEFINED || prevToken.charValue == '(' ||
             nextToken.type == ETokenType::UNDEFINED || nextToken.charValue == ')')
         {
-            throw ExpressionException("Misplaced operator.", i, nullptr);
+            THROW_EXCEPTION("Misplaced operator.", token.absolutePosition);
         }
     }
 }
@@ -159,7 +161,7 @@ void SyntaxAnalyzer::throwForEmptyExpression()
 {
     if (mTokenizer->getTokenCount() == 0)
     {
-        throw ExpressionException("Empty expression.", 0, nullptr);
+        THROW_EXCEPTION("Empty expression.", 0);
     }
 }
 
@@ -169,20 +171,22 @@ void SyntaxAnalyzer::throwForNotClosedBrackets()
 
     for (int i = 0; i < mTokenizer->getTokenCount(); i++)
     {
-        if (mTokenizer->getTokenAt(i).charValue == '(')
+        const auto& token = mTokenizer->getTokenAt(i);
+
+        if (token.charValue == '(')
         {
-            leftIndexes.push_back(i);
+            leftIndexes.push_back(token.absolutePosition);
             continue;
         }
 
-        if (mTokenizer->getTokenAt(i).charValue != ')')
+        if (token.charValue != ')')
         {
             continue;
         }
 
         if (leftIndexes.empty())
         {
-            throw ExpressionException("Brackets mismatch.", i, nullptr);
+            THROW_EXCEPTION("Brackets mismatch.", token.absolutePosition);
         }
 
         leftIndexes.pop_back();
@@ -190,6 +194,6 @@ void SyntaxAnalyzer::throwForNotClosedBrackets()
 
     if (!leftIndexes.empty())
     {
-        throw ExpressionException("Brackets mismatch.", leftIndexes.at(0), nullptr);
+        THROW_EXCEPTION("Brackets mismatch.", leftIndexes.at(0));
     }
 }

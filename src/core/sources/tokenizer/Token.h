@@ -8,4 +8,5 @@ struct Token
     std::string stringValue = "";
     double numberValue = 0;
     char charValue = 0;
+    int absolutePosition = 0;
 };
