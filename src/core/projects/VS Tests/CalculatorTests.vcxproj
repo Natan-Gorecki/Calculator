@@ -119,7 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\tests\Calculator.Tests.cpp" />
-    <ClCompile Include="..\..\tests\Parser.Tests.cpp" />
+    <ClCompile Include="..\..\tests\syntax_analyzer\SyntaxAnalyzer.Tests.cpp" />
     <ClCompile Include="..\..\tests\tokenizer\Tokenizer.Tests.cpp" />
   </ItemGroup>
   <ItemGroup>

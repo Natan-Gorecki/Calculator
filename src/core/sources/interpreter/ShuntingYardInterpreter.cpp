@@ -1,4 +1,3 @@
-#include "InterpreterException.h"
 #include "ShuntingYardInterpreter.h"
 
 using namespace std;
@@ -41,12 +40,6 @@ double ShuntingYardInterpreter::interpret(Tokenizer* tokenizer)
     {
         const auto& token = mOperatorStack.back();
         mOperatorStack.pop_back();
-
-        if (token.charValue == '(')
-        {
-            throw InterpreterException("Mismatched parentheses.");
-        }
-
         mOutputStack.push_back(token);
     }
 
@@ -63,11 +56,6 @@ double ShuntingYardInterpreter::calculate()
             continue;
         }
 
-        if (mNumberStack.size() < 2)
-        {
-            throw InterpreterException("Invalid expression.");
-        }
-
         auto right = mNumberStack.back();
         mNumberStack.pop_back();
         auto left = mNumberStack.back();
@@ -75,11 +63,6 @@ double ShuntingYardInterpreter::calculate()
 
         auto result = Interpreter::calculate(left, right, token.charValue);
         mNumberStack.push_back(result);
-    }
-
-    if (mNumberStack.size() != 1)
-    {
-        throw InterpreterException("Invalid expression.");
     }
 
     return mNumberStack.back();
@@ -113,10 +96,6 @@ void ShuntingYardInterpreter::handleRightParenthesis()
 {
     while (true)
     {
-        if (mOperatorStack.empty())
-        {
-            throw InterpreterException("Mismatched parentheses.");
-        }
         Token token = mOperatorStack.back();
 
         if (token.charValue != '(')

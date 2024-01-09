@@ -6,18 +6,18 @@ class Tokenizer
 {
 public:
     void tokenize(const char* expression);
+
+    const char* getExpression() const;
     int getTokenCount() const;
-    Token getTokenAt(int position);
+    Token getTokenAt(int index);
+    void insertAt(int index, const Token& token);
+    void removeAt(int index);
 
 private:
     bool tryTokenizeNumber();
     bool tryTokenizeSeparator();
     bool tryTokenizeOperator();
-
-    void handleHiddenMultiplication();
-
-    bool isNumberOrSeparator(char c) const;
-    bool shouldHandleSignForNumber() const;
+    bool isDigitOrSeparator(char c) const;
 
     std::string mExpression;
     std::vector<Token> mTokens;

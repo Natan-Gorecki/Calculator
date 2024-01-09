@@ -17,16 +17,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\api.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\ICalculator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Calculator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\ExpressionException.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\EInterpreterType.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\InterpreterException.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\ShuntingYardInterpreter.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Parser.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\syntax_analyzer\SyntaxAnalyzer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\ETokenType.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Token.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Tokenizer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\TokenizerException.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\api.cpp" />
@@ -34,7 +33,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\ShuntingYardInterpreter.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\Parser.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\syntax_analyzer\SyntaxAnalyzer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Tokenizer.cpp" />
   </ItemGroup>
 </Project>

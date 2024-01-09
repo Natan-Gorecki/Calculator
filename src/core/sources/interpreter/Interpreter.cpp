@@ -1,5 +1,4 @@
 #include "Interpreter.h"
-#include "InterpreterException.h"
 
 double Interpreter::calculate(double left, double right, char op) const
 {
@@ -16,7 +15,7 @@ double Interpreter::calculate(double left, double right, char op) const
     case '^':
         return pow(left, right);
     default:
-        throw InterpreterException("Undefined operator type.");
+        return 0;
     }
 }
 

@@ -1,4 +1,3 @@
-#include "InterpreterException.h"
 #include "RecursiveInterpreter.h"
 
 double RecursiveInterpreter::interpret(Tokenizer* tokenizer)
@@ -25,19 +24,7 @@ double RecursiveInterpreter::interpretImpl(int start, int end)
         return calculate(left, right, mTokenizer->getTokenAt(position).charValue);
     }
 
-    if (start < end)
-    {
-        throw InterpreterException("Empty expression.");
-    }
-
-    const auto& token = mTokenizer->getTokenAt(start);
-
-    if (token.type != ETokenType::NUMBER)
-    {
-        throw InterpreterException("Invalid expression.");
-    }
-
-    return token.numberValue;
+    return mTokenizer->getTokenAt(start).numberValue;
 }
 
 bool RecursiveInterpreter::findLeastPrecedenceOperator(int start, int end, int& position)
