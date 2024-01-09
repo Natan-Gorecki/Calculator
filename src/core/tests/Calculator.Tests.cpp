@@ -8,7 +8,7 @@ using namespace std;
 class CalculatorTests : public ::testing::TestWithParam<string>
 {
 protected:
-    std::unique_ptr<Calculator> mCalculator;
+    std::unique_ptr<Calculator> mCalculator; // NOSONAR - Member variables should not be "protected".
 
     void SetUp() override
     {
@@ -22,22 +22,17 @@ protected:
     }
 
 private:
-    EInterpreterType convertInterpreterType(string typeString) const
+    EInterpreterType convertInterpreterType(const string& typeString) const
     {
-        if (typeString == "ShuntingYard")
-        {
-            return EInterpreterType::SHUNTING_YARD;
-        }
         if (typeString == "Recursive")
         {
             return EInterpreterType::RECURSIVE;
         }
-        return EInterpreterType::UNDEFINED;
+        return EInterpreterType::SHUNTING_YARD;
     }
 };
 
 INSTANTIATE_TEST_CASE_P(_, CalculatorTests, ::testing::Values(
-    "Undefined",
     "ShuntingYard",
     "Recursive"
 ));
@@ -136,69 +131,69 @@ catch (const ExpressionException& ex)\
 
 TEST_P(CalculatorTests, ShouldCountPropertlyCharacters)
 {
-    EXPECT_EXPRESSION_EXCEPTION("((()))3-", 7);
-    EXPECT_EXPRESSION_EXCEPTION("(2)(2-) ", 5);
-    EXPECT_EXPRESSION_EXCEPTION("-1+(-2)-", 7);
+    EXPECT_EXPRESSION_EXCEPTION("((()))3-", 7)
+    EXPECT_EXPRESSION_EXCEPTION("(2)(2-) ", 5)
+    EXPECT_EXPRESSION_EXCEPTION("-1+(-2)-", 7)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForUnexpectedToken)
 {
-    EXPECT_EXPRESSION_EXCEPTION("+?", 1);
+    EXPECT_EXPRESSION_EXCEPTION("+?", 1)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForInvalidSeparatorUsage)
 {
-    EXPECT_EXPRESSION_EXCEPTION(",", 0);
-    EXPECT_EXPRESSION_EXCEPTION(".", 0);
-    EXPECT_EXPRESSION_EXCEPTION("..2", 1);
-    EXPECT_EXPRESSION_EXCEPTION("2..", 2);
-    EXPECT_EXPRESSION_EXCEPTION("2 + 5.. - 5", 6);
-    EXPECT_EXPRESSION_EXCEPTION("2 - 6..", 6);
-    EXPECT_EXPRESSION_EXCEPTION("2.6. * 5", 3);
+    EXPECT_EXPRESSION_EXCEPTION(",", 0)
+    EXPECT_EXPRESSION_EXCEPTION(".", 0)
+    EXPECT_EXPRESSION_EXCEPTION("..2", 1)
+    EXPECT_EXPRESSION_EXCEPTION("2..", 2)
+    EXPECT_EXPRESSION_EXCEPTION("2 + 5.. - 5", 6)
+    EXPECT_EXPRESSION_EXCEPTION("2 - 6..", 6)
+    EXPECT_EXPRESSION_EXCEPTION("2.6. * 5", 3)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForDuplicatedSeparators)
 {
-    EXPECT_EXPRESSION_EXCEPTION("1,1,1", 3);
-    EXPECT_EXPRESSION_EXCEPTION("1.1.1", 3);
+    EXPECT_EXPRESSION_EXCEPTION("1,1,1", 3)
+    EXPECT_EXPRESSION_EXCEPTION("1.1.1", 3)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForDuplicatedOperators)
 {
-    EXPECT_EXPRESSION_EXCEPTION("++2", 1);
-    EXPECT_EXPRESSION_EXCEPTION("2 ++ 5 - 6", 3);
-    EXPECT_EXPRESSION_EXCEPTION("2 / +5", 4);
-    EXPECT_EXPRESSION_EXCEPTION("-2 * (4 + -5)", 10);
+    EXPECT_EXPRESSION_EXCEPTION("++2", 1)
+    EXPECT_EXPRESSION_EXCEPTION("2 ++ 5 - 6", 3)
+    EXPECT_EXPRESSION_EXCEPTION("2 / +5", 4)
+    EXPECT_EXPRESSION_EXCEPTION("-2 * (4 + -5)", 10)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForInvalidCharAtStart)
 {
-    EXPECT_EXPRESSION_EXCEPTION("*2", 0);
-    EXPECT_EXPRESSION_EXCEPTION("/5 + 4", 0);
-    EXPECT_EXPRESSION_EXCEPTION("2 + (*6 - 4)", 5);
-    EXPECT_EXPRESSION_EXCEPTION("1/2 + (/4 + -5)", 12);
+    EXPECT_EXPRESSION_EXCEPTION("*2", 0)
+    EXPECT_EXPRESSION_EXCEPTION("/5 + 4", 0)
+    EXPECT_EXPRESSION_EXCEPTION("2 + (*6 - 4)", 5)
+    EXPECT_EXPRESSION_EXCEPTION("1/2 + (/4 + -5)", 12)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForInvalidCharAtEnd)
 {
-    EXPECT_EXPRESSION_EXCEPTION("2*", 1);
-    EXPECT_EXPRESSION_EXCEPTION("2   -  ", 4);
-    EXPECT_EXPRESSION_EXCEPTION("2++", 2);
-    EXPECT_EXPRESSION_EXCEPTION("1/2 + (4 + 5+)", 12);
-    EXPECT_EXPRESSION_EXCEPTION("1/2 + (4 + )", 9);
+    EXPECT_EXPRESSION_EXCEPTION("2*", 1)
+    EXPECT_EXPRESSION_EXCEPTION("2   -  ", 4)
+    EXPECT_EXPRESSION_EXCEPTION("2++", 2)
+    EXPECT_EXPRESSION_EXCEPTION("1/2 + (4 + 5+)", 12)
+    EXPECT_EXPRESSION_EXCEPTION("1/2 + (4 + )", 9)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForEmptyExpression)
 {
-    EXPECT_EXPRESSION_EXCEPTION("", 0);
-    EXPECT_EXPRESSION_EXCEPTION("   ", 0);
-    EXPECT_EXPRESSION_EXCEPTION("()", 0);
+    EXPECT_EXPRESSION_EXCEPTION("", 0)
+    EXPECT_EXPRESSION_EXCEPTION("   ", 0)
+    EXPECT_EXPRESSION_EXCEPTION("()", 0)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForNotClosedBrackets)
 {
-    EXPECT_EXPRESSION_EXCEPTION("( 2 + ( 4 - 5 )", 0);
-    EXPECT_EXPRESSION_EXCEPTION(" ) ", 1);
-    EXPECT_EXPRESSION_EXCEPTION("(2+5) + 4 ( - 5", 10);
+    EXPECT_EXPRESSION_EXCEPTION("( 2 + ( 4 - 5 )", 0)
+    EXPECT_EXPRESSION_EXCEPTION(" ) ", 1)
+    EXPECT_EXPRESSION_EXCEPTION("(2+5) + 4 ( - 5", 10)
 }
 #pragma endregion

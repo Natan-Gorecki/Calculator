@@ -76,9 +76,13 @@ bool Tokenizer::tryTokenizeNumber()
 
     while (mPosition < mExpression.length() && isDigitOrSeparator(mExpression[mPosition]))
     {
-        if ((mExpression[mPosition] == ',' || mExpression[mPosition] == '.') && ++separatorCount > 1)
+        if (mExpression[mPosition] == ',' || mExpression[mPosition] == '.')
         {
-            throw ExpressionException("Duplicated separators.", mPosition, mExpression.c_str());
+            separatorCount++;
+            if (separatorCount > 1)
+            {
+                throw ExpressionException("Duplicated separators.", mPosition, mExpression.c_str());
+            }
         }
 
         tokenString += mExpression[mPosition];
@@ -96,7 +100,7 @@ bool Tokenizer::tryTokenizeNumber()
     Token token = { ETokenType::NUMBER };
     token.stringValue = tokenString;
     token.numberValue = stod(withoutComma);
-    token.absolutePosition = mPosition - tokenString.length();
+    token.absolutePosition = mPosition - (int)tokenString.length();
 
     mTokens.push_back(token);
     return true;

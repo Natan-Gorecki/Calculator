@@ -11,10 +11,10 @@ private:
     void handleHiddenMultiplication();
     void handleEmptyBrackets();
     
-    void throwForDuplicatedOperators();
-    void throwForMisplacedOperators();
-    void throwForEmptyExpression();
-    void throwForNotClosedBrackets();
+    void throwForDuplicatedOperators() const;
+    void throwForMisplacedOperators() const;
+    void throwForEmptyExpression() const;
+    void throwForNotClosedBrackets() const;
 
     Tokenizer* mTokenizer = nullptr;
 };

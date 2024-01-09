@@ -117,7 +117,7 @@ void SyntaxAnalyzer::handleEmptyBrackets()
     }
 }
 
-void SyntaxAnalyzer::throwForDuplicatedOperators()
+void SyntaxAnalyzer::throwForDuplicatedOperators() const
 {
     if (mTokenizer->getTokenCount() < 2)
     {
@@ -136,7 +136,7 @@ void SyntaxAnalyzer::throwForDuplicatedOperators()
     }
 }
 
-void SyntaxAnalyzer::throwForMisplacedOperators()
+void SyntaxAnalyzer::throwForMisplacedOperators() const
 {
     for (int i = 0; i < mTokenizer->getTokenCount(); i++)
     {
@@ -157,7 +157,7 @@ void SyntaxAnalyzer::throwForMisplacedOperators()
     }
 }
 
-void SyntaxAnalyzer::throwForEmptyExpression()
+void SyntaxAnalyzer::throwForEmptyExpression() const
 {
     if (mTokenizer->getTokenCount() == 0)
     {
@@ -165,7 +165,7 @@ void SyntaxAnalyzer::throwForEmptyExpression()
     }
 }
 
-void SyntaxAnalyzer::throwForNotClosedBrackets()
+void SyntaxAnalyzer::throwForNotClosedBrackets() const
 {
     vector<int> leftIndexes;
 

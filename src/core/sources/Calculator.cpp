@@ -31,7 +31,6 @@ double CC Calculator::calculate(const char* expression)
                 auto interpreter = make_unique<RecursiveInterpreter>();
                 return interpreter->interpret(tokenizer.get());
             }
-        case EInterpreterType::SHUNTING_YARD:
         default:
             {
                 auto interpreter = make_unique<ShuntingYardInterpreter>();

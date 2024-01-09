@@ -5,9 +5,8 @@ class ExpressionException : public std::exception
 {
 public:
     ExpressionException(const char* message, int position, const char* expression)
-        : std::exception(message), mPosition(position)
+        : std::exception(message), mPosition(position), mExpression(expression)
     {
-        mExpression = expression;
     }
 
     int getPosition() const { return mPosition; }
