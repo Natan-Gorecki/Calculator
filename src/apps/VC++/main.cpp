@@ -10,7 +10,7 @@
 //
 //-----------------------------------------------------------------------------------------------------
 //
-//  ifndef USE_DLL || USE_STATIC	=>	DYNAMIC LINK LIBRARY "Calculator.dll"
+//  ifndef USE_DLL || USE_STATIC    =>    DYNAMIC LINK LIBRARY "Calculator.dll"
 //
 
 #include <iostream>
@@ -19,23 +19,25 @@
 
 #include "api.h"
 
+using namespace std;
+
 int main()
 {
     //-----------------------------------------------------------------------------------------------------
     //  Get export functions from dll without using linking library
     //
     #if !(USE_DLL || USE_STATIC_LIB)
-        HMODULE h_dll = LoadLibrary(L"CalculatorShared");
+        HMODULE hModule = LoadLibrary(L"CalculatorDynamic");
 
-        if (h_dll == 0) 
+        if (hModule == 0)
         {
-            std::cout << "Error loading DLL !!!\n";
-            std::cin.get();
-            return 1;
+            cout << "Error loading DLL!!!" << endl;
+            cin.get();
+            return EXIT_FAILURE;
         }
 
-        create_calculator  CreateCalculator = (create_calculator)GetProcAddress(h_dll, "CreateCalculator");
-        delete_calculator  DeleteCalculator = (delete_calculator)GetProcAddress(h_dll, "DeleteCalculator");
+        create_calculator CreateCalculator = (create_calculator)GetProcAddress(hModule, "CreateCalculator");
+        delete_calculator DeleteCalculator = (delete_calculator)GetProcAddress(hModule, "DeleteCalculator");
     #endif
     //-----------------------------------------------------------------------------------------------------
     
@@ -47,30 +49,32 @@ int main()
 
 
 
-    std::string from_getline, text = "";
+    string inputLine, text = "";
     while (true) 
     {
-        std::cout << "Welcome in our simple caluclator :)\n";
-        std::cout << "Enter \"exit\" to close program.\n\n" << std::endl;
-        std::cout << "Give your equation to solve: \n";
+        cout << "Welcome in our simple caluclator :)" << endl;
+        cout << "Enter \"exit\" to close program." << endl << endl << endl;
+        cout << "Give your equation to solve:" << endl;
 
-        getline(std::cin, from_getline);
+        getline(cin, inputLine);
 
-        text = (text == "\n") ? text = from_getline : text += from_getline;
+        text = (text == "\n") ? text = inputLine : text += inputLine;
 
 
         // Word "Exit" closes the program
-        if (text == "exit")	break;
+        if (text == "exit") break;
 
 
         //-----------------------------------------------------------------
         try 
         {
-            std::cout << "Result:   " << calculator->calculate(text.c_str()) << std::endl;
+            cout << "Result:   " << calculator->calculate(text.c_str()) << endl;
         }
-        catch (const char* exception)
+        catch (const ExpressionException& ex)
         {
-            std::cout << "Exception - " << exception << std::endl;
+            cout << "Expression: '" << ex.getExpression() << "'" << endl;
+            cout << "Exception: '" << ex.what() << "'" << endl;
+            cout << "Position: " << ex.getPosition() << " ('" << text.at(ex.getPosition()) << "')" << endl;
         }
         //-----------------------------------------------------------------
 
@@ -91,11 +95,13 @@ int main()
     //  Free library from the address space of calling process
     //
     #if !(USE_DLL || USE_STATIC_LIB)
-        if (h_dll != 0)
-            FreeLibrary(h_dll);
+        if (hModule != 0)
+        {
+            FreeLibrary(hModule);
+        }
     #endif
     //-----------------------------------------------------------------------------------------------------
 
 
-    return 0;
+    return EXIT_SUCCESS;
 }

@@ -1,4 +1,4 @@
-#include "../ExpressionException.h"
+#include "ExpressionException.h"
 #include "SyntaxAnalyzer.h"
 
 using namespace std;
