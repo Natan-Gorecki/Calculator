@@ -8,7 +8,7 @@ using namespace std;
 class CalculatorTests : public ::testing::TestWithParam<string>
 {
 protected:
-    std::unique_ptr<Calculator> mCalculator; // NOSONAR - Member variables should not be "protected".
+    std::unique_ptr<Calculator> mCalculator;
 
     void SetUp() override
     {
@@ -188,6 +188,14 @@ TEST_P(CalculatorTests, ShouldThrowException_ForEmptyExpression)
     EXPECT_EXPRESSION_EXCEPTION("", 0)
     EXPECT_EXPRESSION_EXCEPTION("   ", 0)
     EXPECT_EXPRESSION_EXCEPTION("()", 0)
+}
+
+TEST_P(CalculatorTests, ShouldThrowException_ForSingleOperator)
+{
+    EXPECT_EXPRESSION_EXCEPTION("-", 0)
+    EXPECT_EXPRESSION_EXCEPTION("+", 0)
+    EXPECT_EXPRESSION_EXCEPTION("*", 0)
+    EXPECT_EXPRESSION_EXCEPTION("/", 0)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForNotClosedBrackets)
