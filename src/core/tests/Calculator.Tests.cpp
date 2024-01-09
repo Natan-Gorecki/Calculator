@@ -8,9 +8,7 @@ using namespace std;
 class CalculatorTests : public ::testing::TestWithParam<string>
 {
 protected:
-    std::unique_ptr<Calculator> mCalculator; //NOSONAR
-    std::unique_ptr<Calculator> mCalculator1; //@SuppressWarnings("cpp:S3656")
-    std::unique_ptr<Calculator> mCalculator2; //@SuppressWarnings
+    std::unique_ptr<Calculator> mCalculator;
 
     void SetUp() override
     {
