@@ -1,17 +1,18 @@
 //-----------------------------------------------------------------------------------------------------
 //
-//  USE STATIC LIBRARY "StaticLibrary.lib"
+//  USE STATIC LIBRARY "CalculatorStatic.lib"
 //  #define USE_STATIC_LIB 1
 //
 //-----------------------------------------------------------------------------------------------------
 //
-//  USE DLL "Calculator.dll" WITH LINKING LIBRARY "Calculator.lib"
+//  USE DLL "CalculatorDynamic.dll" WITH LINKING LIBRARY "CalculatorDynamic.lib"
 //  #define USE_DLL 1
 //
 //-----------------------------------------------------------------------------------------------------
 //
-//  ifndef USE_DLL || USE_STATIC    =>    DYNAMIC LINK LIBRARY "Calculator.dll"
+//  ifndef USE_DLL || USE_STATIC    =>    DYNAMIC LINK LIBRARY "CalculatorDynamic.dll"
 //
+//-----------------------------------------------------------------------------------------------------
 
 #include <iostream>
 #include <Windows.h>
@@ -58,7 +59,7 @@ int main()
     //******************************************************************************************************
 
 
-    while (true) 
+    while (true)
     {
         for (const auto& screenLine : screenLines)
         {
