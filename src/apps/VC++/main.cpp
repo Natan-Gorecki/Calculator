@@ -14,42 +14,43 @@
 //
 //-----------------------------------------------------------------------------------------------------
 
+#include <array>
 #include <iostream>
-#include <Windows.h>
 #include <string>
+#include <Windows.h>
 
 #include "api.h"
 
 using namespace std;
 
-string screenLines[7] =
-{
-    "Welcome in calculator console application.",
-    "Enter \"exit\" to close program.",
-    "",
-    "",
-    "",
-    "",
-    "Please enter your equation:"
-};
-
 int main()
 {
+    array<string, 7> screenLines = 
+    {
+        "Welcome in calculator console application.",
+        "Enter \"exit\" to close program.",
+        "",
+        "",
+        "",
+        "",
+        "Please enter your equation:"
+    };
+
     //-----------------------------------------------------------------------------------------------------
     //  Get export functions from dll without using linking library
     //
     #if !(USE_DLL || USE_STATIC_LIB)
-        HMODULE hModule = LoadLibrary(L"CalculatorDynamic");
+        auto hModule = LoadLibrary(L"CalculatorDynamic");
 
-        if (hModule == 0)
+        if (!hModule)
         {
             cout << "Error loading DLL!!!" << endl;
             cin.get();
             return EXIT_FAILURE;
         }
 
-        create_calculator CreateCalculator = (create_calculator)GetProcAddress(hModule, "CreateCalculator");
-        delete_calculator DeleteCalculator = (delete_calculator)GetProcAddress(hModule, "DeleteCalculator");
+        auto CreateCalculator = (create_calculator)GetProcAddress(hModule, "CreateCalculator");
+        auto DeleteCalculator = (delete_calculator)GetProcAddress(hModule, "DeleteCalculator");
     #endif
     //-----------------------------------------------------------------------------------------------------
 
@@ -104,7 +105,7 @@ int main()
     //  Free library from the address space of calling process
     //
     #if !(USE_DLL || USE_STATIC_LIB)
-        if (hModule != 0)
+        if (hModule)
         {
             FreeLibrary(hModule);
         }
