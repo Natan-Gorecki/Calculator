@@ -21,6 +21,17 @@
 
 using namespace std;
 
+string screenLines[7] =
+{
+    "Welcome in calculator console application.",
+    "Enter \"exit\" to close program.",
+    "",
+    "",
+    "",
+    "",
+    "Please enter your equation:"
+};
+
 int main()
 {
     //-----------------------------------------------------------------------------------------------------
@@ -40,7 +51,6 @@ int main()
         delete_calculator DeleteCalculator = (delete_calculator)GetProcAddress(hModule, "DeleteCalculator");
     #endif
     //-----------------------------------------------------------------------------------------------------
-    
 
 
     //******************************************************************************************************
@@ -48,47 +58,45 @@ int main()
     //******************************************************************************************************
 
 
-
-    string inputLine, text = "";
     while (true) 
     {
-        cout << "Welcome in our simple caluclator :)" << endl;
-        cout << "Enter \"exit\" to close program." << endl << endl << endl;
-        cout << "Give your equation to solve:" << endl;
+        for (const auto& screenLine : screenLines)
+        {
+            cout << screenLine << endl;
+        }
 
-        getline(cin, inputLine);
-
-        text = (text == "\n") ? text = inputLine : text += inputLine;
-
+        string input;
+        getline(cin, input);
 
         // Word "Exit" closes the program
-        if (text == "exit") break;
-
+        if (input == "exit")
+        {
+            break;
+        }
 
         //-----------------------------------------------------------------
         try 
         {
-            cout << "Result:   " << calculator->calculate(text.c_str()) << endl;
+            auto result = calculator->calculate(input.c_str());
+            screenLines[3] = "";
+            screenLines[4] = "";
+            screenLines[5] = "Result: " + to_string(result);
         }
         catch (const ExpressionException& ex)
         {
-            cout << "Expression: '" << ex.getExpression() << "'" << endl;
-            cout << "Exception: '" << ex.what() << "'" << endl;
-            cout << "Position: " << ex.getPosition() << " ('" << text.at(ex.getPosition()) << "')" << endl;
+            screenLines[3] = "Expression: '" + string(ex.getExpression()) + "'";
+            screenLines[4] = "Exception: '" + string(ex.what()) + "'";
+            screenLines[5] = "Position: " + to_string(ex.getPosition()) + " ('" + input.at(ex.getPosition()) + "')";
         }
         //-----------------------------------------------------------------
 
-
-        text = getchar();
         system("cls");
     }
-
 
 
     //******************************************************************************************************
     DeleteCalculator(calculator);
     //******************************************************************************************************
-    
 
 
     //-----------------------------------------------------------------------------------------------------
