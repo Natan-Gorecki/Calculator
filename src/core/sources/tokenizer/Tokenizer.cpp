@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <array>
 #include <stdexcept>
-#include "../ExpressionException.h"
+#include "ExpressionException.h"
 #include "Tokenizer.h"
 
 using namespace std;
