@@ -5,7 +5,7 @@ using namespace System;
 
 namespace CalculatorCLI
 {
-    ref class Calculator
+    public ref class Calculator
     {
     public:
         Calculator();
