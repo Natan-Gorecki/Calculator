@@ -2,7 +2,7 @@ using namespace System;
 
 namespace CalculatorCLI
 {
-    ref class ExpressionException : public Exception
+    public ref class ExpressionException : public Exception
     {
     public:
         ExpressionException(String^ message, int position, String^ expression)

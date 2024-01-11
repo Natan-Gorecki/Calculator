@@ -6,5 +6,6 @@ packages/
 
 # Binary files
 x64/
+[Oo]bj/
 Debug/
 Release/
