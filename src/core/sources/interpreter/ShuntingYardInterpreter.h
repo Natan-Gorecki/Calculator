@@ -3,18 +3,21 @@
 #include "../tokenizer/Tokenizer.h"
 #include "Interpreter.h"
 
-class ShuntingYardInterpreter : public Interpreter
+namespace CalculatorCore
 {
-public:
-    ~ShuntingYardInterpreter() override = default;
-    double interpret(Tokenizer* tokenizer) override;
+    class ShuntingYardInterpreter : public Interpreter
+    {
+    public:
+        ~ShuntingYardInterpreter() override = default;
+        double interpret(Tokenizer* tokenizer) override;
 
-private:
-    double calculate();
-    void handleOperator(const Token& op1);
-    void handleRightParenthesis();
+    private:
+        double calculate();
+        void handleOperator(const Token& op1);
+        void handleRightParenthesis();
 
-    std::vector<double> mNumberStack;
-    std::vector<Token> mOutputStack;
-    std::vector<Token> mOperatorStack;
-};
+        std::vector<double> mNumberStack;
+        std::vector<Token> mOutputStack;
+        std::vector<Token> mOperatorStack;
+    };
+}

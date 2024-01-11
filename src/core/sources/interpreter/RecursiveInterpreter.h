@@ -3,16 +3,19 @@
 #include "../tokenizer/Tokenizer.h"
 #include "Interpreter.h"
 
-class RecursiveInterpreter : public Interpreter
+namespace CalculatorCore
 {
-public:
-    ~RecursiveInterpreter() override = default;
-    double interpret(Tokenizer* tokenizer) override;
+    class RecursiveInterpreter : public Interpreter
+    {
+    public:
+        ~RecursiveInterpreter() override = default;
+        double interpret(Tokenizer* tokenizer) override;
 
-private:
-    double interpretImpl(int start, int end);
-    bool findLeastPrecedenceOperator(int start, int end, int& position);
-    bool isWrapperWithBrackets(int start, int end);
+    private:
+        double interpretImpl(int start, int end);
+        bool findLeastPrecedenceOperator(int start, int end, int& position);
+        bool isWrapperWithBrackets(int start, int end);
 
-    Tokenizer* mTokenizer = nullptr;
-};
+        Tokenizer* mTokenizer = nullptr;
+    };
+}

@@ -1,9 +1,12 @@
 #pragma once
 
-enum class ETokenType
+namespace CalculatorCore
 {
-    UNDEFINED,
-    NUMBER,
-    OPERATOR,
-    SEPARATOR
-};
+    enum class ETokenType
+    {
+        UNDEFINED,
+        NUMBER,
+        OPERATOR,
+        SEPARATOR
+    };
+}

@@ -2,11 +2,14 @@
 #include <string>
 #include "ETokenType.h"
 
-struct Token
+namespace CalculatorCore
 {
-    ETokenType type = ETokenType::UNDEFINED;
-    std::string stringValue = "";
-    double numberValue = 0;
-    char charValue = 0;
-    int absolutePosition = 0;
-};
+    struct Token
+    {
+        ETokenType type = ETokenType::UNDEFINED;
+        std::string stringValue = "";
+        double numberValue = 0;
+        char charValue = 0;
+        int absolutePosition = 0;
+    };
+}

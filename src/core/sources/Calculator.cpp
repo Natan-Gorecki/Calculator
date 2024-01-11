@@ -8,6 +8,7 @@
 extern ErrorCallback error_callback;
 
 using namespace std;
+using namespace CalculatorCore;
 
 Calculator::Calculator(EInterpreterType interpreterType)
     : mInterpreterType(interpreterType)

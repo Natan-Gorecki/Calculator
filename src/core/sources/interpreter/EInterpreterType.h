@@ -1,8 +1,11 @@
 #pragma once
 
-enum class EInterpreterType
+namespace CalculatorCore
 {
-    UNDEFINED,
-    SHUNTING_YARD,
-    RECURSIVE
-};
+    enum class EInterpreterType
+    {
+        UNDEFINED,
+        SHUNTING_YARD,
+        RECURSIVE
+    };
+}

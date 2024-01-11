@@ -1,6 +1,7 @@
 #include "api.h"
 #include "Calculator.h"
 
+using namespace CalculatorCore;
 
 //	Error Callback
 ErrorCallback error_callback = NULL;

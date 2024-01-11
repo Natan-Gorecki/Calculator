@@ -5,6 +5,7 @@
 #include "Tokenizer.h"
 
 using namespace std;
+using namespace CalculatorCore;
 
 void Tokenizer::tokenize(const char* expression)
 {

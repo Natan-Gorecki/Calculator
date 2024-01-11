@@ -1,8 +1,11 @@
 #pragma once
 
-class ICalculator
+namespace CalculatorCore
 {
-public:
-	virtual double CC calculate(const char* expression) = 0;
-	virtual ~ICalculator() {};
-};
+    class ICalculator
+    {
+    public:
+        virtual double CC calculate(const char* expression) = 0;
+        virtual ~ICalculator() {};
+    };
+}

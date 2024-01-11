@@ -1,5 +1,7 @@
 #include "RecursiveInterpreter.h"
 
+using namespace CalculatorCore;
+
 double RecursiveInterpreter::interpret(Tokenizer* tokenizer)
 {
     mTokenizer = tokenizer;

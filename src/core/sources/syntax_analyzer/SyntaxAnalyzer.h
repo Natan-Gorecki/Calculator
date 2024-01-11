@@ -1,20 +1,23 @@
 #pragma once
 #include "../tokenizer/Tokenizer.h"
 
-class SyntaxAnalyzer
+namespace CalculatorCore
 {
-public:
-    void analyze(Tokenizer* tokenizer);
+    class SyntaxAnalyzer
+    {
+    public:
+        void analyze(Tokenizer* tokenizer);
 
-private:
-    void handleSignOfNumber();
-    void handleHiddenMultiplication();
-    void handleEmptyBrackets();
+    private:
+        void handleSignOfNumber();
+        void handleHiddenMultiplication();
+        void handleEmptyBrackets();
     
-    void throwForDuplicatedOperators() const;
-    void throwForMisplacedOperators() const;
-    void throwForEmptyExpression() const;
-    void throwForNotClosedBrackets() const;
+        void throwForDuplicatedOperators() const;
+        void throwForMisplacedOperators() const;
+        void throwForEmptyExpression() const;
+        void throwForNotClosedBrackets() const;
 
-    Tokenizer* mTokenizer = nullptr;
-};
+        Tokenizer* mTokenizer = nullptr;
+    };
+}

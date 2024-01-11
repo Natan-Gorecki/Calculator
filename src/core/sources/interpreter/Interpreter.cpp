@@ -1,5 +1,7 @@
 #include "Interpreter.h"
 
+using namespace CalculatorCore;
+
 double Interpreter::calculate(double left, double right, char op) const
 {
     switch (op)
