@@ -4,11 +4,11 @@
     <ClCompile Include="..\..\tests\Calculator.Tests.cpp">
       <Filter>tests</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\tests\Parser.Tests.cpp">
-      <Filter>tests</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\tests\tokenizer\Tokenizer.Tests.cpp">
       <Filter>tests\tokenizer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\syntax_analyzer\SyntaxAnalyzer.Tests.cpp">
+      <Filter>tests\syntax_analyzer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -17,6 +17,9 @@
     </Filter>
     <Filter Include="tests\tokenizer">
       <UniqueIdentifier>{22ac273a-55c9-47f1-8b4b-e565c8d83420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tests\syntax_analyzer">
+      <UniqueIdentifier>{43597b37-95ae-40ec-b58a-dc01e891f848}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

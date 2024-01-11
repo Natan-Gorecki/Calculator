@@ -22,6 +22,7 @@
 #include "api.h"
 
 using namespace std;
+using namespace CalculatorCore;
 
 int main()
 {

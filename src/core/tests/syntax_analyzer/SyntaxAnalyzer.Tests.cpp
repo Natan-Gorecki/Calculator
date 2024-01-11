@@ -2,6 +2,7 @@
 #include "syntax_analyzer/SyntaxAnalyzer.h"
 
 using namespace std;
+using namespace CalculatorCore;
 
 TEST(SyntaxAnalyzerTests, ShouldHandleSignOfNumber)
 {

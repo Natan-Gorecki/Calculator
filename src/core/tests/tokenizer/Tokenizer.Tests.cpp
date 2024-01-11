@@ -2,6 +2,8 @@
 #include "tokenizer/Tokenizer.h"
 
 using namespace std;
+using namespace CalculatorCore;
+
 TEST(TokenizerTests, ShouldTokenizeOperator)
 {
     auto tokenizer = make_unique<Tokenizer>();
