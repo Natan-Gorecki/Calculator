@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculatorCore", "src\core\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculatorDynamic", "src\core\projects\VS Dynamic\CalculatorDynamic.vcxproj", "{3CB31285-9988-4F4E-9CAE-BA35EB3FEC47}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculatorCLI", "src\core\projects\VS CLI\CalculatorCLI.vcxproj", "{898AC455-6BE1-4EBE-8080-B0A789D78D40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -59,6 +61,14 @@ Global
 		{3CB31285-9988-4F4E-9CAE-BA35EB3FEC47}.Release|x64.Build.0 = Release|x64
 		{3CB31285-9988-4F4E-9CAE-BA35EB3FEC47}.Release|x86.ActiveCfg = Release|Win32
 		{3CB31285-9988-4F4E-9CAE-BA35EB3FEC47}.Release|x86.Build.0 = Release|Win32
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40}.Debug|x64.ActiveCfg = Debug|x64
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40}.Debug|x64.Build.0 = Debug|x64
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40}.Debug|x86.ActiveCfg = Debug|Win32
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40}.Debug|x86.Build.0 = Debug|Win32
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40}.Release|x64.ActiveCfg = Release|x64
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40}.Release|x64.Build.0 = Release|x64
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40}.Release|x86.ActiveCfg = Release|Win32
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +79,7 @@ Global
 		{943B1E43-9F20-4457-A1B5-7B5359A1E8A4} = {F2FCE6DB-6521-4EE6-B6A7-4A310A0B328A}
 		{5FB440AB-D765-4703-ABAA-FA3113D8F37B} = {12103CC8-BEFA-4426-A0CF-4DE0604CD0E7}
 		{3CB31285-9988-4F4E-9CAE-BA35EB3FEC47} = {12103CC8-BEFA-4426-A0CF-4DE0604CD0E7}
+		{898AC455-6BE1-4EBE-8080-B0A789D78D40} = {12103CC8-BEFA-4426-A0CF-4DE0604CD0E7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0762C4C-F051-4D26-8D0B-AAAE5151DB9B}
