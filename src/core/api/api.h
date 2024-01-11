@@ -53,8 +53,8 @@ EXPORT void CC DeleteCalculator(CalculatorCore::ICalculator* calculator);
 //-----------------------------------------------------------------------------------------------------
 //  Typedefs
 //
-typedef CalculatorCore::ICalculator* (CC* create_calculator)();
-typedef void (CC* delete_calculator)(CalculatorCore::ICalculator*);
+using create_calculator = CalculatorCore::ICalculator* (CC*)();
+using delete_calculator = void (CC*)(CalculatorCore::ICalculator*);
 //
 //-----------------------------------------------------------------------------------------------------
 
