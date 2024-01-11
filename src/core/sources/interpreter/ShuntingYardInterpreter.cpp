@@ -1,6 +1,7 @@
 #include "ShuntingYardInterpreter.h"
 
 using namespace std;
+using namespace CalculatorCore;
 
 double ShuntingYardInterpreter::interpret(Tokenizer* tokenizer)
 {

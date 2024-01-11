@@ -25,6 +25,12 @@
     <Filter Include="Sources\tokenizer">
       <UniqueIdentifier>{fc37bd10-5575-4ec8-b4e0-fa2be0a4d3ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\syntax_analyzer">
+      <UniqueIdentifier>{a12d553e-6da2-4860-ae5c-029491448d4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\sources\syntax_analyzer">
+      <UniqueIdentifier>{9791ad83-f1ff-408e-9aab-65da06a44826}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\api.h">
@@ -36,9 +42,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Calculator.h">
       <Filter>Headers\sources</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Parser.h">
-      <Filter>Headers\sources</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\ETokenType.h">
       <Filter>Headers\sources\tokenizer</Filter>
     </ClInclude>
@@ -46,9 +49,6 @@
       <Filter>Headers\sources\tokenizer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\Tokenizer.h">
-      <Filter>Headers\sources\tokenizer</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\tokenizer\TokenizerException.h">
       <Filter>Headers\sources\tokenizer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.h">
@@ -60,11 +60,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.h">
       <Filter>Headers\sources\interpreter</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\InterpreterException.h">
-      <Filter>Headers\sources\interpreter</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\EInterpreterType.h">
       <Filter>Headers\sources\interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\ExpressionException.h">
+      <Filter>Headers\api</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\syntax_analyzer\SyntaxAnalyzer.h">
+      <Filter>Headers\sources\syntax_analyzer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,11 +86,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\Calculator.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\Parser.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\Interpreter.cpp">
       <Filter>Sources\interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\syntax_analyzer\SyntaxAnalyzer.cpp">
+      <Filter>Sources\syntax_analyzer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

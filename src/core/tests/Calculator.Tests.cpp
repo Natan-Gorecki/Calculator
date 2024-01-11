@@ -4,6 +4,7 @@
 #include "ExpressionException.h"
 
 using namespace std;
+using namespace CalculatorCore;
 
 class CalculatorTests : public ::testing::TestWithParam<string>
 {

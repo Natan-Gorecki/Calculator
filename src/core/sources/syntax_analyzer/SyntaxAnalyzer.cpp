@@ -2,6 +2,7 @@
 #include "SyntaxAnalyzer.h"
 
 using namespace std;
+using namespace CalculatorCore;
 
 #define THROW_EXCEPTION(what, index) throw ExpressionException(what, index, mTokenizer->getExpression())
 
