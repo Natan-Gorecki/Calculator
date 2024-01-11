@@ -7,30 +7,22 @@
 #endif
 
 // pragma comment and dllimport/dllexport
-#ifdef CALCULATOR
+#ifdef CALCULATOR_DYNAMIC
     #define DSPEC dllexport
 #elif CALCULATOR_STATIC
     #define DSPEC
 #else
-    #if USE_DLL
+    #if USE_DYNAMIC
         #define DSPEC dllimport
-        #ifdef _MSC_VER
-            #pragma comment(lib, "CalculatorDynamic")
-        #else
-            #pragma comment(lib, "CalculatorDynamic_BCC")
-        #endif
-    #elif USE_STATIC_LIB
+        #pragma comment(lib, "CalculatorDynamic")
+    #elif USE_STATIC
         #define DSPEC
-        #ifdef _MSC_VER
-            #pragma comment(lib, "CalculatorStatic")
-        #else
-            #pragma comment(lib, "CalculatorStatic_BCC")
-        #endif
+        #pragma comment(lib, "CalculatorStatic")
     #endif 
 #endif
 
 // extern "C" __declspec()
-#if defined(CALCULATOR) || defined(USE_DLL)
+#if defined(CALCULATOR_DYNAMIC) || defined(USE_DYNAMIC)
     #define EXPORT extern "C" __declspec(DSPEC)
 #else
     #define EXPORT extern "C"
@@ -44,8 +36,8 @@
 //-----------------------------------------------------------------------------------------------------
 //  Export functions
 //
-EXPORT CalculatorCore::ICalculator* CC CreateCalculator();
-EXPORT void CC DeleteCalculator(CalculatorCore::ICalculator* calculator);
+EXPORT CalculatorCore::ICalculator* CC Calculator_Create();
+EXPORT void CC Calculator_Delete(CalculatorCore::ICalculator* calculator);
 //
 //-----------------------------------------------------------------------------------------------------
 
@@ -53,18 +45,7 @@ EXPORT void CC DeleteCalculator(CalculatorCore::ICalculator* calculator);
 //-----------------------------------------------------------------------------------------------------
 //  Typedefs
 //
-using create_calculator = CalculatorCore::ICalculator* (CC*)();
-using delete_calculator = void (CC*)(CalculatorCore::ICalculator*);
-//
-//-----------------------------------------------------------------------------------------------------
-
-
-//-----------------------------------------------------------------------------------------------------
-//  Error Callback
-//
-typedef void (CC* ErrorCallback)(const char* message);
-
-EXPORT void CC SetErrorCallback(ErrorCallback callback);
-typedef void (CC* set_error_callback)(ErrorCallback);
+using TCalculator_Create = CalculatorCore::ICalculator* (CC*)();
+using TCalculator_Delete = void (CC*)(CalculatorCore::ICalculator*);
 //
 //-----------------------------------------------------------------------------------------------------

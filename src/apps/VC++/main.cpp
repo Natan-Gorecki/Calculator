@@ -1,16 +1,16 @@
 //-----------------------------------------------------------------------------------------------------
 //
 //  USE STATIC LIBRARY "CalculatorStatic.lib"
-//  #define USE_STATIC_LIB 1
+//  #define USE_STATIC 1
 //
 //-----------------------------------------------------------------------------------------------------
 //
 //  USE DLL "CalculatorDynamic.dll" WITH LINKING LIBRARY "CalculatorDynamic.lib"
-//  #define USE_DLL 1
+//  #define USE_DYNAMIC 1
 //
 //-----------------------------------------------------------------------------------------------------
 //
-//  ifndef USE_DLL || USE_STATIC    =>    DYNAMIC LINK LIBRARY "CalculatorDynamic.dll"
+//  ifndef USE_DYNAMIC || USE_STATIC    =>    DYNAMIC LINK LIBRARY "CalculatorDynamic.dll"
 //
 //-----------------------------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ int main()
     //-----------------------------------------------------------------------------------------------------
     //  Get export functions from dll without using linking library
     //
-    #if !(USE_DLL || USE_STATIC_LIB)
+    #if !(USE_DYNAMIC || USE_STATIC)
         auto hModule = LoadLibrary(L"CalculatorDynamic");
 
         if (!hModule)
@@ -50,14 +50,14 @@ int main()
             return EXIT_FAILURE;
         }
 
-        auto CreateCalculator = (create_calculator)GetProcAddress(hModule, "CreateCalculator");
-        auto DeleteCalculator = (delete_calculator)GetProcAddress(hModule, "DeleteCalculator");
+        auto Calculator_Create = (TCalculator_Create)GetProcAddress(hModule, "Calculator_Create");
+        auto Calculator_Delete = (TCalculator_Delete)GetProcAddress(hModule, "Calculator_Delete");
     #endif
     //-----------------------------------------------------------------------------------------------------
 
 
     //******************************************************************************************************
-    ICalculator* calculator = CreateCalculator();
+    ICalculator* calculator = Calculator_Create();
     //******************************************************************************************************
 
 
@@ -98,14 +98,14 @@ int main()
 
 
     //******************************************************************************************************
-    DeleteCalculator(calculator);
+    Calculator_Delete(calculator);
     //******************************************************************************************************
 
 
     //-----------------------------------------------------------------------------------------------------
     //  Free library from the address space of calling process
     //
-    #if !(USE_DLL || USE_STATIC_LIB)
+    #if !(USE_DYNAMIC || USE_STATIC)
         if (hModule)
         {
             FreeLibrary(hModule);
