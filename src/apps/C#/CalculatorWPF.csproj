@@ -22,4 +22,16 @@
     <ProjectReference Include="..\..\core\projects\VS CLI\CalculatorCLI.vcxproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Styles\DarkStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\LightStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Styles\Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
 </Project>

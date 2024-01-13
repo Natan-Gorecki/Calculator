@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:CalculatorWPF"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="Styles/Style.xaml"/>
     </Application.Resources>
 </Application>

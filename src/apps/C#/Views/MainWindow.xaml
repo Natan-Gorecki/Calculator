@@ -5,17 +5,111 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Background="{DynamicResource BackgroundBrush}">
 
     <Window.DataContext>
         <viewModels:MainWindowViewModel/>
     </Window.DataContext>
 
     <Grid>
-        <StackPanel>
-            <TextBox Text="{Binding Expression}"/>
-            <Button Content="Calculate" Command="{Binding Calculate}"/>
-            <TextBox Text="{Binding Output}"/>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Screen -->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="0" Text="{Binding Summary}" IsReadOnly="True"
+                     VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right"
+                     FontSize="20"/>
+            <TextBox Grid.Row="1" Text="{Binding Expression}" IsReadOnly="True"
+                     VerticalContentAlignment="Top" HorizontalContentAlignment="Right"
+                     FontSize="30"/>
+        </Grid>
+
+        <!-- Memory Buttons -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource MemoryButtonStyle}"/>
+            </Grid.Resources>
+            
+            <Button Grid.Column="0" Content="MC"/>
+            <Button Grid.Column="1" Content="MR"/>
+            <Button Grid.Column="2" Content="M+"/>
+            <Button Grid.Column="3" Content="M-"/>
+            <Button Grid.Column="4" Content="MS"/>
+        </Grid>
+
+        <!-- Clear Buttons -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Command="{Binding ClearEntry}" Content="CE"/>
+            <Button Grid.Column="1" Command="{Binding ClearAll}" Content="C"/>
+            <Button Grid.Column="2" Command="{Binding ClearLast}" Content="&lt;XI"/>
+        </Grid>
+        
+        <!-- Operation Buttons -->
+        <Grid Grid.Row="3" Margin="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="(" Content="("/>
+            <Button Grid.Row="0" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter=")" Content=")"/>
+            <Button Grid.Row="0" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="^" Content="^"/>
+            <Button Grid.Row="0" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="/" Content="÷"/>
+
+            <Button Grid.Row="1" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="7" Content="7"/>
+            <Button Grid.Row="1" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="8" Content="8"/>
+            <Button Grid.Row="1" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="9" Content="9"/>
+            <Button Grid.Row="1" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="*" Content="X"/>
+
+            <Button Grid.Row="2" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="4" Content="4"/>
+            <Button Grid.Row="2" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="5" Content="5"/>
+            <Button Grid.Row="2" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="6" Content="6"/>
+            <Button Grid.Row="2" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="-" Content="-"/>
+
+            <Button Grid.Row="3" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="1" Content="1"/>
+            <Button Grid.Row="3" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="2" Content="2"/>
+            <Button Grid.Row="3" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="3" Content="3"/>
+            <Button Grid.Row="3" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="+" Content="+"/>
+
+            <Button Grid.Row="4" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="0" Content="0"/>
+            <Button Grid.Row="4" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="." Content="."/>
+            <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding Calculate}" Content="="
+                    Style="{StaticResource CalculationButtonStyle}"/>
+        </Grid>
     </Grid>
 </Window>
+
