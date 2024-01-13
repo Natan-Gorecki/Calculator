@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\sources\cli_wrapper\Calculator.h" />
     <ClInclude Include="..\..\sources\cli_wrapper\ExpressionException.h" />
+    <ClInclude Include="..\..\sources\cli_wrapper\ICalculator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\cli_wrapper\Calculator.cpp" />

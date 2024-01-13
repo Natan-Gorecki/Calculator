@@ -17,6 +17,9 @@
     <ClInclude Include="..\..\sources\cli_wrapper\ExpressionException.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sources\cli_wrapper\ICalculator.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sources\cli_wrapper\Calculator.cpp">

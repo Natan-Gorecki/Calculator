@@ -2,9 +2,9 @@
 
 namespace CalculatorWPF.Views;
 
-public partial class HistoryControl : UserControl
+public partial class MemoryHistoryControl : UserControl
 {
-    public HistoryControl()
+    public MemoryHistoryControl()
     {
         InitializeComponent();
     }

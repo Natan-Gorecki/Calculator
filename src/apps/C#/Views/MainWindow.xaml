@@ -6,7 +6,8 @@
         xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels"
         xmlns:views="clr-namespace:CalculatorWPF.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        x:Name="mainWindow" Title="Calculator"
+        Height="450" Width="800"
         Background="{DynamicResource BackgroundBrush}">
 
     <Window.DataContext>
@@ -22,7 +23,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="{Binding ActualWidth, ElementName=mainWindow, Converter={StaticResource LessThanToGridLength}, ConverterParameter=500}"/>
         </Grid.ColumnDefinitions>
         
         <!-- Screen -->
@@ -32,34 +33,16 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBox Grid.Row="0" Text="{Binding Summary}" IsReadOnly="True"
+            <TextBox Grid.Row="0" Text="{Binding CalculatorService.Summary}" IsReadOnly="True"
                      VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right"
                      FontSize="20"/>
-            <TextBox Grid.Row="1" Text="{Binding Expression}" IsReadOnly="True"
+            <TextBox Grid.Row="1" Text="{Binding CalculatorService.Expression}" IsReadOnly="True"
                      VerticalContentAlignment="Top" HorizontalContentAlignment="Right"
                      FontSize="30"/>
         </Grid>
 
         <!-- Memory Buttons -->
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.Resources>
-                <Style TargetType="Button" BasedOn="{StaticResource MemoryButtonStyle}"/>
-            </Grid.Resources>
-            
-            <Button Grid.Column="0" Content="MC"/>
-            <Button Grid.Column="1" Content="MR"/>
-            <Button Grid.Column="2" Content="M+"/>
-            <Button Grid.Column="3" Content="M-"/>
-            <Button Grid.Column="4" Content="MS"/>
-        </Grid>
+        <views:MemoryButtonsControl Grid.Row="1"/>
 
         <!-- Clear Buttons -->
         <Grid Grid.Row="2">
@@ -116,7 +99,14 @@
                     Style="{StaticResource CalculationButtonStyle}"/>
         </Grid>
 
-        <views:HistoryControl Grid.Column="1" Grid.RowSpan="4"/>
+        <TabControl Grid.Column="1" Grid.RowSpan="4">
+            <TabItem Header="History">
+                <views:CalculationHistoryControl/>
+            </TabItem>
+            <TabItem Header="Memory">
+                <views:MemoryHistoryControl/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
 

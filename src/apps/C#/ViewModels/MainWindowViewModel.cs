@@ -1,39 +1,12 @@
-﻿using CalculatorCLI;
-using CalculatorWPF.Models;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CalculatorWPF.Services;
 using CommunityToolkit.Mvvm.Input;
-using System;
 using System.Windows.Input;
 
 namespace CalculatorWPF.ViewModels;
 
-public class MainWindowViewModel : ObservableObject, IDisposable
+public class MainWindowViewModel
 {
-    private readonly Calculator _calculator = new Calculator();
-
-    private string _summary = string.Empty;
-    public string Summary
-    {
-        get => _summary;
-        set
-        {
-            _summary = value;
-            OnPropertyChanged(nameof(Summary));
-        }
-    }
-
-    private string _expression = string.Empty;
-    public string Expression
-    {
-        get => _expression;
-        set
-        {
-            _expression = value;
-            OnPropertyChanged(nameof(Expression));
-        }
-    }
-
-    public ObservableCollection<HistoryEntry> HistoryEntries { get; } = new();
+    public ICalculatorService CalculatorService { get; } = App.Ioc.GetRequiredService<ICalculatorService>();
 
     public ICommand Calculate { get; }
     public ICommand ClearEntry { get; }
@@ -43,7 +16,6 @@ public class MainWindowViewModel : ObservableObject, IDisposable
 
     public MainWindowViewModel()
     {
-        _calculator = new Calculator();
         Calculate = new RelayCommand(OnCalculate);
         ClearEntry = new RelayCommand(OnClearEntry);
         ClearAll = new RelayCommand(OnClearAll);
@@ -53,57 +25,38 @@ public class MainWindowViewModel : ObservableObject, IDisposable
 
     private void OnCalculate()
     {
-        if (Summary == Expression)
+        if (CalculatorService.PerformCalculation(out var result))
         {
-            return;
-        }
-
-        try
-        {
-            var result = _calculator.Calculate(Expression);
-            Summary = Expression + " =";
-            Expression = result.ToString();
-
-            HistoryEntries.Insert(0, new()
+            CalculatorService.CalculationEntries.Insert(0, new()
             {
-                Expression = Summary,
+                Expression = CalculatorService.Summary,
                 Result = result
             });
-        }
-        catch (ExpressionException ex)
-        {
-            Summary = $"Error: {ex.Message} Position: {ex.Position}('{ex.Expression[ex.Position]}').";
         }
     }
 
     private void OnClearEntry()
     {
-        Expression = "";
+        CalculatorService.Expression = "";
     }
 
     private void OnClearAll()
     {
-        Summary = "";
-        Expression = "";
-        HistoryEntries.Clear();
+        CalculatorService.Summary = "";
+        CalculatorService.Expression = "";
+        CalculatorService.CalculationEntries.Clear();
     }
 
     private void OnClearLast()
     {
-        if (Expression.Length > 0)
+        if (CalculatorService.Expression.Length > 0)
         {
-            Expression = Expression.Remove(Expression.Length - 1);
+            CalculatorService.Expression = CalculatorService.Expression.Remove(CalculatorService.Expression.Length - 1);
         }
     }
 
     private void OnAppendChar(string? value)
     {
-        Expression += value;
-    }
-
-    public void Dispose()
-    {
-        _calculator.Dispose();
-        GC.SuppressFinalize(this);
+        CalculatorService.Expression += value;
     }
 }
