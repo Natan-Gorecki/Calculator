@@ -1,4 +1,5 @@
 ﻿using CalculatorCLI;
+using CalculatorWPF.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
@@ -32,6 +33,8 @@ public class MainWindowViewModel : ObservableObject, IDisposable
         }
     }
 
+    public ObservableCollection<HistoryEntry> HistoryEntries { get; } = new();
+
     public ICommand Calculate { get; }
     public ICommand ClearEntry { get; }
     public ICommand ClearAll { get; }
@@ -50,11 +53,22 @@ public class MainWindowViewModel : ObservableObject, IDisposable
 
     private void OnCalculate()
     {
+        if (Summary == Expression)
+        {
+            return;
+        }
+
         try
         {
             var result = _calculator.Calculate(Expression);
             Summary = Expression + " =";
             Expression = result.ToString();
+
+            HistoryEntries.Insert(0, new()
+            {
+                Expression = Summary,
+                Result = result
+            });
         }
         catch (ExpressionException ex)
         {
@@ -71,6 +85,7 @@ public class MainWindowViewModel : ObservableObject, IDisposable
     {
         Summary = "";
         Expression = "";
+        HistoryEntries.Clear();
     }
 
     private void OnClearLast()
