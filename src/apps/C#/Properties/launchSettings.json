@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CalculatorWPF": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
