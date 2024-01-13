@@ -204,5 +204,6 @@ TEST_P(CalculatorTests, ShouldThrowException_ForNotClosedBrackets)
     EXPECT_EXPRESSION_EXCEPTION("( 2 + ( 4 - 5 )", 0)
     EXPECT_EXPRESSION_EXCEPTION(" ) ", 1)
     EXPECT_EXPRESSION_EXCEPTION("(2+5) + 4 ( - 5", 10)
+    EXPECT_EXPRESSION_EXCEPTION("2))(", 1)
 }
 #pragma endregion

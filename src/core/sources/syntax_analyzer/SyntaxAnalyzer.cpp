@@ -92,10 +92,15 @@ void SyntaxAnalyzer::handleEmptyBrackets()
         int position = i + 1;
         int quantity = 1;
 
-        while (mTokenizer->getTokenAt(position).charValue == '(')
+        while (position < mTokenizer->getTokenCount() && mTokenizer->getTokenAt(position).charValue == '(')
         {
             quantity++;
             position++;
+        }
+
+        if (position == mTokenizer->getTokenCount())
+        {
+            return;
         }
 
         while (quantity > 0)
