@@ -5,6 +5,9 @@
     <Compile Update="Views\CalculationHistoryControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\HistoryExpander.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\MemoryButtonsControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -14,6 +17,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\CalculationHistoryControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HistoryExpander.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

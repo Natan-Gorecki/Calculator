@@ -10,7 +10,8 @@
                 <ResourceDictionary Source="Styles/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <converters:LessThanToGridLengthConverter x:Key="LessThanToGridLength"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+            <converters:BooleanToGridLengthConverter x:Key="BooleanToGridLength"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

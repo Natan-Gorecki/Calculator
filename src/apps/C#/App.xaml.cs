@@ -16,6 +16,7 @@ public partial class App : Application
         Ioc.ConfigureServices(new ServiceCollection()
             .AddSingleton<ICalculator, Calculator>()
             .AddSingleton<ICalculatorService, CalculatorService>()
+            .AddSingleton<ILayoutService, LayoutService>()
             .BuildServiceProvider());
     }
 }

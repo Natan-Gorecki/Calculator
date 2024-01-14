@@ -9,12 +9,14 @@ namespace CalculatorWPF.ViewModels;
 public class MemoryButtonsViewModel
 {
     public ICalculatorService CalculatorService { get; } = App.Ioc.GetRequiredService<ICalculatorService>();
+    public ILayoutService LayoutService { get; } = App.Ioc.GetRequiredService<ILayoutService>();
 
     public ICommand MemoryClear { get; }
     public ICommand MemoryRestore { get; }
     public ICommand MemoryAdd { get; }
     public ICommand MemorySubstract { get; }
     public ICommand MemorySave { get; }
+    public ICommand ShowBottomPanel { get; }
 
     public MemoryButtonsViewModel()
     {
@@ -23,6 +25,7 @@ public class MemoryButtonsViewModel
         MemoryAdd = new RelayCommand(OnMemoryAdd);
         MemorySubstract = new RelayCommand(OnMemorySubstract);
         MemorySave = new RelayCommand(OnMemorySave);
+        ShowBottomPanel = new RelayCommand(OnShowBottomPanel);
     }
 
     private void OnMemoryClear()
@@ -95,5 +98,11 @@ public class MemoryButtonsViewModel
         {
             Value = result
         });
+    }
+
+    private void OnShowBottomPanel()
+    {
+        LayoutService.SelectedPanelIndex = 1;
+        LayoutService.ShowBottomPanel = true;
     }
 }
