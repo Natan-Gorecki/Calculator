@@ -1,60 +1,71 @@
-﻿using CalculatorCLI;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CalculatorWPF.Services;
 using CommunityToolkit.Mvvm.Input;
-using System;
 using System.Windows.Input;
 
 namespace CalculatorWPF.ViewModels;
 
-public class MainWindowViewModel : ObservableObject, IDisposable
+public class MainWindowViewModel
 {
-    private readonly Calculator _calculator = new();
-
-    private string _expression = string.Empty;
-    public string Expression
-    {
-        get => _expression;
-        set
-        {
-            _expression = value;
-            OnPropertyChanged(nameof(Expression));
-        }
-    }
-
-    private string _output = string.Empty;
-    public string Output
-    {
-        get => _output;
-        set
-        {
-            _output = value;
-            OnPropertyChanged(nameof(Output));
-        }
-    }
+    public ICalculatorService CalculatorService { get; } = App.Ioc.GetRequiredService<ICalculatorService>();
+    public ILayoutService LayoutService { get; } = App.Ioc.GetRequiredService<ILayoutService>();
 
     public ICommand Calculate { get; }
+    public ICommand ClearEntry { get; }
+    public ICommand ClearAll { get; }
+    public ICommand ClearLast { get; }
+    public ICommand AppendChar { get; }
+    public ICommand ShowBottomPanel { get; }
 
     public MainWindowViewModel()
     {
-        _calculator = new Calculator();
         Calculate = new RelayCommand(OnCalculate);
+        ClearEntry = new RelayCommand(OnClearEntry);
+        ClearAll = new RelayCommand(OnClearAll);
+        ClearLast = new RelayCommand(OnClearLast);
+        AppendChar = new RelayCommand<string>(OnAppendChar);
+        ShowBottomPanel = new RelayCommand(OnShowBottomPanel);
     }
 
     private void OnCalculate()
     {
-        try
+        if (CalculatorService.PerformCalculation(out var result))
         {
-            Output = _calculator.Calculate(Expression).ToString();
-        }
-        catch (ExpressionException ex)
-        {
-            Output = $"Error: {ex.Message} Position: {ex.Position}('{ex.Expression[ex.Position]}').";
+            CalculatorService.CalculationEntries.Insert(0, new()
+            {
+                Expression = CalculatorService.Summary,
+                Result = result
+            });
         }
     }
 
-    public void Dispose()
+    private void OnClearEntry()
     {
-        _calculator.Dispose();
-        GC.SuppressFinalize(this);
+        CalculatorService.Expression = "";
+    }
+
+    private void OnClearAll()
+    {
+        CalculatorService.Summary = "";
+        CalculatorService.Expression = "";
+        CalculatorService.CalculationEntries.Clear();
+    }
+
+    private void OnClearLast()
+    {
+        if (CalculatorService.Expression.Length > 0)
+        {
+            CalculatorService.Expression = CalculatorService.Expression.Remove(CalculatorService.Expression.Length - 1);
+        }
+    }
+
+    private void OnAppendChar(string? value)
+    {
+        CalculatorService.Expression += value;
+    }
+
+    private void OnShowBottomPanel()
+    {
+        LayoutService.SelectedPanelIndex = 0;
+        LayoutService.ShowBottomPanel = true;
     }
 }

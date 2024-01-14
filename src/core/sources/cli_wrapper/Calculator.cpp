@@ -10,10 +10,15 @@ CalculatorCLI::Calculator::Calculator()
 
     if (!mlibraryHandle)
     {
-        throw gcnew DllNotFoundException(L"Coudn't find CalculatorDynamic.dll");
+        throw gcnew DllNotFoundException(L"Couldn't find CalculatorDynamic.dll");
     }
 
     auto Calculator_Create = (TCalculator_Create)GetProcAddress(mlibraryHandle, "Calculator_Create");
+
+    if (!Calculator_Create)
+    {
+        throw gcnew MissingMethodException(L"Couldn't find Calculator_Create method");
+    }
 #endif
 
     mCalculator = Calculator_Create();
@@ -23,6 +28,11 @@ CalculatorCLI::Calculator::~Calculator()
 {
 #if !(USE_DYNAMIC || USE_STATIC)
     auto Calculator_Delete = (TCalculator_Delete)GetProcAddress(mlibraryHandle, "Calculator_Delete");
+
+    if (!Calculator_Delete)
+    {
+        throw gcnew MissingMethodException(L"Couldn't find Calculator_Delete method");
+    }
 #endif
 
     Calculator_Delete(mCalculator);
