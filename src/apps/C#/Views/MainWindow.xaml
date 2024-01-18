@@ -1,13 +1,15 @@
-﻿<Window x:Class="CalculatorWPF.Views.MainWindow"
+﻿<ui:UiWindow x:Class="CalculatorWPF.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels"
         xmlns:views="clr-namespace:CalculatorWPF.Views"
         mc:Ignorable="d"
         x:Name="mainWindow" Title="Calculator"
         Height="450" Width="800"
+        ExtendsContentIntoTitleBar="True"
         Background="{DynamicResource BackgroundBrush}">
 
     <Window.DataContext>
@@ -63,46 +65,7 @@
         </Grid>
 
         <!-- Operation Buttons -->
-        <Grid Grid.Row="3" Margin="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="(" Content="("/>
-            <Button Grid.Row="0" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter=")" Content=")"/>
-            <Button Grid.Row="0" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="^" Content="^"/>
-            <Button Grid.Row="0" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="/" Content="÷"/>
-
-            <Button Grid.Row="1" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="7" Content="7"/>
-            <Button Grid.Row="1" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="8" Content="8"/>
-            <Button Grid.Row="1" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="9" Content="9"/>
-            <Button Grid.Row="1" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="*" Content="X"/>
-
-            <Button Grid.Row="2" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="4" Content="4"/>
-            <Button Grid.Row="2" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="5" Content="5"/>
-            <Button Grid.Row="2" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="6" Content="6"/>
-            <Button Grid.Row="2" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="-" Content="-"/>
-
-            <Button Grid.Row="3" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="1" Content="1"/>
-            <Button Grid.Row="3" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="2" Content="2"/>
-            <Button Grid.Row="3" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="3" Content="3"/>
-            <Button Grid.Row="3" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="+" Content="+"/>
-
-            <Button Grid.Row="4" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="0" Content="0"/>
-            <Button Grid.Row="4" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="." Content="."/>
-            <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding Calculate}" Content="="
-                    Style="{StaticResource CalculationButtonStyle}"/>
-        </Grid>
+        <views:OperationButtonsControl Grid.Row="3" Margin="1"/>
 
         <TabControl Grid.Column="1" Grid.RowSpan="4" SelectedIndex="{Binding LayoutService.SelectedPanelIndex}">
             <TabItem Header="History">
@@ -116,5 +79,5 @@
         <views:HistoryExpander Grid.RowSpan="4" Grid.Column="0"
                                Visibility="{Binding LayoutService.ShowBottomPanel, Converter={StaticResource BooleanToVisibility}}"/>
     </Grid>
-</Window>
+</ui:UiWindow>
 
