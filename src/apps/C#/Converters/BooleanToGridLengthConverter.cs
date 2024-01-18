@@ -11,7 +11,7 @@ namespace CalculatorWPF.Converters;
 
 public class BooleanToGridLengthConverter : IValueConverter
 {
-    private readonly static GridLength DefaultLength = new GridLength(0, GridUnitType.Pixel);
+    private readonly static GridLength DefaultLength = new(0, GridUnitType.Pixel);
 
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {

@@ -8,7 +8,16 @@
     <Platforms>x64;x86</Platforms>
     <BaseOutputPath>$(SolutionDir)out</BaseOutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <ApplicationIcon>Resources\Icons\logo_512.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\logo_32.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Icons\logo_512.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
@@ -22,6 +31,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\projects\VS CLI\CalculatorCLI.vcxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\logo_32.png" />
   </ItemGroup>
 
   <ItemGroup>
