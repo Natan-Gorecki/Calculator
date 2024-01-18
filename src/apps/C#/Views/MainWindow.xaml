@@ -1,13 +1,15 @@
-﻿<Window x:Class="CalculatorWPF.Views.MainWindow"
+﻿<ui:UiWindow x:Class="CalculatorWPF.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels"
         xmlns:views="clr-namespace:CalculatorWPF.Views"
         mc:Ignorable="d"
         x:Name="mainWindow" Title="Calculator"
         Height="450" Width="800"
+        ExtendsContentIntoTitleBar="True"
         Background="{DynamicResource BackgroundBrush}">
 
     <Window.DataContext>
@@ -16,105 +18,74 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="{Binding LayoutService.IsExpandedLayout, Converter={StaticResource BooleanToGridLength}, ConverterParameter=1*}"/>
-        </Grid.ColumnDefinitions>
 
-        <!-- Screen -->
-        <Grid Grid.Row="0" Margin="0,0,10,0">
+        <views:TitleBar Grid.Row="0"/>
+
+        <views:HistoryExpander Grid.RowSpan="2" Visibility="{Binding LayoutService.ShowBottomPanel, Converter={StaticResource BooleanToVisibility}}"/>
+
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            <Button Grid.Row="0" Content="O" Style="{StaticResource MemoryButtonStyle}"
-                    Command="{Binding ShowBottomPanel}"
-                    HorizontalAlignment="Right" Visibility="{Binding LayoutService.IsBasicLayout, Converter={StaticResource BooleanToVisibility}}"/>
-            <TextBox Grid.Row="1" Text="{Binding CalculatorService.Summary}" IsReadOnly="True"
-                     VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right"
-                     FontSize="20"/>
-            <TextBox Grid.Row="2" Grid.RowSpan="2" Text="{Binding CalculatorService.Expression}" IsReadOnly="True"
-                     VerticalContentAlignment="Top" HorizontalContentAlignment="Right"
-                     FontSize="30"/>
-        </Grid>
-
-        <!-- Memory Buttons -->
-        <views:MemoryButtonsControl Grid.Row="1"/>
-
-        <!-- Clear Buttons -->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0" Command="{Binding ClearEntry}" Content="CE"/>
-            <Button Grid.Column="1" Command="{Binding ClearAll}" Content="C"/>
-            <Button Grid.Column="2" Command="{Binding ClearLast}" Content="&lt;XI"/>
-        </Grid>
-
-        <!-- Operation Buttons -->
-        <Grid Grid.Row="3" Margin="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="{Binding LayoutService.IsExpandedLayout, Converter={StaticResource BooleanToGridLength}, ConverterParameter=1*}"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="(" Content="("/>
-            <Button Grid.Row="0" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter=")" Content=")"/>
-            <Button Grid.Row="0" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="^" Content="^"/>
-            <Button Grid.Row="0" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="/" Content="÷"/>
+            <!-- Screen -->
+            <Grid Grid.Row="0" Margin="0,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-            <Button Grid.Row="1" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="7" Content="7"/>
-            <Button Grid.Row="1" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="8" Content="8"/>
-            <Button Grid.Row="1" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="9" Content="9"/>
-            <Button Grid.Row="1" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="*" Content="X"/>
+                <Button Grid.Row="0" Content="O" Style="{StaticResource MemoryButtonStyle}"
+            Command="{Binding ShowBottomPanel}"
+            HorizontalAlignment="Right" Visibility="{Binding LayoutService.IsBasicLayout, Converter={StaticResource BooleanToVisibility}}"/>
+                <TextBox Grid.Row="1" Text="{Binding CalculatorService.Summary}" IsReadOnly="True"
+             VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right"
+             FontSize="20"/>
+                <TextBox Grid.Row="2" Grid.RowSpan="2" Text="{Binding CalculatorService.Expression}" IsReadOnly="True"
+             VerticalContentAlignment="Top" HorizontalContentAlignment="Right"
+             FontSize="30"/>
+            </Grid>
 
-            <Button Grid.Row="2" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="4" Content="4"/>
-            <Button Grid.Row="2" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="5" Content="5"/>
-            <Button Grid.Row="2" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="6" Content="6"/>
-            <Button Grid.Row="2" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="-" Content="-"/>
+            <!-- Memory Buttons -->
+            <views:MemoryButtonsControl Grid.Row="1"/>
 
-            <Button Grid.Row="3" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="1" Content="1"/>
-            <Button Grid.Row="3" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="2" Content="2"/>
-            <Button Grid.Row="3" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="3" Content="3"/>
-            <Button Grid.Row="3" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="+" Content="+"/>
+            <!-- Clear Buttons -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="4" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="0" Content="0"/>
-            <Button Grid.Row="4" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="." Content="."/>
-            <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding Calculate}" Content="="
-                    Style="{StaticResource CalculationButtonStyle}"/>
+                <Button Grid.Column="0" Command="{Binding ClearEntry}" Content="CE"/>
+                <Button Grid.Column="1" Command="{Binding ClearAll}" Content="C"/>
+                <Button Grid.Column="2" Command="{Binding ClearLast}" Content="&lt;XI"/>
+            </Grid>
+
+            <!-- Operation Buttons -->
+            <views:OperationButtonsControl Grid.Row="3" Margin="1"/>
+
+            <TabControl Grid.Column="1" Grid.RowSpan="4" SelectedIndex="{Binding LayoutService.SelectedPanelIndex}">
+                <TabItem Header="History">
+                    <views:CalculationHistoryControl/>
+                </TabItem>
+                <TabItem Header="Memory">
+                    <views:MemoryHistoryControl/>
+                </TabItem>
+            </TabControl>
         </Grid>
-
-        <TabControl Grid.Column="1" Grid.RowSpan="4" SelectedIndex="{Binding LayoutService.SelectedPanelIndex}">
-            <TabItem Header="History">
-                <views:CalculationHistoryControl/>
-            </TabItem>
-            <TabItem Header="Memory">
-                <views:MemoryHistoryControl/>
-            </TabItem>
-        </TabControl>
-
-        <views:HistoryExpander Grid.RowSpan="4" Grid.Column="0"
-                               Visibility="{Binding LayoutService.ShowBottomPanel, Converter={StaticResource BooleanToVisibility}}"/>
     </Grid>
-</Window>
+</ui:UiWindow>
 
