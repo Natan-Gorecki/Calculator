@@ -1,10 +1,9 @@
 ﻿using CalculatorWPF.ViewModels;
 using System.Windows;
-using Wpf.Ui.Controls;
 
 namespace CalculatorWPF.Views;
 
-public partial class MainWindow : UiWindow
+public partial class MainWindow : Window
 {
     public MainWindow()
     {
