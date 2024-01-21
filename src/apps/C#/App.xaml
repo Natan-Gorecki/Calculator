@@ -12,6 +12,7 @@
 
             <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
             <converters:BooleanToGridLengthConverter x:Key="BooleanToGridLength"/>
+            <converters:EnumToStringConverter x:Key="EnumToString"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

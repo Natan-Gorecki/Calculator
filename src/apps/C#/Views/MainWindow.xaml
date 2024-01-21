@@ -32,14 +32,17 @@
     <Grid Style="{StaticResource WindowMainPanelStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <views:TitleBar Grid.Row="0"/>
+        <views:TitleBar Grid.Row="0" Panel.ZIndex="1"/>
 
-        <views:HistoryExpander Grid.RowSpan="2" Visibility="{Binding LayoutService.ShowBottomPanel, Converter={StaticResource BooleanToVisibility}}"/>
+        <views:HistoryExpander Grid.RowSpan="3" Visibility="{Binding LayoutService.ShowBottomPanel, Converter={StaticResource BooleanToVisibility}}" Panel.ZIndex="2"/>
 
-        <Grid Grid.Row="1">
+        <views:MenuBarControl Grid.Row="1" Panel.ZIndex="1"/>
+
+        <Grid Grid.Row="2" Panel.ZIndex="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*"/>
                 <RowDefinition Height="1*"/>

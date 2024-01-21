@@ -14,6 +14,9 @@
     <Compile Update="Views\MemoryHistoryControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\MenuBarControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\OperationButtonsControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -35,6 +38,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MemoryHistoryControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MenuBarControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\OperationButtonsControl.xaml">

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="CalculatorWPF.Views.MenuBarControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:models="clr-namespace:CalculatorWPF.Models"
+             xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels">
+
+    <UserControl.DataContext>
+        <viewModels:MenuBarViewModel x:Name="viewModel"/>
+    </UserControl.DataContext>
+
+    <Menu>
+        <MenuItem Header="Settings">
+            <MenuItem Header="Theme">
+                <MenuItem Tag="{x:Static models:ETheme.Light}" Command="{Binding ChangeTheme}"
+                          Header="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource EnumToString}}"
+                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
+                          IsChecked="{Binding ThemeService.IsLight, Mode=OneWay}"/>
+                <MenuItem Tag="{x:Static models:ETheme.Dark}" Command="{Binding ChangeTheme}"
+                          Header="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource EnumToString}}"
+                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
+                          IsChecked="{Binding ThemeService.IsDark, Mode=OneWay}"/>
+            </MenuItem>
+            <MenuItem Header="Language">
+                <MenuItem Tag="{x:Static models:ELanguage.English}" Command="{Binding ChangeLanguage}"
+                          Header="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource EnumToString}}"
+                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
+                          IsChecked="{Binding LanguageService.IsEnglish, Mode=OneWay}"/>
+                <MenuItem Tag="{x:Static models:ELanguage.Polish}" Command="{Binding ChangeLanguage}"
+                          Header="{Binding Tag, RelativeSource={RelativeSource Self}, Converter={StaticResource EnumToString}}"
+                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
+                          IsChecked="{Binding LanguageService.IsPolish, Mode=OneWay}"/>
+            </MenuItem>
+        </MenuItem>
+    </Menu>
+</UserControl>
