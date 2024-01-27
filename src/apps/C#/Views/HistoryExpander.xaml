@@ -23,10 +23,10 @@
                     <Setter Property="Visibility" Value="Collapsed"/>
                 </Style>
             </TabControl.ItemContainerStyle>
-            <TabItem Header="History">
+            <TabItem>
                 <views:CalculationHistoryControl/>
             </TabItem>
-            <TabItem Header="Memory">
+            <TabItem>
                 <views:MemoryHistoryControl/>
             </TabItem>
         </TabControl>

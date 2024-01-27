@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels"
         xmlns:views="clr-namespace:CalculatorWPF.Views"
+        xmlns:resx="clr-namespace:CalculatorWPF.Resources"
         mc:Ignorable="d"
-        x:Name="mainWindow" Title="Calculator"
+        x:Name="mainWindow" Title="{resx:LocalizedResource WindowTitle}"
         Background="{DynamicResource BackgroundBrush}"
         Height="450" Width="800">
 
@@ -94,10 +95,10 @@
             <views:OperationButtonsControl Grid.Row="3" Margin="1"/>
 
             <TabControl Grid.Column="1" Grid.RowSpan="4" SelectedIndex="{Binding LayoutService.SelectedPanelIndex}">
-                <TabItem Header="History">
+                <TabItem Header="{resx:LocalizedResource History}">
                     <views:CalculationHistoryControl/>
                 </TabItem>
-                <TabItem Header="Memory">
+                <TabItem Header="{resx:LocalizedResource Memory}">
                     <views:MemoryHistoryControl/>
                 </TabItem>
             </TabControl>
