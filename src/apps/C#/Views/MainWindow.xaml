@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels"
         xmlns:views="clr-namespace:CalculatorWPF.Views"
+        xmlns:resx="clr-namespace:CalculatorWPF.Resources"
         mc:Ignorable="d"
-        x:Name="mainWindow" Title="Calculator"
+        x:Name="mainWindow" Title="{resx:LocalizedResource WindowTitle}"
         Background="{DynamicResource BackgroundBrush}"
         Height="450" Width="800">
 
