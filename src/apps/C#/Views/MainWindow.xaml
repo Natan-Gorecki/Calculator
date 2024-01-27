@@ -95,10 +95,10 @@
             <views:OperationButtonsControl Grid.Row="3" Margin="1"/>
 
             <TabControl Grid.Column="1" Grid.RowSpan="4" SelectedIndex="{Binding LayoutService.SelectedPanelIndex}">
-                <TabItem Header="History">
+                <TabItem Header="{resx:LocalizedResource History}">
                     <views:CalculationHistoryControl/>
                 </TabItem>
-                <TabItem Header="Memory">
+                <TabItem Header="{resx:LocalizedResource Memory}">
                     <views:MemoryHistoryControl/>
                 </TabItem>
             </TabControl>
