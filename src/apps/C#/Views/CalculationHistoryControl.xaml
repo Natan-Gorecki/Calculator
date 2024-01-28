@@ -24,9 +24,9 @@
                         </Grid.RowDefinitions>
 
                         <TextBox Grid.Row="0" Text="{Binding Expression}"
-                                 HorizontalAlignment="Right"/>
+                                 HorizontalAlignment="Right" IsReadOnly="True"/>
                         <TextBox Grid.Row="1" Text="{Binding Result}"
-                                 HorizontalAlignment="Right"/>
+                                 HorizontalAlignment="Right" IsReadOnly="True"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
