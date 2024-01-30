@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:behaviors="clr-namespace:CalculatorWPF.Behaviors"
         xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels"
         xmlns:views="clr-namespace:CalculatorWPF.Views"
         xmlns:resx="clr-namespace:CalculatorWPF.Resources"
@@ -29,6 +31,10 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
+
+    <i:Interaction.Behaviors>
+        <behaviors:HandleKeyboardEventsBehavior/>
+    </i:Interaction.Behaviors>
 
     <Grid Style="{StaticResource WindowMainPanelStyle}">
         <Grid.RowDefinitions>
@@ -87,9 +93,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Command="{Binding ClearEntry}" Content="CE"/>
-                <Button Grid.Column="1" Command="{Binding ClearAll}" Content="C"/>
-                <Button Grid.Column="2" Command="{Binding ClearLast}">
+                <Button x:Name="clearEntryButton" Grid.Column="0" Command="{Binding ClearEntry}" Content="CE"/>
+                <Button x:Name="clearAllButton" Grid.Column="1" Command="{Binding ClearAll}" Content="C"/>
+                <Button x:Name="clearLastButton" Grid.Column="2" Command="{Binding ClearLast}">
                     <Path Stroke="Black" Data="M6,0 L22,0 L22,16 L6,16 L0,8 L6,0 M10,4 L18,12 M10,12 L18,4" StrokeThickness="1"/>
                 </Button>
             </Grid>
