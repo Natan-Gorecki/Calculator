@@ -22,10 +22,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Row="0" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="(" Content="("/>
-        <Button Grid.Row="0" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter=")" Content=")"/>
-        <Button Grid.Row="0" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="^" Content="^"/>
-        <Button Grid.Row="0" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="/">
+        <Button x:Name="openBracketButton" Grid.Row="0" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="(" Content="("/>
+        <Button x:Name="closeBracketButton" Grid.Row="0" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter=")" Content=")"/>
+        <Button x:Name="exponentiationButton" Grid.Row="0" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="^" Content="^"/>
+        <Button x:Name="divideButton" Grid.Row="0" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="/">
             <Path Stroke="Black" StrokeThickness="1">
                 <Path.Data>
                     <GeometryGroup>
@@ -37,30 +37,30 @@
             </Path>
         </Button>
 
-        <Button Grid.Row="1" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="7" Content="7"/>
-        <Button Grid.Row="1" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="8" Content="8"/>
-        <Button Grid.Row="1" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="9" Content="9"/>
-        <Button Grid.Row="1" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="*">
+        <Button x:Name="sevenButton" Grid.Row="1" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="7" Content="7"/>
+        <Button x:Name="eightButton" Grid.Row="1" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="8" Content="8"/>
+        <Button x:Name="nineButton" Grid.Row="1" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="9" Content="9"/>
+        <Button x:Name="multiplyButton" Grid.Row="1" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="*">
             <Path Stroke="Black" Data="M2,2 L16,16 M2,16 L16,2" StrokeThickness="1"/>
         </Button>
 
-        <Button Grid.Row="2" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="4" Content="4"/>
-        <Button Grid.Row="2" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="5" Content="5"/>
-        <Button Grid.Row="2" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="6" Content="6"/>
-        <Button Grid.Row="2" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="-">
+        <Button x:Name="fourButton" Grid.Row="2" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="4" Content="4"/>
+        <Button x:Name="fiveButton" Grid.Row="2" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="5" Content="5"/>
+        <Button x:Name="sixButton" Grid.Row="2" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="6" Content="6"/>
+        <Button x:Name="subtractButton" Grid.Row="2" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="-">
             <Path Stroke="Black" Data="M0,9 H18" StrokeThickness="1"/>
         </Button>
 
-        <Button Grid.Row="3" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="1" Content="1"/>
-        <Button Grid.Row="3" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="2" Content="2"/>
-        <Button Grid.Row="3" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="3" Content="3"/>
-        <Button Grid.Row="3" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="+">
+        <Button x:Name="oneButton" Grid.Row="3" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="1" Content="1"/>
+        <Button x:Name="twoButton" Grid.Row="3" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="2" Content="2"/>
+        <Button x:Name="threeButton" Grid.Row="3" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="3" Content="3"/>
+        <Button x:Name="addButton" Grid.Row="3" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="+">
             <Path Stroke="Black" Data="M9,0 V18 M0,9 H18" StrokeThickness="1"/>
         </Button>
 
-            <Button Grid.Row="4" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="0" Content="0"/>
-        <Button Grid.Row="4" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="." Content="."/>
-        <Button Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding Calculate}"
+        <Button x:Name="zeroButton" Grid.Row="4" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="0" Content="0"/>
+        <Button x:Name="dotButton" Grid.Row="4" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="." Content="."/>
+        <Button x:Name="calculateButton" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding Calculate}"
                 Style="{StaticResource CalculationButtonStyle}">
             <Path Stroke="White" Data="M0,0 H18 M0,5 H18" StrokeThickness="1"/>
         </Button>
