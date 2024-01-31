@@ -25,7 +25,7 @@
         <Button x:Name="openBracketButton" Grid.Row="0" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="(" Content="("/>
         <Button x:Name="closeBracketButton" Grid.Row="0" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter=")" Content=")"/>
         <Button x:Name="exponentiationButton" Grid.Row="0" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="^" Content="^"/>
-        <Button x:Name="divideButton" Grid.Row="0" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="/">
+        <Button x:Name="divideButton" Grid.Row="0" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="÷">
             <Path Stroke="Black" StrokeThickness="1">
                 <Path.Data>
                     <GeometryGroup>
@@ -40,7 +40,7 @@
         <Button x:Name="sevenButton" Grid.Row="1" Grid.Column="0" Command="{Binding AppendChar}" CommandParameter="7" Content="7"/>
         <Button x:Name="eightButton" Grid.Row="1" Grid.Column="1" Command="{Binding AppendChar}" CommandParameter="8" Content="8"/>
         <Button x:Name="nineButton" Grid.Row="1" Grid.Column="2" Command="{Binding AppendChar}" CommandParameter="9" Content="9"/>
-        <Button x:Name="multiplyButton" Grid.Row="1" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="*">
+        <Button x:Name="multiplyButton" Grid.Row="1" Grid.Column="3" Command="{Binding AppendChar}" CommandParameter="×">
             <Path Stroke="Black" Data="M2,2 L16,16 M2,16 L16,2" StrokeThickness="1"/>
         </Button>
 
