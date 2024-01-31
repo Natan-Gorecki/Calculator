@@ -77,7 +77,7 @@ bool Tokenizer::tryTokenizeNumber()
 
     while (mPosition < mExpression.length() && isDigitOrSeparator(mExpression[mPosition]))
     {
-        if (mExpression[mPosition] == ',' || mExpression[mPosition] == '.')
+        if (mExpression[mPosition] == '.')
         {
             separatorCount++;
             if (separatorCount > 1)
@@ -90,17 +90,14 @@ bool Tokenizer::tryTokenizeNumber()
         mPosition++;
     }
 
-    string withoutComma = tokenString;
-    replace(withoutComma.begin(), withoutComma.end(), ',', '.');
-
-    if (withoutComma == ".")
+    if (tokenString == ".")
     {
         throw ExpressionException("Invalid number syntax", mPosition - 1, mExpression.c_str());
     }
 
     Token token = { ETokenType::NUMBER };
     token.stringValue = tokenString;
-    token.numberValue = stod(withoutComma);
+    token.numberValue = stod(tokenString);
     token.absolutePosition = mPosition - (int)tokenString.length();
 
     mTokens.push_back(token);
@@ -145,5 +142,5 @@ bool Tokenizer::tryTokenizeOperator()
 
 bool Tokenizer::isDigitOrSeparator(char c) const
 {
-    return isdigit(c) || c == ',' || c == '.';
+    return isdigit(c) || c == '.';
 }

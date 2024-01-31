@@ -50,7 +50,11 @@ public class CalculatorService : ObservableObject, ICalculatorService
 
         try
         {
-            value = _calculator.Calculate(Expression);
+            var acceptedExpression = Expression
+                .Replace('×', '*')
+                .Replace('÷', '/');
+
+            value = _calculator.Calculate(acceptedExpression);
             Summary = Expression + " =";
             Expression = value.ToString();
             return true;
