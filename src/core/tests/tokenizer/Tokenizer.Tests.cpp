@@ -25,17 +25,6 @@ TEST(TokenizerTests, ShouldTokenizeNumber_WithDot)
     EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
 }
 
-TEST(TokenizerTests, ShouldTokenizeNumber_WithComma)
-{
-    auto tokenizer = make_unique<Tokenizer>();
-
-    tokenizer->tokenize("123,456");
-
-    EXPECT_EQ(tokenizer->getTokenCount(), 1);
-    EXPECT_EQ(tokenizer->getTokenAt(0).type, ETokenType::NUMBER);
-    EXPECT_EQ(tokenizer->getTokenAt(0).numberValue, 123.456);
-}
-
 TEST(TokenizerTests, ShouldTokenizeNumber_WithTrailingSeparator)
 {
     auto tokenizer = make_unique<Tokenizer>();

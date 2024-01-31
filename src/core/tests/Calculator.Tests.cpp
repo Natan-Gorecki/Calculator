@@ -46,7 +46,7 @@ TEST_P(CalculatorTests, ShouldHandleAddition)
     ASSERT_EQ(mCalculator->calculate("2 + (-2) + 5"), 5.0);
     ASSERT_EQ(mCalculator->calculate("-2 + 2"), 0.0);
     ASSERT_EQ(mCalculator->calculate("-2.5 + 2"), -0.5);
-    ASSERT_EQ(mCalculator->calculate("-2,5 + 2.5"), 0.0);
+    ASSERT_EQ(mCalculator->calculate("-2.5 + 2.5"), 0.0);
 }
 
 TEST_P(CalculatorTests, ShouldHandleSubstraction)
@@ -54,7 +54,7 @@ TEST_P(CalculatorTests, ShouldHandleSubstraction)
     ASSERT_EQ(mCalculator->calculate(" 2- 7"), -5.0);
     ASSERT_EQ(mCalculator->calculate("-2 - 7 -5"), -14.0);
     ASSERT_EQ(mCalculator->calculate("-2 - (-7)"), 5.0);
-    ASSERT_EQ(mCalculator->calculate(" 0.5 - 7,2"), -6.7);
+    ASSERT_EQ(mCalculator->calculate(" 0.5 - 7.2"), -6.7);
 }
 
 TEST_P(CalculatorTests, ShouldHandleMultiplication)
@@ -96,7 +96,7 @@ TEST_P(CalculatorTests, ShouldHandleSignOfNumber)
     ASSERT_EQ(mCalculator->calculate("-2 + (-7)"), -9.0);
 }
 
-TEST_P(CalculatorTests, ShouldHandleFractions_WithDots)
+TEST_P(CalculatorTests, ShouldHandleFractions)
 {
     auto calculator = createCalculator();
 
@@ -104,16 +104,6 @@ TEST_P(CalculatorTests, ShouldHandleFractions_WithDots)
     ASSERT_EQ(calculator->calculate("5. + 5."), 10);
     ASSERT_EQ(calculator->calculate("1.0 * (-0.3)"), -0.3);
     ASSERT_EQ(calculator->calculate("5.7 - (-0.3)"), 6.0);
-}
-
-TEST_P(CalculatorTests, ShouldHandleFractions_WithCommas)
-{
-    auto calculator = createCalculator();
-
-    ASSERT_EQ(calculator->calculate(",7 + ,3"), 1);
-    ASSERT_EQ(calculator->calculate("5, + 5,"), 10);
-    ASSERT_EQ(calculator->calculate("1,0 * (-0,3)"), -0.3);
-    ASSERT_EQ(calculator->calculate("5,7 - (-0,3)"), 6.0);
 }
 #pragma endregion
 
@@ -140,11 +130,11 @@ TEST_P(CalculatorTests, ShouldCountPropertlyCharacters)
 TEST_P(CalculatorTests, ShouldThrowException_ForUnexpectedToken)
 {
     EXPECT_EXPRESSION_EXCEPTION("+?", 1)
+    EXPECT_EXPRESSION_EXCEPTION(",1", 0)
 }
 
 TEST_P(CalculatorTests, ShouldThrowException_ForInvalidSeparatorUsage)
 {
-    EXPECT_EXPRESSION_EXCEPTION(",", 0)
     EXPECT_EXPRESSION_EXCEPTION(".", 0)
     EXPECT_EXPRESSION_EXCEPTION("..2", 1)
     EXPECT_EXPRESSION_EXCEPTION("2..", 2)
@@ -155,7 +145,6 @@ TEST_P(CalculatorTests, ShouldThrowException_ForInvalidSeparatorUsage)
 
 TEST_P(CalculatorTests, ShouldThrowException_ForDuplicatedSeparators)
 {
-    EXPECT_EXPRESSION_EXCEPTION("1,1,1", 3)
     EXPECT_EXPRESSION_EXCEPTION("1.1.1", 3)
 }
 
