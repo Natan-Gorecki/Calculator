@@ -13,4 +13,5 @@ public interface ICalculatorService : INotifyPropertyChanged, IDisposable
     ObservableCollection<MemoryEntry> MemoryEntries { get; }
 
     bool PerformCalculation(out double value);
+    void AppendToExpression(string number);
 }
