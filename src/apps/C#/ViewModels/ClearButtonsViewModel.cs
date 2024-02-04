@@ -22,6 +22,7 @@ public class ClearButtonsViewModel
 
     private void OnClearEntry()
     {
+        CalculatorService.Summary = "";
         CalculatorService.Expression = "";
     }
 
@@ -30,6 +31,7 @@ public class ClearButtonsViewModel
         CalculatorService.Summary = "";
         CalculatorService.Expression = "";
         CalculatorService.CalculationEntries.Clear();
+        CalculatorService.MemoryEntries.Clear();
     }
 
     private void OnClearLast()

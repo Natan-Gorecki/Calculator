@@ -77,7 +77,7 @@ public class CalculatorService : ObservableObject, ICalculatorService
             return;
         }
 
-        var lastChar = Expression[Expression.Length - 1];
+        var lastChar = Expression[^1];
         
         if (char.IsNumber(lastChar))
         {
