@@ -67,6 +67,33 @@ public class CalculatorService : ObservableObject, ICalculatorService
         }
     }
 
+    public void AppendToExpression(string number)
+    {
+        Summary = "";
+
+        if (string.IsNullOrEmpty(Expression))
+        {
+            Expression = number;
+            return;
+        }
+
+        var lastChar = Expression[^1];
+        
+        if (char.IsNumber(lastChar))
+        {
+            Expression = number;
+            return;
+        }
+
+        if (lastChar == ')')
+        {
+            Expression = $"{Expression}×{number}";
+            return;
+        }
+
+        Expression += number;
+    }
+
     private void UpdateSummary(ExpressionException ex)
     {
         var charString = string.IsNullOrEmpty(Expression) ? "" : ex.Expression[ex.Position].ToString();

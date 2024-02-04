@@ -39,7 +39,8 @@ internal class HandleKeyboardEventsBehavior : Behavior<MainWindow>
 
     private Task HandleClick(KeyEventArgs e)
     {
-        var parentControl = AssociatedObject.FindChild<OperationButtonsControl>();
+        var operationButtonsControl = AssociatedObject.FindChild<OperationButtonsControl>();
+        var clearButtonsControl = AssociatedObject.FindChild<ClearButtonsControl>();
         Button? button;
 
         var isShiftPressed = Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
@@ -55,11 +56,11 @@ internal class HandleKeyboardEventsBehavior : Behavior<MainWindow>
         {
             button = e.Key switch
             {
-                Key.D6 => parentControl?.exponentiationButton,
-                Key.D8 => parentControl?.multiplyButton,
-                Key.D9 => parentControl?.openBracketButton,
-                Key.D0 => parentControl?.closeBracketButton,
-                Key.OemPlus => parentControl?.addButton,
+                Key.D6 => operationButtonsControl?.exponentiationButton,
+                Key.D8 => operationButtonsControl?.multiplyButton,
+                Key.D9 => operationButtonsControl?.openBracketButton,
+                Key.D0 => operationButtonsControl?.closeBracketButton,
+                Key.OemPlus => operationButtonsControl?.addButton,
                 _ => null
             };
             return PerformClick(button);
@@ -67,25 +68,25 @@ internal class HandleKeyboardEventsBehavior : Behavior<MainWindow>
 
         button = e.Key switch
         {
-            Key.D0 or Key.NumPad0 => parentControl?.zeroButton,
-            Key.D1 or Key.NumPad1 => parentControl?.oneButton,
-            Key.D2 or Key.NumPad2 => parentControl?.twoButton,
-            Key.D3 or Key.NumPad3 => parentControl?.threeButton,
-            Key.D4 or Key.NumPad4 => parentControl?.fourButton,
-            Key.D5 or Key.NumPad5 => parentControl?.fiveButton,
-            Key.D6 or Key.NumPad6 => parentControl?.sixButton,
-            Key.D7 or Key.NumPad7 => parentControl?.sevenButton,
-            Key.D8 or Key.NumPad8 => parentControl?.eightButton,
-            Key.D9 or Key.NumPad9 => parentControl?.nineButton,
-            Key.Decimal or Key.OemComma or Key.OemPeriod => parentControl?.dotButton,
-            Key.Add => parentControl?.addButton,
-            Key.Subtract or Key.OemMinus => parentControl?.subtractButton,
-            Key.Multiply => parentControl?.multiplyButton,
-            Key.Divide or Key.OemQuestion => parentControl?.divideButton,
-            Key.Enter or Key.OemPlus => parentControl?.calculateButton,
-            Key.Back => AssociatedObject.clearLastButton,
-            Key.Delete => AssociatedObject.clearEntryButton,
-            Key.Escape => AssociatedObject.clearAllButton,
+            Key.D0 or Key.NumPad0 => operationButtonsControl?.zeroButton,
+            Key.D1 or Key.NumPad1 => operationButtonsControl?.oneButton,
+            Key.D2 or Key.NumPad2 => operationButtonsControl?.twoButton,
+            Key.D3 or Key.NumPad3 => operationButtonsControl?.threeButton,
+            Key.D4 or Key.NumPad4 => operationButtonsControl?.fourButton,
+            Key.D5 or Key.NumPad5 => operationButtonsControl?.fiveButton,
+            Key.D6 or Key.NumPad6 => operationButtonsControl?.sixButton,
+            Key.D7 or Key.NumPad7 => operationButtonsControl?.sevenButton,
+            Key.D8 or Key.NumPad8 => operationButtonsControl?.eightButton,
+            Key.D9 or Key.NumPad9 => operationButtonsControl?.nineButton,
+            Key.Decimal or Key.OemComma or Key.OemPeriod => operationButtonsControl?.dotButton,
+            Key.Add => operationButtonsControl?.addButton,
+            Key.Subtract or Key.OemMinus => operationButtonsControl?.subtractButton,
+            Key.Multiply => operationButtonsControl?.multiplyButton,
+            Key.Divide or Key.OemQuestion => operationButtonsControl?.divideButton,
+            Key.Enter or Key.OemPlus => operationButtonsControl?.calculateButton,
+            Key.Back => clearButtonsControl?.clearLastButton,
+            Key.Delete => clearButtonsControl?.clearEntryButton,
+            Key.Escape => clearButtonsControl?.clearAllButton,
             _ => null,
         };
         return PerformClick(button);

@@ -40,7 +40,8 @@ public class MemoryButtonsViewModel
             return;
         }
 
-        CalculatorService.Expression = CalculatorService.MemoryEntries[0].Value.ToString();
+        var number = CalculatorService.MemoryEntries[0].Value.ToString();
+        CalculatorService.AppendToExpression(number);
     }
 
     private void OnMemoryAdd()
