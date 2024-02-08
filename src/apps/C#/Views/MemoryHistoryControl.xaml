@@ -1,26 +1,44 @@
 ﻿<UserControl x:Class="CalculatorWPF.Views.MemoryHistoryControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:behaviors="clr-namespace:CalculatorWPF.Behaviors"
              xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels">
 
     <UserControl.DataContext>
         <viewModels:MemoryHistoryViewModel x:Name="viewModel"/>
     </UserControl.DataContext>
 
+    <UserControl.Resources>
+        <Style x:Key="MemoryEntryButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Visibility" Value="Hidden"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <behaviors:BehaviorCollection x:Key="ListViewItemBehaviors" x:Shared="False">
+            <behaviors:RestoreValueOnClickBehavior/>
+        </behaviors:BehaviorCollection>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="0" ItemsSource="{Binding CalculatorService.MemoryEntries}">
+        <ListView x:Name="listView" Grid.Row="0" ItemsSource="{Binding CalculatorService.MemoryEntries}">
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="behaviors:StyleInteraction.Behaviors" Value="{StaticResource ListViewItemBehaviors}"/>
                 </Style>
             </ListView.ItemContainerStyle>
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -39,11 +57,16 @@
                                  HorizontalAlignment="Right" IsReadOnly="True"/>
 
                         <Button Grid.Row="1" Grid.Column="1" Content="MC"
-                                Command="{Binding MemoryClear, ElementName=viewModel}" CommandParameter="{Binding}"/>
+                                Command="{Binding MemoryClear, ElementName=viewModel}" CommandParameter="{Binding}"
+                                Style="{StaticResource MemoryEntryButtonStyle}"/>
+
                         <Button Grid.Row="1" Grid.Column="2" Content="M+"
-                                Command="{Binding MemoryAdd, ElementName=viewModel}"  CommandParameter="{Binding}"/>
+                                Command="{Binding MemoryAdd, ElementName=viewModel}"  CommandParameter="{Binding}"
+                                Style="{StaticResource MemoryEntryButtonStyle}"/>
+
                         <Button Grid.Row="1" Grid.Column="3" Content="M-"
-                                Command="{Binding MemorySubtract, ElementName=viewModel}" CommandParameter="{Binding}"/>
+                                Command="{Binding MemorySubtract, ElementName=viewModel}" CommandParameter="{Binding}"
+                                Style="{StaticResource MemoryEntryButtonStyle}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

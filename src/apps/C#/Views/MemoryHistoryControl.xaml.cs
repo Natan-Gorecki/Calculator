@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using CalculatorWPF.Models;
+using CalculatorWPF.Utils;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace CalculatorWPF.Views;
 
