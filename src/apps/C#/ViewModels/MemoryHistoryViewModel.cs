@@ -15,12 +15,14 @@ public class MemoryHistoryViewModel : ObservableObject
     public ICommand MemoryClear { get; }
     public ICommand MemoryAdd { get; }
     public ICommand MemorySubtract { get; }
+    public ICommand MemoryRestore { get; }
 
     public MemoryHistoryViewModel()
     {
         MemoryClear = new RelayCommand<MemoryEntry>(OnMemoryClear);
         MemoryAdd = new RelayCommand<MemoryEntry>(OnMemoryAdd);
         MemorySubtract = new RelayCommand<MemoryEntry>(OnMemorySubtract);
+        MemoryRestore = new RelayCommand(OnMemoryRestore);
     }
 
     private void OnMemoryClear(MemoryEntry? entry)
@@ -69,5 +71,9 @@ public class MemoryHistoryViewModel : ObservableObject
         {
             Value = entry.Value - result
         };
+    }
+
+    private void OnMemoryRestore()
+    {
     }
 }
