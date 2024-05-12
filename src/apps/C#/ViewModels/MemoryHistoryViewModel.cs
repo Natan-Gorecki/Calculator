@@ -18,12 +18,12 @@ public class MemoryHistoryViewModel : ObservableObject
 
     public MemoryHistoryViewModel()
     {
-        MemoryClear = new RelayCommand<MemoryEntry>(OnMemoryClear);
-        MemoryAdd = new RelayCommand<MemoryEntry>(OnMemoryAdd);
-        MemorySubtract = new RelayCommand<MemoryEntry>(OnMemorySubtract);
+        MemoryClear = new RelayCommand<CalculationEntry>(OnMemoryClear);
+        MemoryAdd = new RelayCommand<CalculationEntry>(OnMemoryAdd);
+        MemorySubtract = new RelayCommand<CalculationEntry>(OnMemorySubtract);
     }
 
-    private void OnMemoryClear(MemoryEntry? entry)
+    private void OnMemoryClear(CalculationEntry? entry)
     {
         if (entry is null)
         {
@@ -33,7 +33,7 @@ public class MemoryHistoryViewModel : ObservableObject
         CalculatorService.MemoryEntries.Remove(entry);
     }
 
-    private void OnMemoryAdd(MemoryEntry? entry)
+    private void OnMemoryAdd(CalculationEntry? entry)
     {
         if (entry is null)
         {
@@ -46,13 +46,10 @@ public class MemoryHistoryViewModel : ObservableObject
         }
 
         var index = CalculatorService.MemoryEntries.IndexOf(entry);
-        CalculatorService.MemoryEntries[index] = new MemoryEntry
-        {
-            Value = entry.Value + result
-        };
+        CalculatorService.MemoryEntries[index] = new CalculationEntry(entry.Value + result);
     }
 
-    private void OnMemorySubtract(MemoryEntry? entry)
+    private void OnMemorySubtract(CalculationEntry? entry)
     {
         if (entry is null)
         {
@@ -65,9 +62,6 @@ public class MemoryHistoryViewModel : ObservableObject
         }
 
         var index = CalculatorService.MemoryEntries.IndexOf(entry);
-        CalculatorService.MemoryEntries[index] = new MemoryEntry
-        {
-            Value = entry.Value - result
-        };
+        CalculatorService.MemoryEntries[index] = new CalculationEntry(entry.Value - result);
     }
 }

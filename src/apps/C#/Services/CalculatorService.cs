@@ -36,7 +36,7 @@ public class CalculatorService : ObservableObject, ICalculatorService
 
     public ObservableCollection<CalculationEntry> CalculationEntries { get; } = new();
 
-    public ObservableCollection<MemoryEntry> MemoryEntries { get; } = new();
+    public ObservableCollection<CalculationEntry> MemoryEntries { get; } = new();
 
     public CalculatorService()
     {
@@ -88,6 +88,12 @@ public class CalculatorService : ObservableObject, ICalculatorService
         if (lastChar == ')')
         {
             Expression = $"{Expression}×{number}";
+            return;
+        }
+
+        if (number.StartsWith("-"))
+        {
+            Expression += $"({number})";
             return;
         }
 

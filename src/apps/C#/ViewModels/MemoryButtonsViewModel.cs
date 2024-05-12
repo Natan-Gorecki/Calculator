@@ -53,17 +53,11 @@ public class MemoryButtonsViewModel
 
         if (!CalculatorService.MemoryEntries.Any())
         {
-            CalculatorService.MemoryEntries.Add(new()
-            {
-                Value = result
-            });
+            CalculatorService.MemoryEntries.Add(new(result));
             return;
         }
 
-        CalculatorService.MemoryEntries[0] = new MemoryEntry
-        {
-            Value = CalculatorService.MemoryEntries[0].Value + result
-        };
+        CalculatorService.MemoryEntries[0] = new CalculationEntry(CalculatorService.MemoryEntries[0].Value + result);
     }
 
     private void OnMemorySubstract()
@@ -75,17 +69,11 @@ public class MemoryButtonsViewModel
 
         if (!CalculatorService.MemoryEntries.Any())
         {
-            CalculatorService.MemoryEntries.Add(new()
-            {
-                Value = -result
-            });
+            CalculatorService.MemoryEntries.Add(new(-result));
             return;
         }
 
-        CalculatorService.MemoryEntries[0] = new MemoryEntry
-        {
-            Value = CalculatorService.MemoryEntries[0].Value - result
-        };
+        CalculatorService.MemoryEntries[0] = new CalculationEntry(CalculatorService.MemoryEntries[0].Value - result);
     }
 
     private void OnMemorySave()
@@ -95,10 +83,7 @@ public class MemoryButtonsViewModel
             return;
         }
 
-        CalculatorService.MemoryEntries.Insert(0, new MemoryEntry
-        {
-            Value = result
-        });
+        CalculatorService.MemoryEntries.Insert(0, new CalculationEntry(result));
     }
 
     private void OnShowBottomPanel()

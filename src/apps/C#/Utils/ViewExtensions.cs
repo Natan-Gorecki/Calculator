@@ -6,6 +6,19 @@ namespace CalculatorWPF.Utils;
 
 internal static class ViewExtensions
 {
+    public static T? FindParent<T>(this DependencyObject? child)
+        where T : FrameworkElement
+    {
+        var dependencyObject = child;
+
+        while (dependencyObject != null && dependencyObject is not T)
+        {
+            dependencyObject = VisualTreeHelper.GetParent(dependencyObject);
+        }
+
+        return dependencyObject as T;
+    }
+
     public static T? FindChild<T>(this DependencyObject dependencyObject)
         where T : FrameworkElement
     {

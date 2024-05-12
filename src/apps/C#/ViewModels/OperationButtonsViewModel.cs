@@ -25,11 +25,7 @@ public class OperationButtonsViewModel
     {
         if (CalculatorService.PerformCalculation(out var result))
         {
-            CalculatorService.CalculationEntries.Insert(0, new()
-            {
-                Expression = CalculatorService.Summary,
-                Result = result
-            });
+            CalculatorService.CalculationEntries.Insert(0, new(CalculatorService.Summary, result));
         }
     }
 }
