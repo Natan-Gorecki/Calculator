@@ -1,39 +1,24 @@
 ﻿using CalculatorWPF.Models;
 using CalculatorWPF.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Linq;
-using System.Windows.Input;
 
 namespace CalculatorWPF.ViewModels;
 
-public class MemoryButtonsViewModel
+public partial class MemoryButtonsViewModel : ObservableObject
 {
     public ICalculatorService CalculatorService { get; } = App.Ioc.GetRequiredService<ICalculatorService>();
     public ILayoutService LayoutService { get; } = App.Ioc.GetRequiredService<ILayoutService>();
 
-    public ICommand MemoryClear { get; }
-    public ICommand MemoryRestore { get; }
-    public ICommand MemoryAdd { get; }
-    public ICommand MemorySubstract { get; }
-    public ICommand MemorySave { get; }
-    public ICommand ShowBottomPanel { get; }
-
-    public MemoryButtonsViewModel()
-    {
-        MemoryClear = new RelayCommand(OnMemoryClear);
-        MemoryRestore = new RelayCommand(OnMemoryRestore);
-        MemoryAdd = new RelayCommand(OnMemoryAdd);
-        MemorySubstract = new RelayCommand(OnMemorySubstract);
-        MemorySave = new RelayCommand(OnMemorySave);
-        ShowBottomPanel = new RelayCommand(OnShowBottomPanel);
-    }
-
-    private void OnMemoryClear()
+    [RelayCommand]
+    private void MemoryClear()
     {
         CalculatorService.MemoryEntries.Clear();
     }
 
-    private void OnMemoryRestore()
+    [RelayCommand]
+    private void MemoryRestore()
     {
         if (!CalculatorService.MemoryEntries.Any())
         {
@@ -44,7 +29,8 @@ public class MemoryButtonsViewModel
         CalculatorService.AppendToExpression(number);
     }
 
-    private void OnMemoryAdd()
+    [RelayCommand]
+    private void MemoryAdd()
     {
         if (!CalculatorService.PerformCalculation(out var result))
         {
@@ -60,7 +46,8 @@ public class MemoryButtonsViewModel
         CalculatorService.MemoryEntries[0] = new CalculationEntry(CalculatorService.MemoryEntries[0].Value + result);
     }
 
-    private void OnMemorySubstract()
+    [RelayCommand]
+    private void MemorySubstract()
     {
         if (!CalculatorService.PerformCalculation(out var result))
         {
@@ -76,7 +63,8 @@ public class MemoryButtonsViewModel
         CalculatorService.MemoryEntries[0] = new CalculationEntry(CalculatorService.MemoryEntries[0].Value - result);
     }
 
-    private void OnMemorySave()
+    [RelayCommand]
+    private void MemorySave()
     {
         if (!CalculatorService.PerformCalculation(out var result))
         {
@@ -86,7 +74,8 @@ public class MemoryButtonsViewModel
         CalculatorService.MemoryEntries.Insert(0, new CalculationEntry(result));
     }
 
-    private void OnShowBottomPanel()
+    [RelayCommand]
+    private void ShowBottomPanel()
     {
         LayoutService.SelectedPanelIndex = 1;
         LayoutService.ShowBottomPanel = true;

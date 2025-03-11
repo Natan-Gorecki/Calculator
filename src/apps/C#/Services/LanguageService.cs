@@ -5,32 +5,23 @@ using System.Globalization;
 
 namespace CalculatorWPF.Services;
 
-public class LanguageService : ObservableObject, ILanguageService
+public partial class LanguageService : ObservableObject, ILanguageService
 {
+    [NotifyPropertyChangedFor(nameof(IsEnglish))]
+    [NotifyPropertyChangedFor(nameof(IsPolish))]
+    [ObservableProperty]
     private ELanguage _currentLanguage;
-    public ELanguage CurrentLanguage
-    {
-        get => _currentLanguage;
-        set
-        {
-            if (SetProperty(ref _currentLanguage, value))
-            {
-                OnPropertyChanged(nameof(IsEnglish));
-                OnPropertyChanged(nameof(IsPolish));
-                LocalizedResources.Instance.CurrentCulture = GetCultureInfo();
-            }
-        }
-    }
+
     public bool IsEnglish => CurrentLanguage == ELanguage.English;
     public bool IsPolish => CurrentLanguage == ELanguage.Polish;
 
-    private CultureInfo GetCultureInfo()
+    partial void OnCurrentLanguageChanged(ELanguage value)
     {
-        var cultureName = _currentLanguage switch
+        var cultureName = CurrentLanguage switch
         {
             ELanguage.Polish => "pl",
             _ => "en"
         };
-        return new CultureInfo(cultureName);
+        LocalizedResources.Instance.CurrentCulture = new CultureInfo(cultureName);
     }
 }

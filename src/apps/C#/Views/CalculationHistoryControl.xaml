@@ -12,7 +12,7 @@
             <behaviors:RestoreValueOnClickBehavior/>
         </behaviors:BehaviorCollection>
     </UserControl.Resources>
-    
+
     <Grid>
         <ListView ItemsSource="{Binding CalculatorService.CalculationEntries}">
 

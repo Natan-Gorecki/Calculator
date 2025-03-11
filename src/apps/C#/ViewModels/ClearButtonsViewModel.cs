@@ -1,32 +1,23 @@
 ﻿using CalculatorWPF.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Windows.Input;
 
 namespace CalculatorWPF.ViewModels;
 
-public class ClearButtonsViewModel
+public partial class ClearButtonsViewModel : ObservableObject
 {
     public ICalculatorService CalculatorService { get; } = App.Ioc.GetRequiredService<ICalculatorService>();
     public ILayoutService LayoutService { get; } = App.Ioc.GetRequiredService<ILayoutService>();
 
-    public ICommand ClearEntry { get; }
-    public ICommand ClearAll { get; }
-    public ICommand ClearLast { get; }
-
-    public ClearButtonsViewModel()
-    {
-        ClearEntry = new RelayCommand(OnClearEntry);
-        ClearAll = new RelayCommand(OnClearAll);
-        ClearLast = new RelayCommand(OnClearLast);
-    }
-
-    private void OnClearEntry()
+    [RelayCommand]
+    private void ClearEntry()
     {
         CalculatorService.Summary = "";
         CalculatorService.Expression = "";
     }
 
-    private void OnClearAll()
+    [RelayCommand]
+    private void ClearAll()
     {
         CalculatorService.Summary = "";
         CalculatorService.Expression = "";
@@ -34,7 +25,8 @@ public class ClearButtonsViewModel
         CalculatorService.MemoryEntries.Clear();
     }
 
-    private void OnClearLast()
+    [RelayCommand]
+    private void ClearLast()
     {
         if (CalculatorService.Expression.Length > 0)
         {

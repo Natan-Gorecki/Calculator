@@ -1,22 +1,16 @@
 ﻿using CalculatorWPF.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Windows.Input;
 
 namespace CalculatorWPF.ViewModels;
 
-public class MainWindowViewModel
+public partial class MainWindowViewModel : ObservableObject
 {
     public ICalculatorService CalculatorService { get; } = App.Ioc.GetRequiredService<ICalculatorService>();
     public ILayoutService LayoutService { get; } = App.Ioc.GetRequiredService<ILayoutService>();
 
-    public ICommand ShowBottomPanel { get; }
-
-    public MainWindowViewModel()
-    {
-        ShowBottomPanel = new RelayCommand(OnShowBottomPanel);
-    }
-
-    private void OnShowBottomPanel()
+    [RelayCommand]
+    private void ShowBottomPanel()
     {
         LayoutService.SelectedPanelIndex = 0;
         LayoutService.ShowBottomPanel = true;

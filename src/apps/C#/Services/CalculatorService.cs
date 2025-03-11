@@ -8,31 +8,17 @@ using System.ComponentModel;
 
 namespace CalculatorWPF.Services;
 
-public class CalculatorService : ObservableObject, ICalculatorService
+public partial class CalculatorService : ObservableObject, ICalculatorService
 {
     private readonly ICalculator _calculator = App.Ioc.GetRequiredService<ICalculator>();
 
     private ExpressionException? _shownException;
 
+    [ObservableProperty]
     private string _summary = string.Empty;
-    public string Summary
-    {
-        get => _summary;
-        set
-        {
-            SetProperty(ref _summary, value);
-        }
-    }
 
+    [ObservableProperty]
     private string _expression = string.Empty;
-    public string Expression
-    {
-        get => _expression;
-        set
-        {
-            SetProperty(ref _expression, value);
-        }
-    }
 
     public ObservableCollection<CalculationEntry> CalculationEntries { get; } = [];
 
