@@ -5,8 +5,8 @@ namespace CalculatorWPF.Services;
 
 public partial class ThemeService : ObservableObject, IThemeService
 {
-    [NotifyPropertyChangedFor(nameof(IsLight)]
-    [NotifyPropertyChangedFor(nameof(IsDark)]
+    [NotifyPropertyChangedFor(nameof(IsLight))]
+    [NotifyPropertyChangedFor(nameof(IsDark))]
     [ObservableProperty]
     private ETheme _currentTheme;
 
