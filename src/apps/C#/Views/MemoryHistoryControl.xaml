@@ -1,41 +1,45 @@
 ﻿<UserControl x:Class="CalculatorWPF.Views.MemoryHistoryControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:behaviors="clr-namespace:CalculatorWPF.Behaviors"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels">
 
     <UserControl.DataContext>
-        <viewModels:MemoryHistoryViewModel x:Name="viewModel"/>
+        <viewModels:MemoryHistoryViewModel x:Name="viewModel" />
     </UserControl.DataContext>
 
     <UserControl.Resources>
-        <Style x:Key="MemoryEntryButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Visibility" Value="Hidden"/>
+        <Style x:Key="MemoryEntryButtonStyle"
+               BasedOn="{StaticResource {x:Type Button}}"
+               TargetType="{x:Type Button}">
+            <Setter Property="Visibility" Value="Hidden" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Value="True">
-                    <Setter Property="Visibility" Value="Visible"/>
+                    <Setter Property="Visibility" Value="Visible" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
 
         <behaviors:BehaviorCollection x:Key="ListViewItemBehaviors" x:Shared="False">
-            <behaviors:RestoreValueOnClickBehavior/>
+            <behaviors:RestoreValueOnClickBehavior />
         </behaviors:BehaviorCollection>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <ListView x:Name="listView" Grid.Row="0" ItemsSource="{Binding CalculatorService.MemoryEntries}">
+        <ListView x:Name="listView"
+                  Grid.Row="0"
+                  ItemsSource="{Binding CalculatorService.MemoryEntries}">
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="behaviors:StyleInteraction.Behaviors" Value="{StaticResource ListViewItemBehaviors}"/>
+                    <Setter Property="behaviors:StyleInteraction.Behaviors" Value="{StaticResource ListViewItemBehaviors}" />
                 </Style>
             </ListView.ItemContainerStyle>
 
@@ -43,30 +47,42 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <TextBox Grid.Row="0" Grid.ColumnSpan="4" Text="{Binding Value, Mode=OneWay}"
-                                 HorizontalAlignment="Right" IsReadOnly="True"/>
+                        <TextBox Grid.Row="0"
+                                 Grid.ColumnSpan="4"
+                                 HorizontalAlignment="Right"
+                                 IsReadOnly="True"
+                                 Text="{Binding Value, Mode=OneWay}" />
 
-                        <Button Grid.Row="1" Grid.Column="1" Content="MC"
-                                Command="{Binding MemoryClear, ElementName=viewModel}" CommandParameter="{Binding}"
-                                Style="{StaticResource MemoryEntryButtonStyle}"/>
+                        <Button Grid.Row="1"
+                                Grid.Column="1"
+                                Command="{Binding MemoryClearCommand, ElementName=viewModel}"
+                                CommandParameter="{Binding}"
+                                Content="MC"
+                                Style="{StaticResource MemoryEntryButtonStyle}" />
 
-                        <Button Grid.Row="1" Grid.Column="2" Content="M+"
-                                Command="{Binding MemoryAdd, ElementName=viewModel}"  CommandParameter="{Binding}"
-                                Style="{StaticResource MemoryEntryButtonStyle}"/>
+                        <Button Grid.Row="1"
+                                Grid.Column="2"
+                                Command="{Binding MemoryAddCommand, ElementName=viewModel}"
+                                CommandParameter="{Binding}"
+                                Content="M+"
+                                Style="{StaticResource MemoryEntryButtonStyle}" />
 
-                        <Button Grid.Row="1" Grid.Column="3" Content="M-"
-                                Command="{Binding MemorySubtract, ElementName=viewModel}" CommandParameter="{Binding}"
-                                Style="{StaticResource MemoryEntryButtonStyle}"/>
+                        <Button Grid.Row="1"
+                                Grid.Column="3"
+                                Command="{Binding MemorySubtractCommand, ElementName=viewModel}"
+                                CommandParameter="{Binding}"
+                                Content="M-"
+                                Style="{StaticResource MemoryEntryButtonStyle}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
