@@ -40,7 +40,7 @@ public class BooleanToGridLengthConverter : IValueConverter
             return true;
         }
 
-        if (stringValue.EndsWith("*"))
+        if (stringValue.EndsWith('*'))
         {
             double starCount = 1;
             if (stringValue.Length > 1 && !double.TryParse(stringValue.AsSpan(0, stringValue.Length - 1), out starCount))

@@ -108,8 +108,8 @@ internal class HandleKeyboardEventsBehavior : Behavior<MainWindow>
             return;
         }
 
-        setIsPressedMethod.Invoke(button, new object[] { true });
+        setIsPressedMethod.Invoke(button, [true]);
         await Task.Delay(100);
-        setIsPressedMethod.Invoke(button, new object[] { false });
+        setIsPressedMethod.Invoke(button, [false]);
     }
 }

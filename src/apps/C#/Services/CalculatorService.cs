@@ -34,9 +34,9 @@ public class CalculatorService : ObservableObject, ICalculatorService
         }
     }
 
-    public ObservableCollection<CalculationEntry> CalculationEntries { get; } = new();
+    public ObservableCollection<CalculationEntry> CalculationEntries { get; } = [];
 
-    public ObservableCollection<CalculationEntry> MemoryEntries { get; } = new();
+    public ObservableCollection<CalculationEntry> MemoryEntries { get; } = [];
 
     public CalculatorService()
     {
@@ -91,7 +91,7 @@ public class CalculatorService : ObservableObject, ICalculatorService
             return;
         }
 
-        if (number.StartsWith("-"))
+        if (number.StartsWith('-'))
         {
             Expression += $"({number})";
             return;
