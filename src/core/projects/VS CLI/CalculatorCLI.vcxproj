@@ -26,6 +26,14 @@
   <ItemGroup>
     <ClCompile Include="..\..\sources\cli_wrapper\Calculator.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VS Dynamic\CalculatorDynamic.vcxproj">
+      <Project>{3cb31285-9988-4f4e-9cae-ba35eb3fec47}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\VS Static\CalculatorStatic.vcxproj">
+      <Project>{eafe51d4-2eb2-4332-86ba-63e57468315f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
