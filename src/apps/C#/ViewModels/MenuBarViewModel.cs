@@ -1,7 +1,6 @@
 ﻿using CalculatorWPF.Models;
 using CalculatorWPF.Services;
 using CommunityToolkit.Mvvm.Input;
-using System.Security.Cryptography.X509Certificates;
 using System.Windows.Input;
 
 namespace CalculatorWPF.ViewModels;

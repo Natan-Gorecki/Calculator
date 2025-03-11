@@ -22,7 +22,7 @@ public class ThemeService : ObservableObject, IThemeService
     public bool IsLight => CurrentTheme == ETheme.Light;
     public bool IsDark => CurrentTheme == ETheme.Dark;
 
-    private void UpdateTheme()
+    private static void UpdateTheme()
     {
 
     }

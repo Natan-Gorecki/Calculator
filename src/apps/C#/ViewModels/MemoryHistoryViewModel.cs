@@ -2,9 +2,7 @@
 using CalculatorWPF.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace CalculatorWPF.ViewModels;
 
