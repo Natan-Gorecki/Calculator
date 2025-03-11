@@ -40,8 +40,8 @@
     <ProjectGuid>{898ac455-6be1-4ebe-8080-b0a789d78d40}</ProjectGuid>
     <RootNamespace>CalculatorCLI</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <TargetFramework>net7.0</TargetFramework>
-    <WindowsTargetPlatformMinVersion>7.0</WindowsTargetPlatformMinVersion>
+    <TargetFramework>.NET 9.0</TargetFramework>
+    <WindowsTargetPlatformMinVersion>9.0</WindowsTargetPlatformMinVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
