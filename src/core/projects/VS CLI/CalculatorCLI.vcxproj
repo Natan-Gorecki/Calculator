@@ -93,11 +93,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)out\x86\$(Configuration)\</OutDir>
     <IncludePath>$(SolutionDir)src\core\api;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)out\x86\$(Configuration)\</OutDir>
     <IncludePath>$(SolutionDir)src\core\api;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
