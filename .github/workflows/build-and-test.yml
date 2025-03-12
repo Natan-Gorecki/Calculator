@@ -10,16 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
-
     - name: Restore NuGet packages
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: nuget restore CalculatorSolution.slnx
+      run: dotnet restore CalculatorSolution.slnx
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild CalculatorSolution.slnx /p:Configuration=Release /p:Platform=x64
+      run: dotnet build CalculatorSolution.slnx /p:Configuration=Release /p:Platform=x64
 
     - name: Tests
       working-directory: ${{env.GITHUB_WORKSPACE}}

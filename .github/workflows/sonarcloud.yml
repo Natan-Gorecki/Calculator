@@ -16,19 +16,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
-
       - name: Install sonar-scanner and build-wrapper
         uses: SonarSource/sonarcloud-github-c-cpp@v2
 
       - name: Restore NuGet packages
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: nuget restore CalculatorSolution.slnx
+        run: dotnet restore CalculatorSolution.slnx
 
       - name: Run build-wrapper
         run: |
-          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} msbuild CalculatorSolution.slnx /p:Configuration=Release /p:Platform=x64
+          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} dotnet build CalculatorSolution.slnx /p:Configuration=Release /p:Platform=x64
 
       - name: Run sonar-scanner
         env:
