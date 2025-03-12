@@ -26,14 +26,22 @@
   <ItemGroup>
     <ClCompile Include="..\..\sources\cli_wrapper\Calculator.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VS Dynamic\CalculatorDynamic.vcxproj">
+      <Project>{3cb31285-9988-4f4e-9cae-ba35eb3fec47}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\VS Static\CalculatorStatic.vcxproj">
+      <Project>{eafe51d4-2eb2-4332-86ba-63e57468315f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{898ac455-6be1-4ebe-8080-b0a789d78d40}</ProjectGuid>
     <RootNamespace>CalculatorCLI</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <TargetFramework>net7.0</TargetFramework>
-    <WindowsTargetPlatformMinVersion>7.0</WindowsTargetPlatformMinVersion>
+    <TargetFramework>net9.0</TargetFramework>
+    <WindowsTargetPlatformMinVersion>9.0</WindowsTargetPlatformMinVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -85,11 +93,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)out\x86\$(Configuration)\</OutDir>
     <IncludePath>$(SolutionDir)src\core\api;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)out\$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)out\x86\$(Configuration)\</OutDir>
     <IncludePath>$(SolutionDir)src\core\api;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -108,7 +116,6 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <DebugInformationFormat>None</DebugInformationFormat>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
@@ -147,7 +154,6 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <DebugInformationFormat>None</DebugInformationFormat>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>

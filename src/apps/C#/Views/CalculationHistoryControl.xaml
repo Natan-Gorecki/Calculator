@@ -4,22 +4,22 @@
              xmlns:behaviors="clr-namespace:CalculatorWPF.Behaviors"
              xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels">
     <UserControl.DataContext>
-        <viewModels:CalculationHistoryViewModel x:Name="viewModel"/>
+        <viewModels:CalculationHistoryViewModel x:Name="viewModel" />
     </UserControl.DataContext>
 
     <UserControl.Resources>
         <behaviors:BehaviorCollection x:Key="ListViewItemBehaviors" x:Shared="False">
-            <behaviors:RestoreValueOnClickBehavior/>
+            <behaviors:RestoreValueOnClickBehavior />
         </behaviors:BehaviorCollection>
     </UserControl.Resources>
-    
+
     <Grid>
         <ListView ItemsSource="{Binding CalculatorService.CalculationEntries}">
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="behaviors:StyleInteraction.Behaviors" Value="{StaticResource ListViewItemBehaviors}"/>
+                    <Setter Property="behaviors:StyleInteraction.Behaviors" Value="{StaticResource ListViewItemBehaviors}" />
                 </Style>
             </ListView.ItemContainerStyle>
 
@@ -27,14 +27,18 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
 
-                        <TextBox Grid.Row="0" Text="{Binding Summary}"
-                                 HorizontalAlignment="Right" IsReadOnly="True"/>
-                        <TextBox Grid.Row="1" Text="{Binding Value}"
-                                 HorizontalAlignment="Right" IsReadOnly="True"/>
+                        <TextBox Grid.Row="0"
+                                 HorizontalAlignment="Right"
+                                 IsReadOnly="True"
+                                 Text="{Binding Summary}" />
+                        <TextBox Grid.Row="1"
+                                 HorizontalAlignment="Right"
+                                 IsReadOnly="True"
+                                 Text="{Binding Value}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

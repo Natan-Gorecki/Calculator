@@ -23,6 +23,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CalculatorCLI", "src\core\p
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorWPF", "src\apps\C#\CalculatorWPF.csproj", "{7724DCC9-7ED4-4E85-83D8-D6C71654BA62}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{355FD2CA-7EDC-4D38-9161-B6958AD27D78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{8D86FF13-FA52-474E-87D7-3765DC018083}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-test.yml = .github\workflows\build-and-test.yml
+		.github\workflows\sonarcloud.yml = .github\workflows\sonarcloud.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +99,7 @@ Global
 		{3CB31285-9988-4F4E-9CAE-BA35EB3FEC47} = {12103CC8-BEFA-4426-A0CF-4DE0604CD0E7}
 		{898AC455-6BE1-4EBE-8080-B0A789D78D40} = {12103CC8-BEFA-4426-A0CF-4DE0604CD0E7}
 		{7724DCC9-7ED4-4E85-83D8-D6C71654BA62} = {F2FCE6DB-6521-4EE6-B6A7-4A310A0B328A}
+		{8D86FF13-FA52-474E-87D7-3765DC018083} = {355FD2CA-7EDC-4D38-9161-B6958AD27D78}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0762C4C-F051-4D26-8D0B-AAAE5151DB9B}

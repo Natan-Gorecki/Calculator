@@ -2,14 +2,9 @@
 using CalculatorWPF.ViewModels;
 using CalculatorWPF.Views;
 using Microsoft.Xaml.Behaviors;
-using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Automation.Peers;
-using System.Windows.Automation.Provider;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
 namespace CalculatorWPF.Behaviors;
@@ -28,7 +23,7 @@ internal class HandleKeyboardEventsBehavior : Behavior<MainWindow>
 
     private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
     {
-        if (AssociatedObject.DataContext is not MainWindowViewModel viewModel)
+        if (AssociatedObject.DataContext is not MainWindowViewModel)
         {
             return;
         }
@@ -113,8 +108,8 @@ internal class HandleKeyboardEventsBehavior : Behavior<MainWindow>
             return;
         }
 
-        setIsPressedMethod.Invoke(button, new object[] { true });
+        setIsPressedMethod.Invoke(button, [true]);
         await Task.Delay(100);
-        setIsPressedMethod.Invoke(button, new object[] { false });
+        setIsPressedMethod.Invoke(button, [false]);
     }
 }

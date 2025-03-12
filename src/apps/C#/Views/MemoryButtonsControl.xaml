@@ -1,58 +1,71 @@
 ﻿<UserControl x:Class="CalculatorWPF.Views.MemoryButtonsControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels">
     <UserControl.DataContext>
-        <viewModels:MemoryButtonsViewModel/>
+        <viewModels:MemoryButtonsViewModel />
     </UserControl.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="{Binding LayoutService.IsBasicLayout, Converter={StaticResource BooleanToGridLength}, ConverterParameter=1*}"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="{Binding LayoutService.IsBasicLayout, Converter={StaticResource BooleanToGridLength}, ConverterParameter=1*}" />
         </Grid.ColumnDefinitions>
 
         <Grid.Resources>
-            <Style TargetType="Button" BasedOn="{StaticResource MemoryButtonStyle}"/>
+            <Style BasedOn="{StaticResource MemoryButtonStyle}" TargetType="Button" />
         </Grid.Resources>
 
-        <Button Grid.Column="0" Command="{Binding MemoryClear}" Content="MC">
+        <Button Grid.Column="0"
+                Command="{Binding MemoryClearCommand}"
+                Content="MC">
             <Button.Style>
-                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                    <Setter Property="IsEnabled" Value="True"/>
+                <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="True" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding CalculatorService.MemoryEntries.Count}" Value="0">
-                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="IsEnabled" Value="False" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="1" Command="{Binding MemoryRestore}" Content="MR">
+        <Button Grid.Column="1"
+                Command="{Binding MemoryRestoreCommand}"
+                Content="MR">
             <Button.Style>
-                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-                    <Setter Property="IsEnabled" Value="True"/>
+                <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                    <Setter Property="IsEnabled" Value="True" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding CalculatorService.MemoryEntries.Count}" Value="0">
-                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="IsEnabled" Value="False" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="2" Command="{Binding MemoryAdd}" Content="M+"/>
-        <Button Grid.Column="3" Command="{Binding MemorySubstract}" Content="M-"/>
-        <Button Grid.Column="4" Command="{Binding MemorySave}" Content="MS"/>
-        <Button Grid.Column="5" Command="{Binding ShowBottomPanel}">
+        <Button Grid.Column="2"
+                Command="{Binding MemoryAddCommand}"
+                Content="M+" />
+        <Button Grid.Column="3"
+                Command="{Binding MemorySubstractCommand}"
+                Content="M-" />
+        <Button Grid.Column="4"
+                Command="{Binding MemorySaveCommand}"
+                Content="MS" />
+        <Button Grid.Column="5" Command="{Binding ShowBottomPanelCommand}">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="M"/>
-                <Path Stroke="Black" Data="M0,5 L5,10 L10,5" StrokeThickness="1" VerticalAlignment="Center"/>
+                <TextBlock Text="M" />
+                <Path VerticalAlignment="Center"
+                      Data="M0,5 L5,10 L10,5"
+                      Stroke="Black"
+                      StrokeThickness="1" />
             </StackPanel>
         </Button>
     </Grid>

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
@@ -44,7 +40,7 @@ public class BooleanToGridLengthConverter : IValueConverter
             return true;
         }
 
-        if (stringValue.EndsWith("*"))
+        if (stringValue.EndsWith('*'))
         {
             double starCount = 1;
             if (stringValue.Length > 1 && !double.TryParse(stringValue.AsSpan(0, stringValue.Length - 1), out starCount))

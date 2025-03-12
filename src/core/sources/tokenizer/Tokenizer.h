@@ -23,6 +23,6 @@ namespace CalculatorCore
 
         std::string mExpression;
         std::vector<Token> mTokens;
-        int mPosition = 0;
+        unsigned int mPosition = 0;
     };
 }

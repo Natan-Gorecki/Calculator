@@ -1,35 +1,39 @@
 ﻿<UserControl x:Class="CalculatorWPF.Views.MenuBarControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:resx="clr-namespace:CalculatorWPF.Resources"
              xmlns:models="clr-namespace:CalculatorWPF.Models"
+             xmlns:resx="clr-namespace:CalculatorWPF.Resources"
              xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels">
 
     <UserControl.DataContext>
-        <viewModels:MenuBarViewModel x:Name="viewModel"/>
+        <viewModels:MenuBarViewModel x:Name="viewModel" />
     </UserControl.DataContext>
 
     <Menu>
         <MenuItem Header="{resx:LocalizedResource Settings}">
             <MenuItem Header="{resx:LocalizedResource Theme}">
-                <MenuItem Tag="{x:Static models:ETheme.Light}" Command="{Binding ChangeTheme}"
+                <MenuItem Command="{Binding ChangeThemeCommand}"
+                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
                           Header="{resx:LocalizedResource Theme_Light}"
+                          IsChecked="{Binding ThemeService.IsLight, Mode=OneWay}"
+                          Tag="{x:Static models:ETheme.Light}" />
+                <MenuItem Command="{Binding ChangeThemeCommand}"
                           CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
-                          IsChecked="{Binding ThemeService.IsLight, Mode=OneWay}"/>
-                <MenuItem Tag="{x:Static models:ETheme.Dark}" Command="{Binding ChangeTheme}"
                           Header="{resx:LocalizedResource Theme_Dark}"
-                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
-                          IsChecked="{Binding ThemeService.IsDark, Mode=OneWay}"/>
+                          IsChecked="{Binding ThemeService.IsDark, Mode=OneWay}"
+                          Tag="{x:Static models:ETheme.Dark}" />
             </MenuItem>
             <MenuItem Header="{resx:LocalizedResource Language}">
-                <MenuItem Tag="{x:Static models:ELanguage.English}" Command="{Binding ChangeLanguage}"
+                <MenuItem Command="{Binding ChangeLanguageCommand}"
+                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
                           Header="{resx:LocalizedResource Language_English}"
+                          IsChecked="{Binding LanguageService.IsEnglish, Mode=OneWay}"
+                          Tag="{x:Static models:ELanguage.English}" />
+                <MenuItem Command="{Binding ChangeLanguageCommand}"
                           CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
-                          IsChecked="{Binding LanguageService.IsEnglish, Mode=OneWay}"/>
-                <MenuItem Tag="{x:Static models:ELanguage.Polish}" Command="{Binding ChangeLanguage}"
                           Header="{resx:LocalizedResource Language_Polish}"
-                          CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
-                          IsChecked="{Binding LanguageService.IsPolish, Mode=OneWay}"/>
+                          IsChecked="{Binding LanguageService.IsPolish, Mode=OneWay}"
+                          Tag="{x:Static models:ELanguage.Polish}" />
             </MenuItem>
         </MenuItem>
     </Menu>

@@ -7,12 +7,12 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Style.xaml"/>
+                <ResourceDictionary Source="Styles/Style.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
-            <converters:BooleanToGridLengthConverter x:Key="BooleanToGridLength"/>
-            <converters:EnumToStringConverter x:Key="EnumToString"/>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+            <converters:BooleanToGridLengthConverter x:Key="BooleanToGridLength" />
+            <converters:EnumToStringConverter x:Key="EnumToString" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

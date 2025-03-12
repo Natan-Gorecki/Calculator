@@ -1,31 +1,23 @@
 ﻿using CalculatorWPF.Models;
 using CalculatorWPF.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Input;
 
 namespace CalculatorWPF.ViewModels;
 
-public class MenuBarViewModel
+public partial class MenuBarViewModel : ObservableObject
 {
     public IThemeService ThemeService { get; } = App.Ioc.GetRequiredService<IThemeService>();
     public ILanguageService LanguageService { get; } = App.Ioc.GetRequiredService<ILanguageService>();
 
-    public ICommand ChangeTheme { get; }
-    public ICommand ChangeLanguage { get; }
-    
-    public MenuBarViewModel()
-    {
-        ChangeTheme = new RelayCommand<ETheme>(OnChangeTheme);
-        ChangeLanguage = new RelayCommand<ELanguage>(OnChangeLanguage);
-    }
-
-    private void OnChangeTheme(ETheme theme)
+    [RelayCommand]
+    private void ChangeTheme(ETheme theme)
     {
         ThemeService.CurrentTheme = theme;
     }
 
-    private void OnChangeLanguage(ELanguage language)
+    [RelayCommand]
+    private void ChangeLanguage(ELanguage language)
     {
         LanguageService.CurrentLanguage = language;
     }

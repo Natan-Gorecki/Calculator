@@ -1,6 +1,6 @@
-﻿using System.Windows.Media;
+﻿using System;
 using System.Windows;
-using System;
+using System.Windows.Media;
 
 namespace CalculatorWPF.Utils;
 

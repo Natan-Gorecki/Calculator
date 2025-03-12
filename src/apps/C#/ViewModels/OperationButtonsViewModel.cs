@@ -1,27 +1,21 @@
 ﻿using CalculatorWPF.Services;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Windows.Input;
 
 namespace CalculatorWPF.ViewModels;
 
-public class OperationButtonsViewModel
+public partial class OperationButtonsViewModel : ObservableObject
 {
     public ICalculatorService CalculatorService { get; } = App.Ioc.GetRequiredService<ICalculatorService>();
-    public ICommand AppendChar { get; }
-    public ICommand Calculate { get; }
 
-    public OperationButtonsViewModel()
-    {
-        AppendChar = new RelayCommand<string>(OnAppendChar);
-        Calculate = new RelayCommand(OnCalculate);
-    }
-
-    private void OnAppendChar(string? value)
+    [RelayCommand]
+    private void AppendChar(string? value)
     {
         CalculatorService.Expression += value;
     }
 
-    private void OnCalculate()
+    [RelayCommand]
+    private void Calculate()
     {
         if (CalculatorService.PerformCalculation(out var result))
         {
