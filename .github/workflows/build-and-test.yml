@@ -15,11 +15,11 @@ jobs:
 
     - name: Restore NuGet packages
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: nuget restore CalculatorSolution.sln
+      run: nuget restore CalculatorSolution.slnx
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild CalculatorSolution.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild CalculatorSolution.slnx /p:Configuration=Release /p:Platform=x64
 
     - name: Tests
       working-directory: ${{env.GITHUB_WORKSPACE}}
