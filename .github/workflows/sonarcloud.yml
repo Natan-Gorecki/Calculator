@@ -21,11 +21,11 @@ jobs:
 
       - name: Restore NuGet packages
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: dotnet restore CalculatorSolution.slnx
+        run: nuget restore CalculatorSolution.sln
 
       - name: Run build-wrapper
         run: |
-          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} dotnet build CalculatorSolution.slnx /p:Configuration=Release /p:Platform=x64
+          build-wrapper-win-x86-64 --out-dir ${{ env.BUILD_WRAPPER_OUT_DIR }} msbuild CalculatorSolution.sln /p:Configuration=Release /p:Platform=x64
 
       - name: Run sonar-scanner
         env:
