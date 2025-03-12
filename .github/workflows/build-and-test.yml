@@ -2,7 +2,6 @@ name: Build and test
 
 on:
   push:
-  pull_request:
 
 jobs:
   build-and-test:
@@ -22,6 +21,6 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: msbuild CalculatorSolution.sln /p:Configuration=Release /p:Platform=x64
 
-    - name: Test
+    - name: Tests
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: out/Release/x64/CalculatorTests.exe
+      run: out/x64/Release/CalculatorTests.exe

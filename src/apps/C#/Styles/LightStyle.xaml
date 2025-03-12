@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Light_BackgroundColor">#F3F3F3</Color>
+
+    <Color x:Key="Light_DefaultButton_Normal">White</Color>
+    <Color x:Key="Light_DefaultButton_Hovered">#FCFCFC</Color>
+
+    <Color x:Key="Light_MemoryButton_Normal">Transparent</Color>
+    <Color x:Key="Light_MemoryButton_Hovered">#EAEAEA</Color>
+
+    <Color x:Key="Light_CalculationButton_Normal">#005A9E</Color>
+    <Color x:Key="Light_CalculationButton_Hovered">#196AA7</Color>
+</ResourceDictionary>

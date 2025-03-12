@@ -1,0 +1,170 @@
+﻿<UserControl x:Class="CalculatorWPF.Views.OperationButtonsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:CalculatorWPF.ViewModels">
+
+    <UserControl.DataContext>
+        <viewModels:OperationButtonsViewModel />
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="openBracketButton"
+                Grid.Row="0"
+                Grid.Column="0"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="("
+                Content="(" />
+        <Button x:Name="closeBracketButton"
+                Grid.Row="0"
+                Grid.Column="1"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter=")"
+                Content=")" />
+        <Button x:Name="exponentiationButton"
+                Grid.Row="0"
+                Grid.Column="2"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="^"
+                Content="^" />
+        <Button x:Name="divideButton"
+                Grid.Row="0"
+                Grid.Column="3"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="÷">
+            <Path Stroke="Black" StrokeThickness="1">
+                <Path.Data>
+                    <GeometryGroup>
+                        <EllipseGeometry Center="9,3"
+                                         RadiusX="0.5"
+                                         RadiusY="0.5" />
+                        <LineGeometry StartPoint="0,9" EndPoint="18,9" />
+                        <EllipseGeometry Center="9,15"
+                                         RadiusX="0.5"
+                                         RadiusY="0.5" />
+                    </GeometryGroup>
+                </Path.Data>
+            </Path>
+        </Button>
+
+        <Button x:Name="sevenButton"
+                Grid.Row="1"
+                Grid.Column="0"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="7"
+                Content="7" />
+        <Button x:Name="eightButton"
+                Grid.Row="1"
+                Grid.Column="1"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="8"
+                Content="8" />
+        <Button x:Name="nineButton"
+                Grid.Row="1"
+                Grid.Column="2"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="9"
+                Content="9" />
+        <Button x:Name="multiplyButton"
+                Grid.Row="1"
+                Grid.Column="3"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="×">
+            <Path Data="M2,2 L16,16 M2,16 L16,2"
+                  Stroke="Black"
+                  StrokeThickness="1" />
+        </Button>
+
+        <Button x:Name="fourButton"
+                Grid.Row="2"
+                Grid.Column="0"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="4"
+                Content="4" />
+        <Button x:Name="fiveButton"
+                Grid.Row="2"
+                Grid.Column="1"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="5"
+                Content="5" />
+        <Button x:Name="sixButton"
+                Grid.Row="2"
+                Grid.Column="2"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="6"
+                Content="6" />
+        <Button x:Name="subtractButton"
+                Grid.Row="2"
+                Grid.Column="3"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="-">
+            <Path Data="M0,9 H18"
+                  Stroke="Black"
+                  StrokeThickness="1" />
+        </Button>
+
+        <Button x:Name="oneButton"
+                Grid.Row="3"
+                Grid.Column="0"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="1"
+                Content="1" />
+        <Button x:Name="twoButton"
+                Grid.Row="3"
+                Grid.Column="1"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="2"
+                Content="2" />
+        <Button x:Name="threeButton"
+                Grid.Row="3"
+                Grid.Column="2"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="3"
+                Content="3" />
+        <Button x:Name="addButton"
+                Grid.Row="3"
+                Grid.Column="3"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="+">
+            <Path Data="M9,0 V18 M0,9 H18"
+                  Stroke="Black"
+                  StrokeThickness="1" />
+        </Button>
+
+        <Button x:Name="zeroButton"
+                Grid.Row="4"
+                Grid.Column="0"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="0"
+                Content="0" />
+        <Button x:Name="dotButton"
+                Grid.Row="4"
+                Grid.Column="1"
+                Command="{Binding AppendCharCommand}"
+                CommandParameter="."
+                Content="." />
+        <Button x:Name="calculateButton"
+                Grid.Row="4"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                Command="{Binding CalculateCommand}"
+                Style="{StaticResource CalculationButtonStyle}">
+            <Path Data="M0,0 H18 M0,5 H18"
+                  Stroke="White"
+                  StrokeThickness="1" />
+        </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Views\CalculationHistoryControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ClearButtonsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\HistoryExpander.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\MemoryButtonsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\MemoryHistoryControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\MenuBarControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\OperationButtonsControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TitleBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\CalculationHistoryControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ClearButtonsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HistoryExpander.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MemoryButtonsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MemoryHistoryControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\MenuBarControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\OperationButtonsControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TitleBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
