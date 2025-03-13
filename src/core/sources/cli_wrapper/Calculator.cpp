@@ -45,15 +45,18 @@ CalculatorCLI::Calculator::~Calculator()
 
 double CalculatorCLI::Calculator::Calculate(String^ expression)
 {
-    try
+    char* expressionPtr = (char*)(void*)Marshal::StringToHGlobalAnsi(expression);
+    CalculatorCore::CalculationResult calculationResult = mCalculator->calculate(expressionPtr);
+    Marshal::FreeHGlobal((IntPtr)expressionPtr);
+
+    if (!calculationResult.isSuccess)
     {
-        auto expressionPtr = (char*)(void*)Marshal::StringToHGlobalAnsi(expression);
-        auto result = mCalculator->calculate(expressionPtr);
-        Marshal::FreeHGlobal((IntPtr)expressionPtr);
-        return result;
+        throw gcnew ExpressionException(
+            gcnew String(calculationResult.errorMessage),
+            calculationResult.errorPosition,
+            gcnew String(calculationResult.errorExpression)
+        );
     }
-    catch (const CalculatorCore::ExpressionException& ex)
-    {
-        throw gcnew ExpressionException(gcnew String(ex.what()), ex.getPosition(), gcnew String(ex.getExpression()));
-    }
+
+    return calculationResult.numericResult;
 }

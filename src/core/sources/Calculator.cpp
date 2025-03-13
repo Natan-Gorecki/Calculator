@@ -34,21 +34,47 @@ CalculationResult CC Calculator::calculate(const char* expression)
             break;
         }
 
+        double numericResult = interpreter->interpret(tokenizer.get());
+        mCacheErrorMessage = nullptr;
+        mCacheErrorExpression = nullptr;
+
         return
         {
             true,
-            interpreter->interpret(tokenizer.get())
+            numericResult,
+            mCacheErrorMessage.get(),
+            0,
+            mCacheErrorExpression.get()
         };
     }
     catch (const CalculatorCore::ExpressionException& ex)
     {
+        mCacheErrorMessage = makeCString(ex.what());
+        mCacheErrorExpression = makeCString(ex.getExpression());
+
         return
         {
             false,
             0,
-            ex.what(),
+            mCacheErrorMessage.get(),
             ex.getPosition(),
-            ex.getExpression()
+            mCacheErrorExpression.get()
         };
     }
+}
+
+std::unique_ptr<char[]> Calculator::makeCString(const char* str)
+{
+    if (str == nullptr)
+    {
+        return nullptr;
+    }
+
+    size_t length = std::strlen(str);
+    std::unique_ptr<char[]> buffer = std::make_unique<char[]>(length + 1);
+
+    std::memcpy(buffer.get(), str, length);
+    buffer[length] = '\0';
+
+    return buffer;
 }

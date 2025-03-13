@@ -37,6 +37,7 @@ int main()
         "Please enter your equation:"
     };
 
+
     //-----------------------------------------------------------------------------------------------------
     //  Get export functions from dll without using linking library
     //
@@ -78,19 +79,19 @@ int main()
         }
 
         //-----------------------------------------------------------------
-        try 
+        CalculatorCore::CalculationResult calculationResult = calculator->calculate(input.c_str());
+
+        if (!calculationResult.isSuccess)
         {
-            auto result = calculator->calculate(input.c_str());
-            screenLines[3] = "";
-            screenLines[4] = "";
-            screenLines[5] = "Result: " + to_string(result);
+            screenLines[3] = "Expression: '" + string(calculationResult.errorExpression) + "'";
+            screenLines[4] = "Exception: '" + string(calculationResult.errorMessage) + "'";
+            screenLines[5] = "Position: " + to_string(calculationResult.errorPosition) + " ('" + input.at(calculationResult.errorPosition) + "')";
+            continue;
         }
-        catch (const ExpressionException& ex)
-        {
-            screenLines[3] = "Expression: '" + string(ex.getExpression()) + "'";
-            screenLines[4] = "Exception: '" + string(ex.what()) + "'";
-            screenLines[5] = "Position: " + to_string(ex.getPosition()) + " ('" + input.at(ex.getPosition()) + "')";
-        }
+
+        screenLines[3] = "";
+        screenLines[4] = "";
+        screenLines[5] = "Result: " + to_string(calculationResult.numericResult);
         //-----------------------------------------------------------------
 
         system("cls");

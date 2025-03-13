@@ -7,8 +7,8 @@ namespace CalculatorCore
         bool isSuccess;
         double numericResult;
 
-        const char* message;
-        int position;
-        const char* expression;
+        const char* errorMessage;
+        int errorPosition;
+        const char* errorExpression;
     };
 }
