@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\api.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\CalculationResult.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\ExpressionException.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\ICalculator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\Calculator.h" />

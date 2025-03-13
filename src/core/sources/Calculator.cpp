@@ -13,25 +13,52 @@ Calculator::Calculator(EInterpreterType interpreterType)
 {
 }
 
-double CC Calculator::calculate(const char* expression)
+CalculationResult CC Calculator::calculate(const char* expression)
 {
-    auto tokenizer = make_unique<Tokenizer>();
-    tokenizer->tokenize(expression);
-
-    auto analyzer = make_unique<SyntaxAnalyzer>();
-    analyzer->analyze(tokenizer.get());
-
-    switch (mInterpreterType)
+    try
     {
-    case EInterpreterType::RECURSIVE:
+        auto tokenizer = make_unique<Tokenizer>();
+        tokenizer->tokenize(expression);
+
+        auto analyzer = make_unique<SyntaxAnalyzer>();
+        analyzer->analyze(tokenizer.get());
+
+        std::unique_ptr<Interpreter> interpreter = nullptr;
+        switch (mInterpreterType)
         {
-            auto interpreter = make_unique<RecursiveInterpreter>();
-            return interpreter->interpret(tokenizer.get());
+        case EInterpreterType::RECURSIVE:
+            interpreter = make_unique<RecursiveInterpreter>();
+            break;
+        default:
+            interpreter = make_unique<ShuntingYardInterpreter>();
+            break;
         }
-    default:
+
+        double numericResult = interpreter->interpret(tokenizer.get());
+        mCacheErrorMessage = "";
+        mCacheErrorExpression = "";
+
+        return
         {
-            auto interpreter = make_unique<ShuntingYardInterpreter>();
-            return interpreter->interpret(tokenizer.get());
-        }
+            true,
+            numericResult,
+            mCacheErrorMessage.c_str(),
+            0,
+            mCacheErrorExpression.c_str()
+        };
+    }
+    catch (const CalculatorCore::ExpressionException& ex)
+    {
+        mCacheErrorMessage = std::string(ex.what());
+        mCacheErrorExpression = std::string(ex.getExpression());
+
+        return
+        {
+            false,
+            0,
+            mCacheErrorMessage.c_str(),
+            ex.getPosition(),
+            mCacheErrorExpression.c_str()
+        };
     }
 }
