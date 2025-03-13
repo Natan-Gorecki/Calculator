@@ -9,7 +9,7 @@ namespace CalculatorCore
     {
     public:
         explicit Calculator(EInterpreterType interpreterType);
-        double CC calculate(const char* expression) override;
+        CalculationResult CC calculate(const char* expression) override;
 
     private:
         EInterpreterType mInterpreterType = EInterpreterType::UNDEFINED;

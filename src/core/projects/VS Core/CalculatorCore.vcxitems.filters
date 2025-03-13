@@ -69,6 +69,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\sources\syntax_analyzer\SyntaxAnalyzer.h">
       <Filter>Headers\sources\syntax_analyzer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\api\CalculationResult.h">
+      <Filter>Headers\api</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\sources\interpreter\RecursiveInterpreter.cpp">

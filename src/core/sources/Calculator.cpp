@@ -13,25 +13,42 @@ Calculator::Calculator(EInterpreterType interpreterType)
 {
 }
 
-double CC Calculator::calculate(const char* expression)
+CalculationResult CC Calculator::calculate(const char* expression)
 {
-    auto tokenizer = make_unique<Tokenizer>();
-    tokenizer->tokenize(expression);
-
-    auto analyzer = make_unique<SyntaxAnalyzer>();
-    analyzer->analyze(tokenizer.get());
-
-    switch (mInterpreterType)
+    try
     {
-    case EInterpreterType::RECURSIVE:
+        auto tokenizer = make_unique<Tokenizer>();
+        tokenizer->tokenize(expression);
+
+        auto analyzer = make_unique<SyntaxAnalyzer>();
+        analyzer->analyze(tokenizer.get());
+
+        std::unique_ptr<Interpreter> interpreter = nullptr;
+        switch (mInterpreterType)
         {
-            auto interpreter = make_unique<RecursiveInterpreter>();
-            return interpreter->interpret(tokenizer.get());
+        case EInterpreterType::RECURSIVE:
+            interpreter = make_unique<RecursiveInterpreter>();
+            break;
+        default:
+            interpreter = make_unique<ShuntingYardInterpreter>();
+            break;
         }
-    default:
+
+        return
         {
-            auto interpreter = make_unique<ShuntingYardInterpreter>();
-            return interpreter->interpret(tokenizer.get());
-        }
+            true,
+            interpreter->interpret(tokenizer.get())
+        };
+    }
+    catch (const CalculatorCore::ExpressionException& ex)
+    {
+        return
+        {
+            false,
+            0,
+            ex.what(),
+            ex.getPosition(),
+            ex.getExpression()
+        };
     }
 }
